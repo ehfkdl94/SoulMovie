@@ -15,7 +15,7 @@ import com.soulmovie.vo.UserVo;
 
 
 @Controller
-@RequestMapping("/") 
+@RequestMapping("/member") 
 public class SecurityController {
 		@Autowired
 		private UserMapper userMapper;

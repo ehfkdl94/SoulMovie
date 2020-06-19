@@ -20,3 +20,10 @@ public class ChoiceController {
 		return "redirect:" + request.getContextPath() + "/choice/insert";
 	}
 }
+=======
+//package com.soulmovie.controller;
+//
+//public class ChoiceController {
+//
+//}
+>>>>>>> 9a63ad8eb176122861faf87903214d92b61b5c8a
