@@ -8,7 +8,7 @@ public class ChoiceVO {
 	private String choice_category = null;
 	private String choice_date = null;
 	private int choice_code = 0;
-	private String choice_id = null;
+	private int choice_id = 0;
 	
 	
 	//Getter Setter
@@ -48,10 +48,10 @@ public class ChoiceVO {
 	public void setChoice_code(int choice_code) {
 		this.choice_code = choice_code;
 	}
-	public String getChoice_id() {
+	public int getChoice_id() {
 		return choice_id;
 	}
-	public void setChoice_id(String choice_id) {
+	public void setChoice_id(int choice_id) {
 		this.choice_id = choice_id;
 	}
 	

@@ -1,9 +1,9 @@
 package com.soulmovie.vo;
 
 public class MemberVO {
-	private String userid = null;
+	private int userid = 0;
 	private String password = null;
-	private String username = null;
+	private String userrname = null;
 	private String usernick = null;
 	private String userage = null;
 	private String usergender = null;
@@ -11,16 +11,17 @@ public class MemberVO {
 	private int userccnt = 0;
 	private String admin = null;
 	private String joindate = null;
+	private String username= null;
 	
 
 
 	
 	
 	//Getter Setter
-	public String getUserid() {
+	public int getUserid() {
 		return userid;
 	}
-	public void setUserid(String userid) {
+	public void setUserid(int userid) {
 		this.userid = userid;
 	}
 	public String getPassword() {
@@ -29,11 +30,11 @@ public class MemberVO {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getUsername() {
-		return username;
+	public String getUserrname() {
+		return userrname;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUserrname(String userrname) {
+		this.userrname = userrname;
 	}
 	public String getUsernick() {
 		return usernick;
@@ -78,13 +79,19 @@ public class MemberVO {
 	public void setJoindate(String joindate) {
 		this.joindate = joindate;
 	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
 	
 	//toString
 	@Override
 	public String toString() {
-		return "MemberVO [userid=" + userid + ", password=" + password + ", username=" + username + ", usernick="
+		return "MemberVO [userid=" + userid + ", password=" + password + ", userrname=" + userrname + ", usernick="
 				+ usernick + ", userage=" + userage + ", usergender=" + usergender + ", useremail=" + useremail
-				+ ", userccnt=" + userccnt + ", admin=" + admin + ", joindate=" + joindate +"]";
+				+ ", userccnt=" + userccnt + ", admin=" + admin + ", joindate=" + joindate + ", username=" + username +"]";
 	}
 	
 	

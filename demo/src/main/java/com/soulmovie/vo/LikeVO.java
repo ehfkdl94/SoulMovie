@@ -3,7 +3,7 @@ package com.soulmovie.vo;
 public class LikeVO {
 
 	private long brdno = 0L;
-	private String userid = null;
+	private int userid = 0;
 	
 	
 	public long getBrdno() {
@@ -12,10 +12,10 @@ public class LikeVO {
 	public void setBrdno(long brdno) {
 		this.brdno = brdno;
 	}
-	public String getUserid() {
+	public int getUserid() {
 		return userid;
 	}
-	public void setUserid(String userid) {
+	public void setUserid(int userid) {
 		this.userid = userid;
 	}
 	@Override
