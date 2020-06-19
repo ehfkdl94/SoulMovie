@@ -49,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //			 	.defaultSuccessUrl("/security/home") //성공시 이동할 페이지
 //			 	.and()
 			 .formLogin()
-	        	.loginPage("/login")  //로그인 페이지 url
+	        	.loginPage("/member/login")  //로그인 페이지 url
 	        	.loginProcessingUrl("/loginProcess") //<form action="?"
 	        	.permitAll()							//누구나 접근
 	        	.defaultSuccessUrl("/home") 	//성공시 이동할 페이지 
@@ -62,7 +62,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			 	.permitAll()
 			 	.and()
 			 .exceptionHandling()
-			 	.accessDeniedPage("/security/page403");
+			 	.accessDeniedPage("/page403");
 		
 			//보안에 취약함.
 		    http.csrf().disable(); //csrf를 사용하지 않을 경우
