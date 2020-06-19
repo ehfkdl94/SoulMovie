@@ -10,6 +10,11 @@ public class MemberVO {
 	private String useremail = null;
 	private int userccnt = 0;
 	private String admin = null;
+	private String joindate = null;
+	
+
+
+	
 	
 	//Getter Setter
 	public String getUserid() {
@@ -67,12 +72,19 @@ public class MemberVO {
 		this.admin = admin;			
 	}
 	
+	public String getJoindate() {
+		return joindate;
+	}
+	public void setJoindate(String joindate) {
+		this.joindate = joindate;
+	}
+	
 	//toString
 	@Override
 	public String toString() {
 		return "MemberVO [userid=" + userid + ", password=" + password + ", username=" + username + ", usernick="
 				+ usernick + ", userage=" + userage + ", usergender=" + usergender + ", useremail=" + useremail
-				+ ", userccnt=" + userccnt + ", admin=" + admin + "]";
+				+ ", userccnt=" + userccnt + ", admin=" + admin + ", joindate=" + joindate +"]";
 	}
 	
 	
