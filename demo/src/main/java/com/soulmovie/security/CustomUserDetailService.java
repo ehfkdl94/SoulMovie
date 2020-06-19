@@ -1,4 +1,4 @@
-package com.example.security;
+package com.soulmovie.security;
 
 import java.util.Collection;
 
@@ -13,8 +13,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.example.mapper.UserMapper;
-import com.example.vo.UserVo;
+import com.soulmovie.mapper.UserMapper;
+import com.soulmovie.vo.UserVo;
 
 @Service
 @Transactional

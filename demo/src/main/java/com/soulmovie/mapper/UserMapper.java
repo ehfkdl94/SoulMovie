@@ -1,10 +1,10 @@
-package com.example.mapper;
+package com.soulmovie.mapper;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
-import com.example.vo.UserVo;
+import com.soulmovie.vo.UserVo;
 
 public interface UserMapper {
 	@Insert({"INSERT INTO MEMBER VALUES(MY_GET_SEQ_MEMBER_NUMBER,#{obj.password},"

@@ -1,4 +1,4 @@
-package com.example.controller;
+package com.soulmovie.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.example.mapper.UserMapper;
-import com.example.vo.UserVo;
+import com.soulmovie.mapper.UserMapper;
+import com.soulmovie.vo.UserVo;
 
 
 
 @Controller
-@RequestMapping("/security")
+@RequestMapping("/") 
 public class SecurityController {
 		@Autowired
 		private UserMapper userMapper;

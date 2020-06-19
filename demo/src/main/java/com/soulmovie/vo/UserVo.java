@@ -1,4 +1,4 @@
-package com.example.vo;
+package com.soulmovie.vo;
 
 public class UserVo {
 
