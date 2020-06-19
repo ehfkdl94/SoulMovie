@@ -42,6 +42,6 @@ public class SecurityController {
 		}
 		@RequestMapping(value = "/login", method = RequestMethod.GET)
 		public String login(HttpServletRequest request) {
-			return "/member/login";
+			return request.getContextPath()+"/member/login";
 		}
 }
