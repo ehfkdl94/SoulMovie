@@ -1143,7 +1143,7 @@ Artest Page
 
 .tarck-thumb .wp-play:after {
 	position: absolute;
-	content: "";
+	content: "�걢";
 	left: calc(50% - 6px);
 	top: calc(50% - 8px);
 	font: normal normal normal 18px/1 FontAwesome;
@@ -1151,7 +1151,7 @@ Artest Page
 
 .playing .tarck-thumb .wp-play:after {
 	position: absolute;
-	content: "";
+	content: "�걣";
 	left: calc(50% - 8px);
 	font: normal normal normal 18px/1 FontAwesome;
 }

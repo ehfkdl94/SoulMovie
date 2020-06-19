@@ -1,5 +1,7 @@
 package com.soulmovie.vo;
 
+import java.util.Arrays;
+
 public class MovieVO {
 	
 	private int movie_code = 0;
@@ -9,11 +11,11 @@ public class MovieVO {
 	private String movie_genre = null;
 	private String movie_director = null;
 	private String movie_actor = null;
-	private String movie_img = null;
-	private String movie_cnt = null;
-	private String movie_freq = null;
+	private byte[] movie_img = null;
+	private int movie_cnt = 0;
+	private int movie_freq = 0;
 	
-	//Getter Setter
+	
 	public int getMovie_code() {
 		return movie_code;
 	}
@@ -56,35 +58,32 @@ public class MovieVO {
 	public void setMovie_actor(String movie_actor) {
 		this.movie_actor = movie_actor;
 	}
-	public String getMovie_img() {
+	public byte[] getMovie_img() {
 		return movie_img;
 	}
-	public void setMovie_img(String movie_img) {
+	public void setMovie_img(byte[] movie_img) {
 		this.movie_img = movie_img;
 	}
-	public String getMovie_cnt() {
+	public int getMovie_cnt() {
 		return movie_cnt;
 	}
-	public void setMovie_cnt(String movie_cnt) {
+	public void setMovie_cnt(int movie_cnt) {
 		this.movie_cnt = movie_cnt;
 	}
-	public String getMovie_freq() {
+	public int getMovie_freq() {
 		return movie_freq;
 	}
-	public void setMovie_freq(String movie_freq) {
+	public void setMovie_freq(int movie_freq) {
 		this.movie_freq = movie_freq;
 	}
-	
-	
-	//to String
-	
 	@Override
 	public String toString() {
 		return "MovieVO [movie_code=" + movie_code + ", movie_title=" + movie_title + ", movie_date=" + movie_date
 				+ ", movie_nation=" + movie_nation + ", movie_genre=" + movie_genre + ", movie_director="
-				+ movie_director + ", movie_actor=" + movie_actor + ", movie_img=" + movie_img + ", movie_cnt="
-				+ movie_cnt + ", movie_freq=" + movie_freq + "]";
+				+ movie_director + ", movie_actor=" + movie_actor + ", movie_img=" + Arrays.toString(movie_img)
+				+ ", movie_cnt=" + movie_cnt + ", movie_freq=" + movie_freq + "]";
 	}
+	
 	
 	
 }

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -56,14 +56,15 @@
 			<a href="#" class="hr-btn">Help</a>
 			<span>|</span>
 			<div class="user-panel">
-				<a href="" class="login">Login</a>
+				<a href="${pageContext.request.contextPath}/member/login" class="login">Login</a>
 				<a href="" class="register">Create an account</a>
 			</div>
 		</div>
 		<ul class="main-menu">
-			<li><a href="index.html">Home</a></li>
+			<li><a href="/">Home</a></li>
 			<li><a href="#">About</a></li>
-			<li><a href="#">Pages</a>
+			<li><a href="#">Movie</a>
+				<!--  
 				<ul class="sub-menu">
 					<li><a href="category.html">Category</a></li>
 					<li><a href="playlist.html">Playlist</a></li>
@@ -71,8 +72,9 @@
 					<li><a href="blog.html">Blog</a></li>
 					<li><a href="contact.html">Contact</a></li>
 				</ul>
+				-->
 			</li>
-			<li><a href="blog.html">News</a></li>
+			<li><a href="${pageContext.request.contextPath}/board/list">게시판</a></li>
 			<li><a href="contact.html">Contact</a></li>
 		</ul>
 	</header>
@@ -96,62 +98,22 @@
 								</div>
 							</div> -->
 							</div>
+					
 					<div id="portfolio-grid" class="row no-gutter" data-aos="fade-up" data-aos-delay="200">
+								<c:forEach var="tmp" items="${list}">
 								<div class="item web col-sm-6 col-md-4 col-lg-4 mb-4">
-												<a href="work-single.html" class="item-wrap fancybox">
-															<div class="work-info">
-																<h3>Boxed Water</h3>
-																<span>Web</span>
-															</div>
-												<img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/test.jpg">
-												</a>
-								</div>
-								<div class="item photography col-sm-6 col-md-4 col-lg-4 mb-4">
 									<a href="work-single.html" class="item-wrap fancybox">
 									<div class="work-info">
-										<h3>Build Indoo</h3>
-										<span>Photography</span>
+										<h3>${tmp.movie_title}</h3>
+										<span>${tmp.movie_date}</span>
 									</div>
-									<img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/test2.jpg">
+									<img class="img-fluid" src="${pageContext.request.contextPath}/getimg?no=${tmp.movie_code}">
 									</a>
 								</div>
-								<div class="item branding col-sm-6 col-md-4 col-lg-4 mb-4">
-									<a href="work-single.html" class="item-wrap fancybox">
-									<div class="work-info">
-										<h3>Cocooil</h3>
-										<span>Branding</span>
-									</div>
-									<img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/test3.jpg">
-									</a>
-								</div>
-								<div class="item design col-sm-6 col-md-4 col-lg-4 mb-4">
-									<a href="work-single.html" class="item-wrap fancybox">
-									<div class="work-info">
-										<h3>Nike Shoe</h3>
-										<span>Design</span>
-									</div>
-									<img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/test4.jpg">
-									</a>
-								</div>
-								<div class="item photography col-sm-6 col-md-4 col-lg-4 mb-4">
-									<a href="work-single.html" class="item-wrap fancybox">
-									<div class="work-info">
-										<h3>Kitchen Sink</h3>
-										<span>Photography</span>
-									</div>
-									<img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/test5.jpg">
-									</a>
-								</div>
-								<div class="item branding col-sm-6 col-md-4 col-lg-4 mb-4">
-									<a href="work-single.html" class="item-wrap fancybox">
-									<div class="work-info">
-										<h3>Amazon</h3>
-										<span>brandingn</span>
-									</div>
-									<img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/test6.jpg">
-									</a>
-								</div>
-					</div>
+								</c:forEach>
+								
+				  </div>
+				  
 				  </div>
 				  </div>
 			
