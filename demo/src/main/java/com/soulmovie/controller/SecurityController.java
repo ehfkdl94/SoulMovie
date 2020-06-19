@@ -33,6 +33,7 @@ public class SecurityController {
 		@RequestMapping(value = "/join", method = RequestMethod.POST)
 		public String join(@ModelAttribute UserVo obj, HttpServletRequest request) {
 			System.out.println(obj.toString());
+			System.out.println(obj.getUserrname());
 			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		
 			String str1 = passwordEncoder.encode(obj.getPassword());
