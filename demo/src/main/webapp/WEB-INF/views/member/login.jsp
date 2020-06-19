@@ -8,7 +8,7 @@
 </head>
 
 <body>
-	<form action='/loginProcess' method='POST' >
+	<form action='${pageContext.request.contextPath}/loginProcess' method='POST' >
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		<input type="text" class="form-control" id="username" name="username" placeholder="ID" >
 		<input type="password" class="form-control" id="password" name="password" placeholder="Password" >
