@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class BoardVO {
 	
 	private long brdno = 0L;
-	private String brdid = null;
+	private int brdid = 0;
 	private String brdtitle = null;
 	private String brddate = null;
 	private String brdcontent = null;
@@ -20,10 +20,10 @@ public class BoardVO {
 	public void setBrdno(long brdno) {
 		this.brdno = brdno;
 	}
-	public String getBrdid() {
+	public int getBrdid() {
 		return brdid;
 	}
-	public void setBrdid(String brdid) {
+	public void setBrdid(int brdid) {
 		this.brdid = brdid;
 	}
 	public String getBrdtitle() {

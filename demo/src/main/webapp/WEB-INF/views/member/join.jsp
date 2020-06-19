@@ -7,11 +7,12 @@
 <title>회원가입</title>
 </head>
 <body>
-<form action= "${pageContext.request.contextPath}/security/join" method="post">
+<form action= "${pageContext.request.contextPath}/member/join" method="post">
   	<!--  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> -->
       <input type= "text" name= "username"/>
       <input type ="password" name = "password"/>
-      <select name= "role">
+     
+      <select name= "admin">
       	<option value="USER" >회원</option>
       	<option value="MANAGER">매니저</option>
       	<option value="ADMIN">관리자</option>
