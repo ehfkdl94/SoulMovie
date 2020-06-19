@@ -13,7 +13,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-
 import com.soulmovie.mapper.UserMapper;
 import com.soulmovie.vo.UserVo;
 
@@ -28,10 +27,10 @@ public class CustomUserDetailService implements UserDetailsService{
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		//username을 이용하여 mapper에서 원하는 값을 받아옴.
 		UserVo user =user1mapper.findByUsername(username);
-		 String password= user.getPassword();
-		 String[] userRoles = {user.getAdmin()};
-		 Collection<GrantedAuthority> roles = AuthorityUtils.createAuthorityList(userRoles);
-			return new User(username,password,roles);
+		String password= user.getPassword();
+		String[] userRoles = {user.getAdmin()};
+		Collection<GrantedAuthority> roles = AuthorityUtils.createAuthorityList(userRoles);
+		return new User(username,password,roles);
 	}
 
 }

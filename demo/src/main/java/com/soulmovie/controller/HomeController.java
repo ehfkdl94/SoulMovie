@@ -12,11 +12,11 @@ public class HomeController {
 	
 	@RequestMapping(value="/")
 	public String home(HttpSession httpSession) {
-		String userid = (String)
-		httpSession.getAttribute("SESSION_ID");
-		return "home";
+		
+		return "index";
 	}
 	
+
 	
 
 }
