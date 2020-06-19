@@ -17,8 +17,8 @@
 
 	<security:authorize access="!isAuthenticated()">
 	<p>로그인 되지 않은 상태</p>
-	<a href="${pageContext.request.contextPath}/security/login">로그인</a>
-	<a href="${pageContext.request.contextPath}/security/join">회원가입</a>
+	<a href="${pageContext.request.contextPath}/member/login">로그인</a>
+	<a href="${pageContext.request.contextPath}/member/join">회원가입</a>
 	</security:authorize>
 	
 
