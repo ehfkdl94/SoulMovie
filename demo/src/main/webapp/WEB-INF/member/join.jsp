@@ -7,7 +7,7 @@
 <title>회원가입</title>
 </head>
 <body>
-<form action= "${pageContext.request.contextPath}/security/join" method="post">
+<form action= "${pageContext.request.contextPath}/member/join" method="post">
   	<!--  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> -->
       <input type= "text" name= "username"/>
       <input type ="password" name = "password"/>
