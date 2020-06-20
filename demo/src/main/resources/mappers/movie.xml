@@ -23,4 +23,11 @@
 		WHERE RANK BETWEEN 1 AND 6
 	</select>
 	
+	<select id="movielist1" resultType="com.soulmovie.vo.MovieVO">
+		SELECT * FROM MOVIE
+	</select>
+	
+	<select id="moviecontent" resultType="com.soulmovie.vo.MovieVO" parameterType="int">
+		SELECT * FROM MOVIE WHERE MOVIE_CODE=#{no}
+	</select>
 </mapper>
