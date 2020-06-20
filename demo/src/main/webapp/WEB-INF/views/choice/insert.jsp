@@ -1,14 +1,51 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>    
+ 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>인생영화 등록</title>
 </head>
-<body>  CHOICE_CATEGORY,  CHOICE_CODE, CHOICE_ID
+<body>
+<div>	
+	<form action="${pageContext.request.contextPath}/choice/insert" method="get">
+		<input type ="text" name="text" placeholder="영화 제목을 입력하세요."/>
+		<input type ="submit" value="검색" />
+	</form>
+</div>
+	<table>
+		<tbody>
+		<c:if test="${empty list}">
+			<tr>
+    			<td colspan="5">검색결과가 없습니다.</td>
+    		</tr>
+		</c:if>
+		<c:if test="${!empty list}">
+		<c:forEach var="tmp" items="${list}">
+			<tr>			
+				<td>영화코드</td>
+				<td>${tmp.movie_code}</td>				
+			</tr>
+			<tr>			
+				<td>영화제목</td>
+				<td>${tmp.movie_title}</td>				
+			</tr>
+			<tr>			
+				<td>개봉날짜</td>
+				<td><c:set var="dt" value="${fn:split(tmp.movie_date, ' ')}" />
+					${dt[0]}
+				</td>				
+			</tr>
+		</c:forEach>
+		</c:if>
+		</tbody>
+	</table>
 	<form action="${pageContext.request.contextPath}/choice/insert" method="post">
-		영화제목 : <input type ="text" name="movie_title" /> <br />	
+		영화제목 : 	
 				<input type="hidden" name="choice_code" value="${movie_code}"/>
 		관람 횟수: <input type ="text" name="choice_freq" /> <br />	
 		인생영화 선택 이유 : <textarea id="content" name="choice_reason" placeholder="내용을 입력하세요."></textarea><br />
@@ -19,7 +56,7 @@
 						<input type="checkbox" name="choice_category" value="기타" />기타						
 		<input type="hidden" name="choice_id" value="${userid}" readonly/>
 		<input type ="submit" value="등록" />
-		<a href="/choice/list">목록</a>
+		<button type="button" class="close">닫기</button>
 	</form>
 </body>
 

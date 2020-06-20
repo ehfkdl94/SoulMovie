@@ -1,5 +1,5 @@
-//package com.soulmovie.mapper;
-//
-//public interface ChoiceMapper {
-//
-//}
+package com.soulmovie.mapper;
+
+public interface ChoiceMapper {
+
+}
