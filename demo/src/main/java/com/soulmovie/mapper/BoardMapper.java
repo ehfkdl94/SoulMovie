@@ -1,5 +1,5 @@
 package com.soulmovie.mapper;
 
-public class BoardMapper {
+public interface BoardMapper {
 
 }
