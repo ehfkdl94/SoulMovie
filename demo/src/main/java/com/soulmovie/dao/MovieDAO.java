@@ -11,11 +11,14 @@ import com.soulmovie.vo.MovieVO;
 
 @Service
 @Transactional
-public class movieDAO {
+public class MovieDAO {
 	
 	@Autowired
 	private SqlSessionFactory sqlFatory = null;
+	public MovieVO selectMovieOne(int movie_code) {
+		return sqlFatory.openSession().selectOne("Movie.moviedetail",movie_code); //영화 상세정보 출력
+	}
 	public List<MovieVO> selectBoard() {
-		return sqlFatory.openSession().selectList("Movie.moviedetail"); //영화 상세정보 출력
+		return sqlFatory.openSession().selectList("Movie.movielist");
 	}
 }

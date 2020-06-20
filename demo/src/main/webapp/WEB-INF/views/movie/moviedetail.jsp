@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zxx">
 <head>
+<meta charset="UTF-8">
    <title>SolMusic | HTML Template</title>
    <meta charset="UTF-8">
    <meta name="description" content="SolMusic HTML Template">
@@ -81,32 +83,32 @@
                   </div>
                   <div class="col-md-3 ml-auto" data-aos="fade-up" data-aos-delay="100">
                     <div class="sticky-content">
-					 <h3 class="h3" style="color:white;">영화이름</h3>
-
-					 <p class="mb-4"><span class="text-muted">영화개봉년도 </span></p> 
+					 <h3 class="h3" style="color:white;">${list.movie_title}</h3>
+					<c:set var="dt" value= "${fn:split(list.movie_date,' ')}"/>
+					 <p class="mb-4"><span class="text-muted">${dt[0]}</span></p> 
 					 
 					 <div class="mb-5">
-						<p>감독이름</p>
+						<p>감독 (사라질예정) ${list.movie_director}</p>
 		  
 					  </div>
 					  <div class="mb-5">
-						<p>출연진</p>
+						<p>출연진 ${list.movie_actor}</p>
 		  
 					  </div>
 					  <div class="mb-5">
-						<p>장르</p>
+						<p>장르 ${list.movie_genre}</p>
 		  
 					  </div>
 					  <div class="mb-5">
-						<p>순위</p>
+						<p>순위 ${list.rank}</p>
 		  
 					  </div>
 					  <div class="mb-5">
-						<p>이용객 총 누적 관람횟수</p>
+						<p>총 누적 관람 횟수 ${list.movie_freq}</p>
 		  
 					  </div>
 					  <div class="mb-4">
-						<p>이용객 인생영화 선정수</p>
+						<p>인생 영화 선정수 ${list.movie_cnt}</p>
 		  
 					  </div>
                     
@@ -134,65 +136,24 @@
    <section class="hero-section">
       <div class="hero-slider owl-carousel">
          <div class="hs-item" style="height:1000px;">
-            <div class="container">
-             
+            <div class="container" style ="margin-top:50px">
+             	
          
                  <div class="row" data-aos="fade-up" data-aos-delay="200">
-                  <div class="item web col-sm-6 col-md-4 col-lg-4 mb-4">
-                    <a href="work-single.html" class="item-wrap fancybox">
-                     <div class="work-info">
-                       <h3>Boxed Water</h3>
-                       <span>Web</span>
-                     </div>
-                     <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/img_1.jpg">
-                    </a>
+                  <c:forEach var="tmp" items="${list2}">
+								<div class="item web col-sm-6 col-md-4 col-lg-4 mb-4">
+									<a href="${pageContext.request.contextPath}/movie/moviedetail?movie_code=${tmp.movie_code}" class="item-wrap fancybox">
+									<div class="work-info">
+										<h3>${tmp.movie_title}</h3>
+										<span>${tmp.movie_date}</span>
+									
+									</div>
+									<img class="img-fluid" src="${pageContext.request.contextPath}/getimg?no=${tmp.movie_code}">
+									</a>
+								</div>
+								</c:forEach>
+						</div>
                   </div>
-                  <div class="item photography col-sm-6 col-md-4 col-lg-4 mb-4">
-                    <a href="work-single.html" class="item-wrap fancybox">
-                     <div class="work-info">
-                       <h3>Build Indoo</h3>
-                       <span>Photography</span>
-                     </div>
-                     <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/img_2.jpg">
-                    </a>
-                  </div>
-                  <div class="item branding col-sm-6 col-md-4 col-lg-4 mb-4">
-                    <a href="work-single.html" class="item-wrap fancybox">
-                     <div class="work-info">
-                       <h3>Cocooil</h3>
-                       <span>Branding</span>
-                     </div>
-                     <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/img_3.jpg">
-                    </a>
-                  </div>
-                  <div class="item design col-sm-6 col-md-4 col-lg-4 mb-4">
-                    <a href="work-single.html" class="item-wrap fancybox">
-                     <div class="work-info">
-                       <h3>Nike Shoe</h3>
-                       <span>Design</span>
-                     </div>
-                     <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/img_4.jpg">
-                    </a>
-                  </div>
-                  <div class="item photography col-sm-6 col-md-4 col-lg-4 mb-4">
-                    <a href="work-single.html" class="item-wrap fancybox">
-                     <div class="work-info">
-                       <h3>Kitchen Sink</h3>
-                       <span>Photography</span>
-                     </div>
-                     <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/img_5.jpg">
-                    </a>
-                  </div>
-                  <div class="item branding col-sm-6 col-md-4 col-lg-4 mb-4">
-                    <a href="work-single.html" class="item-wrap fancybox">
-                     <div class="work-info">
-                       <h3>Amazon</h3>
-                       <span>brandingn</span>
-                     </div>
-                     <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/img_6.jpg">
-                    </a>
-                  </div>
-                 </div>
             </div>
          </div>
          
