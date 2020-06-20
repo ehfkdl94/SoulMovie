@@ -17,8 +17,8 @@ public class MovieController {
 	@RequestMapping(value = "/moviedetail", method = RequestMethod.GET)
 	public String moviedetail(HttpServletRequest request,
 			@RequestParam(value="movie_code", defaultValue="1",required= false) int code) {
-		List<MovieVO> list = mDAO.selectBoard();
-		model.addAttribute("list", list);
+//		List<MovieVO> list = mDAO.selectBoard();
+//		model.addAttribute("list", list);
 		
 		return request.getContextPath()+"/movie/moviedetail";
 	}
