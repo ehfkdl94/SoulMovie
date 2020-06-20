@@ -18,7 +18,7 @@ public class MovieDAO {
 	public MovieVO selectMovieOne(int movie_code) {
 		return sqlFatory.openSession().selectOne("Movie.moviedetail",movie_code); //영화 상세정보 출력
 	}
-	public List<MovieVO> selectBoard() {
+	public List<MovieVO> selectMovie() {
 		return sqlFatory.openSession().selectList("Movie.movielist");
 	}
 }

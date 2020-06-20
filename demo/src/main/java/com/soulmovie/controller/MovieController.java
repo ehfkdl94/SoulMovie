@@ -25,7 +25,7 @@ public class MovieController {
 			@RequestParam(value="movie_code", defaultValue="1",required= false) int movie_code
 			,Model model) {
 		MovieVO list = mDAO.selectMovieOne(movie_code);
-		List<MovieVO> list2 = mDAO.selectBoard();
+		List<MovieVO> list2 = mDAO.selectMovie();
 		model.addAttribute("list", list);
 		model.addAttribute("list2", list2);
 		

@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Select;
 
 import com.soulmovie.vo.MovieVO;
 
-public interface MemberMapper {
+public interface HomeMapper {
 	@Insert({"INSERT INTO USER1 VALUES(MY_GET_SEQ_NUMBER, #{obj.username}, ",
 	"#{obj.password}, #{obj.role}, SYSDATE)"})
 	public int insertMember(@Param("obj") MovieVO obj);
