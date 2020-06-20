@@ -48,8 +48,8 @@
    <!-- Header section -->
    <header class="header-section clearfix">
       <a href="${pageContext.request.contextPath}/index.html" class="site-logo">
-         <img src="${pageContext.request.contextPath}/img/logo.png" alt="">
-      </a>
+			<img src="${pageContext.request.contextPath}/resources/img/logo4.png" alt="">
+		</a>
       <div class="header-right">
          <a href="#" class="hr-btn">Help</a>
          <span>|</span>
