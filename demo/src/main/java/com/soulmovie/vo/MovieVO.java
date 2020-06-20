@@ -14,8 +14,14 @@ public class MovieVO {
 	private byte[] movie_img = null;
 	private int movie_cnt = 0;
 	private int movie_freq = 0;
+	private String rank = null;
 	
-	
+	public String getRank() {
+		return rank;
+	}
+	public void setRank(String rank) {
+		this.rank = rank;
+	}
 	public int getMovie_code() {
 		return movie_code;
 	}

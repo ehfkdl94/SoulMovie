@@ -102,7 +102,7 @@
 					<div id="portfolio-grid" class="row no-gutter" data-aos="fade-up" data-aos-delay="200">
 								<c:forEach var="tmp" items="${list}">
 								<div class="item web col-sm-6 col-md-4 col-lg-4 mb-4">
-									<a href="work-single.html" class="item-wrap fancybox">
+									<a href="${pageContext.request.contextPath}/movie/moviedetail?movie_code=${tmp.movie_code}" class="item-wrap fancybox">
 									<div class="work-info">
 										<h3>${tmp.movie_title}</h3>
 										<span>${tmp.movie_date}</span>
