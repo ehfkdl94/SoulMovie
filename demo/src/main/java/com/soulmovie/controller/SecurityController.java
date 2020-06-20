@@ -20,7 +20,7 @@ public class SecurityController {
 		@Autowired
 		private UserMapper userMapper;
 		
-		@RequestMapping(value = "/home", method = RequestMethod.GET)
+		@RequestMapping(value = "/home", method = RequestMethod.GET) //테스트용
 		public String home1(HttpServletRequest request) {
 			
 			return request.getContextPath()+"/home";

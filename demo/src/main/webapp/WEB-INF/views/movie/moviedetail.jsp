@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
 <head>
    <title>SolMusic | HTML Template</title>
    <meta charset="UTF-8">
@@ -12,19 +12,19 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    
    <!-- Favicon -->
-   <link href="img/favicon.ico" rel="shortcut icon"/>
+   <link href="${pageContext.request.contextPath}/resources/img/favicon.ico" rel="shortcut icon"/>
 
    <!-- Google font -->
    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
  
    <!-- Stylesheets -->
-   <link rel="stylesheet" href="css/bootstrap.min.css"/>
-   <link rel="stylesheet" href="css/font-awesome.min.css"/>
-   <link rel="stylesheet" href="css/owl.carousel.min.css"/>
-   <link rel="stylesheet" href="css/slicknav.min.css"/>
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"/>
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css"/>
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl.carousel.min.css"/>
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/slicknav.min.css"/>
 
    <!-- Main Stylesheets -->
-   <link rel="stylesheet" href="css/style.css"/>
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css"/>
 
 
    <!--[if lt IE 9]>
@@ -53,7 +53,7 @@
          </div> 
       </div>
       <ul class="main-menu">
-         <li><a href="index.html">Home</a></li>
+         <li><a href="${pageContext.request.contextPath}/">Home</a></li>
          <li><a href="#">About</a></li>
          <li><a href="#">Pages</a>
             <ul class="sub-menu">
@@ -77,47 +77,47 @@
             <div class="container">
                <div class="row align-items-stretch" style="margin-top:100px;">
                   <div class="col-md-8" data-aos="fade-up">
-                    <img src="img/img_1_big.jpg" alt="Image" class="img-fluid">
+                    <img src="${pageContext.request.contextPath}/resources/img/img_1_big.jpg" alt="Image" class="img-fluid">
                   </div>
                   <div class="col-md-3 ml-auto" data-aos="fade-up" data-aos-delay="100">
                     <div class="sticky-content">
-					 <h3 class="h3" style="color:white;">ìíì´ë¦</h3>
+					 <h3 class="h3" style="color:white;">영화이름</h3>
 
-					 <p class="mb-4"><span class="text-muted">ìíê°ë´ëë</span></p> 
+					 <p class="mb-4"><span class="text-muted">영화개봉년도 </span></p> 
 					 
 					 <div class="mb-5">
-						<p>ê°ëì´ë¦</p>
+						<p>감독이름</p>
 		  
 					  </div>
 					  <div class="mb-5">
-						<p>ì¶ì°ì§</p>
+						<p>출연진</p>
 		  
 					  </div>
 					  <div class="mb-5">
-						<p>ì¥ë¥´</p>
+						<p>장르</p>
 		  
 					  </div>
 					  <div class="mb-5">
-						<p>ìì</p>
+						<p>순위</p>
 		  
 					  </div>
 					  <div class="mb-5">
-						<p>ì´ì©ê° ì´ ëì  ê´ëíì</p>
+						<p>이용객 총 누적 관람횟수</p>
 		  
 					  </div>
 					  <div class="mb-4">
-						<p>ì´ì©ê° ì¸ììí ì ì ì</p>
+						<p>이용객 인생영화 선정수</p>
 		  
 					  </div>
                     
                 
-                     <h4 class="h4 mb-3" style="color:white;">ì¸ììí ë¦¬ë·°</h4>
+                     <h4 class="h4 mb-3" style="color:white;">인생영화리뷰</h4>
                      <ul class="list-unstyled list-line mb-5">
-						<h3 class="h5" style="color:white;">ìíì´ë¦</h3>
-						<h3 class="h5" style="color:white;">ìíì´ë¦</h3>
-						<h3 class="h5" style="color:white;">ìíì´ë¦</h3>
-						<h3 class="h5" style="color:white;">ìíì´ë¦</h3>
-						<h3 class="h5" style="color:white;">ìíì´ë¦</h3>
+						<h3 class="h5" style="color:white;">리뷰1</h3>
+						<h3 class="h5" style="color:white;">리뷰1</h3>
+						<h3 class="h5" style="color:white;">리뷰1</h3>
+						<h3 class="h5" style="color:white;">리뷰1</h3>
+						<h3 class="h5" style="color:white;">리뷰1</h3>
                      </ul>
          
                  
@@ -144,7 +144,7 @@
                        <h3>Boxed Water</h3>
                        <span>Web</span>
                      </div>
-                     <img class="img-fluid" src="img/img_1.jpg">
+                     <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/img_1.jpg">
                     </a>
                   </div>
                   <div class="item photography col-sm-6 col-md-4 col-lg-4 mb-4">
@@ -153,7 +153,7 @@
                        <h3>Build Indoo</h3>
                        <span>Photography</span>
                      </div>
-                     <img class="img-fluid" src="img/img_2.jpg">
+                     <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/img_2.jpg">
                     </a>
                   </div>
                   <div class="item branding col-sm-6 col-md-4 col-lg-4 mb-4">
@@ -162,7 +162,7 @@
                        <h3>Cocooil</h3>
                        <span>Branding</span>
                      </div>
-                     <img class="img-fluid" src="img/img_3.jpg">
+                     <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/img_3.jpg">
                     </a>
                   </div>
                   <div class="item design col-sm-6 col-md-4 col-lg-4 mb-4">
@@ -171,7 +171,7 @@
                        <h3>Nike Shoe</h3>
                        <span>Design</span>
                      </div>
-                     <img class="img-fluid" src="img/img_4.jpg">
+                     <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/img_4.jpg">
                     </a>
                   </div>
                   <div class="item photography col-sm-6 col-md-4 col-lg-4 mb-4">
@@ -180,7 +180,7 @@
                        <h3>Kitchen Sink</h3>
                        <span>Photography</span>
                      </div>
-                     <img class="img-fluid" src="img/img_5.jpg">
+                     <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/img_5.jpg">
                     </a>
                   </div>
                   <div class="item branding col-sm-6 col-md-4 col-lg-4 mb-4">
@@ -189,7 +189,7 @@
                        <h3>Amazon</h3>
                        <span>brandingn</span>
                      </div>
-                     <img class="img-fluid" src="img/img_6.jpg">
+                     <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/img_6.jpg">
                     </a>
                   </div>
                  </div>
@@ -201,12 +201,12 @@
    
    
    <!--====== Javascripts & Jquery ======-->
-   <script src="js/jquery-3.2.1.min.js"></script>
-   <script src="js/bootstrap.min.js"></script>
-   <script src="js/jquery.slicknav.min.js"></script>
-   <script src="js/owl.carousel.min.js"></script>
-   <script src="js/mixitup.min.js"></script>
-   <script src="js/main.js"></script>
+   <script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
+   <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+   <script src="${pageContext.request.contextPath}/resources/js/jquery.slicknav.min.js"></script>
+   <script src="${pageContext.request.contextPath}/resources/js/owl.carousel.min.js"></script>
+   <script src="${pageContext.request.contextPath}/resources/js/mixitup.min.js"></script>
+   <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
 
    </body>
 </html>
