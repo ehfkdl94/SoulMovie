@@ -25,11 +25,13 @@ public class SecurityController {
 			
 			return request.getContextPath()+"/home";
 		}
+		
 		@RequestMapping(value = "/join", method = RequestMethod.GET)
 		public String join(HttpServletRequest request) {
 			
 			return request.getContextPath()+"/member/join";
 		}
+		
 		@RequestMapping(value = "/join", method = RequestMethod.POST)
 		public String join(@ModelAttribute UserVo obj, HttpServletRequest request) {
 			System.out.println(obj.toString());
@@ -39,10 +41,12 @@ public class SecurityController {
 			String str1 = passwordEncoder.encode(obj.getPassword());
 			obj.setPassword(str1);
 			userMapper.insertMember(obj);
-			return "redirect:"+request.getContextPath()+"/member/home";
+			return "redirect:"+request.getContextPath()+"member/home";
 		}
+		
 		@RequestMapping(value = "/login", method = RequestMethod.GET)
 		public String login(HttpServletRequest request) {
 			return request.getContextPath()+"/member/login";
+			
 		}
 }
