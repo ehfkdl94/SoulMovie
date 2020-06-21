@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Board">
+	<resultMap type="com.soulmovie.vo.BoardVO" id="img">
+		<result column="BRDNO" property="brdno"/>
+
+	</resultMap>
+	<select id="selectBoardImg" resultMap="img" parameterType="int">
+		SELECT BRDNO, BRDIMG FROM BOARD WHERE BRDNO = #{no} </select>
+	
+	<insert id="insertBoard" parameterType="com.soulmovie.vo.BoardVO">
+		INSERT INTO BOARD(BRDNO, BRDTITLE, BRDCONTENT,bBRDIMG, 
+		BRDID, BRDHIT, BRDDATE)
+		VALUES (SEQ_BOARD_NO.NEXTVAL, #{brdtitle}, #{brdcontent}, #{brdimg, jdbcType=BLOB}, 
+		#{brdid}, #{brdhit}, SYSDATE) </insert>
+	
+	<select id="selectList" parameterType="map" resultType="com.soulmovie.vo.BoardVO">
+		SELECT * FROM
+			(SELECT 
+				BRDNO, BRDTITLE, BRDID, BRDHIT, BRDDATE
+				ROWNUMBER() OVER (ORDER BY BRDNO DESC) ROWN
+			FROM 
+				BOARD
+			WHERE 
+				BRDTITLE LIKE '%' || #{text} || '%')
+		WHERE ROWN BETWEEN #{start} AND #{end} 
+	</select>
+	
+	<select id="count" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM BOARD
+		WHERE BRDTITLE LIKE '%' || #{text} || '%' 
+	</select>
+	
+	<select id="selectBoardOne" parameterType="int" resultType="com.soulmovie.vo.BoardVO">
+		SELECT * FROM BOARD WHERE BRDNO = #{no} 
+	</select>
+	
+	<update id="updateHit" parameterType="int">
+		UPDATE BOARD SET BRDHIT = BRDHIT + 1 
+		WHERE BRDNO = #{no} 
+	</update>
+	
+	<delete id="deleteBoard" parameterType="com.soulmovie.vo.BoardVO">
+		DELETE FROM BOARD WHERE BRDNO = #{brdno} 
+	</delete>
+	
+	
+	<update id="updateBoardOne" parameterType="com.soulmovie.vo.BoardVO">
+		UPDATE BOARD SET BRDTITLE=#{brdtitle}, BRDCONTENT=#{brdcontent} 
+		
+		<if test="brdimg != null">,BRDIMG=#{brdimg, jdbcType=BLOB}
+		</if>
+			WHERE BRDNO = #{brdno} 
+	</update>
+	
+	
+	<select id="selectBoardPrev" parameterType="int" resultType="int">
+		SELECT NVL(MAX(BRDNO),0) FROM BOARD 
+		WHERE BRDNO <![CDATA[ < ]]>#{brdno} 
+	</select>
+	
+	
+	<select id="selectBoardNext" parameterType="int" resultType="int">
+		SELECT NVL(MIN(BRDNO),0) FROM BOARD 
+		WHERE BRDNO <![CDATA[ > ]]>#{brdno} 
+	</select>
+
+</mapper>
