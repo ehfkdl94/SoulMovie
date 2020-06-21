@@ -41,4 +41,10 @@ public class MovieController {
 		
 		return request.getContextPath()+"/movie/movielist";
 	}
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	public String movielist2() {
+		
+		
+		return "/movie/test";
+	}
 }

@@ -1,7 +1,6 @@
 package com.soulmovie.controller;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -36,7 +35,7 @@ public class SecurityController {
 			return request.getContextPath()+"/member/join";
 		}
 		
-		
+
 		@RequestMapping(value = "/join", method = RequestMethod.POST)
 		public String join(@ModelAttribute UserVo obj, HttpServletRequest request) {
 			System.out.println(obj.toString());
@@ -54,6 +53,7 @@ public class SecurityController {
 		
 		@RequestMapping(value = "/login", method = RequestMethod.GET)
 		public String login(HttpServletRequest request) {
+			
 			return request.getContextPath()+"/member/login";
 		}
 		

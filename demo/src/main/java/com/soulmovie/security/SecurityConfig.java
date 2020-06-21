@@ -52,7 +52,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	        	.loginPage("/member/login")  //로그인 페이지 url
 	        	.loginProcessingUrl("/loginProcess") //<form action="?"
 	        	.permitAll()							//누구나 접근
-	        	.defaultSuccessUrl("/home") 	//성공시 이동할 페이지 
+	        	.defaultSuccessUrl("/member/home") 	//성공시 이동할 페이지 
 	        	.and()
 			 .logout()
 			 	.logoutUrl("/logout")  //로그아웃페이지
