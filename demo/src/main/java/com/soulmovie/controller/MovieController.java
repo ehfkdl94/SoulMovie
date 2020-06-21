@@ -1,5 +1,6 @@
 package com.soulmovie.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -33,18 +34,32 @@ public class MovieController {
 	@RequestMapping(value = "/movielist", method = RequestMethod.GET)
 	public String movielist(HttpServletRequest request,
 			@RequestParam(value="movie_code", defaultValue="1",required= false) int movie_code
-			,Model model) {
-		MovieVO list = mDAO.selectMovieOne(movie_code);
-		List<MovieVO> list2 = mDAO.selectMovie();
-		model.addAttribute("list", list);
-		model.addAttribute("list2", list2);
+			,@RequestParam(value = "page", defaultValue = "1", required = false) int page,
+			@RequestParam(value = "text", defaultValue = "", required = false) String text,
+			Model model) {
 		
+
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("start", page*6-5); 	//시작위치
+		map.put("end", page*6);		//종료위치
+	
+		List<MovieVO> list2 = mDAO.selectPageMovie(map);
+		System.out.println(list2.size());
+		model.addAttribute("size", list2.size());
+		model.addAttribute("list2", list2);
+		int cnt = mDAO.countBoard(text); //검색어를 넘겨줌.
+		model.addAttribute("cnt", cnt);
 		return request.getContextPath()+"/movie/movielist";
 	}
+	
+	
+	
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
 	public String movielist2() {
 		
 		
 		return "/movie/test";
 	}
+	
 }

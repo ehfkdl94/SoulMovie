@@ -1,5 +1,6 @@
 package com.soulmovie.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -27,10 +28,17 @@ public class MovieDAO {
 	public List<MovieVO> selectMovie() {
 		return sqlFatory.openSession().selectList("Movie.movielist");
 	}
+	public List<MovieVO> selectPageMovie(HashMap<String, Object> map) {
+		return sqlFatory.openSession().selectList("Movie.moviepagelist",map);
+	}
 	
 	public List<MovieVO> selectMovie1() {
 		return sqlFatory.openSession().selectList("Movie.movielist1");
 	}
 	
-	
+	public int countBoard(String text) {
+		return sqlFatory.openSession().selectOne("Movie.count",text);
+		
+		
+	}
 }

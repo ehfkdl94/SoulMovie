@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -121,11 +121,13 @@
 	<!-- Header section end -->
 	<!-- search  start-->
 	<div class="hero-search set-bg"
-		data-setbg="${pageContext.request.contextPath}/resources/img/content.jpg">
+		style="background: #0a183d;">
 		<div class="container">
 			<div class="filter-table">
 				<form action="#" class="filter-search">
-					<input type="text" placeholder="검색어"> <select id="category">
+					<input type= "hidden" name="page" value="1" />
+					<input type="text"  name ="text" placeholder="검색어"> 
+					<select id="category">
 						<option value="">분류</option>
 					</select> <select id="tag">
 						<option value="">영화제목</option>
@@ -142,89 +144,33 @@
 	
 		<div class="hero-slider owl-carousel">
 			<div class="hs-item" style="height: 1500px;">
-				<div class="container">
+			
+			<c:if test="${size <4}">
+				<div class="container" style= "margin-bottom:500px;">
+				</c:if>
+ 			<c:if test="${size >3}">  
+				<div class="container" >
+	  			</c:if>	
 					<div class="row">
+					<c:forEach var="tmp" items="${list2}">
 						<div class="col-lg-4 col-sm-6">
 							<div class="recipe-item">
-								<a href="#"><img
-									src="${pageContext.request.contextPath}/resources/img/recipe/recipe-1.jpg"
+								<a href="${pageContext.request.contextPath}/movie/moviedetail?movie_code=${tmp.movie_code}"><img
+									src="${pageContext.request.contextPath}/getimg?no=${tmp.movie_code}" 
+									style ="height:400px;"
 									alt=""></a>
 								<div class="ri-text">
-									<div class="cat-name">Desert</div>
-									<a href="#">
-										<h4>One Pot Weeknight Soup</h4>
+									<div class="cat-name">${tmp.rank}등</div>
+									<a >
+										<h4>${tmp.movie_title}</h4>
 									</a>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-										sed do eiusmod tempor incididunt ut labore et dolore magna
-										aliqua. Lorem ipsum dolor sit amet.</p>
+									<p>${tmp.movie_actor}</p>
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-4 col-sm-6">
-							<div class="recipe-item">
-								<a href="#"><img
-									src="${pageContext.request.contextPath}/resources/img/recipe/recipe-1.jpg"
-									alt=""></a>
-								<div class="ri-text">
-									<div class="cat-name">Desert</div>
-									<a href="#">
-										<h4>One Pot Weeknight Soup</h4>
-									</a>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-										sed do eiusmod tempor incididunt ut labore et dolore magna
-										aliqua. Lorem ipsum dolor sit amet.</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-sm-6">
-							<div class="recipe-item">
-								<a href="#"><img
-									src="${pageContext.request.contextPath}/resources/img/recipe/recipe-1.jpg"
-									alt=""></a>
-								<div class="ri-text">
-									<div class="cat-name">Desert</div>
-									<a href="#">
-										<h4>One Pot Weeknight Soup</h4>
-									</a>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-										sed do eiusmod tempor incididunt ut labore et dolore magna
-										aliqua. Lorem ipsum dolor sit amet.</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-sm-6">
-							<div class="recipe-item">
-								<a href="#"><img
-									src="${pageContext.request.contextPath}/resources/img/recipe/recipe-1.jpg"
-									alt=""></a>
-								<div class="ri-text">
-									<div class="cat-name">Desert</div>
-									<a href="#">
-										<h4>One Pot Weeknight Soup</h4>
-									</a>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-										sed do eiusmod tempor incididunt ut labore et dolore magna
-										aliqua. Lorem ipsum dolor sit amet.</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-sm-6">
-							<div class="recipe-item">
-								<a href="#"><img
-									src="${pageContext.request.contextPath}/resources/img/recipe/recipe-1.jpg"
-									alt=""></a>
-								<div class="ri-text">
-									<div class="cat-name">Desert</div>
-									<a href="#">
-										<h4>One Pot Weeknight Soup</h4>
-									</a>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-										sed do eiusmod tempor incididunt ut labore et dolore magna
-										aliqua. Lorem ipsum dolor sit amet.</p>
-								</div>
-							</div>
-						</div>
-
+	
+						
+					</c:forEach>
 
 
 
@@ -233,9 +179,8 @@
 					<div class="row">
 						<div class="col-lg-12">
 							<div class="recipe-pagination">
-								<a href="#" class="active">01</a> <a href="#">02</a> <a href="#">03</a>
-								<a href="#">04</a> <a href="#">Next</a>
-							</div>
+							
+											</div>
 						</div>
 					</div>
 				</div>
@@ -254,8 +199,21 @@
 	<!-- page end -->
 
 
-
+	<script>
+		$(function(){
+			$('#recipe-pagination').twbsPagination({
+		        totalPages: Number('${cnt}'), /* 전체 페이지 수*/
+		        visiblePages: 6, /*화면에 표시할 페이지 수 */
+		        startPage : Number('${param.page}'), /* 주소창에 ~~/board/list?page=1 */
+		        initiateStartPageClick : false,
+		        onPageClick: function (event, page) {
+		             window.location.href = "/movie/movielist?page="+page +"&text=${param.text}";
+		        }
+		    });
+		})
+	</script>
 	<!--====== Javascripts & Jquery ======-->
+	
 	<script
 		src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
 	<script

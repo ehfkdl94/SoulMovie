@@ -23,11 +23,25 @@
 		WHERE RANK BETWEEN 1 AND 6
 	</select>
 	
+		<select id="moviepagelist" resultType="com.soulmovie.vo.MovieVO" parameterType="map">
+		SELECT MOVIE_CODE, MOVIE_TITLE, MOVIE_DATE, MOVIE_NATION, MOVIE_GENRE, MOVIE_DIRECTOR, MOVIE_ACTOR, MOVIE_CNT, MOVIE_FREQ,B.RANK 
+		FROM
+			(SELECT 
+				MOVIE_CODE, MOVIE_TITLE, MOVIE_DATE, MOVIE_NATION, MOVIE_GENRE, MOVIE_DIRECTOR, MOVIE_ACTOR, MOVIE_CNT, MOVIE_FREQ,
+				ROW_NUMBER() OVER (ORDER BY MOVIE_CNT DESC) RANK    
+			FROM 
+				MOVIE) B
+		WHERE RANK BETWEEN #{start} AND #{end}
+	</select>
+	
 	<select id="movielist1" resultType="com.soulmovie.vo.MovieVO">
 		SELECT * FROM MOVIE
 	</select>
 	
 	<select id="moviecontent" resultType="com.soulmovie.vo.MovieVO" parameterType="int">
 		SELECT * FROM MOVIE WHERE MOVIE_CODE=#{no}
+	</select>
+	<select id="count" resultType="int" parameterType="String">
+		SELECT COUNT(*) FROM MOVIE WHERE MOVIE_TITLE LIKE '%' || #{text} || '%' 
 	</select>
 </mapper>
