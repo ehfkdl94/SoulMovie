@@ -56,5 +56,10 @@ public class ChoiceController {
 		System.out.println(obj.toString());
 		cMapper.insertChoice(obj);
 		return "redirect:" + request.getContextPath() + "/choice/insert";
-	}	
+	}
+	
+	@RequestMapping(value="/list", method=RequestMethod.GET)
+	public String selectlist(HttpServletRequest request) {
+		return request.getContextPath() + "/choice/list";
+	}
 }
