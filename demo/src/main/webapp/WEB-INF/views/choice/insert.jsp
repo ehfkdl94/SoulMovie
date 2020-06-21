@@ -59,7 +59,7 @@
 							<input type="checkbox" name="choice_category" value="연기" />연기
 							<input type="checkbox" name="choice_category" value="음악" />음악
 							<input type="checkbox" name="choice_category" value="기타" />기타						
-			<input type="hidden" name="choice_id" value="${userid}" readonly/>
+			작성자 :<input type="text" name="choice_id" value="3" readonly/>
 			<input type ="submit" value="등록" />
 			<button type="button" class="close">닫기</button>
 		</form>

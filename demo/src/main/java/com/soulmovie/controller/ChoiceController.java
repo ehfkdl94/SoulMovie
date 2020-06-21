@@ -30,14 +30,10 @@ public class ChoiceController {
 	public ChoiceMapper cMapper;
 	
 	@RequestMapping(value = "/insert", method=RequestMethod.GET)
-	public String insert(Model model, HttpSession httpSession, HttpServletRequest request,
+	public String insert(Model model,  HttpServletRequest request,
 			@RequestParam(value="text", required = false) String text,
 			@RequestParam(value="chk", required = false) String chk) {
-		String userid = (String) httpSession.getAttribute("SESSION_ID");
-		if(userid == null) {
-			return "redirect:/member/login";
-		}
-		model.addAttribute("userid", userid);
+		
 		if(text == null && chk== null) {
 			return "redirect:"+request.getContextPath()+"/choice/insert?text=&chk=";
 		}
@@ -55,11 +51,10 @@ public class ChoiceController {
 	}
 	
 	@RequestMapping(value = "/insert", method=RequestMethod.POST)
-	public String insertpost(HttpServletRequest request, @ModelAttribute ChoiceVO obj) {
-		cMapper.insertChoice(obj);	
-		
+	public String insertpost(HttpServletRequest request,@ModelAttribute String chk, @ModelAttribute ChoiceVO obj) {
+		System.out.println(chk);			
+		System.out.println(obj.toString());
+		cMapper.insertChoice(obj);
 		return "redirect:" + request.getContextPath() + "/choice/insert";
-	}
-	
-	
+	}	
 }
