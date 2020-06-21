@@ -20,7 +20,7 @@ import com.soulmovie.vo.UserVo;
 public class SecurityController {
 	
 		@Autowired
-		private UserMapper userMapper = null;
+		private UserMapper userMapper;
 		
 		@RequestMapping(value = "/home", method = RequestMethod.GET) //테스트용
 		public String home1(HttpServletRequest request) {
@@ -57,23 +57,6 @@ public class SecurityController {
 			return request.getContextPath()+"/member/login";
 		}
 		
-		
-		@RequestMapping(value="/login", method= RequestMethod.POST)
-		public String loginpost(@ModelAttribute UserVo obj, 
-				HttpSession httpSession, HttpServletRequest request) {
-			
-			UserVo obj1 = userMapper.selectMemberLogin(obj);
-			
-			if (obj1 != null) { //로그인 성공
-				httpSession.setAttribute("SESSION_ID", obj.getUsername());
-				String backURL = (String) httpSession.getAttribute("CURRPAGE");
-				return "redirect:" + request.getContextPath() + backURL; //고정되면 안됨!! 마지막페이지로 가야함.
-				
-				
-			}
-			//로그인 실패/member/login GET방식으로 전송
-			return "redirect:" + request.getContextPath() + "/member/login"; 
-		}
 		
 		
 	
