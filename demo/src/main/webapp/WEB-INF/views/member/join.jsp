@@ -48,14 +48,24 @@
 												<label for="userrname">PASSWORD</label>
 												<input type="text" name="userrname" id="userrname" value="" placeholder="name" />
 											</div>
+											
+											
 
+											
+										
+											
 											<div class="field half">
 												<label for="usergender">GENDER</label>
-												<input type="radio" id="usergender" value="male" checked>
-												<label for="demo-priority-low">Male</label>
-												<input type="radio" id="usergender" value="female">
-												<label for="demo-priority-high">Female</label>
+													<input type="radio" id="demo-priority-male" name="usergender" value="male" checked>
+													<label for="demo-priority-male">MALE</label>
+													<input type="radio" id="demo-priority-female" name="usergender" value="female">
+													<label for="demo-priority-female">FEMALE</label>
 											</div>
+											
+											
+											
+											
+											
 											
 											<div class="field half">
 												<label for="usernick">NICKNAME</label>
@@ -82,7 +92,7 @@
 													<input type="text" name="useremail" id="useremail" value="" placeholder="e-mail">
 												</div>
 												
-														-->
+														
 										</div>
 										<ul class="actions">
 											<li><input type="submit" value="JOIN IN" class="primary"></li>

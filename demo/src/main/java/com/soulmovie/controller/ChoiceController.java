@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.soulmovie.mapper.ChoiceMapper;
 import com.soulmovie.mapper.MovieMapper;
+import com.soulmovie.mapper.UserMapper;
 import com.soulmovie.vo.ChoiceVO;
 import com.soulmovie.vo.MovieVO;
 
@@ -29,11 +30,20 @@ public class ChoiceController {
 	@Autowired
 	public ChoiceMapper cMapper;
 	
+	@Autowired
+	public UserMapper uMapper;
+	
 	@RequestMapping(value = "/insert", method=RequestMethod.GET)
-	public String insert(Model model,  HttpServletRequest request,
+	public String insert(Model model, HttpSession httpSession, HttpServletRequest request,
 			@RequestParam(value="text", required = false) String text,
 			@RequestParam(value="chk", required = false) String chk) {
-		
+		String username = (String) httpSession.getAttribute("SESSION_ID");
+		if(username == null) {
+			return "redirect:/member/login";
+		}
+		int userid = uMapper.findUserid(username);
+		System.out.println(userid);
+//		model.addAttribute("userid", userid);
 		if(text == null && chk== null) {
 			return "redirect:"+request.getContextPath()+"/choice/insert?text=&chk=";
 		}
@@ -52,15 +62,19 @@ public class ChoiceController {
 	}
 	
 	@RequestMapping(value = "/insert", method=RequestMethod.POST)
-	public String insertpost(HttpServletRequest request,@ModelAttribute String chk, @ModelAttribute ChoiceVO obj) {
-		System.out.println(chk);			
+	public String insertpost(HttpServletRequest request, @ModelAttribute ChoiceVO obj) {
 		System.out.println(obj.toString());
 		cMapper.insertChoice(obj);
 		return "redirect:" + request.getContextPath() + "/choice/insert";
 	}
 	
 	@RequestMapping(value="/list", method=RequestMethod.GET)
-	public String selectlist(HttpServletRequest request) {
+	public String selectlist(HttpServletRequest request, Model model) {
+//		String username = (String) httpSession.getAttribute("SESSION_ID");
+//		int userid = uMapper.findUserid(username);
+//		System.out.println(userid);
+//		List<ChoiceVO> list = cMapper.selectChoiceList(userid);
+//		model.addAttribute("list", list);
 		return request.getContextPath() + "/choice/list";
 	}
 }

@@ -16,7 +16,8 @@ public interface UserMapper {
 	@Select({"SELECT * FROM MEMBER WHERE USERNAME=#{username}"})
 	public UserVo findByUsername(@Param("username") String username);
 	
-	
+	@Select({"SELECT USERID FROM MEMBER WHERE USERNAME =#{username}"})
+	public int findUserid(@Param("username") String username);
 	
 	@Select({"SELECT USERID, USERNAME FROM MEMBER WHERE USERNAME=#{obj.username} AND PASSWORD=#{obj.password}"})
 	public UserVo selectMemberLogin(@Param("obj") UserVo obj);
