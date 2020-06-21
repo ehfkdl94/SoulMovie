@@ -37,10 +37,11 @@ public class ChoiceController {
 		if(text == null && chk== null) {
 			return "redirect:"+request.getContextPath()+"/choice/insert?text=&chk=";
 		}
-		if (text == null) {
-			List<MovieVO> list = null;
+		if (text.equals("")) {
+			String list = "@@@@초기값";
 			model.addAttribute("list", list);			
 		}else {
+			
 			List<MovieVO> list = mMapper.selectMovie(text);
 			model.addAttribute("list", list);			
 		}

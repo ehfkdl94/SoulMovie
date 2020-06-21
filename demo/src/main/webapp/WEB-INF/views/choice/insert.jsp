@@ -23,6 +23,10 @@
     			<td colspan="5">검색결과가 없습니다.</td>
     		</tr>
 		</c:if>
+		<c:if test="${list eq '@@@@초기값'}">
+		
+		</c:if>
+		<c:if test="${list ne '@@@@초기값'}">		
 		<c:if test="${!empty list}">
 		<c:forEach var="tmp" items="${list}">
 			<tr>
@@ -42,6 +46,7 @@
 			</tr>
 		</c:forEach>
 		</c:if>				
+		</c:if>
 		</tbody>
 		</table>
 		<a href="/choice/moviecode?chk=${chk}"><input type="submit" value="선택"/></a>		
