@@ -1,5 +1,7 @@
 package com.soulmovie.security;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -38,8 +40,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 
 	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests() 
+	protected void configure(HttpSecurity http ) throws Exception {
+		http.authorizeRequests( )
 			 	//.antMatchers("/admin","/admin/*").hasAuthority("ADMIN")
 				.antMatchers("/board/**").authenticated()
 			 	.anyRequest().permitAll()
@@ -54,7 +56,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	        	.loginPage("/member/login")  //로그인 페이지 url
 	        	.loginProcessingUrl("/loginProcess") //<form action="?"
 	        	.permitAll()							//누구나 접근
-	        	.defaultSuccessUrl("/member/home") 	//성공시 이동할 페이지 
+	        	.defaultSuccessUrl("/") 	//성공시 이동할 페이지
+	        	.successHandler(successHandler())
+	        	.failureUrl("/member/login")
 	        	.and()
 			 .logout()
 			 	.logoutUrl("/logout")  //로그아웃페이지
@@ -80,10 +84,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 
 	  
-//	@Bean
-//	public AuthenticationSuccessHandler successHandler() {
-//	  return new CustomLoginSuccessHandler("/");//default로 이동할 url
-//	}
+	@Bean
+	public AuthenticationSuccessHandler successHandler() {
+	  return new CustomLoginSuccessHandler("/");//default로 이동할 url
+	}
 
 
 	

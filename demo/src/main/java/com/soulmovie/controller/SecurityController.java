@@ -55,7 +55,9 @@ public class SecurityController {
 		
 		@RequestMapping(value = "/login", method = RequestMethod.GET)
 		public String login(HttpServletRequest request) {
-			
+			String referer = request.getHeader("Referer");
+			request.getSession().setAttribute("prevPage", referer);
+		
 			return request.getContextPath()+"/member/login";
 		}
 		
