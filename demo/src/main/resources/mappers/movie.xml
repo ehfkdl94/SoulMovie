@@ -4,24 +4,30 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Movie">
-	<select id="moviedetail" resultType="com.soulmovie.vo.MovieVO">  <!-- 영화 상세정보 출력 -->
-		SELECT * FROM
+	<select id="moviedetail" resultType="com.soulmovie.vo.MovieVO" parameterType="int">  <!-- 영화 상세정보 출력 -->
+		SELECT MOVIE_CODE, MOVIE_TITLE, MOVIE_DATE, MOVIE_NATION, MOVIE_GENRE, MOVIE_DIRECTOR, MOVIE_ACTOR, MOVIE_CNT, MOVIE_FREQ,B.rank   
+		FROM (SELECT MOVIE_CODE, MOVIE_TITLE, MOVIE_DATE, MOVIE_NATION, MOVIE_GENRE, MOVIE_DIRECTOR, MOVIE_ACTOR, MOVIE_CNT, MOVIE_FREQ,
+				ROW_NUMBER() OVER (ORDER BY MOVIE_CNT DESC) rank  
+     			FROM MOVIE) B
+     	WHERE MOVIE_CODE=#{no}
+	</select>
+	
+	<select id="movielist" resultType="com.soulmovie.vo.MovieVO">
+		SELECT MOVIE_CODE, MOVIE_TITLE, MOVIE_DATE, MOVIE_NATION, MOVIE_GENRE, MOVIE_DIRECTOR, MOVIE_ACTOR, MOVIE_CNT, MOVIE_FREQ,B.RANK 
+		FROM
 			(SELECT 
 				MOVIE_CODE, MOVIE_TITLE, MOVIE_DATE, MOVIE_NATION, MOVIE_GENRE, MOVIE_DIRECTOR, MOVIE_ACTOR, MOVIE_CNT, MOVIE_FREQ,
-				ROW_NUMBER() OVER (ORDER BY MOVIE_CNT DESC) ROWN 
+				ROW_NUMBER() OVER (ORDER BY MOVIE_CNT DESC) RANK    
 			FROM 
-				MOVIE)
-		WHERE ROWN = #{select}
+				MOVIE) B
+		WHERE RANK BETWEEN 1 AND 6
 	</select>
 	
-	<resultMap type="com.soulmovie.vo.MovieVO" id="img1">
-		<result column="MOVIE_CODE" property="movie_code"/>
-		<result column="MOVIE_IMG" property="movie_img" jdbcType="BLOB" javaType="[B"/>
-	</resultMap>
-	
-	<select id="selectMovieImg" parameterType="int" resultMap="img1">
-		SELECT MOVIE_CODE, MOVIE_IMG FROM MOVIE WHERE MOVIE_CODE=#{no}
+	<select id="movielist1" resultType="com.soulmovie.vo.MovieVO">
+		SELECT * FROM MOVIE
 	</select>
 	
-	
+	<select id="moviecontent" resultType="com.soulmovie.vo.MovieVO" parameterType="int">
+		SELECT * FROM MOVIE WHERE MOVIE_CODE=#{no}
+	</select>
 </mapper>

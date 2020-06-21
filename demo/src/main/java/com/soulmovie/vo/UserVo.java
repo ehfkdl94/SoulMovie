@@ -12,7 +12,7 @@ public class UserVo {
 	 private String usergender = null;
 	 private String useremail = null;
 	 private long userccnt =0L;
-	 private String admin =null;
+	 private String admin ="USER";
 	 private String joindate = null;
 
 	

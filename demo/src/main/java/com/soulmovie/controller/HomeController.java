@@ -2,6 +2,7 @@ package com.soulmovie.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.soulmovie.dao.HomeDAO;
-import com.soulmovie.mapper.MemberMapper;
+import com.soulmovie.mapper.HomeMapper;
 import com.soulmovie.vo.MovieVO;
 
 @Controller
@@ -23,17 +24,17 @@ import com.soulmovie.vo.MovieVO;
 //public class HomeController extends Controller {
 public class HomeController {
 	@Autowired
-	MemberMapper mMapper;
+	HomeMapper mMapper;
 	
 	@Autowired
 	HomeDAO hDAO = null;
 	
 	
 	@RequestMapping(value="/")
-	public String home(HttpSession httpSession, Model model) {
+	public String home(HttpSession httpSession, Model model, HttpServletRequest request) {
 		List<MovieVO> list = hDAO.selectBoard();
 		model.addAttribute("list", list);
-		return "index";
+		return request.getContextPath()+"index";
 	}
 	
 	@RequestMapping(value="getimg")
