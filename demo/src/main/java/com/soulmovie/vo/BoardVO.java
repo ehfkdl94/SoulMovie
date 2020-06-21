@@ -12,7 +12,14 @@ public class BoardVO {
 	private byte[] brdimg = null;
 	private long brdhit = 0L;
 	private long brdlike = 0L;
+	private String username = null;
 	
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
 	//Getter Setter
 	public long getBrdno() {
 		return brdno;
@@ -62,13 +69,13 @@ public class BoardVO {
 	public void setBrdlike(long brdlike) {
 		this.brdlike = brdlike;
 	}
-	//to String
 	@Override
 	public String toString() {
 		return "BoardVO [brdno=" + brdno + ", brdid=" + brdid + ", brdtitle=" + brdtitle + ", brddate=" + brddate
 				+ ", brdcontent=" + brdcontent + ", brdimg=" + Arrays.toString(brdimg) + ", brdhit=" + brdhit
-				+ ", brdlike=" + brdlike + "]";
+				+ ", brdlike=" + brdlike + ", username=" + username + "]";
 	}
+	
 	
 
 }

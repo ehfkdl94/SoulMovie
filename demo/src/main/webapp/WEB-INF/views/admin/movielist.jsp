@@ -55,10 +55,10 @@
   <main role="main" class="inner cover text-center">
   	<div class="form-inline">
 			<div style="margin-right:30px">
-				<a href="${pageContext.request.contextPath}/board/insert" class="btn btn-success">글쓰기</a>
+				<a href="${pageContext.request.contextPath}/admin/movieinsert" class="btn btn-success">글쓰기</a>
 			</div>
 			
-			<form action="${pageContext.request.contextPath}/board/list" method="get">
+			<form action="${pageContext.request.contextPath}/admin/board" method="get">
 				<input type="hidden" name="page" value="1" />
 				<input type="text" name="text" class="form-control" placeholder="검색어" />
 				<input type="submit" class="btn btn-success" value="검색어" />
