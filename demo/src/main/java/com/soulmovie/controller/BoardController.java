@@ -36,12 +36,12 @@ public class BoardController {
 	@RequestMapping(value = "/insert", method = RequestMethod.GET)
 	public String insertBoard(HttpSession httpSession, Model model, HttpServletRequest request) {
 		//세션에서 로그인한 사용자의 아이디값을 가져옴.
-		String userid = (String)httpSession.getAttribute("SESSION_ID");
-		if(userid == null) { //아이디값이 없다면 로그인되지 않은 상태
-			return request.getContextPath()+"redirect:/member/login"; //로그인 페이지로 이동
-		}
+//		String userid = (String)httpSession.getAttribute("SESSION_ID");
+//		if(userid == null) { //아이디값이 없다면 로그인되지 않은 상태
+//			return request.getContextPath()+"redirect:/member/login"; //로그인 페이지로 이동
+//		}
 		//그렇지 않다면 게시판 글쓰기 화면 표시
-		model.addAttribute("userid", userid);
+//		model.addAttribute("userid", userid);
 		return request.getContextPath()+"/board/insert";
 	}
 	
@@ -57,7 +57,7 @@ public class BoardController {
 		//DAO로 obj값 전달하기
 		bDAO.insertBoard(obj);
 		
-		return request.getContextPath()+"redirect:/";
+		return "redirect:"+request.getContextPath()+"/board/list";
 	}
 	
 	@RequestMapping(value = "/content", method = RequestMethod.GET)
@@ -173,6 +173,20 @@ public class BoardController {
 				return null;
 			}
 		}
+	}
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public String delete(HttpServletRequest request,
+			@RequestParam(value="no", defaultValue = "0") int no) {
+		BoardVO obj = new BoardVO();
+		obj.setBrdno(no);
+		
+		int ret = bDAO.deleteBoard(obj);  
+		
+		if(ret > 0) {  //성공하면 목록화면 으로
+			return "redirect:" + request.getContextPath() + "/board/list";
+		}
+		//실패하면 이전화면 즉, 상세화면으로
+		return "redirect:" + request.getContextPath() + "/board/content?no=" + no;
 	}
 	
 	
