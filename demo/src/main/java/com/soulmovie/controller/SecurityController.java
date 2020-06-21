@@ -60,13 +60,13 @@ public class SecurityController {
 		}
 		
 
-		@GetMapping("/login")
-		public String loginForm(HttpServletRequest req, HttpSession httpSession) {
-			String referer = req.getHeader("Referer");
-			req.getSession().setAttribute("prevPage", referer);
-		
-			return"/login";
-		}
+//		@GetMapping("/login")
+//		public String loginForm(HttpServletRequest req, HttpSession httpSession) {
+//			String referer = req.getHeader("Referer");
+//			req.getSession().setAttribute("prevPage", referer);
+//		
+//			return"/login";
+//		}
 
 		
 		

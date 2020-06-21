@@ -80,10 +80,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 
 	  
-	@Bean
-	public AuthenticationSuccessHandler successHandler() {
-	  return new CustomLoginSuccessHandler("/");//default로 이동할 url
-	}
+//	@Bean
+//	public AuthenticationSuccessHandler successHandler() {
+//	  return new CustomLoginSuccessHandler("/");//default로 이동할 url
+//	}
 
 
 	
