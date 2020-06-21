@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @Configuration  //환경설정파일 이라는뜻 서버가 돌기전에 먼저 완성되어야 하는것 서버가 돌기전에 하기 때문에 new를 쓰는게아니라 bean을써서 미리 만들어야한다.
 @EnableWebSecurity  //Security사용한다는뜻
@@ -40,6 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests() 
 			 	//.antMatchers("/admin","/admin/*").hasAuthority("ADMIN")
+				.antMatchers("/board/**").authenticated()
 			 	.anyRequest().permitAll()
 			 	.and()
 //			 .formLogin()
@@ -64,6 +66,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			 .exceptionHandling()
 			 	.accessDeniedPage("/page403");
 		
+		
 			//보안에 취약함.
 		    http.csrf().disable(); //csrf를 사용하지 않을 경우
 				
@@ -74,6 +77,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //		 	.and()
 		 	
 	}
+	
+
+	  
+	@Bean
+	public AuthenticationSuccessHandler successHandler() {
+	  return new CustomLoginSuccessHandler("/");//default로 이동할 url
+	}
+
 
 	
 }
