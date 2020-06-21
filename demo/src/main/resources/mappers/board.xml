@@ -16,7 +16,8 @@
 		INSERT INTO BOARD(BRDNO, BRDTITLE, BRDCONTENT,BRDIMG, 
 		BRDID, BRDHIT, BRDDATE)
 		VALUES (SEQ_BOARD_NO.NEXTVAL, #{brdtitle}, #{brdcontent}, #{brdimg, jdbcType=BLOB}, 
-		#{brdid}, #{brdhit}, SYSDATE) </insert>
+		#{brdid}, #{brdhit}, SYSDATE) 
+	</insert>
 	
 	<select id="selectList" parameterType="map" resultType="com.soulmovie.vo.BoardVO">
 		SELECT  BRDNO, BRDNO,BRDTITLE,BRDID,BRDHIT,BRDDATE,ROWN, MEMBER.USERNAME FROM

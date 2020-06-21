@@ -57,32 +57,25 @@
   <main role="main" class="inner cover text-center">
   	<article id="contact">
 								<h2 class="major">Contact</h2>
-								<form method="post" action="#">
+								<form method="post" action="/admin/boardupdate">
 									<div class="fields">
 										<div class="field">
-											<label for="name">글번호 : ${obj.brdno}</label>
-											<label for="name">작성자 : ${obj.username}</label>
-											<label for="name">조회수 : ${obj.brdhit}</label>
-										</div>
-										<div class="field">
 											<label for="email">제목</label>
-											<p class="p_class">${obj.brdtitle}</p>
+											<input type="text" name="brdtitle" id="name" value="${obj.brdtitle}"/>
 
 										</div>
 										<div class="field">
 											<label for="message">내용</label>
-											<textarea name="message" id="message" rows="4" >${obj.brdcontent}</textarea>
+											<textarea name="brdcontent" id="message" rows="4" >${obj.brdcontent}</textarea>
 										</div>
 										<div class="field">
-											<label for="name">작성일 : ${obj.brddate}</label>
+											<label for="message">작성자</label>
+											<input type="text" name="brdid" id="name" value="${obj.brdid}"/>
 										</div>
+										
 									</div>
-										<ul class="actions">
-											<button type="button" onclick="location.href='/admin/board' ">List</button>
-											<button type="button" onclick="location.href='/admin/boardupdate?no=${obj.brdno}' ">update</button>
-											<button type="button" onclick="location.href='/admin/boarddelete?no=${obj.brdno}' ">delete</button>
-										</ul>
-								
+									<input type="hidden" value="${obj.brdno}" name="brdno"/>
+									<input type="submit" value="수정" />
 								</form>
 								<!--  
 								<ul class="icons">

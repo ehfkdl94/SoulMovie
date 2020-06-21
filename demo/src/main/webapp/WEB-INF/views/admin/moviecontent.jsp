@@ -16,8 +16,8 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/cover/">
 
     <!-- Bootstrap core CSS -->
-<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
-
+	<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css" />
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -104,6 +104,11 @@
                     </div>
                   </div>
                  </div>
+                 <ul class="actions">
+					<button type="button" onclick="location.href='/admin/movie' ">List</button>
+					<button type="button" onclick="location.href='/admin/movieupdate?no=${obj.movie_code}' ">update</button>
+					<button type="button" onclick="location.href='/admin/moviedelete?no=${obj.movie_code}' ">delete</button>
+				 </ul>
   </main>
 
   <footer class="mastfoot mt-auto text-center">

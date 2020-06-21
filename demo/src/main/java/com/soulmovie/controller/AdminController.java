@@ -1,5 +1,6 @@
 package com.soulmovie.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -9,13 +10,16 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.soulmovie.dao.BoardDAO;
+import com.soulmovie.dao.MemberDAO;
 import com.soulmovie.dao.MovieDAO;
 import com.soulmovie.vo.BoardVO;
+import com.soulmovie.vo.MemberVO;
 import com.soulmovie.vo.MovieVO;
 
 @Controller
@@ -27,7 +31,9 @@ public class AdminController {
 	
 	@Autowired
 	private BoardDAO bDAO = null;
-//	private MemberDAO DAO = null;
+	
+	@Autowired
+	private MemberDAO memberDAO = null;
 	
 	@RequestMapping(value="/test")
 	public String test(HttpServletRequest request) {
@@ -92,6 +98,21 @@ public class AdminController {
 		return "/admin/moviecontent";
 	}
 	
+	@RequestMapping(value = "/moviedelete", method = RequestMethod.GET)
+	public String moviedelete(HttpServletRequest request,
+			@RequestParam(value="no", defaultValue = "0") int no) {
+		MovieVO obj = new MovieVO();
+		obj.setMovie_code(no);
+		
+		int ret = mDAO.deleteMovie(obj);  
+		
+		if(ret > 0) {  //성공하면 목록화면 으로
+			return "redirect:" + request.getContextPath() + "/admin/movie";
+		}
+		//실패하면 이전화면 즉, 상세화면으로
+		return "redirect:" + request.getContextPath() + "/admin/moviecontent?no=" + no;
+	}
+	
 	@RequestMapping(value="/board", method=RequestMethod.GET)
 	public String boardlist(Model model, HttpSession httpSession,
 			HttpServletRequest request,
@@ -124,5 +145,88 @@ public class AdminController {
 		
 	
 		return "/admin/boardcontent";
+	}
+	
+	@RequestMapping(value = "/boarddelete", method = RequestMethod.GET)
+	public String boarddelete(HttpServletRequest request,
+			@RequestParam(value="no", defaultValue = "0") int no) {
+		BoardVO obj = new BoardVO();
+		obj.setBrdno(no);
+		
+		int ret = bDAO.deleteBoard(obj);  
+		
+		if(ret > 0) {  //성공하면 목록화면 으로
+			return "redirect:" + request.getContextPath() + "/admin/board";
+		}
+		//실패하면 이전화면 즉, 상세화면으로
+		return "redirect:" + request.getContextPath() + "/admin/boardcontent?no=" + no;
+	}
+	
+	@RequestMapping(value = "/boardinsert", method = RequestMethod.GET)
+	public String boardinsert(HttpSession httpSession, Model model, HttpServletRequest request) {
+		//세션에서 로그인한 사용자의 아이디값을 가져옴.
+//		String userid = (String)httpSession.getAttribute("SESSION_ID");
+//		if(userid == null) { //아이디값이 없다면 로그인되지 않은 상태
+//			return request.getContextPath()+"redirect:/member/login"; //로그인 페이지로 이동
+//		}
+		//그렇지 않다면 게시판 글쓰기 화면 표시
+//		model.addAttribute("userid", userid);
+		return request.getContextPath()+"/admin/boardinsert";
+	}
+	
+	@RequestMapping(value = "/boardinsert", method = RequestMethod.POST)
+	public String boardinsertpost(@ModelAttribute BoardVO obj,
+			HttpServletRequest request) throws IOException {
+		
+		//DAO로 obj값 전달하기
+		bDAO.insertBoard(obj);
+		
+		return "redirect:"+request.getContextPath()+"/admin/board";
+	}
+	
+	@RequestMapping(value="/boardupdate")
+	public String boardupdate(Model model, HttpServletRequest req, @RequestParam(value="no")int no) {
+		BoardVO obj = bDAO.selectBoardOne(no);
+		model.addAttribute("obj", obj);
+		return "/admin/boardupdate";
+	}
+	
+	@RequestMapping(value="/boardupdate", method=RequestMethod.POST)
+	public String boardupdatepost(
+			@RequestParam("brdno")int brd_no,
+			@RequestParam("brdtitle")String brd_title,
+			@RequestParam("brdcontent")String brd_content,
+			@RequestParam("brdid")int brd_id){
+		
+		
+		BoardVO obj = new BoardVO();
+		obj.setBrdno(brd_no);
+		obj.setBrdtitle(brd_title);
+		obj.setBrdcontent(brd_content);
+		obj.setBrdid(brd_id);
+	
+		bDAO.updateBoard(obj);
+		
+		return "redirect:/admin/board";
+		
+	}
+	
+	@RequestMapping(value="/member", method=RequestMethod.GET)
+	public String memberlist(Model model, HttpSession httpSession,
+			HttpServletRequest request,
+			@RequestParam(value="page", defaultValue="0", required=false) int page) {
+		if(page==0) {
+			return "redirect:"+request.getContextPath()+"/admin/member?page=1";
+		}
+
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("start", (page*6)-5);//�떆�옉�쐞移�
+		map.put("end", page*6); //醫낅즺�쐞移�
+		//寃��깋�뼱
+		//紐⑸줉
+		List<MemberVO> list = memberDAO.selectMember(map);
+		model.addAttribute("list", list);
+		return request.getContextPath() +"/admin/memberlist";
 	}
 }

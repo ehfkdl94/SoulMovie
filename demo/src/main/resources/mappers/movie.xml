@@ -44,4 +44,9 @@
 	<select id="count" resultType="int" parameterType="String">
 		SELECT COUNT(*) FROM MOVIE WHERE MOVIE_TITLE LIKE '%' || #{text} || '%' 
 	</select>
+	
+	<delete id="deleteMovie" parameterType="com.soulmovie.vo.MovieVO">
+		DELETE FROM MOVIE WHERE MOVIE_CODE = #{movie_code} 
+	</delete>
+	
 </mapper>

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.soulmovie.vo.BoardVO;
 import com.soulmovie.vo.MovieVO;
 
 @Service
@@ -15,30 +16,32 @@ import com.soulmovie.vo.MovieVO;
 public class MovieDAO {
 	
 	@Autowired
-	private SqlSessionFactory sqlFatory = null;
+	private SqlSessionFactory sqlFactory = null;
 	
 	public MovieVO selectMovieOne(int movie_code) {
-		return sqlFatory.openSession().selectOne("Movie.moviedetail",movie_code); //영화 상세정보 출력
+		return sqlFactory.openSession().selectOne("Movie.moviedetail",movie_code); //영화 상세정보 출력
 	}
 	
 	public MovieVO selectMovieOne1(int movie_code) {
-		return sqlFatory.openSession().selectOne("Movie.moviecontent",movie_code); //영화 상세정보 출력
+		return sqlFactory.openSession().selectOne("Movie.moviecontent",movie_code); //영화 상세정보 출력
 	}
 	
 	public List<MovieVO> selectMovie() {
-		return sqlFatory.openSession().selectList("Movie.movielist");
+		return sqlFactory.openSession().selectList("Movie.movielist");
 	}
 	public List<MovieVO> selectPageMovie(HashMap<String, Object> map) {
-		return sqlFatory.openSession().selectList("Movie.moviepagelist",map);
+		return sqlFactory.openSession().selectList("Movie.moviepagelist",map);
 	}
 	
 	public List<MovieVO> selectMovie1() {
-		return sqlFatory.openSession().selectList("Movie.movielist1");
+		return sqlFactory.openSession().selectList("Movie.movielist1");
 	}
 	
 	public int countBoard(String text) {
-		return sqlFatory.openSession().selectOne("Movie.count",text);
-		
-		
+		return sqlFactory.openSession().selectOne("Movie.count",text);
+	}
+	
+	public int deleteMovie(MovieVO obj) {
+		return sqlFactory.openSession().delete("Movie.deleteMovie", obj);
 	}
 }

@@ -56,10 +56,10 @@
   <main role="main" class="inner cover text-center">
   	<div class="form-inline">
 			<div style="margin-right:30px">
-				<a href="${pageContext.request.contextPath}/admin/boardinsert" class="btn btn-success">글쓰기</a>
+				<a href="${pageContext.request.contextPath}/admin/memberinsert" class="btn btn-success">글쓰기</a>
 			</div>
 			
-			<form action="${pageContext.request.contextPath}/board/list" method="get">
+			<form action="${pageContext.request.contextPath}/admin/member" method="get">
 				<input type="hidden" name="page" value="1" />
 				<input type="text" name="text" class="form-control" placeholder="검색어" />
 				<input type="submit" class="btn btn-success" value="검색어" />
@@ -69,9 +69,9 @@
 		<table class="table table-sm">
 			<thead>
 				<tr>	
-					<th>번호</th>
-					<th>제목</th>
-					<th>작성자</th>
+					<th>회원번호</th>
+					<th>회원아이디</th>
+					<th>회원닉네임</th>
 					<th>조회수</th>
 					<th>날짜</th>
 				</tr>
@@ -86,12 +86,10 @@
 				
 				<c:forEach var="tmp" items="${list}">
 				<tr>
-					<td>${tmp.brdno}</td>
-					<td>
-						<a href="/admin/boardcontent?no=${tmp.brdno}">${tmp.brdtitle}</a>
-					</td>
+					<td>${tmp.userid}</td>
 					<td>${tmp.username}</td>
-					<td><fmt:formatNumber value="${tmp.brdhit}" pattern="#,###" /></td>
+					<td>${tmp.usernick}</td>
+					<td>${tmp.useremail}</td>
 					<td>
 						<c:set var="dt" value="${fn:split(tmp.brddate, ' ')}" />
 						${dt[0]}
