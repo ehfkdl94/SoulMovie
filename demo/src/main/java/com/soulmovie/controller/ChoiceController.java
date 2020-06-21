@@ -40,7 +40,7 @@ public class ChoiceController {
 		String username = (String) httpSession.getAttribute("SESSION_ID");
 		if(username == null) {
 			return "redirect:/member/login";
-		}
+		}else {
 		int userid = uMapper.findUserid(username);
 		System.out.println(userid);
 //		model.addAttribute("userid", userid);
@@ -58,7 +58,8 @@ public class ChoiceController {
 		if(chk!=null) {
 			model.addAttribute("choice_code", chk);
 		}
-	return request.getContextPath() + "/choice/insert";
+		return request.getContextPath() + "/choice/insert";
+		}
 	}
 	
 	@RequestMapping(value = "/insert", method=RequestMethod.POST)

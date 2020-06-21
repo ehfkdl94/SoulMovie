@@ -10,7 +10,7 @@
 <body>
 <div class="container"> 
 		<h4>인생영화 선택목록</h4>
-		
+		<a href="${pageContext.request.contextPath}/choice/insert">나의 인생영화 등록</a>
 		<table class="table">
 			<thead>
 				<tr>	
