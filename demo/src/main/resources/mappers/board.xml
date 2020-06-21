@@ -13,7 +13,7 @@
 		SELECT BRDNO, BRDIMG FROM BOARD WHERE BRDNO = #{no} </select>
 	
 	<insert id="insertBoard" parameterType="com.soulmovie.vo.BoardVO">
-		INSERT INTO BOARD(BRDNO, BRDTITLE, BRDCONTENT,bBRDIMG, 
+		INSERT INTO BOARD(BRDNO, BRDTITLE, BRDCONTENT,BRDIMG, 
 		BRDID, BRDHIT, BRDDATE)
 		VALUES (SEQ_BOARD_NO.NEXTVAL, #{brdtitle}, #{brdcontent}, #{brdimg, jdbcType=BLOB}, 
 		#{brdid}, #{brdhit}, SYSDATE) </insert>

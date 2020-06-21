@@ -10,7 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>content</title>
-	<link href="${pageContext.request.contextPath}/resources/css/bootstrap.css"  rel="stylesheet"/>
+	<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"  rel="stylesheet"/>
 </head>
 
 <body>
@@ -22,11 +22,11 @@
 		조회수 : ${obj.brdhit}<br />
 		날짜 : <c:set var="dt" value="${fn:split(obj.brddate, ' ')}" />
 						${dt[0]}<br />
-		<img src="${pageContext.request.contextPath}/board/getimg?no=${obj.brd_no}" width="100px" height="100px" /><br />
+		<img src="${pageContext.request.contextPath}/board/getimg?no=${obj.brdno}" width="100px" height="100px" /><br />
 		<hr />
 		<a href="${pageContext.request.contextPath}/board/list" class="btn btn-success">목록</a>
-		<a href="${pageContext.request.contextPath}/board/update?no=${obj.brd_no}" class="btn btn-success">수정</a>
-		<a href="${pageContext.request.contextPath}/board/delete?no=${obj.brd_no}" class="btn btn-success">삭제</a>
+		<a href="${pageContext.request.contextPath}/board/update?no=${obj.brdno}" class="btn btn-success">수정</a>
+		<a href="${pageContext.request.contextPath}/board/delete?no=${obj.brdno}" class="btn btn-success">삭제</a>
 		
 		<c:if test="${prev != 0}">
 		<a href="${pageContext.request.contextPath}/board/content?no=${prev}" class="btn btn-success">이전글</a>

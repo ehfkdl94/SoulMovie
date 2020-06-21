@@ -37,10 +37,11 @@ public class ChoiceController {
 		if(text == null && chk== null) {
 			return "redirect:"+request.getContextPath()+"/choice/insert?text=&chk=";
 		}
-		if (text == null) {
-			List<MovieVO> list = null;
+		if (text.equals("")) {
+			String list = "@@@@초기값";
 			model.addAttribute("list", list);			
 		}else {
+			
 			List<MovieVO> list = mMapper.selectMovie(text);
 			model.addAttribute("list", list);			
 		}
@@ -56,5 +57,10 @@ public class ChoiceController {
 		System.out.println(obj.toString());
 		cMapper.insertChoice(obj);
 		return "redirect:" + request.getContextPath() + "/choice/insert";
-	}	
+	}
+	
+	@RequestMapping(value="/list", method=RequestMethod.GET)
+	public String selectlist(HttpServletRequest request) {
+		return request.getContextPath() + "/choice/list";
+	}
 }
