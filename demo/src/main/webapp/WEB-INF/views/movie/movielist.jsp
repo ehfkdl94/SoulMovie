@@ -207,7 +207,7 @@
 		        startPage : Number('${param.page}'), /* 주소창에 ~~/board/list?page=1 */
 		        initiateStartPageClick : false,
 		        onPageClick: function (event, page) {
-		             window.location.href = "/movie/movielist?page="+page +"&text=${param.text}";
+		             window.location.href = "${pageContext.request.contextPath}/movie/movielist?page="+page +"&text=${param.text}";
 		        }
 		    });
 		})
