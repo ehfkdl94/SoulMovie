@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!doctype html>
 <html lang="en">
   <head>
@@ -25,7 +27,9 @@
         -ms-user-select: none;
         user-select: none;
       }
-
+	  td, tr{
+	  	color:white;
+	  }
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
           font-size: 3.5rem;
@@ -34,6 +38,7 @@
     </style>
     <!-- Custom styles for this template -->
     <link href="${pageContext.request.contextPath}/resources/css/cover.css" rel="stylesheet">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css" />
   </head>
   <body>
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
@@ -50,18 +55,47 @@
   </header>
 
   <main role="main" class="inner cover text-center">
-    <h1 class="cover-heading">Cover your page.</h1>
-    <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
-    <p class="lead">
-      <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
-    </p>
+  	<article id="contact">
+								<h2 class="major">Contact</h2>
+								<form method="post" action="#">
+									<div class="fields">
+										<div class="field">
+											<label for="name">글번호 : ${obj.brdno}</label>
+											<label for="name">작성자 : ${obj.username}</label>
+											<label for="name">조회수 : ${obj.brdhit}</label>
+										</div>
+										<div class="field">
+											<label for="email">제목</label>
+											<p class="p_class">${obj.brdtitle}</p>
+
+										</div>
+										<div class="field">
+											<label for="message">내용</label>
+											<textarea name="message" id="message" rows="4" >${obj.brdcontent}</textarea>
+										</div>
+										<div class="field">
+											<label for="name">작성일 : ${obj.brddate}</label>
+										</div>
+									</div>
+										<ul class="actions">
+											<button type="button" onclick="location.href='/admin/board' ">List</button>
+											<button type="button" onclick="location.href='/admin/board' ">update</button>
+											<button type="button" onclick="location.href='/admin/board' ">delete</button>
+										</ul>
+								
+								</form>
+								<!--  
+								<ul class="icons">
+									<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+								-->
+							</article>
   </main>
 
-  <footer class="mastfoot mt-auto text-center">
-    <div class="inner">
-      <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-    </div>
-  </footer>
+  
 </div>
 </body>
 </html>

@@ -37,7 +37,7 @@
 	</select>
 	
 	<select id="selectBoardOne" parameterType="int" resultType="com.soulmovie.vo.BoardVO">
-		SELECT * FROM BOARD WHERE BRDNO = #{no} 
+		SELECT  BRDNO, BRDID, BRDTITLE, BRDDATE, BRDCONTENT, BRDIMG, BRDHIT, BRDLIKE, MEMBER.USERNAME FROM BOARD,MEMBER WHERE BRDNO = #{no} AND BOARD.BRDID=MEMBER.USERID 
 	</select>
 	
 	<update id="updateHit" parameterType="int">

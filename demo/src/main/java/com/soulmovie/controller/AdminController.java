@@ -29,6 +29,10 @@ public class AdminController {
 	private BoardDAO bDAO = null;
 //	private MemberDAO DAO = null;
 	
+	@RequestMapping(value="/test")
+	public String test(HttpServletRequest request) {
+		return request.getContextPath() + "/admin/boardcontent2";
+	}
 	
 	@RequestMapping(value="/home")
 	public String home(HttpServletRequest request) {
@@ -104,7 +108,6 @@ public class AdminController {
 		map.put("text", text); //寃��깋�뼱
 		//紐⑸줉
 		List<BoardVO> list = bDAO.selectBoard(map);
-		System.out.println(list);
 		model.addAttribute("list", list);
 		return request.getContextPath() +"/admin/boardlist";
 	}
@@ -120,6 +123,6 @@ public class AdminController {
 		model.addAttribute("obj", obj);
 		
 	
-		return "/admin/moviecontent";
+		return "/admin/boardcontent";
 	}
 }

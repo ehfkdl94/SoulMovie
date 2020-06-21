@@ -74,7 +74,7 @@
 				</ul>
 				-->
 			</li>
-			<li><a href="${pageContext.request.contextPath}/board/list">게시판</a></li>
+			<li><a href="${pageContext.request.contextPath}/board/list">Board</a></li>
 			<li><a href="contact.html">Contact</a></li>
 		</ul>
 	</header>
