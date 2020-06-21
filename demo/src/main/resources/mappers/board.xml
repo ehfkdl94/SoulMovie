@@ -19,15 +19,16 @@
 		#{brdid}, #{brdhit}, SYSDATE) </insert>
 	
 	<select id="selectList" parameterType="map" resultType="com.soulmovie.vo.BoardVO">
-		SELECT * FROM
-			(SELECT 
-				BRDNO, BRDTITLE, BRDID, BRDHIT, BRDDATE
-				ROWNUMBER() OVER (ORDER BY BRDNO DESC) ROWN
-			FROM 
-				BOARD
-			WHERE 
-				BRDTITLE LIKE '%' || #{text} || '%')
-		WHERE ROWN BETWEEN #{start} AND #{end} 
+		SELECT  BRDNO, BRDNO,BRDTITLE,BRDID,BRDHIT,BRDDATE,ROWN, MEMBER.USERNAME FROM
+	      (select
+		      BRDNO, BRDTITLE, BRDID, BRDHIT, BRDDATE,
+		      	ROW_NUMBER() OVER (ORDER BY BRDNO DESC) ROWN
+		      FROM
+		      	BOARD
+		      WHERE BRDTITLE LIKE '%' || #{text} || '%'
+	     	) A ,MEMBER 
+	      WHERE ROWN BETWEEN #{start} AND #{end} 
+	      	AND A.BRDID = MEMBER.USERID
 	</select>
 	
 	<select id="count" parameterType="String" resultType="int">
