@@ -6,7 +6,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -64,7 +63,7 @@ public class SecurityController {
 		@RequestMapping(value="/login", method= RequestMethod.POST)
 		public String loginpost(@ModelAttribute UserVo obj, 
 				HttpSession httpSession, HttpServletRequest request) {
-			//DAO로 전달
+			//mapper전달
 			UserVo obj1 = userMapper.selectMemberLogin(obj);
 			if (obj1 != null) { //로그인 성공
 				httpSession.setAttribute("SESSION_ID", obj.getUsername());
@@ -75,6 +74,12 @@ public class SecurityController {
 			}
 			//로그인 실패/member/login GET방식으로 전송
 			return "redirect:" + request.getContextPath() + "/member/login"; 
+		}
+		
+		@RequestMapping(value="/logout", method = RequestMethod.GET)
+		public String logout(HttpSession httpSession) {
+			httpSession.invalidate();
+			return "redirect:/";
 		}
 		
 
