@@ -94,7 +94,7 @@
 	<!-- Hero section -->
 	<section class="hero-section">
 	
-			<div class="hs-item" style="height:800px;">
+			<div class="hs-item" style="height:900px;">
 				<div class="container">
 				   <div style="margin-bottom: 250px;">
 							<div class="row mb-5 align-items-center">
