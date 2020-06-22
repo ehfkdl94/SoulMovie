@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="security" uri= "http://www.springframework.org/security/tags" %>    
  
 <!DOCTYPE html>
 <html>
@@ -14,6 +15,7 @@
 <body>
 <div>
 <form action="${pageContext.request.contextPath}/choice/insert" method="get">
+			<security:authentication property="name" />님의 인생영화를 등록하세요!<br />
 			<input type ="text" name="text" placeholder="영화 제목을 입력하세요."/>
 			<input type ="submit" value="검색" />			
 	<table>
@@ -54,8 +56,7 @@
 	</form>
 	</div>
 	<div>
-	<form action="${pageContext.request.contextPath}/choice/insert" method="post">	
-		<button type="button" id="searchmovie" class="btn btn-primary">영화 검색</button><br />
+	<form action="${pageContext.request.contextPath}/choice/insert" method="post">			
 			영화제목 : <input type="text" name="choice_code" value="${choice_code}" readonly/><br />
 			관람 횟수: <input type ="text" name="choice_freq" /> <br />	
 			인생영화 선택 이유 : <textarea id="content" name="choice_reason" placeholder="내용을 입력하세요."></textarea><br />
@@ -64,7 +65,7 @@
 							<input type="checkbox" name="choice_category" value="연기" />연기
 							<input type="checkbox" name="choice_category" value="음악" />음악
 							<input type="checkbox" name="choice_category" value="기타" />기타<br />					
-			작성자 :<input type="text" name="choice_id" value="${userid}" readonly/>
+			작성자 :<input type="text" name="choice_id" value="${choice_id}" readonly/>
 			<input type ="submit" value="등록" />
 			<button type="button" class="close">닫기</button>
 		</form>

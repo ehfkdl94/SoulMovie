@@ -4,9 +4,10 @@ package com.soulmovie.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -34,17 +35,23 @@ public class ChoiceController {
 	public UserMapper uMapper;
 	
 	@RequestMapping(value = "/insert", method=RequestMethod.GET)
-	public String insert(Model model, HttpSession httpSession, HttpServletRequest request,
+	public String insert(Model model, Authentication auth, HttpServletRequest request,
 			@RequestParam(value="text", required = false) String text,
 			@RequestParam(value="chk", required = false) String chk) {
-		String username = (String) httpSession.getAttribute("SESSION_ID");
-		System.out.println(username);
-		if(username == null) {
-			return "redirect:/member/login";
+		if(auth != null) {
+			User user = (User)auth.getPrincipal();
+			if(user != null) {
+//				System.out.println(user.getUsername());
+				String username = user.getUsername();
+//				String userid = Integer.toString(uMapper.findUserid(username));				
+				int userid = uMapper.findUserid(username);				
+				model.addAttribute("choice_id", userid);			
+			}
 		}
-		int userid = uMapper.findUserid(username);
-		System.out.println(username);
-		model.addAttribute("userid", userid);
+		else {
+			System.out.println("security auth null");
+		}
+
 		if(text == null && chk== null) {
 			return "redirect:"+request.getContextPath()+"/choice/insert?text=&chk=";
 		}
@@ -64,19 +71,28 @@ public class ChoiceController {
 	
 	
 	@RequestMapping(value = "/insert", method=RequestMethod.POST)
-	public String insertpost(HttpServletRequest request, @ModelAttribute ChoiceVO obj) {
+	public String insertpost(HttpServletRequest request, @ModelAttribute ChoiceVO obj) {		
 		System.out.println(obj.toString());
 		cMapper.insertChoice(obj);
 		return "redirect:" + request.getContextPath() + "/choice/insert";
 	}
 	
 	@RequestMapping(value="/list", method=RequestMethod.GET)
-	public String selectlist(HttpServletRequest request, Model model) {
-//		String username = (String) httpSession.getAttribute("SESSION_ID");
-//		int userid = uMapper.findUserid(username);
-//		System.out.println(userid);
-//		List<ChoiceVO> list = cMapper.selectChoiceList(userid);
-//		model.addAttribute("list", list);
+	public String selectlist(HttpServletRequest request, Authentication auth, Model model) {
+		if(auth != null) {
+			User user = (User)auth.getPrincipal();
+			if(user != null) {
+//				System.out.println(user.getUsername());
+				String username = user.getUsername();
+				int userid = uMapper.findUserid(username);
+				List<ChoiceVO> list = cMapper.selectChoiceList(userid);
+				model.addAttribute("list", list);								
+			}
+		}
+		else {
+			System.out.println("security auth null");
+		}
+		
 		return request.getContextPath() + "/choice/list";
 	}
 }
