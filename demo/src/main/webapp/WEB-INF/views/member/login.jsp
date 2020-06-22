@@ -129,14 +129,14 @@
                                             
                                               <div class="fields">
                                              
-                                                <div class="field">	
+                                                <div class="field" style="width:calc(70% - 0.75rem)" >	
                                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                                                 <label for="username">ID</label>
-                                                <input type="text" class="form-control" id="username" name="username" placeholder="ID" >
+                                                <input type="text" style="color:#ffffff" class="form-control" id="username" name="username" placeholder="ID" >
                                                 </div><br />
-                                                <div class="field">
+                                                <div class="field" style="width:calc(70% - 0.75rem)">
                                                 <label for="password">PASSWORD</label>
-                                                <input type="password" class="form-control" id="password" name="password" placeholder="Password" >
+                                                <input type="password" style="color:#ffffff" class="form-control" id="password" name="password" placeholder="Password" >
                                                 </div>			
                                                  
                                                  
