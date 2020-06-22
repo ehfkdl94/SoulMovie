@@ -82,7 +82,7 @@ public class SecurityController {
 		@RequestMapping(value="/logout", method = RequestMethod.POST)
 		public String logout(HttpSession httpSession, HttpServletRequest request) {
 			httpSession.invalidate();
-			return "redirect:" +request.getContextPath()+"/member/home";
+			return "redirect:" +request.getContextPath()+"/";
 		}
 		
 
