@@ -27,4 +27,8 @@
 	<select id="selectMemberOne" parameterType="int" resultType="com.soulmovie.vo.MemberVO">
 		SELECT * FROM MEMBER WHERE USERID=#{no}
 	</select>
+	
+	<select id="findId" parameterType="String" resultType="int">
+		SELECT * FROM MEMBER WHERE USERNAME=#{username}
+	</select>
 </mapper>

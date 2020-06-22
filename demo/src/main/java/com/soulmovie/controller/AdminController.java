@@ -244,4 +244,24 @@ public class AdminController {
 	
 		return request.getContextPath() + "/admin/membercontent";
 	}
+	
+	@RequestMapping(value="/memberupdate")
+	public String memberupdate(Model model, HttpServletRequest request, @RequestParam(value="no")int no) {
+		MemberVO obj = memberDAO.selectMemberOne(no);
+		model.addAttribute("obj", obj);
+		return request.getContextPath() + "/admin/memberupdate";
+	}
+	
+	@RequestMapping(value="/memberupdate", method=RequestMethod.POST)
+	public String memberupdatepost(
+			@ModelAttribute BoardVO obj,
+			HttpServletRequest request){
+		int userid = memberDAO.findId(obj.getUsername());
+		obj.setBrdid(userid);
+	
+		bDAO.updateBoard(obj);
+		
+		return "redirect:" + request.getContextPath() + "/admin/board";
+		
+	}
 }

@@ -30,4 +30,8 @@ public class MemberDAO {
 	public MemberVO selectMemberOne(int no) {
 		return sqlFactory.openSession().selectOne("Member.selectMemberOne", no);
 	}
+	
+	public int findId(String username) {
+		return sqlFactory.openSession().selectOne("Member.findId", username);
+	}
 }
