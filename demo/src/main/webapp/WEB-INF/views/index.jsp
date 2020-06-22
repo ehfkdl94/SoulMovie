@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="security" uri= "http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -55,15 +56,23 @@
 		<div class="header-right">
 			<a href="#" class="hr-btn">Help</a>
 			<span>|</span>
+			<security:authorize access="!isAuthenticated()">
 			<div class="user-panel">
 				<a href="${pageContext.request.contextPath}/member/login" class="login">Login</a>
-				<a href="" class="register">Create an account</a>
+				<a href="${pageContext.request.contextPath}/member/join" class="register">Create an account</a>
 			</div>
+			</security:authorize>
+			
+			<security:authorize access="isAuthenticated()">
+				<div class="user-panel">
+				<a href="${pageContext.request.contextPath}/member/logout" class="logout">Logout</a>
+				<a href="${pageContext.request.contextPath}/member/join" class="register">Create an account</a>
+			</div>
+			</security:authorize>
 		</div>
 		<ul class="main-menu">
 			<li><a href="/">Home</a></li>
-			<li><a href="#">About</a></li>
-			<li><a href="#">Movie</a>
+			<li><a href="${pageContext.request.contextPath}/movie/movielist">Movie</a>
 				<!--  
 				<ul class="sub-menu">
 					<li><a href="category.html">Category</a></li>
@@ -104,8 +113,9 @@
 								<div class="item web col-sm-6 col-md-4 col-lg-4 mb-4">
 									<a href="${pageContext.request.contextPath}/movie/moviedetail?movie_code=${tmp.movie_code}" class="item-wrap fancybox">
 									<div class="work-info">
-										<h3>${tmp.movie_title}</h3>
-										<span>${tmp.movie_date}</span>
+										<h1 style="color:#DB0000;">${tmp.rank}</h1>
+										<h3 style="color:white;">${tmp.movie_title}</h3>
+										
 									</div>
 									<img class="img-fluid" src="${pageContext.request.contextPath}/getimg?no=${tmp.movie_code}">
 									</a>

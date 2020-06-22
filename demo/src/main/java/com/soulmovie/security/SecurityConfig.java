@@ -62,8 +62,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	        	.failureUrl("/member/login")
 	        	.and()
 			 .logout()
-			 	.logoutUrl("/logout")  //로그아웃페이지
-			 	.logoutSuccessUrl("/home") //성공시 페이지
+			 	.logoutUrl("/member/logout")  //로그아웃페이지
+			 	.logoutSuccessUrl("/") //성공시 페이지
 			 	.invalidateHttpSession(true)  // httpSession.invalidate 를 실행
 			 	.clearAuthentication(true)///로그아웃 후 인증삭제
 			 	.permitAll()

@@ -61,29 +61,29 @@ public class SecurityController {
 		}
 		
 		
-		@RequestMapping(value="/login", method= RequestMethod.POST)
-		public String loginpost(@ModelAttribute UserVo obj, 
-				HttpSession httpSession, HttpServletRequest request) {
-			//mapper전달
-			UserVo obj1 = userMapper.selectMemberLogin(obj);
-			if (obj1 != null) { //로그인 성공
-				httpSession.setAttribute("SESSION_ID", obj.getUsername());
-				String backURL = (String) httpSession.getAttribute("CURRPAGE");
-				return "redirect:" + backURL; //고정되면 안됨!! 마지막페이지로 가야 한다.
-				
-				
-			}
-			//로그인 실패/member/login GET방식으로 전송
-			return "redirect:" + request.getContextPath() + "/member/login"; 
-		}
+//		@RequestMapping(value="/login", method= RequestMethod.POST)
+//		public String loginpost(@ModelAttribute UserVo obj, 
+//				HttpSession httpSession, HttpServletRequest request) {
+//			//mapper전달
+//			UserVo obj1 = userMapper.selectMemberLogin(obj);
+//			if (obj1 != null) { //로그인 성공
+//				httpSession.setAttribute("SESSION_ID", obj.getUsername());
+//				System.out.println(httpSession.getAttribute("SESSION_ID"));
+//				String backURL = (String) httpSession.getAttribute("CURRPAGE");
+//				return "redirect:" + backURL; //고정되면 안됨!! 마지막페이지로 가야 한다.
+//				
+//				
+//			}
+//			//로그인 실패/member/login GET방식으로 전송
+//			return "redirect:" + request.getContextPath() + "/member/login"; 
+//		}
+//		
 		
-		
-		
-		@RequestMapping(value="/logout", method = RequestMethod.POST)
-		public String logout(HttpSession httpSession, HttpServletRequest request) {
-			httpSession.invalidate();
-			return "redirect:" +request.getContextPath()+"/member/home";
-		}
+//		
+//		@RequestMapping(value="/logout", method = RequestMethod.POST)
+//		public String logout(HttpSession httpSession, HttpServletRequest request) {
+//			return "redirect:" +request.getContextPath()+"/";
+//		}
 		
 
 //		@GetMapping("/login")
