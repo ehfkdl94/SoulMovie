@@ -104,8 +104,8 @@
             <!-- Main -->
                <div id="main">
                
-               <article id="contact" class="active" style="">
-         
+               
+               <article id="elements">
                         <h2 class="major">Join</h2>
                         
                         
@@ -167,7 +167,7 @@
 
                                     <div class="field">
                                        <label for="useremail">E-MAIL</label>
-                                       <input type="text" name="useremail" id="useremail" value="" placeholder="e-mail">
+                                       <input type="email" name="useremail" id="useremail" value="" placeholder="e-mail">
                                     </div>
                                     
                                           
