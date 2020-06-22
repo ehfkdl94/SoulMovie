@@ -50,7 +50,7 @@
 
 	<!-- Header section -->
 	<header class="header-section clearfix">
-		<a href="index.html" class="site-logo">
+		<a href="${pageContext.request.contextPath}/" class="site-logo">
 			<img src="${pageContext.request.contextPath}/resources/img/logo4.png" alt="">
 		</a>
 		<div class="header-right">
@@ -65,7 +65,7 @@
 			</security:authorize>
 			
 			<security:authorize access="isAuthenticated()">
-				<a href="#" style="color:white;"><security:authentication property="name"/></a>
+				<a href="${pageContext.request.contextPath}/member/mypage?username=<security:authentication property="name"/>" style="color:white;">My page</a>
 				<span>|</span>
 				<div class="user-panel">
 				<a href="${pageContext.request.contextPath}/member/logout" class="logout">Logout</a>
@@ -98,37 +98,39 @@
 			<div class="hs-item">
 				<div class="container">
 				   <div style="margin-bottom: 250px;">
-							<div class="row mb-5 align-items-center">
-							
-							<!-- <div class="col-md-12 col-lg-6 text-left text-lg-right" data-aos="fade-up" data-aos-delay="100">
-								<div id="filters" class="filters">
-								<a href="#" data-filter="*" class="active" style="color:white;">All</a>
-								<a href="#" data-filter=".web" style="color:white;">Web</a>
-								<a href="#" data-filter=".design" style="color:white;">Design</a>
-								<a href="#" data-filter=".branding" style="color:white;">Branding</a>
-								<a href="#" data-filter=".photography" style="color:white;">Photography</a>
-								</div>
-							</div> -->
+						<div class="row mb-5 align-items-center">
+						
+						<!-- <div class="col-md-12 col-lg-6 text-left text-lg-right" data-aos="fade-up" data-aos-delay="100">
+							<div id="filters" class="filters">
+							<a href="#" data-filter="*" class="active" style="color:white;">All</a>
+							<a href="#" data-filter=".web" style="color:white;">Web</a>
+							<a href="#" data-filter=".design" style="color:white;">Design</a>
+							<a href="#" data-filter=".branding" style="color:white;">Branding</a>
+							<a href="#" data-filter=".photography" style="color:white;">Photography</a>
 							</div>
-					
-					<div id="portfolio-grid" class="row no-gutter">
-								<c:forEach var="tmp" items="${list}">
+						</div> -->
+						</div>
+						
+						<div id="portfolio-grid" class="row no-gutter" >
+							<c:forEach var="tmp" items="${list}" varStatus="i">
+							${i.index}
+							<div class="row" >
 								<div class="item web col-sm-6 col-md-4 col-lg-4 mb-4">
 									<a href="${pageContext.request.contextPath}/movie/moviedetail?movie_code=${tmp.movie_code}" class="item-wrap fancybox">
-									<div class="work-info">
-										<h1 style="color:#DB0000;">${tmp.rank}</h1>
-										<h3 style="color:white;">${tmp.movie_title}</h3>
-										
-									</div>
-									<img class="img-fluid" src="${pageContext.request.contextPath}/getimg?no=${tmp.movie_code}">
+										<div class="work-info">
+											<h1 style="color:#ff0000;">${tmp.rank}</h1>
+											<h3 style="color:white;">${tmp.movie_title}</h3>
+										</div>
+										<img class="img-fluid" src="${pageContext.request.contextPath}/getimg?no=${tmp.movie_code}" style="height:500px;">
 									</a>
 								</div>
-								</c:forEach>
-								
-				  </div>
+							</div>
+							</c:forEach>
+									
+					  </div>
 				  
 				  </div>
-				  </div>
+			</div>
 			
 		</div>
 

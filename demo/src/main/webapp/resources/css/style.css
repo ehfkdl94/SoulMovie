@@ -338,7 +338,7 @@ Hero section
  ---------------------*/
 
 .hero-section {
-
+	overflow: hidden ;
 }
 
 .hs-item {
