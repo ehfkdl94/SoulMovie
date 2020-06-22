@@ -60,6 +60,7 @@ public class SecurityController {
 			return request.getContextPath()+"/member/login";
 		}
 		
+		
 		@RequestMapping(value="/login", method= RequestMethod.POST)
 		public String loginpost(@ModelAttribute UserVo obj, 
 				HttpSession httpSession, HttpServletRequest request) {
@@ -76,10 +77,12 @@ public class SecurityController {
 			return "redirect:" + request.getContextPath() + "/member/login"; 
 		}
 		
-		@RequestMapping(value="/logout", method = RequestMethod.GET)
-		public String logout(HttpSession httpSession) {
+		
+		
+		@RequestMapping(value="/logout", method = RequestMethod.POST)
+		public String logout(HttpSession httpSession, HttpServletRequest request) {
 			httpSession.invalidate();
-			return "redirect:/";
+			return "redirect:" +request.getContextPath()+"/member/home";
 		}
 		
 
