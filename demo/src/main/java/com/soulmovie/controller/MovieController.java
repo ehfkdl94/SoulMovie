@@ -33,24 +33,28 @@ public class MovieController {
 		return request.getContextPath()+"/movie/moviedetail";
 	}
 	@RequestMapping(value = "/movielist", method = RequestMethod.GET)
-	public String movielist(HttpServletRequest request, HttpSession httpSession,
+	public String movielist(HttpServletRequest request, 
 			@RequestParam(value="movie_code", defaultValue="1",required= false) int movie_code
-			,@RequestParam(value = "page", defaultValue = "1", required = false) int page,
+			,@RequestParam(value = "page", defaultValue = "0", required = false) int page,
 			@RequestParam(value = "text", defaultValue = "", required = false) String text,
+			HttpSession httpSession,
 			Model model) {
-		System.out.println(httpSession.getId());
-
+		
+		if(page == 0) {
+			return "redirect:" + request.getContextPath() + "/movie/movielist?page=1"; 
+		}
 		
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("start", page*6-5); 	//시작위치
 		map.put("end", page*6);		//종료위치
 	
 		List<MovieVO> list2 = mDAO.selectPageMovie(map);
-		System.out.println(list2.size());
+	
 		model.addAttribute("size", list2.size());
 		model.addAttribute("list2", list2);
 		int cnt = mDAO.countBoard(text); //검색어를 넘겨줌.
-		model.addAttribute("cnt", cnt);
+	
+		model.addAttribute("cnt", (cnt-1)/6+1);
 		return request.getContextPath()+"/movie/movielist";
 	}
 	
