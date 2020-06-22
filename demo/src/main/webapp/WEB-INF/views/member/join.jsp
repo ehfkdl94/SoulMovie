@@ -78,7 +78,7 @@
 
 	<!-- Header section -->
 	<header class="header-section clearfix">
-		<a href="index.html" class="site-logo">
+		<a href="${pageContext.request.contextPath}/" class="site-logo">
 			<img src="${pageContext.request.contextPath}/resources/img/logo4.png" alt="">
 		</a>
 		<div class="header-right">
@@ -93,7 +93,7 @@
 			</security:authorize>
 			
 			<security:authorize access="isAuthenticated()">
-				<a href="#" style="color:white;"><security:authentication property="name"/></a>
+				<a href="${pageContext.request.contextPath}/member/mypage?username=<security:authentication property="name"/>" style="color:white;">My page</a>
 				<span>|</span>
 				<div class="user-panel">
 				<a href="${pageContext.request.contextPath}/member/logout" class="logout">Logout</a>
