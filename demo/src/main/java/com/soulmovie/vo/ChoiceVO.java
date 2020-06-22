@@ -9,8 +9,24 @@ public class ChoiceVO {
 	private String choice_date = null;
 	private int choice_code = 0;
 	private int choice_id = 0;
+	private String movie_title = null;
+	private byte[] movie_img = null;
 	
 	
+	
+	//movie getter setter
+	public String getMovie_title() {
+		return movie_title;
+	}
+	public void setMovie_title(String movie_title) {
+		this.movie_title = movie_title;
+	}
+	public byte[] getMovie_img() {
+		return movie_img;
+	}
+	public void setMovie_img(byte[] movie_img) {
+		this.movie_img = movie_img;
+	}
 	//Getter Setter
 	public long getChoice_no() {
 		return choice_no;

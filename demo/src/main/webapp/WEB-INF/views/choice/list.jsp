@@ -2,6 +2,10 @@
     pageEncoding="UTF-8"%>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="security" uri= "http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<% pageContext.setAttribute("newLineChar", "\n"); %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,29 +14,37 @@
 </head>
 <body>
 <div class="container"> 
-		<h4>인생영화 선택목록</h4>
+		<h4><security:authentication property="name" />님의 인생영화 목록입니다!<br /></h4>
 		<a href="${pageContext.request.contextPath}/choice/insert">나의 인생영화 등록</a>
 		<table class="table">
-			<thead>
-				<tr>	
-					<th>영화 제목</th>	
-					<th>관람 횟수</th>	
-					<th>선정 이유</th>
-					<th>이유 카테고리</th>					
-					<th>등록일</th>
-				</tr>
-			</thead>
-			
 			<tbody>
 				<c:forEach var="tmp" items="${list}">
 				<tr>
-					<td>${tmp.movie_title}</td>
-					<td>${tmp.choice_freq}</td>
-					<td>${tmp.choice_reason}</td>
-					<td>${tmp.choice_category}</td>
-					<td>${tmp.choice_date}</td>
+					<td rowspan="6"><img src="${pageContext.request.contextPath}/choice/getimg?no=${tmp.choice_code}" style="height:500px;"></td>
+					<td>영화제목: ${tmp.movie_title}</td>
 				</tr>
+				<tr>
+					<td>관람횟수: ${tmp.choice_freq}</td>
+				</tr>
+				<tr>
+					<td>인생 영화 선정 이유: ${fn:replace(tmp.choice_reason, newLineChar, "<br />")}</td>
+				</tr>
+				<tr>
+					<td>${tmp.choice_category}</td>
+				</tr>
+				<tr>
+					<td><c:set var="dt" value="${fn:split(tmp.choice_date, ' ')}" />
+						등록일: ${dt[0]}</td>
+				</tr>
+				<tr>
+					<td>작성자: ${tmp.choice_id}
+						<a href="${pageContext.request.contextPath}/choice/update" class="btn btn-primary">수정</a>
+						<a href="${pageContext.request.contextPath}/choice/update" class="btn btn-danger">삭제</a>
+						</td>
+				</tr>			
 				</c:forEach>
+				
+								
 			</tbody>
 		</table>
 	</div>

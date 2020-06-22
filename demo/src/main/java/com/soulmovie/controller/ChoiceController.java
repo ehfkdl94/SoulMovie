@@ -1,11 +1,17 @@
 package com.soulmovie.controller;
 
+import java.io.InputStream;
 //import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
@@ -15,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.soulmovie.dao.HomeDAO;
 import com.soulmovie.mapper.ChoiceMapper;
 import com.soulmovie.mapper.MovieMapper;
 import com.soulmovie.mapper.UserMapper;
@@ -30,6 +37,9 @@ public class ChoiceController {
 	
 	@Autowired
 	public ChoiceMapper cMapper;
+	
+	@Autowired
+	HomeDAO hDAO = null;
 	
 	@Autowired
 	public UserMapper uMapper;
@@ -85,8 +95,10 @@ public class ChoiceController {
 //				System.out.println(user.getUsername());
 				String username = user.getUsername();
 				int userid = uMapper.findUserid(username);
+//				System.out.println(userid);
 				List<ChoiceVO> list = cMapper.selectChoiceList(userid);
-				model.addAttribute("list", list);								
+				model.addAttribute("list", list);
+				
 			}
 		}
 		else {
@@ -94,5 +106,35 @@ public class ChoiceController {
 		}
 		
 		return request.getContextPath() + "/choice/list";
+	}
+	
+	@RequestMapping(value="/getimg")
+	public ResponseEntity<byte[]> getimg(@RequestParam(value="no") int no, HttpServletRequest request) {
+		
+		MovieVO obj = hDAO.selectBoardImg(no);
+		try {
+			if (obj.getMovie_img().length > 0) {
+				HttpHeaders header = new HttpHeaders();
+				header.setContentType(MediaType.IMAGE_JPEG);
+				ResponseEntity<byte[]> ret = new ResponseEntity<byte[]>(obj.getMovie_img(), header, HttpStatus.OK);
+				return ret;
+			}
+			return null;
+		}catch(Exception e){
+			try{//InputStream in = request.getServletContext().getResourceAsStream() -> /src/main/webapp
+			InputStream in = request.getServletContext().getResourceAsStream("/resources/img/default.jpg");
+			HttpHeaders header = new HttpHeaders();
+			header.setContentType(MediaType.IMAGE_JPEG);
+			ResponseEntity<byte[]> ret = new ResponseEntity<byte[]>(IOUtils.toByteArray(in), header, HttpStatus.OK);
+			return ret;
+			}catch(Exception e1) {
+				return null;
+			}
+		}
+	}
+	
+	@RequestMapping(value = "/update", method=RequestMethod.GET)
+	public String update(HttpServletRequest request) {
+		return request.getContextPath() + "choice/update";
 	}
 }
