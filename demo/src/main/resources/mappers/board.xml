@@ -70,5 +70,9 @@
 		SELECT NVL(MIN(BRDNO),0) FROM BOARD 
 		WHERE BRDNO <![CDATA[ > ]]>#{brdno} 
 	</select>
+	
+	<select id="findId" parameterType="String" resultType="int">
+		SELECT * FROM MEMBER WHERE USERNAME=#{username}
+	</select>
 
 </mapper>

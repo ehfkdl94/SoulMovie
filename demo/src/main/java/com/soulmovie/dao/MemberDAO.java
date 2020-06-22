@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.soulmovie.vo.BoardVO;
 import com.soulmovie.vo.MemberVO;
 
 @Service
@@ -24,5 +25,9 @@ public class MemberDAO {
 	
 	public int countMember(String text) {
 		return sqlFactory.openSession().selectOne("Member.count", text);
+	}
+	
+	public MemberVO selectMemberOne(int no) {
+		return sqlFactory.openSession().selectOne("Member.selectMemberOne", no);
 	}
 }

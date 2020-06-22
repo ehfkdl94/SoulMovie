@@ -87,7 +87,7 @@
 				<c:forEach var="tmp" items="${list}">
 				<tr>
 					<td>${tmp.userid}</td>
-					<td>${tmp.username}</td>
+					<td><a href="/admin/membercontent?no=${tmp.userid}">${tmp.username}</a></td>
 					<td>${tmp.usernick}</td>
 					<td>${tmp.useremail}</td>
 					<td>${tmp.joindate}</td>
