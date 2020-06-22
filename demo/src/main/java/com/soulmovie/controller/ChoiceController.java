@@ -38,12 +38,13 @@ public class ChoiceController {
 			@RequestParam(value="text", required = false) String text,
 			@RequestParam(value="chk", required = false) String chk) {
 		String username = (String) httpSession.getAttribute("SESSION_ID");
+		System.out.println(username);
 		if(username == null) {
 			return "redirect:/member/login";
-		}else {
+		}
 		int userid = uMapper.findUserid(username);
-		System.out.println(userid);
-//		model.addAttribute("userid", userid);
+		System.out.println(username);
+		model.addAttribute("userid", userid);
 		if(text == null && chk== null) {
 			return "redirect:"+request.getContextPath()+"/choice/insert?text=&chk=";
 		}
@@ -60,7 +61,7 @@ public class ChoiceController {
 		}
 		return request.getContextPath() + "/choice/insert";
 		}
-	}
+	
 	
 	@RequestMapping(value = "/insert", method=RequestMethod.POST)
 	public String insertpost(HttpServletRequest request, @ModelAttribute ChoiceVO obj) {
