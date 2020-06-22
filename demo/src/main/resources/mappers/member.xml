@@ -4,9 +4,14 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="Movie">
+<mapper namespace="Member">
 
 	<select id="selectList" parameterType="map" resultType="com.soulmovie.vo.MemberVO">
 		SELECT * FROM MEMBER WHERE USERID BETWEEN #{start} AND #{end}
+	</select>
+	
+	<select id="count" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM MEMBER
+		WHERE USERNAME LIKE '%' || #{text} || '%' 
 	</select>
 </mapper>

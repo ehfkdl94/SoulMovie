@@ -45,10 +45,11 @@
     <div class="inner">
       <img src="${pageContext.request.contextPath}/resources/img/logo4.png" alt="">
       <nav class="nav nav-masthead justify-content-center">
-        <a class="nav-link active" href="#">Home</a>
-        <a class="nav-link" href="/admin/member">Member</a>
-        <a class="nav-link" href="/admin/movie">Movie</a>
-        <a class="nav-link" href="/admin/board">Board</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/admin/home">Home</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/admin/member">Member</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/admin/movie">Movie</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/admin/board">Board</a>
+      </nav>
     </div>
   </header>
 
