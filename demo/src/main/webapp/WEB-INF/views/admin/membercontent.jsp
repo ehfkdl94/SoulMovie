@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="security" uri= "http://www.springframework.org/security/tags" %>
 <!doctype html>
 <html lang="en">
   <head>
@@ -47,10 +46,10 @@
     <div class="inner">
       <img src="${pageContext.request.contextPath}/resources/img/logo4.png" alt="">
       <nav class="nav nav-masthead justify-content-center">
-        <a class="nav-link active" href="#">Home</a>
-        <a class="nav-link" href="/admin/member">Member</a>
-        <a class="nav-link" href="/admin/movie">Movie</a>
-        <a class="nav-link" href="/admin/board">Board</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/admin/home">Home</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/admin/member">Member</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/admin/movie">Movie</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/admin/board">Board</a>
       </nav>
     </div>
   </header>
@@ -58,25 +57,49 @@
   <main role="main" class="inner cover text-center">
   	<article id="contact">
 								<h2 class="major">Contact</h2>
-								<form method="post" action="/admin/boardupdate">
+								<form method="post" action="#">
 									<div class="fields">
-										<div class="field">
-											<label for="email">제목</label>
-											<input type="text" name="brdtitle" id="name" value="${obj.brdtitle}"/>
-
+										<div class="field-half">
+											<label for="email">회원번호</label>
+											<p class="p_class">${obj.userid}</p>
 										</div>
-										<div class="field">
-											<label for="message">내용</label>
-											<textarea name="brdcontent" id="message" rows="4" >${obj.brdcontent}</textarea>
+										<div class="field-half">
+											<label for="email">아이디</label>
+											<p class="p_class">${obj.username}</p>
 										</div>
-										<div class="field">
-											<label for="message">작성자</label>
-											<input type="text" name="username" id="name" value="<security:authentication property="name"/>"/>
+										<div class="field-half">
+											<label for="email">닉네임</label>
+											<p class="p_class">${obj.usernick}</p>
+										</div>
+										<div class="field-half">
+											<label for="email">연령대</label>
+											<p class="p_class">${obj.userage}</p>
+										</div>
+										<div class="field-half">
+											<label for="email">성별</label>
+											<p class="p_class">${obj.usergender}</p>
+										</div>
+										<div class="field-half">
+											<label for="email">이메일</label>
+											<p class="p_class">${obj.useremail}</p>
+										</div>
+										<div class="field-half">
+											<label for="email">인생영화 등록 횟수</label>
+											<p class="p_class">${obj.userccnt}</p>
+										</div>
+										<div class="field-half">
+											<label for="email">가입일</label>
+											<p class="p_class">${obj.joindate}</p>
 										</div>
 										
 									</div>
-									<input type="hidden" value="${obj.brdno}" name="brdno"/>
-									<input type="submit" value="수정" />
+										<ul class="actions">
+											<button type="button" onclick="location.href='/admin/member' ">List</button>
+											<button type="button" onclick="location.href='/admin/memberupdate?no=${obj.userid}' ">update</button>
+											<button type="button" onclick="location.href='/admin/memberdelete?no=${obj.userid}' ">delete</button>
+										</ul>
+										
+								
 								</form>
 								<!--  
 								<ul class="icons">

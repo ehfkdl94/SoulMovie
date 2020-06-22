@@ -74,6 +74,10 @@
 	<select id="selectuserid" parameterType="String" resultType="int">
 		SELECT USERID FROM MEMBER 
 		WHERE USERNAME=#{username} 
+</select>
+	<select id="findId" parameterType="String" resultType="int">
+		SELECT * FROM MEMBER WHERE USERNAME=#{username}
+
 	</select>
 
 </mapper>

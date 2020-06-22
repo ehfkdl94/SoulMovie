@@ -69,7 +69,6 @@
 				<span>|</span>
 				<div class="user-panel">
 				<a href="${pageContext.request.contextPath}/member/logout" class="logout">Logout</a>
-				<a href="${pageContext.request.contextPath}/member/join" class="register">Create an account</a>
 			</div>
 			</security:authorize>
 		</div>

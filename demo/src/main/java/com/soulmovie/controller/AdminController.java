@@ -180,7 +180,8 @@ public class AdminController {
 	@RequestMapping(value = "/boardinsert", method = RequestMethod.POST)
 	public String boardinsertpost(@ModelAttribute BoardVO obj,
 			HttpServletRequest request) throws IOException {
-		
+		int userid = bDAO.findId(obj.getUsername());
+		obj.setBrdid(userid);
 		//DAO로 obj값 전달하기
 		bDAO.insertBoard(obj);
 		
@@ -188,29 +189,22 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/boardupdate")
-	public String boardupdate(Model model, HttpServletRequest req, @RequestParam(value="no")int no) {
+	public String boardupdate(Model model, HttpServletRequest request, @RequestParam(value="no")int no) {
 		BoardVO obj = bDAO.selectBoardOne(no);
 		model.addAttribute("obj", obj);
-		return "/admin/boardupdate";
+		return request.getContextPath() + "/admin/boardupdate";
 	}
 	
 	@RequestMapping(value="/boardupdate", method=RequestMethod.POST)
 	public String boardupdatepost(
-			@RequestParam("brdno")int brd_no,
-			@RequestParam("brdtitle")String brd_title,
-			@RequestParam("brdcontent")String brd_content,
-			@RequestParam("brdid")int brd_id){
-		
-		
-		BoardVO obj = new BoardVO();
-		obj.setBrdno(brd_no);
-		obj.setBrdtitle(brd_title);
-		obj.setBrdcontent(brd_content);
-		obj.setBrdid(brd_id);
+			@ModelAttribute BoardVO obj,
+			HttpServletRequest request){
+		int userid = bDAO.findId(obj.getUsername());
+		obj.setBrdid(userid);
 	
 		bDAO.updateBoard(obj);
 		
-		return "redirect:/admin/board";
+		return "redirect:" + request.getContextPath() + "/admin/board";
 		
 	}
 	
@@ -234,5 +228,20 @@ public class AdminController {
 		model.addAttribute("list", list);
 		model.addAttribute("cnt", (int)Math.ceil(cnt/7.0));
 		return request.getContextPath() +"/admin/memberlist";
+	}
+	
+	@RequestMapping(value = "/membercontent", method = RequestMethod.GET)
+	public String membercontent(Model model, HttpSession httpSession, HttpServletRequest request,
+			@RequestParam(value="no", defaultValue = "0", required = false) int no) {
+		if( no == 0) {
+			return "redirect:"+request.getContextPath()+"/admin/member";
+		}
+		
+		MemberVO obj = memberDAO.selectMemberOne(no);
+		System.out.println(obj.toString());
+		model.addAttribute("obj", obj);
+		
+	
+		return request.getContextPath() + "/admin/membercontent";
 	}
 }
