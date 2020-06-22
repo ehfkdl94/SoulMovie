@@ -42,7 +42,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http ) throws Exception {
 		http.authorizeRequests( )
-			 	//.antMatchers("/admin","/admin/*").hasAuthority("ADMIN")
+			 	.antMatchers("/admin","/admin/*").hasAuthority("ADMIN")
+			 	.antMatchers("/choice","/choice/*").hasAnyAuthority("ADMIN","USER")
 				.antMatchers("/board/**").authenticated()
 			 	.anyRequest().permitAll()
 			 	.and()
@@ -61,8 +62,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	        	.failureUrl("/member/login")
 	        	.and()
 			 .logout()
-			 	.logoutUrl("/logout")  //로그아웃페이지
-			 	.logoutSuccessUrl("/home") //성공시 페이지
+			 	.logoutUrl("/member/logout")  //로그아웃페이지
+			 	.logoutSuccessUrl("/") //성공시 페이지
 			 	.invalidateHttpSession(true)  // httpSession.invalidate 를 실행
 			 	.clearAuthentication(true)///로그아웃 후 인증삭제
 			 	.permitAll()
