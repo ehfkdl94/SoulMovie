@@ -29,8 +29,11 @@ public class MovieDAO {
 	public List<MovieVO> selectMovie() {
 		return sqlFactory.openSession().selectList("Movie.movielist");
 	}
-	public List<MovieVO> selectPageMovie(HashMap<String, Object> map) {
-		return sqlFactory.openSession().selectList("Movie.moviepagelist",map);
+	public List<MovieVO> selectPageMovieText(HashMap<String, Object> map) {
+		return sqlFactory.openSession().selectList("Movie.moviepagelistText",map);
+	}
+	public List<MovieVO> selectPageMovieGenre(HashMap<String, Object> map) {
+		return sqlFactory.openSession().selectList("Movie.moviepagelistGenre",map);
 	}
 	
 	public List<MovieVO> selectMovie1(HashMap<String, Object> map) {
