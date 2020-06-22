@@ -28,7 +28,7 @@
 		<security:authentication property="principal"/> <hr /> 
 		로그인한 사용자 권한 : <security:authentication property="authorities"/> <br />
 		로그인한 사용자 아이디 : <security:authentication property="name"/> 님 환영합니다 <br />
-		<form action="/security/logout" method="post">
+		<form action="/member/logout" method="post">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 			<input type="submit" value="로그아웃" />
 		</form>
