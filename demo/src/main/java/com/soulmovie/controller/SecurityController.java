@@ -1,16 +1,22 @@
 package com.soulmovie.controller;
 
+
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.soulmovie.mapper.UserMapper;
+import com.soulmovie.vo.MovieVO;
 import com.soulmovie.vo.UserVo;
 
 
@@ -61,6 +67,42 @@ public class SecurityController {
 		}
 		
 		
+	
+		
+		
+		@RequestMapping(value = "/mypage", method = RequestMethod.GET) 
+		public String mypage(HttpServletRequest request, Authentication auth,
+				Model model
+				 ) {
+			if(auth != null) {
+				User user = (User)auth.getPrincipal();
+				if(user != null) {
+				String username = user.getUsername();		
+				UserVo obj = userMapper.findByUsername(username);
+				model.addAttribute("obj", obj);
+					}			
+							
+				}
+					
+			return request.getContextPath()+"/member/mypage";
+			}
+			
+			
+				
+}
+		
+
+			
+		
+		
+		
+		
+		
+	
+		
+		
+		
+		
 //		@RequestMapping(value="/login", method= RequestMethod.POST)
 //		public String loginpost(@ModelAttribute UserVo obj, 
 //				HttpSession httpSession, HttpServletRequest request) {
@@ -82,7 +124,7 @@ public class SecurityController {
 //		
 //		@RequestMapping(value="/logout", method = RequestMethod.POST)
 //		public String logout(HttpSession httpSession, HttpServletRequest request) {
-//			return "redirect:" +request.getContextPath()+"/";
+//			return "redirect:" +request.getContextPath()+"/	";
 //		}
 		
 
@@ -119,4 +161,4 @@ public class SecurityController {
 
 	
 				
-}
+
