@@ -170,7 +170,7 @@
 									src="${pageContext.request.contextPath}/getimg?no=${tmp.movie_code}"
 									style="height: 400px;" alt=""></a>
 								<div class="ri-text">
-									<div class="cat-name">${tmp.rank}등</div>
+									<div class="cat-name">${tmp.rank}위</div>
 									<a>
 										<h4>${tmp.movie_title}</h4>
 									</a>
