@@ -47,8 +47,8 @@ public class MovieController {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("start", page*6-5); 	//시작위치
 		map.put("end", page*6);		//종료위치
-	
-		List<MovieVO> list2 = mDAO.selectPageMovie(map);
+		map.put("text", text);
+		List<MovieVO> list2 = mDAO.selectPageMovieText(map);
 	
 		model.addAttribute("size", list2.size());
 		model.addAttribute("list2", list2);

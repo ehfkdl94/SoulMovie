@@ -156,7 +156,7 @@
 			<div class="hs-item" style="height: 1500px;">
 
 				<c:if test="${size <4}">
-					<div class="container" style="margin-bottom: 500px;">
+					<div class="container" style="margin-bottom: 600px;">
 				</c:if>
 				<c:if test="${size >3}">
 					<div class="container">
