@@ -197,7 +197,12 @@
 							</c:if>
 							
 							<c:forEach var="i" begin="1" end="${cnt}" step="1">
+								<c:if test="${param.page == i}">
+								<a class="active"	href="${pageContext.request.contextPath}/movie/movielist?page=${i}&text=${param.text}">${i}</a>
+								</c:if>
+								<c:if test="${param.page != i}">
 								<a 	href="${pageContext.request.contextPath}/movie/movielist?page=${i}&text=${param.text}">${i}</a>
+								</c:if>
 							</c:forEach>
 							
 							
