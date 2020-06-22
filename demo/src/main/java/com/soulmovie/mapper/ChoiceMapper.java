@@ -26,6 +26,6 @@ public int insertChoice(@Param("obj") ChoiceVO obj);
 		"INNER JOIN" + 
 		"CHOICE" + 
 		"ON CHOICE.CHOICE_CODE = MOVIE.MOVIE_CODE) T1" + 
-		"ON MEMBER.USERID = T1.CHOICE_ID WHERE USERID = #{userid};"})
+		"ON MEMBER.USERID = T1.CHOICE_ID WHERE USERID = #{userid}"})
 public List<ChoiceVO> selectChoiceList(@Param("userid") int userid);
 }

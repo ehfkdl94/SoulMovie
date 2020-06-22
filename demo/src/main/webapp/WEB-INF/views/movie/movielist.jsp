@@ -90,7 +90,10 @@
 
 </head>
 <body>
-
+<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
 	<!-- Header section -->
 	<header class="header-section clearfix">
 		<a href="index.html" class="site-logo">
@@ -170,7 +173,7 @@
 									src="${pageContext.request.contextPath}/getimg?no=${tmp.movie_code}"
 									style="height: 400px;" alt=""></a>
 								<div class="ri-text">
-									<div class="cat-name">${tmp.rank}등</div>
+									<div class="cat-name">${tmp.rank}위</div>
 									<a>
 										<h4>${tmp.movie_title}</h4>
 									</a>
@@ -197,7 +200,12 @@
 							</c:if>
 							
 							<c:forEach var="i" begin="1" end="${cnt}" step="1">
+								<c:if test="${param.page == i}">
+								<a class="active"	href="${pageContext.request.contextPath}/movie/movielist?page=${i}&text=${param.text}">${i}</a>
+								</c:if>
+								<c:if test="${param.page != i}">
 								<a 	href="${pageContext.request.contextPath}/movie/movielist?page=${i}&text=${param.text}">${i}</a>
+								</c:if>
 							</c:forEach>
 							
 							
