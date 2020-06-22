@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="security" uri= "http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -92,42 +93,51 @@
 
 	<!-- Header section -->
 	<header class="header-section clearfix">
-		<a href="${pageContext.request.contextPath}/" class="site-logo"> <img
-			src="${pageContext.request.contextPath}/resources/img/logo4.png"
-			alt="">
+		<a href="index.html" class="site-logo">
+			<img src="${pageContext.request.contextPath}/resources/img/logo4.png" alt="">
 		</a>
 		<div class="header-right">
-			<a href="#" class="hr-btn">Help</a> <span>|</span>
+			<a href="#" class="hr-btn">Help</a>
+			<span>|</span>
+			<security:authorize access="!isAuthenticated()">
 			<div class="user-panel">
-				<a href="${pageContext.request.contextPath}/member/login" class="login">Login</a> <a href="" class="register">Create
-					an account</a>
+				<a href="${pageContext.request.contextPath}/member/login" class="login">Login</a>
+				<a href="${pageContext.request.contextPath}/member/join" class="register">Create an account</a>
 			</div>
+			</security:authorize>
+			
+			<security:authorize access="isAuthenticated()">
+				<div class="user-panel">
+				<a href="${pageContext.request.contextPath}/member/logout" class="logout">Logout</a>
+				<a href="${pageContext.request.contextPath}/member/join" class="register">Create an account</a>
+			</div>
+			</security:authorize>
 		</div>
 		<ul class="main-menu">
-			<li><a href="${pageContext.request.contextPath}/">Home</a></li>
-			<li><a href="#">About</a></li>
-			<li><a href="#">Pages</a>
+			<li><a href="/">Home</a></li>
+			<li><a href="${pageContext.request.contextPath}/movie/movielist">Movie</a>
+				<!--  
 				<ul class="sub-menu">
 					<li><a href="category.html">Category</a></li>
 					<li><a href="playlist.html">Playlist</a></li>
 					<li><a href="artist.html">Artist</a></li>
 					<li><a href="blog.html">Blog</a></li>
 					<li><a href="contact.html">Contact</a></li>
-				</ul></li>
-			<li><a href="blog.html">News</a></li>
+				</ul>
+				-->
+			</li>
+			<li><a href="${pageContext.request.contextPath}/board/list">Board</a></li>
 			<li><a href="contact.html">Contact</a></li>
 		</ul>
 	</header>
 	<!-- Header section end -->
 	<!-- search  start-->
-	<div class="hero-search set-bg"
-		style="background: #0a183d;">
+	<div class="hero-search set-bg" style="background: #0a183d;">
 		<div class="container">
 			<div class="filter-table">
 				<form action="#" class="filter-search">
-					<input type= "hidden" name="page" value="1" />
-					<input type="text"  name ="text" placeholder="검색어"> 
-					<select id="category">
+					<input type="hidden" name="page" value="1" /> <input type="text"
+						name="text" placeholder="검색어"> <select id="category">
 						<option value="">분류</option>
 					</select> <select id="tag">
 						<option value="">영화제목</option>
@@ -141,51 +151,66 @@
 	<!-- search end -->
 	<!-- Hero section -->
 	<section class="hero-section">
-	
+
 		<div class="hero-slider owl-carousel">
 			<div class="hs-item" style="height: 1500px;">
-			
-			<c:if test="${size <4}">
-				<div class="container" style= "margin-bottom:500px;">
+
+				<c:if test="${size <4}">
+					<div class="container" style="margin-bottom: 500px;">
 				</c:if>
- 			<c:if test="${size >3}">  
-				<div class="container" >
-	  			</c:if>	
-					<div class="row">
+				<c:if test="${size >3}">
+					<div class="container">
+				</c:if>
+				<div class="row">
 					<c:forEach var="tmp" items="${list2}">
 						<div class="col-lg-4 col-sm-6">
 							<div class="recipe-item">
-								<a href="${pageContext.request.contextPath}/movie/moviedetail?movie_code=${tmp.movie_code}"><img
-									src="${pageContext.request.contextPath}/getimg?no=${tmp.movie_code}" 
-									style ="height:400px;"
-									alt=""></a>
+								<a
+									href="${pageContext.request.contextPath}/movie/moviedetail?movie_code=${tmp.movie_code}"><img
+									src="${pageContext.request.contextPath}/getimg?no=${tmp.movie_code}"
+									style="height: 400px;" alt=""></a>
 								<div class="ri-text">
 									<div class="cat-name">${tmp.rank}등</div>
-									<a >
+									<a>
 										<h4>${tmp.movie_title}</h4>
 									</a>
 									<p>${tmp.movie_actor}</p>
 								</div>
 							</div>
 						</div>
-	
-						
+
+
 					</c:forEach>
 
 
 
 
-					</div>
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="recipe-pagination">
+				</div>
+
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="recipe-pagination">
 							
-											</div>
+							<c:if test="${param.page != 1}">
+							
+                    			<a href="${pageContext.request.contextPath}/movie/movielist?page=${param.page-1}&text=${param.text}">이전</a>
+							</c:if>
+							
+							<c:forEach var="i" begin="1" end="${cnt}" step="1">
+								<a 	href="${pageContext.request.contextPath}/movie/movielist?page=${i}&text=${param.text}">${i}</a>
+							</c:forEach>
+							
+							
+							<c:if test="${cnt != param.page}">
+                    			<a href="${pageContext.request.contextPath}/movie/movielist?page=${param.page+1}&text=${param.text}">다음</a>
+							</c:if>
+					
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
 
 
 	</section>
@@ -199,21 +224,9 @@
 	<!-- page end -->
 
 
-	<script>
-		$(function(){
-			$('#recipe-pagination').twbsPagination({
-		        totalPages: Number('${cnt}'), /* 전체 페이지 수*/
-		        visiblePages: 6, /*화면에 표시할 페이지 수 */
-		        startPage : Number('${param.page}'), /* 주소창에 ~~/board/list?page=1 */
-		        initiateStartPageClick : false,
-		        onPageClick: function (event, page) {
-		             window.location.href = "${pageContext.request.contextPath}/movie/movielist?page="+page +"&text=${param.text}";
-		        }
-		    });
-		})
-	</script>
+
 	<!--====== Javascripts & Jquery ======-->
-	
+
 	<script
 		src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
 	<script

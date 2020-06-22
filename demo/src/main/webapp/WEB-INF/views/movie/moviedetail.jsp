@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="security" uri= "http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -46,35 +47,45 @@
 <body>
   
    <!-- Header section -->
-   <header class="header-section clearfix">
-      <a href="${pageContext.request.contextPath}/" class="site-logo">
+	<header class="header-section clearfix">
+		<a href="index.html" class="site-logo">
 			<img src="${pageContext.request.contextPath}/resources/img/logo4.png" alt="">
 		</a>
-      <div class="header-right">
-         <a href="#" class="hr-btn">Help</a>
-         <span>|</span>
-         <div class="user-panel">
-            <a href="" class="login">Login</a>
-            <a href="" class="register">Create an account</a>
-         </div> 
-      </div>
-      <ul class="main-menu">
-         <li><a href="${pageContext.request.contextPath}/">Home</a></li>
-         <li><a href="#">About</a></li>
-         <li><a href="#">Pages</a>
-            <ul class="sub-menu">
-               <li><a href="category.html">Category</a></li>
-               <li><a href="playlist.html">Playlist</a></li>
-               <li><a href="artist.html">Artist</a></li>
-               <li><a href="blog.html">Blog</a></li>
-               <li><a href="contact.html">Contact</a></li>
-            </ul>
-         </li>
-         <li><a href="blog.html">News</a></li>
-         <li><a href="contact.html">Contact</a></li>
-      </ul>
-   </header>
-   <!-- Header section end -->
+		<div class="header-right">
+			<a href="#" class="hr-btn">Help</a>
+			<span>|</span>
+			<security:authorize access="!isAuthenticated()">
+			<div class="user-panel">
+				<a href="${pageContext.request.contextPath}/member/login" class="login">Login</a>
+				<a href="${pageContext.request.contextPath}/member/join" class="register">Create an account</a>
+			</div>
+			</security:authorize>
+			
+			<security:authorize access="isAuthenticated()">
+				<div class="user-panel">
+				<a href="${pageContext.request.contextPath}/member/logout" class="logout">Logout</a>
+				<a href="${pageContext.request.contextPath}/member/join" class="register">Create an account</a>
+			</div>
+			</security:authorize>
+		</div>
+		<ul class="main-menu">
+			<li><a href="/">Home</a></li>
+			<li><a href="${pageContext.request.contextPath}/movie/movielist">Movie</a>
+				<!--  
+				<ul class="sub-menu">
+					<li><a href="category.html">Category</a></li>
+					<li><a href="playlist.html">Playlist</a></li>
+					<li><a href="artist.html">Artist</a></li>
+					<li><a href="blog.html">Blog</a></li>
+					<li><a href="contact.html">Contact</a></li>
+				</ul>
+				-->
+			</li>
+			<li><a href="${pageContext.request.contextPath}/board/list">Board</a></li>
+			<li><a href="contact.html">Contact</a></li>
+		</ul>
+	</header>
+	<!-- Header section end -->
 
    <!-- Hero section -->
    <section class="hero-section" >
