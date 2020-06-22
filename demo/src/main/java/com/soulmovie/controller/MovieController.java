@@ -37,9 +37,10 @@ public class MovieController {
 			@RequestParam(value="movie_code", defaultValue="1",required= false) int movie_code
 			,@RequestParam(value = "page", defaultValue = "0", required = false) int page,
 			@RequestParam(value = "text", defaultValue = "", required = false) String text,
+			@RequestParam(value = "category", defaultValue = "", required = false) String category,
 			HttpSession httpSession,
 			Model model) {
-		
+		System.out.println(category);
 		if(page == 0) {
 			return "redirect:" + request.getContextPath() + "/movie/movielist?page=1"; 
 		}
@@ -49,7 +50,13 @@ public class MovieController {
 		map.put("end", page*6);		//종료위치
 		map.put("text", text);
 		List<MovieVO> list2 = mDAO.selectPageMovieText(map);
-	
+		if(category.equals("title")) {
+		list2 = mDAO.selectPageMovieText(map);
+		}
+		else if(category.equals("genre")) {
+		list2 =mDAO.selectPageMovieGenre(map);
+		}
+		
 		model.addAttribute("size", list2.size());
 		model.addAttribute("list2", list2);
 		int cnt = mDAO.countBoard(text); //검색어를 넘겨줌.

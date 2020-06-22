@@ -136,13 +136,13 @@
 		<div class="container">
 			<div class="filter-table">
 				<form action="#" class="filter-search">
-					<input type="hidden" name="page" value="1" /> <input type="text"
-						name="text" placeholder="검색어"> <select id="category">
-						<option value="">분류</option>
-					</select> <select id="tag">
-						<option value="">영화제목</option>
-						<option value="">게시글번호</option>
-					</select>
+					<input type="hidden" name="page" value="1" /> 
+					<input type="text" name="text" placeholder="검색어"> 
+					<select id="category" name ="category">
+						<option value="title">영화제목</option>
+						<option value="genre">장르</option>
+					</select> 
+				
 					<button type="submit">Search</button>
 				</form>
 			</div>
