@@ -4,6 +4,7 @@ package com.soulmovie.mapper;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.soulmovie.vo.UserVo;
 
@@ -19,6 +20,12 @@ public interface UserMapper {
 	
 	@Select({"SELECT USERID FROM MEMBER WHERE USERNAME =#{username}"})
 	public int findUserid(@Param("username") String username);
+
+	
+	@Update({"UPDATE MEMBER SET USERNICK = #{obj.usernick}, USERAGE = #{obj.userage}, USEREMAIL = #{obj.useremail}"
+			+ "WHERE USERNAME = #{obj.username}"})
+	public int updateMember(@Param("obj") UserVo obj);
+	
 
 
 	

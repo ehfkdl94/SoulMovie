@@ -1,8 +1,6 @@
 package com.soulmovie.controller;
 
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.soulmovie.mapper.UserMapper;
-import com.soulmovie.vo.MovieVO;
 import com.soulmovie.vo.UserVo;
 
 
@@ -86,7 +83,41 @@ public class SecurityController {
 					
 			return request.getContextPath()+"/member/mypage";
 			}
+		
+		
+		
+		@RequestMapping(value = "/update", method = RequestMethod.GET)
+		public String update(HttpServletRequest request, Authentication auth,
+				Model model) {
+			if(auth != null) {
+				User user = (User)auth.getPrincipal();
+				if(user != null) {
+				String username = user.getUsername();		
+				UserVo obj = userMapper.findByUsername(username);
+				model.addAttribute("obj", obj);
+					}			
+							
+				}
+
+			return "/member/update";
+		}
+		
+		
+
+		@RequestMapping(value = "/update", method = RequestMethod.POST)
+		public String update(@ModelAttribute UserVo obj, HttpServletRequest request)  { 
+			System.out.println(obj.toString());
+			System.out.println(obj.getUserrname());
 			
+			//BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		
+			//String str1 = passwordEncoder.encode(obj.getPassword());
+			//obj.setPassword(str1);
+
+			userMapper.updateMember(obj);
+			
+			return "redirect:" + request.getContextPath() + "/member/mypage";
+		}
 			
 				
 }

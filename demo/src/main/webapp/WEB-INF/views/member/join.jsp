@@ -104,7 +104,8 @@
             <!-- Main -->
                <div id="main">
                
-               <article id="elements">
+               <article id="contact" class="active" style="">
+         
                         <h2 class="major">Join</h2>
                         
                         
