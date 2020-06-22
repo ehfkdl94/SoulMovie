@@ -135,11 +135,15 @@
                 
                      <h4 class="h4 mb-3" style="color:white;">인생영화리뷰</h4>
                      <ul class="list-unstyled list-line mb-5">
-						<h3 class="h5" style="color:white;">리뷰1</h3>
-						<h3 class="h5" style="color:white;">리뷰1</h3>
-						<h3 class="h5" style="color:white;">리뷰1</h3>
-						<h3 class="h5" style="color:white;">리뷰1</h3>
-						<h3 class="h5" style="color:white;">리뷰1</h3>
+                    	<c:if test="${!empty review}">
+						 <c:forEach var="tmp" items="${review}">
+						 <h3 class="h5" style="color:white;"> ${tmp.choice_id} : ${tmp.choice_reason}</h3>
+                  
+						</c:forEach>
+						</c:if>
+						<c:if test="${empty review}">
+						<h3 class="h5" style="color:white;">영화의 리뷰를 남겨보세요!</h3>
+						</c:if>
                      </ul>
          
                  

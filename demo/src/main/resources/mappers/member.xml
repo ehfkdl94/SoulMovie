@@ -7,11 +7,24 @@
 <mapper namespace="Member">
 
 	<select id="selectList" parameterType="map" resultType="com.soulmovie.vo.MemberVO">
-		SELECT * FROM MEMBER WHERE USERID BETWEEN #{start} AND #{end}
+		SELECT * FROM
+			(SELECT 
+				USERID, USERNAME, USERNICK, USEREMAIL, JOINDATE, 
+				ROW_NUMBER() OVER (ORDER BY USERID DESC) ROWN 
+			FROM 
+				MEMBER
+			WHERE
+				USERNAME LIKE '%' || #{text} || '%')
+		WHERE ROWN BETWEEN #{start} AND #{end}
+		
 	</select>
 	
 	<select id="count" parameterType="String" resultType="int">
 		SELECT COUNT(*) FROM MEMBER
 		WHERE USERNAME LIKE '%' || #{text} || '%' 
+	</select>
+	
+	<select id="selectMemberOne" parameterType="int" resultType="com.soulmovie.vo.MemberVO">
+		SELECT * FROM MEMBER WHERE USERID=#{no}
 	</select>
 </mapper>

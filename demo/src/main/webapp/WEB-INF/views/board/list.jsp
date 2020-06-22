@@ -38,6 +38,8 @@
 					<th>날짜</th>
 				</tr>
 			</thead>
+
+
 			
 			<tbody>
 				<c:if test="${empty list}">
