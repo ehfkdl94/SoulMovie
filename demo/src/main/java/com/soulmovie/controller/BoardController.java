@@ -40,22 +40,19 @@ public class BoardController {
 //		if(userid == null) { //아이디값이 없다면 로그인되지 않은 상태
 //			return request.getContextPath()+"redirect:/member/login"; //로그인 페이지로 이동
 //		}
-		//그렇지 않다면 게시판 글쓰기 화면 표시
+//		그렇지 않다면 게시판 글쓰기 화면 표시
 //		model.addAttribute("userid", userid);
-		return request.getContextPath()+"/board/insert";
+		return request.getContextPath()+"/board/insert2";
 	}
 	
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public String insertBoardPost(@ModelAttribute BoardVO obj,
 			@RequestParam MultipartFile[] imgs, HttpServletRequest request) throws IOException {
-		if(imgs != null && imgs.length > 0) { //이미지가 첨부되었다면
-			for ( MultipartFile one : imgs   ) {
-				obj.setBrdimg( one.getBytes() );
-			}
-		}
-		
+		int userid=bDAO.selectuserid(obj.getUsername());
 		//DAO로 obj값 전달하기
+		obj.setBrdid(userid);
 		bDAO.insertBoard(obj);
+		
 		
 		return "redirect:"+request.getContextPath()+"/board/list";
 	}
@@ -84,7 +81,7 @@ public class BoardController {
 		int n = bDAO.selectBoardNext(no);
 		model.addAttribute("next", n);
 		
-		return request.getContextPath()+"/board/content";
+		return request.getContextPath()+"/board/content2";
 	}
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
@@ -112,7 +109,7 @@ public class BoardController {
 		int cnt = bDAO.countBoard(text); //검색어를 넘겨줌.
 		//System.out.println( (int) Math.ceil(n/10.0) );
 		model.addAttribute("cnt", (cnt-1)/10+1);
-		return request.getContextPath()+"/board/list";
+		return request.getContextPath()+"/board/list2";
 	}
 	
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
@@ -121,7 +118,7 @@ public class BoardController {
 			@RequestParam(value="no", defaultValue = "0") int no) {
 		BoardVO vo = bDAO.selectBoardOne(no);
 		model.addAttribute("vo", vo);
-		return request.getContextPath()+"/board/update";
+		return request.getContextPath()+"/board/update2";
 	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.POST)

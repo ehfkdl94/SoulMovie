@@ -57,6 +57,10 @@ public class BoardDAO {
 	public int deleteBoard(BoardVO obj) {
 		return sqlFactory.openSession().delete("Board.deleteBoard", obj);
 	}
+	
+	public int selectuserid(String username) {
+		return sqlFactory.openSession().selectOne("Board.selectuserid", username);
+	}
 }
 
 
