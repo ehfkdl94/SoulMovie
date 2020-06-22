@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,12 +33,12 @@ public class MovieController {
 		return request.getContextPath()+"/movie/moviedetail";
 	}
 	@RequestMapping(value = "/movielist", method = RequestMethod.GET)
-	public String movielist(HttpServletRequest request,
+	public String movielist(HttpServletRequest request, HttpSession httpSession,
 			@RequestParam(value="movie_code", defaultValue="1",required= false) int movie_code
 			,@RequestParam(value = "page", defaultValue = "1", required = false) int page,
 			@RequestParam(value = "text", defaultValue = "", required = false) String text,
 			Model model) {
-		
+		System.out.println(httpSession.getId());
 
 		
 		HashMap<String, Object> map = new HashMap<String, Object>();

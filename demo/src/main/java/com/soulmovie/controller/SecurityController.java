@@ -68,6 +68,7 @@ public class SecurityController {
 			UserVo obj1 = userMapper.selectMemberLogin(obj);
 			if (obj1 != null) { //로그인 성공
 				httpSession.setAttribute("SESSION_ID", obj.getUsername());
+				System.out.println(httpSession.getAttribute("SESSION_ID"));
 				String backURL = (String) httpSession.getAttribute("CURRPAGE");
 				return "redirect:" + backURL; //고정되면 안됨!! 마지막페이지로 가야 한다.
 				
