@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.soulmovie.vo.BoardVO;
+import com.soulmovie.vo.ChoiceVO;
 import com.soulmovie.vo.MovieVO;
 
 @Service
@@ -17,6 +18,11 @@ public class MovieDAO {
 	
 	@Autowired
 	private SqlSessionFactory sqlFactory = null;
+	
+	public List<ChoiceVO> selectMoiveReview(int movie_code) {
+		return sqlFactory.openSession().selectList("Movie.selectMoiveReview",movie_code); //영화 상세정보 출력
+	}
+	
 	
 	public MovieVO selectMovieOne(int movie_code) {
 		return sqlFactory.openSession().selectOne("Movie.moviedetail",movie_code); //영화 상세정보 출력
