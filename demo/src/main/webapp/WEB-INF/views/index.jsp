@@ -54,9 +54,10 @@
 			<img src="${pageContext.request.contextPath}/resources/img/logo4.png" alt="">
 		</a>
 		<div class="header-right">
+			<security:authorize access="!isAuthenticated()">
 			<a href="#" class="hr-btn">Help</a>
 			<span>|</span>
-			<security:authorize access="!isAuthenticated()">
+			
 			<div class="user-panel">
 				<a href="${pageContext.request.contextPath}/member/login" class="login">Login</a>
 				<a href="${pageContext.request.contextPath}/member/join" class="register">Create an account</a>
@@ -64,6 +65,8 @@
 			</security:authorize>
 			
 			<security:authorize access="isAuthenticated()">
+				<a href="#" style="color:white;"><security:authentication property="name"/></a>
+				<span>|</span>
 				<div class="user-panel">
 				<a href="${pageContext.request.contextPath}/member/logout" class="logout">Logout</a>
 				<a href="${pageContext.request.contextPath}/member/join" class="register">Create an account</a>
@@ -108,7 +111,7 @@
 							</div> -->
 							</div>
 					
-					<div id="portfolio-grid" class="row no-gutter" data-aos="fade-up" data-aos-delay="200">
+					<div id="portfolio-grid" class="row no-gutter">
 								<c:forEach var="tmp" items="${list}">
 								<div class="item web col-sm-6 col-md-4 col-lg-4 mb-4">
 									<a href="${pageContext.request.contextPath}/movie/moviedetail?movie_code=${tmp.movie_code}" class="item-wrap fancybox">

@@ -21,4 +21,8 @@ public class MemberDAO {
 	public List<MemberVO> selectMember(HashMap<String, Object> map) {
 		return sqlFactory.openSession().selectList("Member.selectList", map);
 	}
+	
+	public int countMember(String text) {
+		return sqlFactory.openSession().selectOne("Member.count", text);
+	}
 }

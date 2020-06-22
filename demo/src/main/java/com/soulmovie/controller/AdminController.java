@@ -68,19 +68,20 @@ public class AdminController {
 			HttpServletRequest request,
 			@RequestParam(value="page", defaultValue="0", required=false) int page,
 			@RequestParam(value="text", defaultValue="", required=false) String text) {
-//		if(page==0) {
-//			return "redirect:"+request.getContextPath()+"/admin/movie?page=1";
-//		}
+		if(page==0) {
+			return "redirect:"+request.getContextPath()+"/admin/movie?page=1";
+		}
 
 		
-//		HashMap<String, Object> map = new HashMap<String, Object>();
-//		map.put("start", (page*7)-6);//�떆�옉�쐞移�
-//		map.put("end", page*7); //醫낅즺�쐞移�
-//		map.put("text", text); //寃��깋�뼱
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("start", (page*7)-6);//�떆�옉�쐞移�
+		map.put("end", page*7); //醫낅즺�쐞移�
+		map.put("text", text); //寃��깋�뼱
 		//紐⑸줉
-		List<MovieVO> list = mDAO.selectMovie1();
-		
+		List<MovieVO> list = mDAO.selectMovie1(map);
+		int cnt = mDAO.countMovie(text);
 		model.addAttribute("list", list);
+		model.addAttribute("cnt", (int)Math.ceil(cnt/7.0));
 		return request.getContextPath() +"/admin/movielist";
 	}
 	
@@ -124,12 +125,14 @@ public class AdminController {
 
 		
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("start", (page*6)-5);//�떆�옉�쐞移�
-		map.put("end", page*6); //醫낅즺�쐞移�
+		map.put("start", (page*7)-6);//�떆�옉�쐞移�
+		map.put("end", page*7); //醫낅즺�쐞移�
 		map.put("text", text); //寃��깋�뼱
 		//紐⑸줉
 		List<BoardVO> list = bDAO.selectBoard(map);
+		int cnt = bDAO.countBoard(text);
 		model.addAttribute("list", list);
+		model.addAttribute("cnt", (int)Math.ceil(cnt/7.0));
 		return request.getContextPath() +"/admin/boardlist";
 	}
 	
@@ -214,19 +217,22 @@ public class AdminController {
 	@RequestMapping(value="/member", method=RequestMethod.GET)
 	public String memberlist(Model model, HttpSession httpSession,
 			HttpServletRequest request,
-			@RequestParam(value="page", defaultValue="0", required=false) int page) {
+			@RequestParam(value="page", defaultValue="0", required=false) int page,
+			@RequestParam(value="text", defaultValue="", required=false) String text) {
 		if(page==0) {
 			return "redirect:"+request.getContextPath()+"/admin/member?page=1";
 		}
 
 		
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("start", (page*6)-5);//�떆�옉�쐞移�
-		map.put("end", page*6); //醫낅즺�쐞移�
-		//寃��깋�뼱
+		map.put("start", (page*7)-6);//�떆�옉�쐞移�
+		map.put("end", page*7); //醫낅즺�쐞移�
+		map.put("text", text); //寃��깋�뼱
 		//紐⑸줉
 		List<MemberVO> list = memberDAO.selectMember(map);
+		int cnt = memberDAO.countMember(text);
 		model.addAttribute("list", list);
+		model.addAttribute("cnt", (int)Math.ceil(cnt/7.0));
 		return request.getContextPath() +"/admin/memberlist";
 	}
 }

@@ -45,10 +45,10 @@
     <div class="inner">
       <img src="${pageContext.request.contextPath}/resources/img/logo4.png" alt="">
       <nav class="nav nav-masthead justify-content-center">
-        <a class="nav-link active" href="#">Home</a>
-        <a class="nav-link" href="/admin/member">Member</a>
-        <a class="nav-link" href="/admin/movie">Movie</a>
-        <a class="nav-link" href="/admin/board">Board</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/admin/home">Home</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/admin/member">Member</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/admin/movie">Movie</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/admin/board">Board</a>
       </nav>
     </div>
   </header>
@@ -95,8 +95,24 @@
 				</c:forEach>
 			</tbody>
 		</table>
+  <div id="pagination-div"></div>
   </main>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
 
+	<script>
+		$(function(){
+			$('#pagination-div').twbsPagination({
+		        totalPages: Number('${cnt}'), /* 전체 페이지 수*/
+		        visiblePages: 10, /*화면에 표시할 페이지 수 */
+		        startPage : Number('${param.page}'), /* 주소창에 ~~/board/list?page=1 */
+		        initiateStartPageClick : false,
+		        onPageClick: function (event, page) {
+		             window.location.href = "/admin/movie?page=" + page + "&text=${param.text}";
+		        }
+		    });
+		})
+	</script>
   <footer class="mastfoot mt-auto text-center">
     <div class="inner">
       <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>

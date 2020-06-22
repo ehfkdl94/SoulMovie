@@ -45,10 +45,10 @@
     <div class="inner">
       <img src="${pageContext.request.contextPath}/resources/img/logo4.png" alt="">
       <nav class="nav nav-masthead justify-content-center">
-        <a class="nav-link active" href="#">Home</a>
-        <a class="nav-link" href="/admin/member">Member</a>
-        <a class="nav-link" href="/admin/movie">Movie</a>
-        <a class="nav-link" href="/admin/board">Board</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/admin/home">Home</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/admin/member">Member</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/admin/movie">Movie</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/admin/board">Board</a>
       </nav>
     </div>
   </header>
@@ -72,7 +72,7 @@
 					<th>회원번호</th>
 					<th>회원아이디</th>
 					<th>회원닉네임</th>
-					<th>조회수</th>
+					<th>회원 이메일</th>
 					<th>날짜</th>
 				</tr>
 			</thead>
@@ -90,10 +90,7 @@
 					<td>${tmp.username}</td>
 					<td>${tmp.usernick}</td>
 					<td>${tmp.useremail}</td>
-					<td>
-						<c:set var="dt" value="${fn:split(tmp.brddate, ' ')}" />
-						${dt[0]}
-					</td>
+					<td>${tmp.joindate}</td>
 				</tr>
 				</c:forEach>
 			</tbody>
@@ -112,7 +109,7 @@
 		        startPage : Number('${param.page}'), /* 주소창에 ~~/board/list?page=1 */
 		        initiateStartPageClick : false,
 		        onPageClick: function (event, page) {
-		             window.location.href = "/board/list?page=" + page + "&text=${param.text}";
+		             window.location.href = "/admin/member?page=" + page + "&text=${param.text}";
 		        }
 		    });
 		})
