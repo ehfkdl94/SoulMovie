@@ -5,8 +5,9 @@
 <%@ taglib prefix="security" uri= "http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
 <head>
+
 		<title>My Page</title>
   <%@include file="/WEB-INF/views/head.jsp" %>
   
@@ -16,7 +17,7 @@
 <%@include file="/WEB-INF/views/header.jsp" %>
 <section>
  <div class="hs-item" style="height:1200px;">
-	<div class="container"> 
+	<div class="container" style="margin-top:100px;"> 
 	
 	
 		<form action="${pageContext.request.contextPath}/member/update" method="post" enctype="multipart/form-data">
@@ -49,33 +50,10 @@
 	</div>
 	</div>
 	</section>
-	
-	<!--====== Javascripts & Jquery ======-->
-	<script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/jquery.slicknav.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/owl.carousel.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/mixitup.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
-	<script src="${pageContext.request.contextPath}resources/js/jsLogin/jquery.min.js"></script>
-	<script src="${pageContext.request.contextPath}resources/js/jsLogin/browser.min.js"></script>
-	<script src="${pageContext.request.contextPath}resources/js/jsLogin/breakpoints.min.js"></script>
-	<script src="${pageContext.request.contextPath}resources/js/jsLogin/util.js"></script>
-	<script src="${pageContext.request.contextPath}resources/js/jsLogin/main.js"></script>
-	<!-- Vendor JS Files -->
-	<script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery-migrate.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/vendor/easing/easing.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/vendor/php-email-form/validate.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/vendor/isotope/isotope.pkgd.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/vendor/aos/aos.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/vendor/owlcarousel/owl.carousel.min.js"></script>
 
-	<!-- Template Main JS File -->
-	<script src="${pageContext.request.contextPath}/resources/js/main2.js"></script>
-	
 
+    <%@include file="/WEB-INF/views/footer.jsp" %>
+  
 
 
 
