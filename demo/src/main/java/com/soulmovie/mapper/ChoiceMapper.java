@@ -2,60 +2,50 @@ package com.soulmovie.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.soulmovie.vo.ChoiceVO;
-import com.soulmovie.vo.MovieVO;
+
 
 
 
 public interface ChoiceMapper {
 
-@Insert({"INSERT INTO CHOICE (CHOICE_NO, CHOICE_FREQ, CHOICE_REASON, CHOICE_CATEGORY, CHOICE_DATE, CHOICE_CODE, CHOICE_ID)" + 
-		"VALUES (SEQ_CHOICE_NO.NEXTVAL, #{obj.choice_freq}, #{obj.choice_reason}," + 
-		"#{obj.choice_category}, SYSDATE, #{obj.choice_code}, #{obj.choice_id})"})
-public int insertChoice(@Param("obj") ChoiceVO obj);
+	@Insert({"INSERT INTO CHOICE (CHOICE_NO, CHOICE_FREQ, CHOICE_REASON, CHOICE_CATEGORY, CHOICE_DATE, CHOICE_CODE, CHOICE_ID)" + 
+			"VALUES (SEQ_CHOICE_NO.NEXTVAL, #{obj.choice_freq}, #{obj.choice_reason}," + 
+			"#{obj.choice_category}, SYSDATE, #{obj.choice_code}, #{obj.choice_id})"})
+	public int insertChoice(@Param("obj") ChoiceVO obj);
+	
+	
+	@Select({"SELECT * FROM CHOICE WHERE CHOICE_NO = #{choice_code}"})
+	public ChoiceVO selectChoice(@Param("choice_code") int choice_code);
+	
+	
+	@Select({"<script>",
+			"SELECT * FROM " ,
+			"(SELECT MOVIE.MOVIE_TITLE, CHOICE.CHOICE_NO, CHOICE.CHOICE_FREQ, CHOICE.CHOICE_REASON, CHOICE.CHOICE_CATEGORY, CHOICE.CHOICE_DATE, CHOICE.CHOICE_ID, CHOICE.CHOICE_CODE,", 
+			"ROW_NUMBER() OVER (ORDER BY CHOICE_NO DESC) ROWN FROM MOVIE " ,
+			"INNER JOIN CHOICE " ,
+			"ON CHOICE.CHOICE_CODE = MOVIE.MOVIE_CODE) WHERE CHOICE_ID = #{userid}",
+			"</script>"})
+	public List<ChoiceVO> selectChoiceList(@Param("userid") int userid);
+	
+	
+	@Update({"UPDATE CHOICE SET CHOICE_FREQ = #{obj.choice_freq}, CHOICE_REASON=#{obj.choice_reason}, CHOICE_CATEGORY = #{obj.choice_category}"
+			+ "WHERE CHOICE_NO = #{obj.choice_no}"})
+	public int updateChoice(@Param("obj") ChoiceVO obj);
+	
+	
+	@Delete({"DELETE FROM CHOICE WHERE CHOICE_NO = #{choiceno}"})
+	public int deleteChoice(@Param("choiceno") int choiceno);
 
-//@Select({"SELECT * FROM T2 (SELECT MEMBER.USERNICK, T1.MOVIE_TITLE, T1.CHOICE_REASON, T1.CHOICE_CATEGORY, T1.CHOICE_DATE, T1.CHOICE_ID "
-//		+ "FROM MEMBER" + 
-//		"INNER JOIN " + 
-//		"(SELECT MOVIE.MOVIE_TITLE, CHOICE.CHOICE_REASON, CHOICE.CHOICE_CATEGORY, CHOICE.CHOICE_DATE, CHOICE.CHOICE_ID, "
-//		+ "ROW_NUMBER() OVER (ORDER BY CHOICE_NO DESC) ROWN " + 
-//		"FROM MOVIE" + 
-//		"INNER JOIN" + 
-//		"CHOICE" + 
-//		"ON CHOICE.CHOICE_CODE = MOVIE.MOVIE_CODE) T1" + 
-//		"ON MEMBER.USERID = T1.CHOICE_ID WHERE USERID = #{userid}) T2 "})
-
-//@Select({"SELECT * FROM "
-//+"(SELECT T1.MOVIE_TITLE, T1.CHOICE_REASON, T1.CHOICE_CATEGORY, T1.CHOICE_DATE, T1.CHOICE_ID FROM MEMBER " 
-//+"INNER JOIN" 
-//+"(SELECT MOVIE.MOVIE_TITLE, CHOICE.CHOICE_REASON, CHOICE.CHOICE_CATEGORY, CHOICE.CHOICE_DATE, CHOICE.CHOICE_ID, "
-//+"ROW_NUMBER() OVER (ORDER BY CHOICE_NO DESC) ROWN FROM MOVIE" 
-//+"INNER JOIN CHOICE "
-//+"ON CHOICE.CHOICE_CODE = MOVIE.MOVIE_CODE) T1"
-//+"ON MEMBER.USERID = T1.CHOICE_ID WHERE USERID = #{userid}) T2"})
-
-//@Select({"SELECT * FROM CHOICE WHERE CHOICE_ID = #{userid}"})
-//public List<ChoiceVO> selectChoiceList(@Param("userid") int userid);
-
-
-@Select({"<script>",
-		"SELECT * FROM " ,
-		"(SELECT MOVIE.MOVIE_TITLE, CHOICE.CHOICE_FREQ, CHOICE.CHOICE_REASON, CHOICE.CHOICE_CATEGORY, CHOICE.CHOICE_DATE, CHOICE.CHOICE_ID, CHOICE.CHOICE_CODE,", 
-		"ROW_NUMBER() OVER (ORDER BY CHOICE_NO DESC) ROWN FROM MOVIE " ,
-		"INNER JOIN CHOICE " ,
-		"ON CHOICE.CHOICE_CODE = MOVIE.MOVIE_CODE) WHERE CHOICE_ID = #{userid}",
-		"</script>"})
-public List<ChoiceVO> selectChoiceList(@Param("userid") int userid);
-
-
-//@Select({"SELECT MOVIE_CODE, MOVIE_IMG FROM MOVIE WHERE MOVIE_CODE = #{choice_code}"})
-//public MovieVO getMovieImg(@Param("choice_code") int choice_code);
-//
-//
+	@Select({"SELECT CHOICE_ID FROM CHOICE WHERE CHOICE_NO=#{choiceno}"})
+	public int findChoiceId(@Param("choiceno") int choiceno);
+	
 }
 
 
