@@ -7,13 +7,18 @@
 <% pageContext.setAttribute("newLineChar", "\n"); %>
 
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>인생영화 선택목록</title>
+<html lang="en">
+
+<head> 
+  <title>My Soul Movie</title> 
+  <%@include file="/WEB-INF/views/head.jsp" %>
+  
 </head>
+
 <body>
-<div class="container"> 
+<%@include file="/WEB-INF/views/header.jsp" %>
+  <section>
+<div class="container" style="margin-top:100px;"> 
 		<h4><security:authentication property="name" />님의 인생영화 목록입니다!<br /></h4>
 		<a href="${pageContext.request.contextPath}/choice/insert">나의 인생영화 등록</a>
 		<table class="table">
@@ -46,8 +51,7 @@
 						등록일: ${dt[0]}</td>
 				</tr>
 				<tr>
-					<td>작성자: ${tmp.choice_id}
-						<a href="${pageContext.request.contextPath}/choice/update?no=${tmp.choice_no}" class="btn btn-primary update">수정</a>
+					<td><a href="${pageContext.request.contextPath}/choice/update?no=${tmp.choice_no}" class="btn btn-primary update">수정</a>
 						<a href="#" class="btn btn-danger delete">삭제</a>
 						</td>
 				</tr>			
@@ -56,6 +60,7 @@
 			</tbody>
 		</table>
 	</div>
+	</section>
 	
 	
 	<script src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js" type="text/javascript"></script>
@@ -86,5 +91,18 @@
 		}); 
 		// jquery라이브러리 사용 종료
 	</script>	
+	  
+	<!-- Vendor JS Files -->
+  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/jquery/jquery.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/php-email-form/validate.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/venobox/venobox.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/aos/aos.js"></script>
+	
+	<script src="${pageContext.request.contextPath}/resources/day/assets/js/main.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/main2.js"></script>
 </body>
 </html>
