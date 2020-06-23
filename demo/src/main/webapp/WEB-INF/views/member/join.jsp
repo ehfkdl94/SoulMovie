@@ -28,7 +28,7 @@
 
 				if (uid.length >= 2){
 				//restcontroller를 호출해서 값을 받아옴
-				$.get('/member/rest/memberidcheck.json?id=' + uid,function(data){
+				$.get('/member/rest/memberidcheck.json?username=' + uid,function(data){
 					console.log("GET", data);
 					//console.log("GET", data);  {"ret":1}  or {"ret":0}
 					if(data.ret == 1){

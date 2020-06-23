@@ -30,9 +30,11 @@ public class RestMemberController {
 		int ret = mDAO.selectMemberId(username);
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("ret", 0);
-		if (ret > 0)
+		if (ret > 0) {
 			map.put("ret", 1);
-			
+
+			System.out.println("로그인값이 있어요");
+		}
 		return map;
 	}
 }
