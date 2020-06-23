@@ -19,7 +19,7 @@ import com.soulmovie.vo.UserVo;
 
 
 @Controller
-@RequestMapping("/member") 
+@RequestMapping("/member")
 public class SecurityController {
 	
 		@Autowired
@@ -38,6 +38,9 @@ public class SecurityController {
 			
 			return request.getContextPath()+"/member/join";
 		}
+		
+		
+	
 		
 
 		@RequestMapping(value = "/join", method = RequestMethod.POST)

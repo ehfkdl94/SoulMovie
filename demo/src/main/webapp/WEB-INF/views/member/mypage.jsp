@@ -32,8 +32,8 @@
 					
 			
 			<hr />
-			<a href="${pageContext.request.contextPath}/member/update" class="btn btn-success">update</a>
-			<a href="${pageContext.request.contextPath}/choice/list" class="btn btn-success">choice list</a>
+			<a href="${pageContext.request.contextPath}/member/update" class="btn btn-success">Update</a>
+			<a href="${pageContext.request.contextPath}/choice/list" class="btn btn-success">My SoulMovie</a>
 
 			
 		</form>
