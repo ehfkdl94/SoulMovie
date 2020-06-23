@@ -3,9 +3,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="security" uri= "http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
+
 <!DOCTYPE html>
 <html lang="zxx">
+
 <head>
 <title>SolMusic | HTML Template</title>
 <meta charset="UTF-8">
@@ -14,9 +17,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Favicon -->
-<link
-	href="${pageContext.request.contextPath}/resources/img/favicon.ico"
-	rel="shortcut icon" />
+<link href="img/favicon.ico" rel="shortcut icon" />
 
 <!-- Google font -->
 <link
@@ -32,209 +33,216 @@
 	href="${pageContext.request.contextPath}/resources/css/owl.carousel.min.css" />
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/slicknav.min.css" />
-<!-- Bootstrap CSS File -->
-<link
-	href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
-
-<!-- Vendor CSS Files -->
-<link
-	href="${pageContext.request.contextPath}/resources/vendor/icofont/icofont.min.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/resources/vendor/line-awesome/css/line-awesome.min.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/resources/vendor/aos/aos.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/resources/vendor/owlcarousel/assets/owl.carousel.min.css"
-	rel="stylesheet">
 
 <!-- Main Stylesheets -->
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/style.css" />
-<link href="${pageContext.request.contextPath}/resources/css/style1.css"
-	rel="stylesheet">
 
 
 <!--[if lt IE 9]>
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
-<!-- 카테고리 jsp -->
-
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-<!-- Google Font -->
-<link
-	href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&display=swap"
-	rel="stylesheet">
-
-<!-- Css Styles -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/cssContent/bootstrap.min.css"
-	type="text/css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/cssContent/font-awesome.min.css"
-	type="text/css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/cssContent/nice-select.css"
-	type="text/css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/cssContent/slicknav.min.css"
-	type="text/css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/cssContent/style.css"
-	type="text/css">
 
 </head>
+
 <body>
-<!-- Page Preloder -->
+	<!-- Page Preloder -->
 	<div id="preloder">
 		<div class="loader"></div>
 	</div>
+
 	<!-- Header section -->
 	<header class="header-section clearfix">
-		<a href="index.html" class="site-logo">
-			<img src="${pageContext.request.contextPath}/resources/img/logo4.png" alt="">
+		<a href="index.html" class="site-logo"> <img src="img/logo.png"
+			alt="">
 		</a>
 		<div class="header-right">
-			<a href="#" class="hr-btn">Help</a>
-			<span>|</span>
-			<security:authorize access="!isAuthenticated()">
+			<a href="#" class="hr-btn">Help</a> <span>|</span>
 			<div class="user-panel">
-				<a href="${pageContext.request.contextPath}/member/login" class="login">Login</a>
-				<a href="${pageContext.request.contextPath}/member/join" class="register">Create an account</a>
+				<a href="" class="login">Login</a> <a href="" class="register">Create
+					an account</a>
 			</div>
-			</security:authorize>
-			
-			<security:authorize access="isAuthenticated()">
-				<div class="user-panel">
-				<a href="${pageContext.request.contextPath}/member/logout" class="logout">Logout</a>
-				<a href="${pageContext.request.contextPath}/member/join" class="register">Create an account</a>
-			</div>
-			</security:authorize>
 		</div>
 		<ul class="main-menu">
-			<li><a href="/">Home</a></li>
-			<li><a href="${pageContext.request.contextPath}/movie/movielist">Movie</a>
-				<!--  
+			<li><a href="index.html">Home</a></li>
+			<li><a href="#">About</a></li>
+			<li><a href="#">Pages</a>
 				<ul class="sub-menu">
 					<li><a href="category.html">Category</a></li>
 					<li><a href="playlist.html">Playlist</a></li>
 					<li><a href="artist.html">Artist</a></li>
 					<li><a href="blog.html">Blog</a></li>
 					<li><a href="contact.html">Contact</a></li>
-				</ul>
-				-->
-			</li>
-			<li><a href="${pageContext.request.contextPath}/board/list">Board</a></li>
+				</ul></li>
+			<li><a href="blog.html">News</a></li>
 			<li><a href="contact.html">Contact</a></li>
 		</ul>
 	</header>
 	<!-- Header section end -->
-	<!-- search  start-->
-	<div class="hero-search set-bg" style="background: #0a183d;">
-		<div class="container">
-			<div class="filter-table">
-				<form action="#" class="filter-search">
-					<input type="hidden" name="page" value="1" /> 
-					<input type="text" name="text" placeholder="검색어"> 
-					<select id="category" name ="category">
-						<option value="title">영화제목</option>
-						<option value="genre">장르</option>
-					</select> 
-				
-					<button type="submit">Search</button>
-				</form>
+
+	<!-- Playlist section -->
+	<section class="playlist-section spad">
+		<div class="container-fluid">
+			<div class="section-title">
+				<h2>Movielist</h2>
+			</div>
+			<!-- <div class="container">
+				<ul class="playlist-filter controls">
+					<li class="control" data-filter=".genres">Genres</li>
+					<li class="control" data-filter=".artists">Artists</li>
+					<li class="control" data-filter=".movies">Movies Soundtracks</li>
+					<li class="control" data-filter=".labels">Labels</li>
+					<li class="control" data-filter="all">All Movie</li>
+				</ul>
+			</div> -->
+			<div class="clearfix"></div>
+			<div class="row playlist-area">
+
+				<c:forEach var="tmp" items="${list2}">
+					<div class="mix col-lg-3 col-md-4 col-sm-6 genres">
+						<div class="playlist-item">
+							<a href="${pageContext.request.contextPath}/movie/moviedetail?movie_code=${tmp.movie_code}">
+							<img 
+								src="http://file.koreafilm.or.kr/thm/02/00/05/21/TN_DPK014660.jpg"
+								alt=""></a>
+							<h5>${tmp.movie_title}( ${tmp.movie_actor } )</h5>
+							<h4 class="blog-date" style="color: red;">${tmp.rank }위</h4>
+						</div>
+					</div>
+				</c:forEach>
 			</div>
 		</div>
-	</div>
-	<!-- search end -->
-	<!-- Hero section -->
-	<section class="hero-section">
+	</section>
+	<!-- Playlist section end -->
 
-		<div class="hero-slider owl-carousel">
-			<div class="hs-item" style="height: 1500px;">
-
-				<c:if test="${size <4}">
-					<div class="container" style="margin-bottom: 600px;">
-				</c:if>
-				<c:if test="${size >3}">
-					<div class="container">
-				</c:if>
-				<div class="row">
-					<c:forEach var="tmp" items="${list2}">
-						<div class="col-lg-4 col-sm-6">
-							<div class="recipe-item">
-								<a
-									href="${pageContext.request.contextPath}/movie/moviedetail?movie_code=${tmp.movie_code}"><img
-									src="${pageContext.request.contextPath}/getimg?no=${tmp.movie_code}"
-									style="height: 400px;" alt=""></a>
-								<div class="ri-text">
-									<div class="cat-name">${tmp.rank}위</div>
-									<a>
-										<h4>${tmp.movie_title}</h4>
-									</a>
-									<p>${tmp.movie_actor}</p>
-								</div>
-							</div>
-						</div>
-
-
-					</c:forEach>
-
-
-
+	<!-- Help section end -->
+	<section class="help-section spad pt-0">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="section-title mb-0 pb-4">
+						<h2>Search for?</h2>
+					</div>
 
 				</div>
+				<div class="col-lg-6">
+					<div class="d-flex h-100 align-items-end">
+						<form class="search-form">
+						<input type="hidden" name="page" value="1" /> 
+							<input type="text" name="text" placeholder="MovieTitle">
+							<button>Search</button>
+						</form>
+					</div>
+				</div>
+				<div class="site-pagination" style="margin:0 auto; margin-top:20px;">
 
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="recipe-pagination">
-							
-							<c:if test="${param.page != 1}">
-							
-                    			<a href="${pageContext.request.contextPath}/movie/movielist?page=${param.page-1}&text=${param.text}">이전</a>
-							</c:if>
-							
-							<c:forEach var="i" begin="1" end="${cnt}" step="1">
-								<c:if test="${param.page == i}">
-								<a class="active"	href="${pageContext.request.contextPath}/movie/movielist?page=${i}&text=${param.text}">${i}</a>
-								</c:if>
-								<c:if test="${param.page != i}">
-								<a 	href="${pageContext.request.contextPath}/movie/movielist?page=${i}&text=${param.text}">${i}</a>
-								</c:if>
-							</c:forEach>
-							
-							
-							<c:if test="${cnt != param.page}">
-                    			<a href="${pageContext.request.contextPath}/movie/movielist?page=${param.page+1}&text=${param.text}">다음</a>
-							</c:if>
-					
+				<c:if test="${param.page != 1}">
+
+					<a style="font-size:20px;"
+						href="${pageContext.request.contextPath}/movie/movielist?page=${param.page-1}&text=${param.text}">이전</a>
+				</c:if>
+
+				<c:forEach var="i" begin="1" end="${cnt}" step="1">
+					<c:if test="${param.page == i}">
+						<a class="active" style="font-size:20px;"
+							href="${pageContext.request.contextPath}/movie/movielist?page=${i}&text=${param.text}">${i}</a>
+					</c:if>
+					<c:if test="${param.page != i}">
+						<a style="font-size:20px;"
+							href="${pageContext.request.contextPath}/movie/movielist?page=${i}&text=${param.text}">${i}</a>
+					</c:if>
+				</c:forEach>
+
+
+				<c:if test="${cnt != param.page}">
+					<a style="font-size:20px;"
+						href="${pageContext.request.contextPath}/movie/movielist?page=${param.page+1}&text=${param.text}">다음</a>
+				</c:if>
+
+			</div>
+			</div>
+		</div>
+	</section>
+	<!-- Help section end -->
+	<!-- <section class="help-section spad pt-0">
+		<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			
+		</div>
+	</div>
+	</div>
+	</section> -->
+	<!-- Footer section -->
+	<footer class="footer-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-xl-6 col-lg-7 order-lg-2">
+					<div class="row">
+						<div class="col-sm-4">
+							<div class="footer-widget">
+								<h2>About us</h2>
+								<ul>
+									<li><a href="">Our Story</a></li>
+									<li><a href="">Sol Music Blog</a></li>
+									<li><a href="">History</a></li>
+								</ul>
+							</div>
 						</div>
+						<div class="col-sm-4">
+							<div class="footer-widget">
+								<h2>Products</h2>
+								<ul>
+									<li><a href="">Music</a></li>
+									<li><a href="">Subscription</a></li>
+									<li><a href="">Custom Music</a></li>
+									<li><a href="">Footage</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="footer-widget">
+								<h2>Playlists</h2>
+								<ul>
+									<li><a href="">Newsletter</a></li>
+									<li><a href="">Careers</a></li>
+									<li><a href="">Press</a></li>
+									<li><a href="">Contact</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-6 col-lg-5 order-lg-1">
+					<img
+						src="${pageContext.request.contextPath}/resources/img/logo.png"
+						alt="">
+					<div class="copyright">
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						Copyright &copy;
+						<script>
+							document.write(new Date().getFullYear());
+						</script>
+						All rights reserved | This template is made with <i
+							class="fa fa-heart-o" aria-hidden="true"></i> by <a
+							href="https://colorlib.com" target="_blank">Colorlib</a>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					</div>
+					<div class="social-links">
+						<a href=""><i class="fa fa-instagram"></i></a> <a href=""><i
+							class="fa fa-pinterest"></i></a> <a href=""><i
+							class="fa fa-facebook"></i></a> <a href=""><i
+							class="fa fa-twitter"></i></a> <a href=""><i
+							class="fa fa-youtube"></i></a>
 					</div>
 				</div>
 			</div>
 		</div>
-
-
-
-	</section>
-	<!-- Hero section end -->
-
-	<!-- page start -->
-
-
-
-
-	<!-- page end -->
-
-
+	</footer>
+	<!-- Footer section end -->
 
 	<!--====== Javascripts & Jquery ======-->
-
 	<script
 		src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
 	<script
@@ -246,38 +254,7 @@
 	<script
 		src="${pageContext.request.contextPath}/resources/js/mixitup.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
-	<!-- Vendor JS Files -->
-	<script
-		src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery-migrate.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/vendor/easing/easing.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/vendor/php-email-form/validate.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/vendor/isotope/isotope.pkgd.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/vendor/aos/aos.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/vendor/owlcarousel/owl.carousel.min.js"></script>
 
-	<!-- Template Main JS File -->
-	<script src="${pageContext.request.contextPath}/resources/js/main2.js"></script>
-	<!-- 컨텐츠  -->
-	<script
-		src="${pageContext.request.contextPath}/resources/js/jsContent/jquery-3.3.1.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/js/jsContent/bootstrap.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/js/jsContent/jquery.slicknav.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/js/jsContent/jquery.nice-select.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/js/jsContent/mixitup.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/js/jsContent/main.js"></script>
 </body>
+
 </html>
