@@ -7,90 +7,81 @@
 <html lang="zxx">
 <head>
 		<title>login</title>
-	<meta charset="UTF-8">
-	<meta name="description" content="SolMusic HTML Template">
-	<meta name="keywords" content="music, html">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-	<!-- Favicon -->
-	<link href="${pageContext.request.contextPath}/resources/img/favicon.ico" rel="shortcut icon"/>
+  <title>Soul Movie</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
 
-	<!-- Google font -->
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
+  <!-- Favicons -->
+  <link href="${pageContext.request.contextPath}/resources/day/assets/img/favicon.png" rel="icon">
+  <link href="${pageContext.request.contextPath}/resources/day/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-	<!-- Stylesheets -->
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"/>
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css"/>
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl.carousel.min.css"/>
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/slicknav.min.css"/>
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/csslogin/main.css" />
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/csslogin/noscript.css" />
-	<!-- Bootstrap CSS File -->
-	<link href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-	<!-- Vendor CSS Files -->
-	<link href="${pageContext.request.contextPath}/resources/vendor/icofont/icofont.min.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath}/resources/vendor/line-awesome/css/line-awesome.min.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath}/resources/vendor/aos/aos.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath}/resources/vendor/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="${pageContext.request.contextPath}/resources/day/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/day/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/day/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/day/assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/day/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/day/assets/vendor/aos/aos.css" rel="stylesheet">
 
-	<!-- Main Stylesheets -->
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css"/>
-	<link href="${pageContext.request.contextPath}/resources/css/style1.css" rel="stylesheet">
+  <!-- Template Main CSS File -->
+  <link href="${pageContext.request.contextPath}/resources/day/assets/css/style.css" rel="stylesheet">
 
+  <link href="${pageContext.request.contextPath}/resources/css/style1.css" rel="stylesheet">
 
-	<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
-
+  <!-- =======================================================
+  * Template Name: Day - v2.1.0
+  * Template URL: https://bootstrapmade.com/day-multipurpose-html-template-for-free/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>
 <body>
-	<!-- Page Preloder -->
-	<div id="preloder">
-		<div class="loader"></div>
-	</div>
 
-	<!-- Header section -->
-	<header class="header-section clearfix">
-		<a href="index.html" class="site-logo">
-			<img src="${pageContext.request.contextPath}/resources/img/logo4.png" alt="">
-		</a>
-		<div class="header-right">
-			<a href="#" class="hr-btn">Help</a>
-			<span>|</span>
-			<security:authorize access="!isAuthenticated()">
-			<div class="user-panel">
-				<a href="${pageContext.request.contextPath}/member/login" class="login">Login</a>
-				<a href="${pageContext.request.contextPath}/member/join" class="register">Create an account</a>
-			</div>
-			</security:authorize>
-			
-			<security:authorize access="isAuthenticated()">
-				<div class="user-panel">
-				<a href="${pageContext.request.contextPath}/member/logout" class="logout">Logout</a>
-				<a href="${pageContext.request.contextPath}/member/join" class="register">Create an account</a>
-			</div>
-			</security:authorize>
-		</div>
-		<ul class="main-menu">
-			<li><a href="/">Home</a></li>
-			<li><a href="${pageContext.request.contextPath}/movie/movielist">Movie</a>
-				<!--  
-				<ul class="sub-menu">
-					<li><a href="category.html">Category</a></li>
-					<li><a href="playlist.html">Playlist</a></li>
-					<li><a href="artist.html">Artist</a></li>
-					<li><a href="blog.html">Blog</a></li>
-					<li><a href="contact.html">Contact</a></li>
-				</ul>
-				-->
-			</li>
-			<li><a href="${pageContext.request.contextPath}/board/list">Board</a></li>
-			<li><a href="contact.html">Contact</a></li>
-		</ul>
-	</header>
-	<!-- Header section end -->
+
+	
+	
+ <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top" style="background:rgba(0, 0, 0, 0.9);">
+    <div class="container d-flex align-items-center">
+
+      <h1 class="logo mr-auto"><a href="index.html"><img src="${pageContext.request.contextPath}/resources/day/assets/img/logo4.png" alt=""></a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li><a href="${pageContext.request.contextPath}/">Home</a></li>
+          <li><a href="${pageContext.request.contextPath}/movie/movielist">Movie</a></li>
+          <li><a href="${pageContext.request.contextPath}/board/list">board</a></li>
+          <li><a href="${pageContext.request.contextPath}/">Contact</a></li>
+          <security:authorize access="!isAuthenticated()">
+          	<li><a href="${pageContext.request.contextPath}/">help</a></li>
+          	<li><a href="${pageContext.request.contextPath}/member/login">login</a></li>
+          	<li><a href="${pageContext.request.contextPath}/member/join" style = "font-weight: bold ;color:#ff0000;">Create an account</a></li>
+          </security:authorize>
+          <security:authorize access="isAuthenticated()">
+          	<li><a href="${pageContext.request.contextPath}/member/mypage?username=<security:authentication property="name"/>">My page</a></li>
+          	<li><a href="${pageContext.request.contextPath}/member/logout">logout</a></li>
+          </security:authorize>
+        </ul>
+      </nav><!-- .nav-menu -->
+
+    </div>
+  </header><!-- End Header -->
+  
+  
+   <!-- Page Preloder -->
+   <div id="preloder">
+      <div class="loader"></div>
+   </div>
+
+
 
 	<!-- Hero section -->
 	<section class="hero-section">
