@@ -28,6 +28,7 @@ import com.soulmovie.mapper.UserMapper;
 import com.soulmovie.vo.ChoiceVO;
 import com.soulmovie.vo.MovieVO;
 
+
 @Controller
 @RequestMapping(value = "/choice")
 public class ChoiceController {
@@ -75,6 +76,8 @@ public class ChoiceController {
 		}
 		if(chk!=null) {
 			model.addAttribute("choice_code", chk);
+			String title = mMapper.findMovieTitle(chk);
+			model.addAttribute("movie_title", title);
 		}
 		return request.getContextPath() + "/choice/insert";
 		}
@@ -82,8 +85,13 @@ public class ChoiceController {
 	
 	@RequestMapping(value = "/insert", method=RequestMethod.POST)
 	public String insertpost(HttpServletRequest request, @ModelAttribute ChoiceVO obj) {		
-		System.out.println(obj.toString());
-		cMapper.insertChoice(obj);
+		System.out.println(obj.toString());		
+		int chk = cMapper.insertChoice(obj);
+		int id = obj.getChoice_id();
+//		System.out.println(id);
+		if(chk == 1) {
+			uMapper.updateUserCcnt(id);
+		}
 		return "redirect:" + request.getContextPath() + "/choice/insert";
 	}
 	
@@ -134,7 +142,27 @@ public class ChoiceController {
 	}
 	
 	@RequestMapping(value = "/update", method=RequestMethod.GET)
-	public String update(HttpServletRequest request) {
+	public String update(HttpServletRequest request, Model model, @RequestParam(value="no", defaultValue="0") int no) {		
+		System.out.println(no);
+		ChoiceVO obj = cMapper.selectChoice(no);		
+		model.addAttribute("obj", obj);
 		return request.getContextPath() + "choice/update";
+		
+	}
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String update(HttpServletRequest request, @ModelAttribute ChoiceVO obj){
+//		System.out.println(obj);
+		cMapper.updateChoice(obj);		
+		return "redirect:" + request.getContextPath() + "/choice/list";
+	}
+	
+	@RequestMapping(value = "/delete")
+	public String choicedelete(HttpServletRequest request, @RequestParam(value = "no", defaultValue = "0") int no) {		
+		int id = cMapper.findChoiceId(no);		
+		int chk = cMapper.deleteChoice(no);	
+		if (chk == 1) {
+			uMapper.deleteUserCcnt(id);
+		}
+		return "redirect:" + request.getContextPath() + "/choice/list";
 	}
 }
