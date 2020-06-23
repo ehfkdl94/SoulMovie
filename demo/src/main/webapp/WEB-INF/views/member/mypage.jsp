@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-
+		<title>My Page</title>
   <%@include file="/WEB-INF/views/head.jsp" %>
   
 </head>
