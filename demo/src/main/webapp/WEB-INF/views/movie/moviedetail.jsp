@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="security" uri= "http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,32 +68,34 @@
 
         <div class="row">
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-RIG">
-            <img src="${pageContext.request.contextPath}/resources/day/assets/img/about.jpg" class="img-fluid" alt="">
+            <img src="http://file.koreafilm.or.kr/thm/02/00/05/21/TN_DPK014660.jpg" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left">
             <div class="why-us" data-aos="fade-up">
               <div class="box" style="height:101px;">
-                <span>01 style</span>
+                <span>${list.movie_title}</span>
 
               </div>
             </div>
             <div class="why-us" data-aos="fade-up">
               <div class="box" style="height:101px; ">
-                <span>01</span>
+              <c:set var="dt" value= "${fn:split(list.movie_date,' ')}"/>
+					<span>${dt[0]}</span>
+                
 
 
               </div>
             </div>
             <div class="why-us" data-aos="fade-up">
               <div class="box" style="height:101px;">
-                <span>01</span>
+                <span>${list.movie_actor}</span>
 
 
               </div>
             </div>
             <div class="why-us" data-aos="fade-up">
               <div class="box" style="height:101px;">
-                <span>01</span>
+                <span>${list.movie_genre}</span>
 
 
               </div>
@@ -102,37 +106,48 @@
         </div>
 
       </div>
+      <div class="unslate_co--section section-counter" id="skills-section" style="margin:0 auto;">
+        <div class="container">
+          
+
+
+          <div class="row pt-5" >
+            <div class="col-6 col-sm-6 mb-5 mb-lg-0 col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="0">
+              <div class="counter-v1 text-center">
+                <span class="number-wrap">
+                  <span class="number number-counter" style="color:#ff0000;" data-number="${list.rank}">0</span>
+                  <span class="append-text">등</span>
+                </span>
+                <span class="counter-label">Rank</span>
+              </div>
+            </div>
+            <div class="col-6 col-sm-6 mb-5 mb-lg-0 col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+              <div class="counter-v1 text-center">
+                <span class="number-wrap">
+                  <span class="number number-counter" style="color:#ff0000;" data-number="${list.movie_freq}">0</span>
+               	
+                </span>
+                <span class="counter-label">Person</span>
+              </div>
+            </div>
+           
+          </div>
+        </div>
+      </div>
       <div class="unslate_co--section section-counter" id="skills-section">
         <div class="container">
           
 
 
           <div class="row pt-5">
-            <div class="col-6 col-sm-6 mb-5 mb-lg-0 col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="0">
-              <div class="counter-v1 text-center">
-                <span class="number-wrap">
-                  <span class="number number-counter" style="color:#ff0000;" data-number=" 90">0</span>
-                  <span class="append-text">%</span>
-                </span>
-                <span class="counter-label">WordPress</span>
-              </div>
-            </div>
-            <div class="col-6 col-sm-6 mb-5 mb-lg-0 col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
-              <div class="counter-v1 text-center">
-                <span class="number-wrap">
-                  <span class="number number-counter" style="color:#ff0000;" data-number="99">0</span>
-                  <span class="append-text">%</span>
-                </span>
-                <span class="counter-label">HTML/CSS</span>
-              </div>
-            </div>
+          
             <div class="col-6 col-sm-6 mb-5 mb-lg-0 col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
               <div class="counter-v1 text-center">
                 <span class="number-wrap">
-                  <span class="number number-counter" style="color:#ff0000;" data-number="95">0</span>
+                  <span class="number number-counter" style="color:#ff0000;" data-number=" ${list.movie_cnt}">0</span>
                   <span class="append-text">%</span>
                 </span>
-                <span class="counter-label">jQuery</span>
+                <span class="counter-label"></span>
               </div>
             </div>
             <div class="col-6 col-sm-6 mb-5 mb-lg-0 col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
