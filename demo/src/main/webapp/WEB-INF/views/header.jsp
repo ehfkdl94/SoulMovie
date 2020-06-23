@@ -6,7 +6,7 @@
 
 
   <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top ">
+  <header id="header" class="fixed-top" style="background:rgba(0, 0, 0, 0.9);">
     <div class="container d-flex align-items-center">
 
       <h1 class="logo mr-auto"><a href="index.html"><img src="${pageContext.request.contextPath}/resources/day/assets/img/logo4.png" alt=""></a></h1>
