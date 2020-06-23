@@ -92,17 +92,7 @@
 		// jquery라이브러리 사용 종료
 	</script>	
 	  
-	<!-- Vendor JS Files -->
-  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/jquery/jquery.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/php-email-form/validate.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/venobox/venobox.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/aos/aos.js"></script>
-	
-	<script src="${pageContext.request.contextPath}/resources/day/assets/js/main.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/main2.js"></script>
+
+	<%@include file="/WEB-INF/views/footer.jsp" %>
 </body>
 </html>

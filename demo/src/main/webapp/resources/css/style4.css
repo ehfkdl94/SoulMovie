@@ -1188,6 +1188,49 @@ section {
   }
 }
 
+.contact .php-email-form2 {
+  box-shadow: 0 0 30px rgba(214, 215, 216, 0.6);
+  padding: 30px;
+}
+
+.contact .php-email-form2 .validate {
+  display: none;
+  color: red;
+  margin: 0 0 15px 0;
+  font-weight: 400;
+  font-size: 13px;
+}
+
+.contact .php-email-form2 input, .contact .php-email-form textarea {
+  border-radius: 0;
+  box-shadow: none;
+  font-size: 14px;
+}
+
+.contact .php-email-form2 input::focus, .contact .php-email-form textarea::focus {
+  background-color: #cc1616;
+}
+
+.contact .php-email-form2 input {
+  padding: 20px 15px;
+}
+
+.contact .php-email-form2 textarea {
+  padding: 12px 15px;
+}
+
+.contact .php-email-form2 button[type="submit"] {
+  background: #cc1616;
+  border: 0;
+  padding: 10px 24px;
+  color: #fff;
+  transition: 0.4s;
+}
+
+.contact .php-email-form2 button[type="submit"]:hover {
+  background: #e82d2d;
+}
+
 /*--------------------------------------------------------------
 # Breadcrumbs
 --------------------------------------------------------------*/
