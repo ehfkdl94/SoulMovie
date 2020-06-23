@@ -34,7 +34,7 @@ public class HomeController {
 	public String home(HttpSession httpSession, Model model, HttpServletRequest request) {
 		List<MovieVO> list = hDAO.selectBoard();
 		model.addAttribute("list", list);
-		return request.getContextPath()+"index2";
+		return request.getContextPath()+"index3";
 	}
 	
 	@RequestMapping(value="getimg")
