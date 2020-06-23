@@ -45,8 +45,18 @@ public interface UserMapper {
 	"      WHERE USERID = #{userid}"})
 	public int updateUserCcnt(@Param("userid") int userid);
 	
+	
+	
+	@Update({"UPDATE MEMBER SET USERCCNT = USERCCNT - 1" + 
+	"      WHERE USERID = #{userid}"})
+	public int deleteUserCcnt(@Param("userid") int userid);
+
 		
+	
 	}
+
+
+
 
 
 	

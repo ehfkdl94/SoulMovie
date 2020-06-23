@@ -102,7 +102,7 @@ public class SecurityController {
 							
 				}
 
-			return "/member/update";
+			return request.getContextPath()+"/member/update";
 		}
 		
 		
