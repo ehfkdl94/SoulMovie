@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.0.1">
-    <title>Cover Template · Bootstrap</title>
+    <title>Soul Movie Admin Page</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/cover/">
 
@@ -43,7 +43,7 @@
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
   <header class="masthead mb-auto">
     <div class="inner">
-      <img src="${pageContext.request.contextPath}/resources/img/logo4.png" alt="">
+      <a href="${pageContext.request.contextPath}/admin/home"><img src="${pageContext.request.contextPath}/resources/img/logo4.png" alt=""></a>
       <nav class="nav nav-masthead justify-content-center">
         <a class="nav-link" href="${pageContext.request.contextPath}/admin/home">Home</a>
         <a class="nav-link" href="${pageContext.request.contextPath}/admin/member">Member</a>

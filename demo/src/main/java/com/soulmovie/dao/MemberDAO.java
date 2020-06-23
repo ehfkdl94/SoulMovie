@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
+import com.soulmovie.vo.BoardVO;
 import com.soulmovie.vo.MemberVO;
 
 @Service
@@ -33,5 +33,9 @@ public class MemberDAO {
 	
 	public int findId(String username) {
 		return sqlFactory.openSession().selectOne("Member.findId", username);
+	}
+	
+	public int updateMember(MemberVO obj) {
+		return sqlFactory.openSession().update("Member.updateMemberOne", obj);
 	}
 }

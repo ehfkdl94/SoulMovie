@@ -238,7 +238,6 @@ public class AdminController {
 		}
 		
 		MemberVO obj = memberDAO.selectMemberOne(no);
-		System.out.println(obj.toString());
 		model.addAttribute("obj", obj);
 		
 	
@@ -254,14 +253,12 @@ public class AdminController {
 	
 	@RequestMapping(value="/memberupdate", method=RequestMethod.POST)
 	public String memberupdatepost(
-			@ModelAttribute BoardVO obj,
+			@ModelAttribute MemberVO obj,
 			HttpServletRequest request){
-		int userid = memberDAO.findId(obj.getUsername());
-		obj.setBrdid(userid);
-	
-		bDAO.updateBoard(obj);
+
+		memberDAO.updateMember(obj);
 		
-		return "redirect:" + request.getContextPath() + "/admin/board";
+		return "redirect:" + request.getContextPath() + "/admin/member";
 		
 	}
 }

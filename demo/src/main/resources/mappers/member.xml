@@ -31,4 +31,9 @@
 	<select id="findId" parameterType="String" resultType="int">
 		SELECT * FROM MEMBER WHERE USERNAME=#{username}
 	</select>
+	
+	<update id="updateMemberOne" parameterType="com.soulmovie.vo.MemberVO">
+		UPDATE MEMBER SET USERNAME=#{username}, USERRNAME=#{userrname}, USERGENDER=#{usergender}, USERNICK=#{usernick}, USERAGE=#{userage}, USEREMAIL=#{useremail}  
+		WHERE USERID = #{userid} 
+	</update>
 </mapper>

@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.0.1">
-    <title>Cover Template · Bootstrap</title>
+    <title>Soul Movie Admin Page</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/cover/">
 
@@ -44,7 +44,7 @@
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
   <header class="masthead mb-auto">
     <div class="inner">
-      <img src="${pageContext.request.contextPath}/resources/img/logo4.png" alt="">
+      <a href="${pageContext.request.contextPath}/admin/home"><img src="${pageContext.request.contextPath}/resources/img/logo4.png" alt=""></a>
       <nav class="nav nav-masthead justify-content-center">
         <a class="nav-link" href="${pageContext.request.contextPath}/admin/home">Home</a>
         <a class="nav-link" href="${pageContext.request.contextPath}/admin/member">Member</a>
@@ -55,61 +55,70 @@
   </header>
 
   <main role="main" class="inner cover text-center">
-  	<article id="contact">
-								<h2 class="major">Contact</h2>
-								<form method="post" action="#">
-									<div class="fields">
-										<div class="field-half">
-											<label for="email">회원번호</label>
-											<p class="p_class">${obj.userid}</p>
-										</div>
-										<div class="field-half">
-											<label for="email">아이디</label>
-											<p class="p_class">${obj.username}</p>
-										</div>
-										<div class="field-half">
-											<label for="email">닉네임</label>
-											<p class="p_class">${obj.usernick}</p>
-										</div>
-										<div class="field-half">
-											<label for="email">연령대</label>
-											<p class="p_class">${obj.userage}</p>
-										</div>
-										<div class="field-half">
-											<label for="email">성별</label>
-											<p class="p_class">${obj.usergender}</p>
-										</div>
-										<div class="field-half">
-											<label for="email">이메일</label>
-											<p class="p_class">${obj.useremail}</p>
-										</div>
-										<div class="field-half">
-											<label for="email">인생영화 등록 횟수</label>
-											<p class="p_class">${obj.userccnt}</p>
-										</div>
-										<div class="field-half">
-											<label for="email">가입일</label>
-											<p class="p_class">${obj.joindate}</p>
-										</div>
-										
-									</div>
-										<ul class="actions">
-											<button type="button" onclick="location.href='/admin/member' ">List</button>
-											<button type="button" onclick="location.href='/admin/memberupdate?no=${obj.userid}' ">update</button>
-											<button type="button" onclick="location.href='/admin/memberdelete?no=${obj.userid}' ">delete</button>
-										</ul>
-										
-								
-								</form>
-								<!--  
-								<ul class="icons">
-									<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
-								</ul>
-								-->
-							</article>
+  	<article id="elements">
+		<h2 class="major">Member</h2>
+		<form method="post" action="#">
+			<div class="fields">
+				<div class="field half">
+					<label for="email">회원번호</label>
+					<input type="text" value="${obj.userid}" readonly />
+					
+				</div>
+				<div class="field half">
+					<label for="email">아이디</label>
+					<input type="text" value="${obj.username}" readonly />
+					
+				</div>
+				<div class="field half">
+					<label for="email">닉네임</label>
+					<input type="text" value="${obj.usernick}" readonly />
+					
+				</div>
+				<div class="field half">
+					<label for="email">연령대</label>
+					<input type="text" value="${obj.userage}" readonly />
+					
+				</div>
+				<div class="field half">
+					<label for="email">성별</label>
+					<input type="text" value="${obj.usergender}" readonly />
+					
+				</div>
+				<div class="field half">
+					<label for="email">이메일</label>
+					<input type="text" value="${obj.useremail}" readonly />
+					
+				</div>
+				<div class="field half">
+					<label for="email">인생영화 등록 횟수</label>
+					<input type="text" value="${obj.userccnt}" readonly />
+					
+				</div>
+				<div class="field half">
+					<label for="email">가입일</label>
+					<input type="text" value="${obj.joindate}" readonly />
+					
+				</div>
+				
+			</div>
+				
+				
+		
+		</form>
+		<!--  
+		<ul class="icons">
+			<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+			<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+			<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+			<li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
+		</ul>
+		-->
+	</article>
+	<ul class="actions">
+		<button type="button" onclick="location.href='/admin/member' ">List</button>
+		<button type="button" onclick="location.href='/admin/memberupdate?no=${obj.userid}' ">update</button>
+		<button type="button" onclick="location.href='/admin/memberdelete?no=${obj.userid}' ">delete</button>
+	</ul>
   </main>
 
   
