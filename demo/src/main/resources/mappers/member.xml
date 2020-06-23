@@ -36,4 +36,8 @@
 		UPDATE MEMBER SET USERNAME=#{username}, USERRNAME=#{userrname}, USERGENDER=#{usergender}, USERNICK=#{usernick}, USERAGE=#{userage}, USEREMAIL=#{useremail}  
 		WHERE USERID = #{userid} 
 	</update>
+	
+	<select id="membercount" resultType="int">
+		SELECT COUNT(*) FROM MEMBER 
+	</select>
 </mapper>

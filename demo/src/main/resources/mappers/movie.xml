@@ -79,4 +79,8 @@
 		DELETE FROM MOVIE WHERE MOVIE_CODE = #{movie_code} 
 	</delete>
 	
+	<select id="moviecount" resultType="int" parameterType="String">
+		SELECT COUNT(*) FROM MOVIE
+	</select>
+	
 </mapper>

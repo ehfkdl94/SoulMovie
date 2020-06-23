@@ -33,6 +33,12 @@ public class HomeController {
 	@RequestMapping(value="/")
 	public String home(HttpSession httpSession, Model model, HttpServletRequest request) {
 		List<MovieVO> list = hDAO.selectBoard();
+		int Moviecnt = hDAO.countMovie();
+		int Membercnt = hDAO.countMember();
+		int Boardcnt = hDAO.countBoard();
+		model.addAttribute("moviecnt", Moviecnt);
+		model.addAttribute("membercnt", Membercnt);
+		model.addAttribute("membercnt", Boardcnt);
 		model.addAttribute("list", list);
 		return request.getContextPath()+"index3";
 	}
