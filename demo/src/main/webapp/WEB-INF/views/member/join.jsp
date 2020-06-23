@@ -6,72 +6,14 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-		<title>login</title>
-	<meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Join</title>
-  <meta content="" name="descriptison">
-  <meta content="" name="keywords">
-
-  <!-- Favicons -->
-  <link href="${pageContext.request.contextPath}/resources/day/assets/img/favicon.png" rel="icon">
-  <link href="${pageContext.request.contextPath}/resources/day/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="${pageContext.request.contextPath}/resources/day/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/day/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/day/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/day/assets/vendor/venobox/venobox.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/day/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/day/assets/vendor/aos/aos.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="${pageContext.request.contextPath}/resources/day/assets/css/style.css" rel="stylesheet">
-
-  <link href="${pageContext.request.contextPath}/resources/css/style1.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Day - v2.1.0
-  * Template URL: https://bootstrapmade.com/day-multipurpose-html-template-for-free/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+   <%@include file="/WEB-INF/views/head.jsp" %>
 </head>
 
 <body>
 
-<!-- ======= Header ======= -->
-  <header id="header" class="fixed-top" style="background:rgba(0, 0, 0, 0.9);">
-    <div class="container d-flex align-items-center">
-
-      <h1 class="logo mr-auto"><a href="index.html"><img src="${pageContext.request.contextPath}/resources/day/assets/img/logo4.png" alt=""></a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
-      <nav class="nav-menu d-none d-lg-block">
-        <ul>
-          <li><a href="${pageContext.request.contextPath}/">Home</a></li>
-          <li><a href="${pageContext.request.contextPath}/movie/movielist">Movie</a></li>
-          <li><a href="${pageContext.request.contextPath}/board/list">board</a></li>
-          <li><a href="${pageContext.request.contextPath}/">Contact</a></li>
-          <security:authorize access="!isAuthenticated()">
-          	<li><a href="${pageContext.request.contextPath}/">help</a></li>
-          	<li><a href="${pageContext.request.contextPath}/member/login">login</a></li>
-          	<li><a href="${pageContext.request.contextPath}/member/join" style = "font-weight: bold ;color:#ff0000;">Create an account</a></li>
-          </security:authorize>
-          <security:authorize access="isAuthenticated()">
-          	<li><a href="${pageContext.request.contextPath}/member/mypage?username=<security:authentication property="name"/>">My page</a></li>
-          	<li><a href="${pageContext.request.contextPath}/member/logout">logout</a></li>
-          </security:authorize>
-        </ul>
-      </nav><!-- .nav-menu -->
-
-    </div>
-  </header><!-- End Header -->
+<%@include file="/WEB-INF/views/header.jsp" %>
   
   
   <!-- Page Preloder -->
@@ -123,18 +65,18 @@
                               <div class="fields">
                                  <div class="field half">
                                     <label for="username">ID</label>
-                                    <input type="text" style="color:#ffffff" name="username" id="username" value="" placeholder="ID" /><p id="chk"></p>
+                                    <input type="text" name="username" id="username" value="" placeholder="ID" /><p id="chk"></p>
                                     <input type="button" id="btn" value="중복확인" />
                         
                                  </div>
                                  <br />
                                  <div class="field half">
                                     <label for="password">PASSWORD</label>
-                                    <input type="password" style="color:#ffffff" name="password" id="password" value="" placeholder="password" />
+                                    <input type="password" name="password" id="password" value="" placeholder="password" />
                                  </div>
                                  <div class="field half">
                                     <label for="userrname">NAME</label>
-                                    <input type="text" style="color:#ffffff" name="userrname" id="userrname" value="" placeholder="name" />
+                                    <input type="text" name="userrname" id="userrname" value="" placeholder="name" />
                                  </div>
                                  
                                  
@@ -144,7 +86,7 @@
                                  
                                  <div class="field half">
                                     <label for="usergender" >GENDER</label>
-                                        <select name= "usergender" style="color:#ffffff" >
+                                        <select name= "usergender" >
                                           <option id="demo-priority-male" value="male">MALE</option>
                                           <option id="demo-priority-female" value="female">FEMALE</option>
                                   
@@ -158,7 +100,7 @@
                                  
                                  <div class="field half">
                                     <label for="usernick">NICKNAME</label>
-                                    <input type="text" style="color:#ffffff" name="usernick" id="usernick" value="" placeholder="nickname" />확인<p id="chk2"></p>
+                                    <input type="text" name="usernick" id="usernick" value="" placeholder="nickname" />확인<p id="chk2"></p>
                                     
                                  </div>
 
@@ -166,7 +108,7 @@
                                  
                                  <div class="field half" >
                                     <label for="userage">AGE</label>
-                                    <select name= "userage" style="color:#ffffff">
+                                    <select name= "userage">
                                           <option id="userage" value="10대">10-19</option>
                                           <option id="userage" value="20대">20-29</option>
                                           <option id="userage" value="30대">30-39</option>
@@ -179,7 +121,7 @@
 
                                     <div class="field">
                                        <label for="useremail">E-MAIL</label>
-                                       <input type="email" style="color:#ffffff" name="useremail" id="useremail" value="" placeholder="e-mail">
+                                       <input type="email" name="useremail" id="useremail" value="" placeholder="e-mail">
                                     </div>
                                     
                                           
