@@ -24,4 +24,16 @@ public class HomeDAO {
 	public MovieVO selectBoardImg(int no) {
 		return sqlFatory.openSession().selectOne("Home.selectMovieImg", no);
 	}
+	
+	public int countMovie() {
+		return sqlFatory.openSession().selectOne("Movie.moviecount");
+	}
+	
+	public int countMember() {
+		return sqlFatory.openSession().selectOne("Member.membercount");
+	}
+	
+	public int countBoard() {
+		return sqlFatory.openSession().selectOne("Board.boardcount");
+	}
 }

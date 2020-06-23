@@ -79,5 +79,9 @@
 		SELECT * FROM MEMBER WHERE USERNAME=#{username}
 
 	</select>
+	
+	<select id="boardcount" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM BOARD
+	</select>
 
 </mapper>
