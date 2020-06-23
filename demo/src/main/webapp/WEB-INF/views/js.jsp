@@ -10,11 +10,7 @@
 	<script src="${pageContext.request.contextPath}/resources/js/owl.carousel.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/mixitup.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
-	<script src="${pageContext.request.contextPath}resources/js/jsLogin/jquery.min.js"></script>
-	<script src="${pageContext.request.contextPath}resources/js/jsLogin/browser.min.js"></script>
-	<script src="${pageContext.request.contextPath}resources/js/jsLogin/breakpoints.min.js"></script>
-	<script src="${pageContext.request.contextPath}resources/js/jsLogin/util.js"></script>
-	<script src="${pageContext.request.contextPath}resources/js/jsLogin/main.js"></script>
+	
 	<!-- Vendor JS Files -->
 	<script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery-migrate.min.js"></script>
