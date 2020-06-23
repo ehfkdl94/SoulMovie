@@ -4,12 +4,12 @@
 <%@ taglib prefix="security" uri= "http://www.springframework.org/security/tags" %>
 
 
+   <!-- title은 각자 파일에 맞게 이름 지정하세요 -->
 
-
-<meta charset="utf-8">
+  <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Soul Movie</title>
+
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
