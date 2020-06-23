@@ -240,30 +240,7 @@
 
 
 
-	<!--====== Javascripts & Jquery ======-->
-	<script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/jquery.slicknav.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/owl.carousel.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/mixitup.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
-	<script src="${pageContext.request.contextPath}resources/js/jsLogin/jquery.min.js"></script>
-	<script src="${pageContext.request.contextPath}resources/js/jsLogin/browser.min.js"></script>
-	<script src="${pageContext.request.contextPath}resources/js/jsLogin/breakpoints.min.js"></script>
-	<script src="${pageContext.request.contextPath}resources/js/jsLogin/util.js"></script>
-	<script src="${pageContext.request.contextPath}resources/js/jsLogin/main.js"></script>
-	<!-- Vendor JS Files -->
-	<script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery-migrate.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/vendor/easing/easing.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/vendor/php-email-form/validate.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/vendor/isotope/isotope.pkgd.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/vendor/aos/aos.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/vendor/owlcarousel/owl.carousel.min.js"></script>
-
-	<!-- Template Main JS File -->
-	<script src="${pageContext.request.contextPath}/resources/js/main2.js"></script>
+<%@include file="/WEB-INF/views/js.jsp" %>
 
 
 	</body>
