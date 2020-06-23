@@ -26,7 +26,27 @@ public interface UserMapper {
 			+ "WHERE USERNAME = #{obj.username}"})
 	public int updateMember(@Param("obj") UserVo obj);
 	
+	
+	@Select({"<script>",
+			"SELECT COUNT(*) FROM MEMBER WHERE USERNAME=#{username}",
+		"</script>"
+	})
+	public int selectMemberId(@Param("username") String username);
+	
+	@Select({"<script>",
+		"SELECT COUNT(*) FROM MEMBER WHERE USERNICK=#{usernick}",
+	"</script>"
+	})
+	public int selectMemberNick(@Param("usernick") String usernick);
+	
+	
+	
+	@Update({"UPDATE MEMBER SET USERCCNT = USERCCNT + 1" + 
+	"      WHERE USERID = #{userid}"})
+	public int updateUserCcnt(@Param("userid") int userid);
+	
+		
+	}
 
 
 	
-}

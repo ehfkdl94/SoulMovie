@@ -16,7 +16,7 @@ public class interceptorConfig implements WebMvcConfigurer{
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(interceptor)
 		.addPathPatterns("/**")
-		.excludePathPatterns("/member/login**", "/login**", "/resources/**");
+		.excludePathPatterns("/member/login**", "/login**", "/resources/**", "/rest/**");
 		// TODO Auto-generated method stub
 		WebMvcConfigurer.super.addInterceptors(registry);
 	}
