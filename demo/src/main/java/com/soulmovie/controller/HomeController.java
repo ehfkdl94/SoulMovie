@@ -36,9 +36,12 @@ public class HomeController {
 		int Moviecnt = hDAO.countMovie();
 		int Membercnt = hDAO.countMember();
 		int Boardcnt = hDAO.countBoard();
+		System.out.println(Moviecnt);
+		System.out.println(Membercnt);
+		System.out.println(Boardcnt);
 		model.addAttribute("moviecnt", Moviecnt);
 		model.addAttribute("membercnt", Membercnt);
-		model.addAttribute("membercnt", Boardcnt);
+		model.addAttribute("boardercnt", Boardcnt);
 		model.addAttribute("list", list);
 		return request.getContextPath()+"index3";
 	}

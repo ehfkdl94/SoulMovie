@@ -10,7 +10,7 @@
 </head>
 
 <body>
-	 
+    
  <%@include file="/WEB-INF/views/header.jsp" %>
 
   <!-- ======= Hero Section ======= -->
@@ -27,30 +27,30 @@
     <!-- ======= About Section ======= -->
     <section id="rank" class="about">
       <div class="hs-item" style="height:1200px;">
-				<div class="container">
-				   <div style="margin-bottom: 250px;">
-												
-						<div id="portfolio-grid" class="row no-gutter" >
-							<c:forEach var="tmp" items="${list}" varStatus="i">
-							<div class="row" >
-								<div class="item web col-sm-6 col-md-4 col-lg-4 mb-4">
-									<a href="${pageContext.request.contextPath}/movie/moviedetail?movie_code=${tmp.movie_code}" class="item-wrap fancybox">
-										<div class="work-info">
-											<h1 style="color:#ff0000;">${tmp.rank}</h1>
-											<h3 style="color:white;">${tmp.movie_title}</h3>
-										</div>
-										<img class="img-fluid" src="http://file.koreafilm.or.kr/thm/02/00/05/21/TN_DPK014660.jpg" style="height:500px;">
-									</a>
-								</div>
-							</div>
-							</c:forEach>
-									
-					  </div>
-				  
-				  </div>
-			</div>
-			
-		</div>
+            <div class="container">
+               <div style="margin-bottom: 250px;">
+                                    
+                  <div id="portfolio-grid" class="row no-gutter" >
+                     <c:forEach var="tmp" items="${list}" varStatus="i">
+                     <div class="row" >
+                        <div class="item web col-sm-6 col-md-4 col-lg-4 mb-4">
+                           <a href="${pageContext.request.contextPath}/movie/moviedetail?movie_code=${tmp.movie_code}" class="item-wrap fancybox">
+                              <div class="work-info">
+                                 <h1 style="color:#ff0000;">${tmp.rank}</h1>
+                                 <h3 style="color:white;">${tmp.movie_title}</h3>
+                              </div>
+                              <img class="img-fluid" src="http://file.koreafilm.or.kr/thm/02/00/05/21/TN_DPK014660.jpg" style="height:500px;">
+                           </a>
+                        </div>
+                     </div>
+                     </c:forEach>
+                           
+                 </div>
+              
+              </div>
+         </div>
+         
+      </div>
 
     </section><!-- End About Section -->
     
@@ -142,7 +142,7 @@
     </section>
     -->
     <!-- End Why Us Section -->
- 	
+    
     <!-- ======= Clients Section ======= -->
     <!-- 
     <section id="clients" class="clients">
@@ -180,7 +180,7 @@
     </section>
     -->
     <!-- End Clients Section -->
-	
+   
     <!-- ======= Services Section ======= -->
     <!-- 
     <section id="services" class="services">
@@ -666,36 +666,8 @@
       </div>
     </div>
 
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>Day</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/day-multipurpose-html-template-for-free/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-  </footer><!-- End Footer -->
-
-  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
-  <div id="preloader"></div>
-
-  <!-- Vendor JS Files -->
-  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/jquery/jquery.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/php-email-form/validate.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/venobox/venobox.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/aos/aos.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="${pageContext.request.contextPath}/resources/day/assets/js/main.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/main2.js"></script>
+    <%@include file="/WEB-INF/views/footer.jsp" %>
+  
 
 </body>
 
