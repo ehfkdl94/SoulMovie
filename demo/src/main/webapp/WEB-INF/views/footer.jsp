@@ -32,6 +32,8 @@
 
   <!-- Template Main JS File -->
   <script src="${pageContext.request.contextPath}/resources/day/assets/js/main.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/unfold/js/scripts-dist.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/unfold/js/main.js"></script>
   <script src="${pageContext.request.contextPath}/resources/js/main2.js"></script>
 
     

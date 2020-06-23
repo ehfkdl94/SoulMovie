@@ -431,7 +431,7 @@ h1, h2, h3, h4, h5, h6 {
 #hero {
   width: 100%;
   height: 100vh;
-  background: url("../img/hero-bg.jpg") top center;
+  background: url("../img/background.jpg") top center;
   background-size: cover;
   position: relative;
 }
@@ -1485,7 +1485,7 @@ section {
     margin-bottom: auto !important;
   }
 }
-/* fold꺼 */
+/* fold爰� */
 .unslate_co--footer {
   position: fixed !important;
   width: 100%;

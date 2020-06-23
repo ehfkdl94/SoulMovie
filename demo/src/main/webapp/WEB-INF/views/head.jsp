@@ -28,6 +28,7 @@
 
   <!-- Template Main CSS File -->
   <link href="${pageContext.request.contextPath}/resources/day/assets/css/style.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/day/assets/css/style2.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/style1.css" rel="stylesheet">
   
   
