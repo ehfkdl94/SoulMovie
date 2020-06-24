@@ -71,8 +71,8 @@
 												value="${fn:split(tmp.movie_date, ' ')}" /> ${dt[0]}</td>
 									</tr>
 								</c:forEach>
-								<a href="/choice/moviecode?chk=${chk}">
-								<input type="submit" value="선택" /></a>
+								
+								<input type="submit" value="선택" />
 							</c:if>
 						</c:if>
 					</tbody>

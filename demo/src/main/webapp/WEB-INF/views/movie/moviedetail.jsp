@@ -127,7 +127,7 @@
                   <span class="number number-counter" style="color:#ff0000;" data-number="${list.movie_freq}">0</span>
                	
                 </span>
-                <span class="counter-label">Person</span>
+                <span class="counter-label">View</span>
               </div>
             </div>
            
@@ -145,12 +145,12 @@
               <div class="counter-v1 text-center">
                 <span class="number-wrap">
                   <span class="number number-counter" style="color:#ff0000;" data-number=" ${list.movie_cnt}">0</span>
-                  <span class="append-text">%</span>
+                  <span class="append-text"></span>
                 </span>
-                <span class="counter-label"></span>
+                <span class="counter-label">number of spectators</span>
               </div>
             </div>
-            <div class="col-6 col-sm-6 mb-5 mb-lg-0 col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+           <!--  <div class="col-6 col-sm-6 mb-5 mb-lg-0 col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
               <div class="counter-v1 text-center">
                 <span class="number-wrap">
                   <span class="number number-counter" style="color:#ff0000;" data-number="100">0</span>
@@ -158,7 +158,7 @@
                 </span>
                 <span class="counter-label">Design</span>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -182,11 +182,14 @@
 						</c:forEach>
 						</c:if>
 						<c:if test="${empty review}">
-						 <div class="box">
-					              <span>${tmp.choice_id}</span>
-					              <h4>Lorem Ipsum</h4>
-					              <p> ${tmp.choice_reason}</p>
+					
+						 <div class="box" style="margin: 0 auto; width:500px;">
+					
+						         <a href="${pageContext.request.contextPath}/choice/insert?text=&chk=${list.movie_code}"> <span style="text-align:center">review 등록</span></a>
+					              
 					            </div>
+					            
+					          
 						</c:if>
 			
 	       
@@ -210,6 +213,7 @@
 
         </div> -->
 
+      </div>
       </div>
     </section><!-- End Why Us Section -->
 
