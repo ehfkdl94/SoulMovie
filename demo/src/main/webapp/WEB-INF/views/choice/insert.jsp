@@ -23,7 +23,7 @@
         <br />
         <br />
         <br />
-          <h3>MY SOUL MOVIE</h3>           
+          <h3 style="font-family:'GothicB';">MY SOUL MOVIE</h3>           
         </div>
       </div>
     </section>
@@ -44,15 +44,15 @@
 			<div class="form-row">
 				<div class="col-md-12 form-group">
 					<input type="text" name="text" 
-						placeholder="영화 제목을 입력하세요." class="form-control"/> 
+						placeholder="영화 제목을 입력하세요." class="form-control" style="color:#000000;font-family:aCinemaL;"/> 
 						
 					<div class="validate"></div>
 				</div>
-			<div class="text-right">
-			<button type="submit">검색</button>
+			<div class="text-right" style="font-family:aCinemaL;">
+				<button class="btn btn-dark" type="submit">검색</button>
 			</div>
 			<div class="col-md-12 form-group">
-				<table>
+				<table class="table" style="font-family:aCinemaL;">
 					<tbody>
 						<c:if test="${empty list}">
 							<tr>
@@ -66,7 +66,7 @@
 							<c:if test="${!empty list}">
 								<c:forEach var="tmp" items="${list}">
 									<tr>
-										<td><input type="checkbox" name="chk"
+										<td rowspan="3"><input type="checkbox" name="chk"
 											value="${tmp.movie_code}" /></td>
 										<td>영화코드: </td>
 										<td>${tmp.movie_code}</td>
@@ -78,59 +78,46 @@
 									<tr>
 										<td>개봉날짜: </td>
 										<td><c:set var="dt"
-												value="${fn:split(tmp.movie_date, ' ')}" /> ${dt[0]}</td>
-									</tr>
-								</c:forEach>
-								
-								<input type="submit" value="선택" />
+												value="${fn:split(tmp.movie_date, ' ')}" /> ${dt[0]}<br /></td>										
+									</tr>								
+								</c:forEach>															
+								<div class="text-right" style="font-family:aCinemaL;">
+								<input type="submit" class="btn btn-dark" value="선택" />
+								</div>
 							</c:if>
 						</c:if>
 					</tbody>
 				</table>
-				
+				<hr />
 				</div>
 				<div class="validate"></div>
 			</div>			
 		</form>
-	</div>
+	</div>	
 
 	<div class="col-lg-6" style="margin-top: 10px;margin-left:200px;">
 		<form action="${pageContext.request.contextPath}/choice/insert"
 			method="post" >
 			<input type="hidden" name="choice_code" value="${choice_code}" readonly /><br />
-			<div class="form-row">
+			<div class="form-row" style="font-family:aCinemaL;">
 				<div class="col-md-6 form-group">
-					영화제목 : <br /> ${movie_title} <br /> 
-					<!--<input type="text" name="name"
-						class="form-control" id="name" placeholder="Your Name"
-						data-rule="minlen:4" data-msg="Please enter at least 4 chars" />-->
+					영화제목 : <br /> ${movie_title} <br /> 					
 					<div class="validate"></div>
 				</div>
 				<div class="col-md-6 form-group">
 					관람 횟수: <input type="text" name="choice_freq" class="form-control"
-						placeholder="시청 횟수" /> <br /> 
-						<!--<input type="email"
-						class="form-control" name="email" id="email"
-						placeholder="Your Email" data-rule="email"
-						data-msg="Please enter a valid email" />-->
+						style="color:#000000;"/> <br /> 						
 					<div class="validate"></div>
 				</div>
-			</div>
-			<!--<div class="form-group">
-				<input type="text" class="form-control" name="subject" id="subject"
-					placeholder="Subject" data-rule="minlen:4"
-					data-msg="Please enter at least 8 chars of subject" />
-				<div class="validate"></div>
-			</div>-->
-			<div class="form-group">
+			</div>			
+			<div class="form-group" style="font-family:aCinemaL;">
 				<textarea class="form-control" rows="5" id="content"
 					name="choice_reason" data-rule="required" data-msg="이유를 꼭 말해주세요"
 					placeholder="내용을 입력하세요." id="reason"
-					onKeyUp="javascript:fnChkByte(this,'150')"></textarea>
+					onKeyUp="javascript:fnChkByte(this,'150')" style="color:#000000;"></textarea>
+				<div class="text-right">
 				<span id="byteInfo">0</span> / 150bytes<br /> 
-				<!--<textarea class="form-control" name="message" rows="5"
-					data-rule="required" data-msg="Please write something for us"
-					placeholder="Message"></textarea>-->
+				</div>				
 				<div class="validate"></div>
 				<input type="checkbox" name="choice_category" value="영상미" />영상미
 				 <input type="checkbox"	name="choice_category" value="스토리" />스토리 
@@ -140,34 +127,14 @@
 				<input type="hidden" name="choice_id" value="${choice_id}" readonly />
 			</div>
 			
-			<div class="text-center">
-				<button type="submit">등록</button>
+			<div class="text-center" style="font-family:aCinemaL;">
+				<button class="btn btn-danger" type="submit" style="background-color:#ff0000;">등록</button>
+				<a href="${pageContext.request.contextPath}/choice/list" class="btn btn-dark">뒤로</a>
 			</div>
 		</form>
 	</div>
 	</div>
-    </section>
-	<!-- <div>
-		<form action="${pageContext.request.contextPath}/choice/insert"
-			method="post">
-			<input type="hidden" name="choice_code" value="${choice_code}" readonly /><br /> 
-				영화제목 : ${movie_title} <br /> 
-				관람 횟수: <input type="text" name="choice_freq" /> <br /> 
-				인생영화 선택 이유 : <br />
-			<textarea rows="6" id="content" name="choice_reason"
-				placeholder="내용을 입력하세요." id="reason"
-				onKeyUp="javascript:fnChkByte(this,'150')"></textarea>
-			<span id="byteInfo">0</span> 150bytes<br /> <input type="checkbox"
-				name="choice_category" value="영상미" />영상미 <input type="checkbox"
-				name="choice_category" value="스토리" />스토리 <input type="checkbox"
-				name="choice_category" value="연기" />연기 <input type="checkbox"
-				name="choice_category" value="음악" />음악 <input type="checkbox"
-				name="choice_category" value="기타" />기타<br /> <input type="hidden"
-				name="choice_id" value="${choice_id}" readonly /> <input
-				type="submit" value="등록" />
-			<button type="button" class="close">닫기</button>
-		</form>
-	</div> -->
+    </section>	
 
 	<script
 		src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"
@@ -207,52 +174,7 @@
 		}
 	</script>
 	<%@include file="/WEB-INF/views/footer.jsp"%>
-	<!-- 	
-	<div class="modal" id ="myModal" tabindex="-1" role="dialog">
-  		<div class="modal-dialog">    
-    		<div class="modal-content">
-      			<div class="modal-header">
-        			<button type="button" class="close" data-dismiss="modal" aria-label="Close">x</button>
-        			<h4 class="modal-title">영화 검색</h4>
-      			</div>
-      			<div class="modal-body">
-        			모달테스트
-     			 </div>
-	      		<div class="modal-footer">
-	      			<button type="button" class="btn btn-primary" id ="moviechoice">등록</button>
-	        		<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-	     		</div>
-    		</div>
-  		</div>
-	</div>
 	
-	<script src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js" type="text/javascript"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min2.js" type="text/javascript"></script>
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-	<script type="text/javascript">
-	 $(function(){
-		 $('#searchmovie').click(function(){
-				$('#myModal')..modal('show');
-				$('#moviechoice').click(function () {
-		             var mcode = $('.chk').val();
-		             var data = 'chk=' + mcode;
-		             $.ajax({
-		                 url: "/choice/insert",
-		                 type: "POST",
-		                 data: data,
-		                 dataType: "text",
-		                 error : function(){
-		                     alert('등록실패');
-		                 },
-		                 success : function(data){
-		                     alert('등록');                     
-		                 }     
-		             })
-		             .done(function() { alert("성공"); });            
-		         });
-			});
-	});
-	  -->
 </body>
 </html>
 

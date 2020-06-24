@@ -48,6 +48,9 @@ public interface ChoiceMapper {
 	@Select({"SELECT CHOICE_ID FROM CHOICE WHERE CHOICE_NO=#{choiceno}"})
 	public int findChoiceId(@Param("choiceno") int choiceno);
 	
+	@Select({"SELECT CHOICE_CODE FROM CHOICE WHERE CHOICE_NO=#{choiceno}"})
+	public int findChoiceCode(@Param("choiceno") int choiceno);
+	
 }
 
 

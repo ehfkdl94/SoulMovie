@@ -91,11 +91,12 @@ public class ChoiceController {
 	
 		int chk = cMapper.insertChoice(obj);
 		int id = obj.getChoice_id();
-//		System.out.println(id);
+		int code = obj.getChoice_code();		
 		if(chk == 1) {
 			uMapper.updateUserCcnt(id);
+			mMapper.addMovieCnt(code);
 		}
-		return "redirect:" + request.getContextPath() + "/choice/insert";
+		return "redirect:" + request.getContextPath() + "/choice/list";
 	}
 	
 	@RequestMapping(value="/list", method=RequestMethod.GET)
@@ -167,10 +168,12 @@ public class ChoiceController {
 	
 	@RequestMapping(value = "/delete")
 	public String choicedelete(HttpServletRequest request, @RequestParam(value = "no", defaultValue = "0") int no) {		
-		int id = cMapper.findChoiceId(no);		
-		int chk = cMapper.deleteChoice(no);	
+		int id = cMapper.findChoiceId(no);
+		int code = cMapper.findChoiceCode(no);		
+		int chk = cMapper.deleteChoice(no);
 		if (chk == 1) {
-			uMapper.deleteUserCcnt(id);
+			uMapper.deleteUserCcnt(id);	
+			mMapper.deleteMovieCnt(code);
 		}
 		return "redirect:" + request.getContextPath() + "/choice/list";
 	}
