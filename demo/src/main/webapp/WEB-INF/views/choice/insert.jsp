@@ -68,15 +68,15 @@
 									<tr>
 										<td><input type="checkbox" name="chk"
 											value="${tmp.movie_code}" /></td>
-										<td>영화코드</td>
+										<td>영화코드: </td>
 										<td>${tmp.movie_code}</td>
 									</tr>
 									<tr>
-										<td>영화제목</td>
+										<td>영화제목: </td>
 										<td>${tmp.movie_title}</td>
 									</tr>
 									<tr>
-										<td>개봉날짜</td>
+										<td>개봉날짜: </td>
 										<td><c:set var="dt"
 												value="${fn:split(tmp.movie_date, ' ')}" /> ${dt[0]}</td>
 									</tr>
