@@ -36,7 +36,7 @@
          <br />
         <br />
         <br />
-        <h3 style="color:#cc1616">Welcome to Soul Movie</h3>
+        <h3 style="color:#fff">Welcome to Soul Movie</h3>
 
         </div>
       </div>
@@ -55,13 +55,15 @@
     					<div class="py-md-5">
 		    				<div class="row justify-content-start pb-3">
 				          <div class="col-md-12 heading-section ftco-animate">
-							              <h3><security:authentication property="name" />님 환영합니다!</h3>          
+							              <h3>회원가입 완료!</h3><br />  
+							              <!--     
 				            <ul class="about-info mt-4 px-md-0 px-2">
-				            	<li class="flex"><span><security:authentication property="name" />님 환영합니다</span></li>
+				            	<li class="flex"><span>님 환영합니다</span></li>
 				            </ul>
-				            <h6>아래의 버튼을 클릭하여 로그인 해주세요.</h6>
+				             -->   
+				            <h6>아래의 버튼을 클릭하여 로그인 해주세요.</h6><br />
 				            <div class="col-md-12 ">
-		                      <input type="submit" class="btn" href="${pageContext.request.contextPath}/member/login" style="background-color:#ff0000; color:white;" value="LOGIN">
+		                      <a class="btn" href="${pageContext.request.contextPath}/member/login" style="background-color:#ff0000; color:white;">LOGIN</a>
 		                      <span class="submitting"></span>
 		                    </div>
 				          </div>

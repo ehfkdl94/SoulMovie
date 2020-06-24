@@ -53,7 +53,7 @@ public class SecurityController {
 			
 			userMapper.insertMember(obj);
 					
-			return "redirect:"+request.getContextPath()+"/member/joinsuccess";
+			return "redirect:"+request.getContextPath()+"/member/welcome";
 		}
 		
 		
