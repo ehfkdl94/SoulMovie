@@ -74,7 +74,7 @@
 	<section class="playlist-section spad" style="background:black;" >
 		<div class="container-fluid">
 			<div class="section-title">
-				<h2 style="color:white;">Movielist</h2>
+				<h2 style="color:white; font-family:aCinemaL; ">Movielist</h2>
 			</div>
 			<!-- <div class="container">
 				<ul class="playlist-filter controls">
