@@ -55,7 +55,10 @@ public class ChoiceController {
 //				System.out.println(user.getUsername());
 				String username = user.getUsername();
 //				String userid = Integer.toString(uMapper.findUserid(username));				
-				int userid = uMapper.findUserid(username);				
+				int userid = uMapper.findUserid(username);
+				String nickname = uMapper.findUserNick(username);
+				
+				model.addAttribute("user_nick",nickname);
 				model.addAttribute("choice_id", userid);			
 			}
 		}

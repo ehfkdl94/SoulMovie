@@ -170,17 +170,18 @@
 
         <div class="row">
         <c:if test="${!empty review}">
+        <div style="margin: 0 auto;  "></div>
 						 <c:forEach var="tmp" items="${review}">
-						 <h3 class="h5" style="color:white;">  :</h3>
                   		   <div class="col-lg-4" data-aos="fade-up">
-					            <div class="box">
+					            <div class="box" >
 					              <span>${tmp.choice_id}</span>
-					              <h4>Lorem Ipsum</h4>
-					              <p> ${tmp.choice_reason}</p>
+					              <textarea  style="height:300px; width:100%;" readonly>${tmp.choice_reason} </textarea>
+					              <!-- <p> </p> -->
 					            </div>
 					       </div>
 						</c:forEach>
-						</c:if>
+						</c:if>			
+				
 						<c:if test="${empty review}">
 					
 						 <div class="box" style="margin: 0 auto; width:500px;">

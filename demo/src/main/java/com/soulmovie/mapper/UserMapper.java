@@ -13,7 +13,8 @@ public interface UserMapper {
 			," VALUES (MY_GET_SEQ_MEMBER_NUMBER,#{obj.username}, #{obj.password},#{obj.userrname},#{obj.usergender},"
 					+ "#{obj.usernick},#{obj.userage},#{obj.useremail},SYSDATE )"})
 	public int insertMember(@Param("obj") UserVo obj);
-	
+	@Select({"SELECT USERNICK FROM MEMBER WHERE USERNAME=#{username}"})
+	public String findUserNick(@Param("username") String username);
 	
 	@Select({"SELECT * FROM MEMBER WHERE USERNAME=#{username}"})
 	public UserVo findByUsername(@Param("username") String username);

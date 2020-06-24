@@ -33,13 +33,14 @@ public class MovieController {
 		model.addAttribute("list", list);
 		model.addAttribute("list2", list2);
 		List<ChoiceVO> review = mDAO.selectMoiveReview(list.getMovie_code());
-		for(int i =0; i<review.size(); i++) {
-			String reviewsplit =review.get(i).getChoice_reason();
-		    if(reviewsplit.length() >30) {
-			reviewsplit =reviewsplit.substring(0,30)+"...";
-			review.get(i).setChoice_reason(reviewsplit);
-		    }
-		}
+		System.out.println(review.size()+"리뷰사이즈");
+//		for(int i =0; i<review.size(); i++) {
+//			String reviewsplit =review.get(i).getChoice_reason();
+//		    if(reviewsplit.length() >30) {
+//			reviewsplit =reviewsplit.substring(0,30)+"...";
+//			review.get(i).setChoice_reason(reviewsplit);
+//		    }
+//		}
 		model.addAttribute("review", review);
 		
 		return request.getContextPath()+"/movie/moviedetail";

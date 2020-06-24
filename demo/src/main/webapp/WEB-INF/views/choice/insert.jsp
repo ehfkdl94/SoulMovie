@@ -23,7 +23,7 @@
       <div class="container">
       <div class="section-title">
           <span>SoulMovie</span>
-          <h2><security:authentication property="name" />
+          <h2>${ user_nick}
 			님의 인생영화를 등록하세요!<br /></h2>
           <p></p>
         </div>
