@@ -115,7 +115,7 @@
 						href="${pageContext.request.contextPath}/movie/movielist?page=${param.page-1}&text=${param.text}"><</a>
 				</c:if>
 
-				<c:forEach var="i" begin="${movepage-2}" end="${movepage+2}" step="1">
+				<c:forEach var="i" begin="${start}" end="${end}" step="1">
 					<c:if test="${param.page == i}">
 						<a class="active" style="font-size:20px;font-weight:bold; color:red;"
 							href="${pageContext.request.contextPath}/movie/movielist?page=${i}&text=${param.text}">${i}</a>
