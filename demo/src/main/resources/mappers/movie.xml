@@ -64,7 +64,8 @@
             MOVIE_CODE, MOVIE_TITLE, MOVIE_ALTERNATIVETITLE, MOVIE_GENRE, MOVIE_ACTOR, MOVIE_CNT, MOVIE_DATE, MOVIE_IMG,
             ROW_NUMBER() OVER (ORDER BY MOVIE_CNT DESC) RANK    
          FROM 
-            MOVIE) B
+            MOVIE
+         WHERE MOVIE_TITLE LIKE '%' || #{text} || '%' ) B
       WHERE RANK BETWEEN #{start} AND #{end}
    </select>
 
