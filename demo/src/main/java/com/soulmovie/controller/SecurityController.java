@@ -88,7 +88,10 @@ public class SecurityController {
 			if(auth != null) {
 				User user = (User)auth.getPrincipal();
 				if(user != null) {
-				String username = user.getUsername();		
+				String username = user.getUsername();	
+				int userid = userMapper.findUserid(username);
+				String nickname = userMapper.findUserNick(username);				
+				model.addAttribute("user_nick",nickname);
 				UserVo obj = userMapper.findByUsername(username);
 				model.addAttribute("obj", obj);
 					}			

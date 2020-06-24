@@ -92,36 +92,21 @@
                
                </div>
                
-						<div class="form-group row gsap-reveal" style="margin-left: 42%;">
+					<section class="cta" style="background-image:none; padding:10px">
+						<div class="form-group row gsap-reveal" style="margin-left: 38%;">
                     <div class="col-md-12 d-flex align-items-center">
-                      <input type="submit" class="btn btn-outline-pill btn-custom-light mr-3" value="LOGIN">
+                    
+                       <a class="cta-btn" href="${pageContext.request.contextPath}/member/login" style="font-family:aCinemaL">LOGIN</a>
                       <span class="submitting"></span>
                     </div>
                   </div>
+                  </section>
+                  
               </form>
  
  
  
- 			<!-- 
- 			  </div> 
-              <div id="form-message-warning">
-                Wrong
-              </div> 
-              </div> 
-              <div id="form-message-success">
-                Success Login!
-              </div> 
-               -->
-              
-              
-              <!--  
-		                  <ul class="actions">
-		                    <li>
-		                    <input type="submit" value="LOGIN" class="primary">
-		                    </li>	
-		                 </ul>	
-		                 
-		                 -->
+ 		
 
            
 
