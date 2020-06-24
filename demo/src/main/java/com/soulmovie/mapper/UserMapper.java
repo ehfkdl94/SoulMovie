@@ -21,7 +21,8 @@ public interface UserMapper {
 	
 	@Select({"SELECT USERID FROM MEMBER WHERE USERNAME =#{username}"})
 	public int findUserid(@Param("username") String username);
-
+	@Select({"SELECT USERNICK FROM MEMBER WHERE USERID=#{username}"})
+	public String findtoUseridFromUsername(@Param("username") int username);
 	
 	@Update({"UPDATE MEMBER SET USERNICK = #{obj.usernick}, USERAGE = #{obj.userage}, USEREMAIL = #{obj.useremail}"
 			+ "WHERE USERNAME = #{obj.username}"})
@@ -39,7 +40,6 @@ public interface UserMapper {
 	"</script>"
 	})
 	public int selectMemberNick(@Param("usernick") String usernick);
-	
 	
 	
 	@Update({"UPDATE MEMBER SET USERCCNT = USERCCNT + 1" + 

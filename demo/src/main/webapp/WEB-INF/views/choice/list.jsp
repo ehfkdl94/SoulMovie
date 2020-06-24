@@ -32,15 +32,27 @@
       </div>
       
     </section>
-    <%@include file="/WEB-INF/views/sidebar.jsp" %>
+    
+ 	<%@include file="/WEB-INF/views/sidebar.jsp" %>
  	
- 	<section id="about" class="about" style="margin-top:20px;">	
+ 	<section id="about" class="about" style="margin-top:20px;margin-left:200px;">	
+ 	
 	<div class="container"> 
-	<h5>${user_nick}님의 인생영화입니다	</h5>	
+	<div class="section-title">
+          <span>SoulMovie</span>
+          <h2>${user_nick}님의 인생영화입니다<br /></h2>
+          <p></p>
+      </div>	
 		 <div class="row">				
 			<c:if test="${empty list}">
 				<div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left">
-					${user_nick}님의 인생 영화를 공유해주세요!<br />
+					<table>
+						<tbody>
+							<tr>
+								<td><h5>${user_nick}님의 인생 영화를 공유해주세요!</h5></td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</c:if>
 			<c:if test="${!empty list}">
@@ -52,7 +64,7 @@
 								<td colspan="2" class="tdchoiceno" style="display:none;"> ${tmp.choice_no}</td>
 							</tr>
 							<tr>
-								<td rowspan="6" style=" width:400px;" align="center"><img src="${pageContext.request.contextPath}/choice/getimg?no=${tmp.choice_code}" style="height:300px;"></td>					
+								<td rowspan="6" style=" width:400px;" align="center"><img src="${tmp.movie_img}" style="height:300px;"></td>					
 								<td><ul>
 								<li><i class="icofont-check-circled"></i>영화제목: ${tmp.movie_title}</li>
 								<li><i class="icofont-check-circled"></i>관람횟수: ${tmp.choice_freq}</li>

@@ -28,8 +28,8 @@
       </div>
     </section>
 	
-	
-<section id="contact" class="contact" style="margin-top: 100px;">
+ <%@include file="/WEB-INF/views/sidebar.jsp" %>	
+<section id="contact" class="contact" style="margin-top:20px;margin-left:200px;">
       <div class="container">
       <div class="section-title">
           <span>SoulMovie</span>
@@ -37,7 +37,7 @@
 			님의 인생영화를 등록하세요!<br /></h2>
           <p></p>
         </div>
-	<div class="col-lg-6" style="margin-top: 40px;">
+	<div class="col-lg-6" style="margin-top: 40px;margin-left:200px;">
 		<form action="${pageContext.request.contextPath}/choice/insert"
 			method="get" class="php-email-form2">
 			
@@ -68,15 +68,15 @@
 									<tr>
 										<td><input type="checkbox" name="chk"
 											value="${tmp.movie_code}" /></td>
-										<td>영화코드</td>
+										<td>영화코드: </td>
 										<td>${tmp.movie_code}</td>
 									</tr>
 									<tr>
-										<td>영화제목</td>
+										<td>영화제목: </td>
 										<td>${tmp.movie_title}</td>
 									</tr>
 									<tr>
-										<td>개봉날짜</td>
+										<td>개봉날짜: </td>
 										<td><c:set var="dt"
 												value="${fn:split(tmp.movie_date, ' ')}" /> ${dt[0]}</td>
 									</tr>
@@ -94,9 +94,9 @@
 		</form>
 	</div>
 
-	<div class="col-lg-6" style="margin-top: 10px;">
+	<div class="col-lg-6" style="margin-top: 10px;margin-left:200px;">
 		<form action="${pageContext.request.contextPath}/choice/insert"
-			method="post" class="php-email-form">
+			method="post" >
 			<input type="hidden" name="choice_code" value="${choice_code}" readonly /><br />
 			<div class="form-row">
 				<div class="col-md-6 form-group">
@@ -137,12 +137,9 @@
 				<input type="checkbox" name="choice_category" value="연기" />연기 
 				<input type="checkbox" name="choice_category" value="음악" />음악 
 				<input type="checkbox" name="choice_category" value="기타" />기타<br />
+				<input type="hidden" name="choice_id" value="${choice_id}" readonly />
 			</div>
-			<div class="mb-3">
-				<div class="loading">Loading</div>
-				<div class="error-message"></div>
-				<div class="sent-message">인생영화가 등록되었습니다. Thank you!</div>
-			</div>
+			
 			<div class="text-center">
 				<button type="submit">등록</button>
 			</div>

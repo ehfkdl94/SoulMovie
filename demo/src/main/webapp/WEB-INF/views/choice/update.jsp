@@ -20,10 +20,15 @@
         </div>
       </div>
     </section>
-  <section style="margin-top:20px;">
   
-  
-  <div class="col-lg-6" style="margin-top: 10px;">
+   <%@include file="/WEB-INF/views/sidebar.jsp" %>
+  <section style="margin-top:20px;margin-left:200px;"> 
+ 	 <div class="section-title">
+          <span>SoulMovie</span>
+          <h2>인생 영화를 수정합니다<br /></h2>
+          <p></p>
+      </div> 
+  	<div class="col-lg-6" style="margin-top: 10px;">
 		<form action="${pageContext.request.contextPath}/choice/insert"
 			method="post" class="php-email-form">
 			<input type="hidden" class="form-control" name="choice_no" value="${obj.choice_no}"/>

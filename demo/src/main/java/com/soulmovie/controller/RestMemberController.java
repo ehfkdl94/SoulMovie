@@ -44,16 +44,16 @@ public class RestMemberController {
 			produces = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody HashMap<String, Object> UserNickList(
 			@RequestParam("usernick") String usernick){
-		System.out.println(usernick);
+
 		int ret = mDAO.selectMemberNick(usernick);
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("ret", 0);
+		HashMap<String, Object> map1 = new HashMap<String, Object>();
+		map1.put("ret", 0);
 		if (ret > 0) {
-			map.put("ret", 1);
+			map1.put("ret", 1);
 
 			System.out.println("닉네임 값이 있어요");
 		}
-		return map;
+		return map1;
 	}
 	
 	

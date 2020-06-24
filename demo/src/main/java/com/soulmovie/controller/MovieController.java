@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.soulmovie.dao.MovieDAO;
+import com.soulmovie.mapper.UserMapper;
 import com.soulmovie.vo.ChoiceVO;
 import com.soulmovie.vo.MovieVO;
 
@@ -22,10 +23,13 @@ import com.soulmovie.vo.MovieVO;
 public class MovieController {
 	@Autowired
 	MovieDAO mDAO = null;
+	@Autowired
+	UserMapper uMapper = null;
 	@RequestMapping(value = "/moviedetail", method = RequestMethod.GET)
 	public String moviedetail(HttpServletRequest request,
 			@RequestParam(value="movie_code", defaultValue="1",required= false) int movie_code
 			,Model model) {
+		
 		MovieVO list = mDAO.selectMovieOne(movie_code);
 		List<MovieVO> list2 = mDAO.selectMovie();
 		ChoiceVO freq = mDAO.countMovieFreq(list.getMovie_code());
@@ -36,11 +40,23 @@ public class MovieController {
 		System.out.println(review.size()+"리뷰사이즈");
 //		for(int i =0; i<review.size(); i++) {
 //			String reviewsplit =review.get(i).getChoice_reason();
-//		    if(reviewsplit.length() >30) {
-//			reviewsplit =reviewsplit.substring(0,30)+"...";
+//		    if(reviewsplit.length() >23) {
+//			reviewsplit =reviewsplit.substring(0,23);
 //			review.get(i).setChoice_reason(reviewsplit);
 //		    }
 //		}
+		String nickname =null;
+		if(review.size()>0) {
+		for( int i =0; i <review.size();i++) {
+			//
+			System.out.println(review.get(0).toString());
+			int username = review.get(i).getChoice_id();
+			 nickname= uMapper.findtoUseridFromUsername(username);
+			 review.get(i).setUser_nick(nickname);
+		}
+		}
+		
+		
 		model.addAttribute("review", review);
 		
 		return request.getContextPath()+"/movie/moviedetail";
