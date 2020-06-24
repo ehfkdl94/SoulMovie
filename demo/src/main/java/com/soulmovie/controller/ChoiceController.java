@@ -107,7 +107,10 @@ public class ChoiceController {
 //				System.out.println(user.getUsername());
 				String username = user.getUsername();
 				int userid = uMapper.findUserid(username);
-				String nickname = uMapper.findUserNick(username);				
+				String nickname = uMapper.findUserNick(username);	
+				int userccnt = uMapper.findUserCcnt(username);
+        
+				model.addAttribute("userccnt",userccnt);
 				model.addAttribute("user_nick",nickname);
 //				System.out.println(userid);
 				List<ChoiceVO> list = cMapper.selectChoiceList(userid);

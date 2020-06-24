@@ -25,7 +25,13 @@
         <br />
         <br />
           <h3 style="font-family:'GothicB';">MY SOUL MOVIE LIST</h3>          
+          
+          <c:if test="${userccnt<10}">
           <a class="cta-btn" href="${pageContext.request.contextPath}/choice/insert" style="font-family:aCinemaL;">나의 인생영화 등록</a>
+        </c:if>
+        <c:if test="${userccnt>=10}">
+          <a class="cta-btn check"  style="font-family:aCinemaL;">나의 인생영화 등록</a>
+        </c:if>
         </div>
       </div>
       
@@ -107,6 +113,30 @@
 				}).then((result) => {
 					if (result.value) {
 						window.location.href="/choice/delete?no=" + no;
+					}
+				});
+			});			
+		}); 
+		// jquery라이브러리 사용 종료
+	</script>	
+	<script type="text/javascript">
+		//jquery 라이브러리 사용 시작
+		$(function(){			
+			$('.check').click(function(){
+				var idx = $(this).index('.check');
+				var no = $('.tdchoiceno').eq(idx).text();
+
+				Swal.fire({
+					title: '인생영화는 10개까지 등록 가능',
+					icon: 'info',
+					showCancelButton: false,
+					confirmButtonColor: '#3085d6',
+					cancelButtonColor: '#d33',
+					confirmButtonText: '확인',
+					
+				}).then((result) => {
+					if (result.value) {
+						
 					}
 				});
 			});			
