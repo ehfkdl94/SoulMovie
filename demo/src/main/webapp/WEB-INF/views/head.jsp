@@ -37,6 +37,12 @@
           src:url("${pageContext.request.contextPath}/resources/fonts/aCinemaL.ttf")
        }
   </style>
+  <style type="text/css">
+       @FONT-FACE{
+          font-family:'GothicB';
+          src:url("${pageContext.request.contextPath}/resources/fonts/NanumGothicB.ttf")
+       }
+  </style>
   
 
   <!-- =======================================================
