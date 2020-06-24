@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<div id="wrapper" class="active">
+
+<div id="wrapper" class="active" style="height=1000px;">
      
       <div id="sidebar-wrapper">
       <ul id="sidebar_menu" class="sidebar-nav">
@@ -13,6 +14,7 @@
         </ul>
       </div>           
  </div>
+
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js" type="text/javascript"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>

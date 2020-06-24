@@ -132,6 +132,14 @@ public class SecurityController {
 			
 			return "redirect:" + request.getContextPath() + "/member/mypage";
 		}
+		@RequestMapping(value = "/edit", method = RequestMethod.GET)
+		public String edit( Model model,HttpServletRequest request ){
+		    //jsp로 값을 전달함.
+		    model.addAttribute("msg", "로그인 실패"); 
+		    model.addAttribute("url", request.getContextPath()+"/member/login"); 
+		    //jsp를 화면에 표시함.
+		    return request.getContextPath()+"alert"; 
+		}
 			
 				
 }

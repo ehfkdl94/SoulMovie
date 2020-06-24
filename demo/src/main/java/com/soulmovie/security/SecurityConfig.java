@@ -59,7 +59,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	        	.permitAll()							//누구나 접근
 	        	.defaultSuccessUrl("/") 	//성공시 이동할 페이지
 	        	.successHandler(successHandler())
-	        	.failureUrl("/member/login")
+	        	.failureUrl("/member/edit")
 	        	.and()
 			 .logout()
 			 	.logoutUrl("/member/logout")  //로그아웃페이지

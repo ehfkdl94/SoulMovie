@@ -28,8 +28,8 @@
       </div>
     </section>
 	
-	
-<section id="contact" class="contact" style="margin-top: 100px;">
+ <%@include file="/WEB-INF/views/sidebar.jsp" %>	
+<section id="contact" class="contact" style="margin-top: 100px; margin-left:100px;" >
       <div class="container">
       <div class="section-title">
           <span>SoulMovie</span>
@@ -68,15 +68,15 @@
 									<tr>
 										<td><input type="checkbox" name="chk"
 											value="${tmp.movie_code}" /></td>
-										<td>영화코드</td>
+										<td>영화코드: </td>
 										<td>${tmp.movie_code}</td>
 									</tr>
 									<tr>
-										<td>영화제목</td>
+										<td>영화제목: </td>
 										<td>${tmp.movie_title}</td>
 									</tr>
 									<tr>
-										<td>개봉날짜</td>
+										<td>개봉날짜: </td>
 										<td><c:set var="dt"
 												value="${fn:split(tmp.movie_date, ' ')}" /> ${dt[0]}</td>
 									</tr>
@@ -137,6 +137,7 @@
 				<input type="checkbox" name="choice_category" value="연기" />연기 
 				<input type="checkbox" name="choice_category" value="음악" />음악 
 				<input type="checkbox" name="choice_category" value="기타" />기타<br />
+				<input type="hidden" name="choice_id" value="${choice_id}" readonly />
 			</div>
 			<div class="mb-3">
 				<div class="loading">Loading</div>
