@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-
+<aside>
 <div id="wrapper" class="active" style="height=1000px;">
      
       <div id="sidebar-wrapper">
@@ -14,6 +14,7 @@
         </ul>
       </div>           
  </div>
+ </aside>
 
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js" type="text/javascript"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js" type="text/javascript"></script>
