@@ -3,166 +3,174 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="security" uri= "http://www.springframework.org/security/tags" %>
-<!DOCTYPE html>
-<html lang="zxx">
-<head>
-	<title>SolMusic | HTML Template</title>
-	<meta charset="UTF-8">
-	<meta name="description" content="SolMusic HTML Template">
-	<meta name="keywords" content="music, html">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
-	<!-- Favicon -->
-	<link href="${pageContext.request.contextPath}/resources/img/favicon.ico" rel="shortcut icon"/>
+<!doctype html>
+<html lang="en">
+  <head>
+  
+    <title>Join</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<!-- Google font -->
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
- 
-	<!-- Stylesheets -->
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"/>
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css"/>
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl.carousel.min.css"/>
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/slicknav.min.css"/>
+    <meta name="description" content="">
+    <meta name="keywords" content="html, css, javascript, jquery">
+    <meta name="author" content="">
 
-	<!-- Main Stylesheets -->
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/unfold/css/vendor/icomoon/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/unfold/css/vendor/owl.carousel.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/unfold/css/vendor/animate.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/unfold/css/vendor/aos.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/unfold/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/unfold/css/vendor/jquery.fancybox.min.css">
+    
 
-	<style type="text/javascript">
-	.selectBox01 {
-    	width:200px;height:50px;
-    	padding:10px;
-    	font-size:14px;
-    	border:1px solid #ccc;
-    	background-color:#fff;
-    	appearance:none;
-    	-webkit-appearance:none;
-    	-moz-appearance:none;
-    	-o-appearance:none;
-	}
-	.selectBox01 select::-ms-expand {display:none;}
-	</style>
-	<%@include file="/WEB-INF/views/head.jsp" %>
-</head>
-<body>
-	<%@include file="/WEB-INF/views/header.jsp" %>
-	<!-- Page Preloder -->
-	<div id="preloder">
-		<div class="loader"></div>
-	</div>
+    <!-- Theme Style -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/unfold/css/style.css">
+	  <%@include file="/WEB-INF/views/head.jsp" %>
+	  
+  </head>
+  <body data-spy="scroll" data-target=".site-nav-target" data-offset="200" style="background:rgba(0, 0, 0, 0.9);">
+  <%@include file="/WEB-INF/views/header.jsp" %>
 
-	
 
-	<!-- Contact section -->
-	<section class="contact-section">
-		<div class="container-fluid">
-			<div class="row">
 
-				<div class="col-lg-6 p-0">
-					<div class="contact-warp" >
-						<div class="section-title mb-0">
-							<h2>Join</h2>
-						</div>
+<!--  
+    <div class="unslate_co--site-wrap">
 
-				
-						<form class="contact-from" action="${pageContext.request.contextPath}/member/join" method="post">
-							<div class="row">
-							
-							
-								<div class="col-md-6">
-									<input type="text" name="username" id="username" value="" placeholder="ID">
-								</div>
-								<div class="col-md-6" >
-									<p id="chk" style="padding:18px;margin:0px; font-size:16px; color:#ff0000"></p>
-								</div>
-								
-								
-								
-								
-								<div class="col-md-6">
-									<input type="password" name="password" id="password" value="" placeholder="Password" />
-								</div>
-								<div class="col-md-6" >
-									<p id="" style="padding:18px;margin:0px;"></p>
-								</div>
-								
-								
-								
-								<div class="col-md-6">
-									<input type="text" name="userrname" id="userrname" value="" placeholder="Name" />
-								</div>
-							
-							
-								
-								
-								
-								<div class="col-md-4" style="padding:18px; margin:0px;">
-									<label for="usergender" style="color:#A6A6A6">성별 : </label>
-									<select name= "usergender"  style="border:2px solid #ff0000;background-color:#fff;">
-                                          <option id="usergender" value="male">MALE</option>
-                                          <option id="usergender" value="female">FEMALE</option>
-                                  
-                                    </select>
-								</div>
-		
+      <div class="unslate_co--site-inner">
 
-								
-                   
-							
-								
-								
-								<div class="col-md-6">
-									<input type="email"  name="useremail" id="useremail" value="" placeholder="E-mail" />
-								</div>
-								
-								
-								
-								<div class="col-md-4" style="padding:18px; margin:0px;">
-								 <label for="userage" style="color:#A6A6A6">나이 : </label>
-                                    <select name= "userage" style="border:2px solid #ff0000;background-color:#fff;">
-                                          <option id="userage" value="10대">10-19</option>
-                                          <option id="userage" value="20대">20-29</option>
-                                          <option id="userage" value="30대">30-39</option>
-                                          <option id="userage" value="40대">40-49</option>
-                                          <option id="userage" value="50대">50-59</option>
-                                          <option id="userage" value="60대이상">60 over</option>
-                                    </select>
-                                </div>
-								
-								
-								
-								
-								
-										<div class="col-md-6">
-									<input type="text" name="usernick" id="usernick" value="" placeholder="Nickname" />
-								</div>
-								<div class="col-md-6" >
-									<p id="chk2" style="padding:18px;margin:0px; font-size:16px; color:#ff0000"></p>
-								</div>
-								
-								
-								
-								
-								
+        <div class="lines-wrap">
+          <div class="lines-inner">
+            <div class="lines"></div>
+          </div>
+        </div>
+      
 
-								
-							    
-							    <br />
-								
-								
-								
-								<div class="col-md-12" >
-									<button class="site-btn" style="background-color:#ff0000; padding:15px;padding-left:40px;padding-right:40px; min-width:100px">Join In</button>
-								</div>
-								
-								
-							</div>
-						</form>
-						
-						
+
+        </div>
+      </div>
+       -->
+
+      <div class="unslate_co--section" id="services-section">
+        <div class="container">
+
+
+
+        </div>
+      </div>
+
+
+
+
+
+      <div class="unslate_co--section" id="contact-section">
+        <div class="container">
+          <div class="section-heading-wrap text-center mb-5">
+            <h2 class="heading-h2 text-center divider"><span class="gsap-reveal">JOIN</span></h2>
+            <span class="gsap-reveal"><img src="${pageContext.request.contextPath}/resources/unfold/images/divider.png" alt="divider" width="55"></span>
+          </div>
+
+
+          <div class="row justify-content-between">
+            
+            <div class="col-md-8" style="margin-left: 33%;">
+            
+               
+              <form action="${pageContext.request.contextPath}/member/join" class="form-outline-style-v1" method="post">
+                <div class="form-group row mb-0">
+
+                  <div class="col-md-7 form-group gsap-reveal">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                    <label for="username">ID</label>
+                    <input name="username" type="text" class="form-control" id="username">
+                  </div>
+                  <div class="col-md-5" >
+                    <p id="chk" style="padding:18px;margin:0px; font-size:16px; color:#ff0000"></p>
+                  </div>
+                  <br />
+                  
+                  <div class="col-md-7 form-group gsap-reveal">
+                    <label for="password">Password</label>
+                    <input name="password" type="password" class="form-control" id="password">
+                  </div>
+                  <div class="col-md-5" >
+                    <p id="" style="padding:18px;margin:0px;"></p>
+                  </div>
+
+                  <div class="col-md-7 form-group gsap-reveal">
+                    <label for="userrname">Name</label>
+                    <input name="userrname" type="text" class="form-control" id="userrname">
+                  </div>
+                   <div class="col-md-4" >
+                    <p id="" style="padding:18px;margin:0px;"></p>
+                  </div>
+                
+
+    
+                    <div class="col-md-4 form-group gsap-reveal" style="padding:18px; color:#fff; margin:0px;">
+                        <label for="usergender" style="color:#A6A6A6">Gender</label><br />
+                        <input type="radio" name= "usergender" id="usergender" value="male">Male &nbsp; &nbsp;
+                        <input type="radio" name= "usergender" id="usergender" value="female">Female
+                      
+                             
+                    </div>
+                    
+                    
+                    <div class="col-md-4 form-group gsap-reveal" style="padding:18px; margin:0px;">
+					 <label for="userage" style="color:#A6A6A6">Age</label><br />
+                                 <select name= "userage" style="border:1px solid #A6A6A6;background-color:#D5D5D5;">
+                                       <option id="userage" value="10대">10-19</option>
+                                       <option id="userage" value="20대">20-29</option>
+                                       <option id="userage" value="30대">30-39</option>
+                                       <option id="userage" value="40대">40-49</option>
+                                       <option id="userage" value="50대">50-59</option>
+                                       <option id="userage" value="60대이상">60 over</option>
+                                 </select>
+                             </div>
+                             <div class="col-md-7" >
+								<p id="" style="padding:18px;margin:0px; font-size:16px; color:#ff0000"></p>
+					       </div>
+                    
+                    
+                    
+
+                     <div class="col-md-7 form-group gsap-reveal">
+                        <label for="email">E-mail</label>
+                        <input name="email" type="email" class="form-control" id="email">
+                    </div>
+                    <div class="col-md-5" >
+						<p id="" style="padding:18px;margin:0px; font-size:16px; color:#ff0000"></p>
+					</div>
+                    
+                    
+                    
+                    
+                    <div class="col-md-7 form-group gsap-reveal">
+                    	<label for="usernick">NickName</label>
+						<input type="text" name="usernick" class="form-control" id="usernick">
+					</div>
+					<div class="col-md-5" >
+						<p id="chk2" style="padding:18px;margin:0px; font-size:16px; color:#ff0000"></p>
+					</div>
+
+                  
+               
+               </div>
+               		<section class="cta" style="background-image:none; padding:10px">
+						<div class="form-group row gsap-reveal" style="margin-left: 42%;">
+                    <div class="col-md-12 d-flex align-items-center">
+                    
+                       <a class="cta-btn" href="${pageContext.request.contextPath}/member/login" style="font-family:aCinemaL">JOIN</a>
+                      <span class="submitting"></span>
+                    </div>
+                  </div>
+                  </section>
+              </form>
+              
+              				
 		<script type="text/javascript" 
-		src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
+			src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
 		
-	 <script>
+	 	<script>
 
 
 	
@@ -225,25 +233,32 @@
 			});
 		});
 		</script>
-						
-						
-						
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Blog section end -->
+ 
+ 
+ 
+           
 
-	
-	<!--====== Javascripts & Jquery ======-->
-	<script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/jquery.slicknav.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/owl.carousel.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/mixitup.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
-	
-	<%@include file="/WEB-INF/views/footer.jsp" %>
-	</body>
+            </div>
+
+    
+
+          </div>
+        </div>
+      </div>
+ 
+
+    
+    <!-- Loader 
+    <div id="unslate_co--overlayer"></div>
+    <div class="site-loader-wrap">
+      <div class="site-loader"></div>
+    </div>
+    -->
+
+    <script src="${pageContext.request.contextPath}/resources/unfold/js/scripts-dist.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/unfold/js/main.js"></script>
+
+
+	 <%@include file="/WEB-INF/views/footer.jsp" %>
+  </body>
 </html>
