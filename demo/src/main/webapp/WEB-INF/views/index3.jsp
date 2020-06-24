@@ -54,8 +54,8 @@
 
     </section><!-- End About Section -->
     
-    <section id="about" class="about">
-      <div class="container">
+    <section id="count" class="services" style="background-color:#000000">
+      <div class="container" >
         <div class="unslate_co--section section-counter" id="skills-section">
             <div class="row pt-5">
               <div class="col-6 col-sm-6 mb-5 mb-lg-0 col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="0">
@@ -64,7 +64,7 @@
                     <span class="number number-counter" data-number="${moviecnt}">0</span>
                     
                   </span>
-                  <span class="counter-label">Movie</span>
+                  <span class="counter-label" style="color:white;">Movie</span>
                 </div>
               </div>
               
@@ -74,7 +74,7 @@
                     <span class="number number-counter" data-number="${membercnt}">0</span>
                     
                   </span>
-                  <span class="counter-label">Member</span>
+                  <span class="counter-label" style="color:white;">Member</span>
                 </div>
               </div>
               
@@ -84,17 +84,17 @@
                     <span class="number number-counter" data-number="${boardcnt}">0</span>
                    
                   </span>
-                  <span class="counter-label">Board</span>
+                  <span class="counter-label" style="color:white;">Board</span>
                 </div>
               </div>
               
-              <div class="col-6 col-sm-6 mb-5 mb-lg-0 col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+              <div class="col-6 col-sm-6 mb-5 mb-lg-0 col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
                 <div class="counter-v1 text-center">
                   <span class="number-wrap">
-                    <span class="number number-counter" data-number="100">0</span>
-                    
+                    <span class="number number-counter" data-number="${choicecnt}">0</span>
+                   
                   </span>
-                  <span class="counter-label">Design</span>
+                  <span class="counter-label" style="color:white;">Choice Movie</span>
                 </div>
               </div>
             </div>

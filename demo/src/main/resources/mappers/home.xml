@@ -5,10 +5,10 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Home">
 	<select id="homelist" resultType="com.soulmovie.vo.MovieVO">
-		SELECT MOVIE_CODE, MOVIE_TITLE, MOVIE_DATE, MOVIE_NATION, MOVIE_GENRE, MOVIE_DIRECTOR, MOVIE_ACTOR, MOVIE_CNT, MOVIE_FREQ,B.RANK 
+		SELECT MOVIE_CODE, MOVIE_TITLE, MOVIE_DATE, MOVIE_NATION, MOVIE_GENRE, MOVIE_DIRECTOR, MOVIE_ACTOR, MOVIE_CNT,B.RANK 
 		FROM
 			(SELECT 
-				MOVIE_CODE, MOVIE_TITLE, MOVIE_DATE, MOVIE_NATION, MOVIE_GENRE, MOVIE_DIRECTOR, MOVIE_ACTOR, MOVIE_CNT, MOVIE_FREQ,
+				MOVIE_CODE, MOVIE_TITLE, MOVIE_DATE, MOVIE_NATION, MOVIE_GENRE, MOVIE_DIRECTOR, MOVIE_ACTOR, MOVIE_CNT, 
 				ROW_NUMBER() OVER (ORDER BY MOVIE_CNT DESC) RANK    
 			FROM 
 				MOVIE) B
@@ -23,6 +23,9 @@
 	<select id="selectMovieImg" parameterType="int" resultMap="img1">
 		SELECT MOVIE_CODE, MOVIE_IMG FROM MOVIE WHERE MOVIE_CODE=#{no}
 	</select>
-	
+	<select id="choicecount" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM CHOICE
+	</select>
+
 	
 </mapper>

@@ -51,7 +51,7 @@ public class BoardDAO {
 	}
 
 	public BoardVO selectBoardImg(int no) {
-		return sqlFactory.openSession().selectOne("Board.selectBoardImg", no);
+		return sqlFactory.openSession().selectOne("Home.selectBoardImg", no);
 	}
 
 	public int deleteBoard(BoardVO obj) {

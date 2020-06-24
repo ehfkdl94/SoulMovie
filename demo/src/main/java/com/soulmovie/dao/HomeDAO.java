@@ -36,4 +36,10 @@ public class HomeDAO {
 	public int countBoard() {
 		return sqlFatory.openSession().selectOne("Board.boardcount");
 	}
+	
+	public int countChoice() {
+		return sqlFatory.openSession().selectOne("Home.choicecount");
+	}
+	
+	
 }

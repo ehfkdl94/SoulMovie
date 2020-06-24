@@ -2713,7 +2713,7 @@ figure.dotted-bg:before {
 .counter-v1 .counter-label {
   text-transform: uppercase;
   letter-spacing: .1rem;
-  font-size: 11px;
+  font-size: 15px;
   font-weight: 900;
 }
 
