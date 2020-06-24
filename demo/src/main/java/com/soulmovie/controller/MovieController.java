@@ -129,7 +129,6 @@ public class MovieController {
 		model.addAttribute("end",end );
 		model.addAttribute("allpage",allpage);
 		
->>>>>>> 3cf87181a41ccf0d5797d3f69a48b4aa4237b848
 		return request.getContextPath()+"/movie/movielist";
 	}
 	
