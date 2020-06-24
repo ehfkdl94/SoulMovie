@@ -1512,7 +1512,7 @@ section {
 .sidebar-nav {
     display: block;
     float: left;
-    width: 150px;
+    width: 200px;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -1548,6 +1548,7 @@ section {
     -o-transition: background .5s;
     -ms-transition: background .5s;
     transition: background .5s;
+    font-family:'GothicB';
 }
 .sidebar_name {
     padding-top: 25px;

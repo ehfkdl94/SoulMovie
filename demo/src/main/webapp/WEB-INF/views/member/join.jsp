@@ -135,7 +135,7 @@
 
                      <div class="col-md-7 form-group gsap-reveal">
                         <label for="email">E-mail</label>
-                        <input name="email" type="email" class="form-control" id="email">
+                        <input name="useremail" type="email" class="form-control" id="email">
                     </div>
                     <div class="col-md-5" >
 						<p id="" style="padding:18px;margin:0px; font-size:16px; color:#ff0000"></p>

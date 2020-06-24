@@ -19,6 +19,10 @@ public interface UserMapper {
 	@Select({"SELECT * FROM MEMBER WHERE USERNAME=#{username}"})
 	public UserVo findByUsername(@Param("username") String username);
 	
+	@Select({"SELECT USERCCNT FROM MEMBER WHERE USERNAME=#{username}"})
+	public int findUserCcnt(@Param("username") String username);
+	
+	
 	@Select({"SELECT USERID FROM MEMBER WHERE USERNAME =#{username}"})
 	public int findUserid(@Param("username") String username);
 	@Select({"SELECT USERNICK FROM MEMBER WHERE USERID=#{username}"})

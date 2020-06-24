@@ -5,7 +5,13 @@
 
 <head>
   <%@include file="/WEB-INF/views/head.jsp"%>
-  <title>Soul Movie</title>  
+  <title>Soul Movie</title>
+  <style type="text/css">
+       @FONT-FACE{
+          font-family:'YDHB';
+          src:url("${pageContext.request.contextPath}/resources/fonts/YOONDAEHANB.ttf")
+       }
+  </style>  
 </head>
 
 <body>

@@ -51,7 +51,6 @@ public class RestMemberController {
 		if (ret > 0) {
 			map1.put("ret", 1);
 
-			System.out.println("닉네임 값이 있어요");
 		}
 		return map1;
 	}
