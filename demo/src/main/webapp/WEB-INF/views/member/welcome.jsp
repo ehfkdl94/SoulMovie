@@ -49,29 +49,34 @@
     	<div class="container">
     		<div class="row d-flex no-gutters">
     			
-    			<div class="col-md-6 col-lg-6 d-flex">
+    			<div class="col-md-6 col-lg-6 d-flex"  style="margin-left:300px">
     				<div class="py-md-5 w-100 bg-light px-md-5">
     				<form action="${pageContext.request.contextPath}/loginProcess" class="form-outline-style-v1" method="post">
+    				<div class="text-center">
     					<div class="py-md-5">
 		    				<div class="row justify-content-start pb-3">
 				          <div class="col-md-12 heading-section ftco-animate">
-							              <h3>회원가입 완료!</h3><br />  
+				          
+							              <h3>회원가입이 완료되었습니다!</h3><br />  
 							              <!--     
 				            <ul class="about-info mt-4 px-md-0 px-2">
 				            	<li class="flex"><span>님 환영합니다</span></li>
 				            </ul>
 				             -->   
-				            <h6>아래의 버튼을 클릭하여 로그인 해주세요.</h6><br />
+				            
 				            <div class="col-md-12 ">
+				            	
+				            	<h6>아래의 버튼을 클릭하여 로그인하세요.</h6><br />
 		                      <a class="btn" href="${pageContext.request.contextPath}/member/login" style="background-color:#ff0000; color:white;">LOGIN</a>
 		                      <span class="submitting"></span>
+		                    
 		                    </div>
 				          </div>
 				        </div>
 	
 			   
 			          </div>
-			           
+			             </div>
 			      </form>
 		        </div>
 	        </div>
