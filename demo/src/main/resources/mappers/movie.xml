@@ -6,75 +6,86 @@
 <mapper namespace="Movie">
 
 <select id="selectMoiveReview" resultType="com.soulmovie.vo.ChoiceVO" parameterType="int">  <!-- 영화 상세정보 출력 -->
-		SELECT CHOICE_NO, CHOICE_FREQ, CHOICE_REASON, CHOICE_CATEGORY, CHOICE_DATE, CHOICE_CODE, CHOICE_ID   
-		FROM (SELECT CHOICE_NO, CHOICE_FREQ, CHOICE_REASON, CHOICE_CATEGORY, CHOICE_DATE, CHOICE_CODE, CHOICE_ID,
-				ROW_NUMBER() OVER (ORDER BY CHOICE_DATE DESC) rank  
-     			FROM CHOICE) B
-     	WHERE CHOICE_CODE=#{no} and
-     		RANK BETWEEN 1 AND 5
-	</select>
-	<select id="moviedetail" resultType="com.soulmovie.vo.MovieVO" parameterType="int">  <!-- 영화 상세정보 출력 -->
-		SELECT MOVIE_CODE, MOVIE_TITLE, MOVIE_DATE, MOVIE_NATION, MOVIE_GENRE, MOVIE_DIRECTOR, MOVIE_ACTOR, MOVIE_CNT,B.rank   
-		FROM (SELECT MOVIE_CODE, MOVIE_TITLE, MOVIE_DATE, MOVIE_NATION, MOVIE_GENRE, MOVIE_DIRECTOR, MOVIE_ACTOR, MOVIE_CNT,
-				ROW_NUMBER() OVER (ORDER BY MOVIE_CNT DESC) rank  
-     			FROM MOVIE) B
-     	WHERE MOVIE_CODE=#{no}
-	</select>
-	
-	<select id="movielist" resultType="com.soulmovie.vo.MovieVO">
-		SELECT MOVIE_CODE, MOVIE_TITLE, MOVIE_DATE, MOVIE_NATION, MOVIE_GENRE, MOVIE_DIRECTOR, MOVIE_ACTOR, MOVIE_CNT,B.RANK 
-		FROM
-			(SELECT 
-				MOVIE_CODE, MOVIE_TITLE, MOVIE_DATE, MOVIE_NATION, MOVIE_GENRE, MOVIE_DIRECTOR, MOVIE_ACTOR, MOVIE_CNT,
-				ROW_NUMBER() OVER (ORDER BY MOVIE_CNT DESC) RANK    
-			FROM 
-				MOVIE) B
-		WHERE RANK BETWEEN 1 AND 6
-	</select>
-	
-		<select id="moviepagelistText" resultType="com.soulmovie.vo.MovieVO" parameterType="map">
-		SELECT MOVIE_CODE, MOVIE_TITLE, MOVIE_DATE, MOVIE_NATION, MOVIE_GENRE, MOVIE_DIRECTOR, MOVIE_ACTOR, MOVIE_CNT,B.RANK 
-		FROM
-			(SELECT 
-				MOVIE_CODE, MOVIE_TITLE, MOVIE_DATE, MOVIE_NATION, MOVIE_GENRE, MOVIE_DIRECTOR, MOVIE_ACTOR, MOVIE_CNT, 
-				ROW_NUMBER() OVER (ORDER BY MOVIE_CNT DESC) RANK    
-			FROM 
-				MOVIE) B
-			WHERE RANK BETWEEN #{start} AND #{end} 
-				AND B.MOVIE_TITLE LIKE '%' || UPPER(TRIM(#{text})) || '%' 
-		     
-	</select>
-	<select id="moviepagelistGenre" resultType="com.soulmovie.vo.MovieVO" parameterType="map">
-		SELECT MOVIE_CODE, MOVIE_TITLE, MOVIE_DATE, MOVIE_NATION, MOVIE_GENRE, MOVIE_DIRECTOR, MOVIE_ACTOR, MOVIE_CNT,B.RANK 
-		FROM
-			(SELECT 
-				MOVIE_CODE, MOVIE_TITLE, MOVIE_DATE, MOVIE_NATION, MOVIE_GENRE, MOVIE_DIRECTOR, MOVIE_ACTOR, MOVIE_CNT,
-				ROW_NUMBER() OVER (ORDER BY MOVIE_CNT DESC) RANK    
-			FROM 
-				MOVIE) B
-			WHERE RANK BETWEEN #{start} AND #{end} 
-				AND B.MOVIE_GENRE LIKE '%' || UPPER(TRIM(#{text})) || '%' 
-		     
-	</select>
-	
-	
-	
-	<select id="moviecontent" resultType="com.soulmovie.vo.MovieVO" parameterType="int">
-		SELECT * FROM MOVIE WHERE MOVIE_CODE=#{no}
-	</select>
-	<select id="count" resultType="int" parameterType="String">
-		SELECT COUNT(*) FROM MOVIE WHERE MOVIE_TITLE LIKE '%' || #{text} || '%' 
-	</select>
-	
-	<delete id="deleteMovie" parameterType="com.soulmovie.vo.MovieVO">
-		DELETE FROM MOVIE WHERE MOVIE_CODE = #{movie_code} 
-	</delete>
-	
-	
-	<select id ="moviefreq" resultType="com.soulmovie.vo.ChoiceVO" parameterType="int">
-	SELECT NVL(sum(CHOICE.CHOICE_FREQ),0) CHOICE_FREQ ,count(CHOICE.CHOICE_FREQ)
-	FROM MOVIE, CHOICE 
-	WHERE MOVIE.MOVIE_CODE = #{no} AND
+      SELECT CHOICE_NO, CHOICE_FREQ, CHOICE_REASON, CHOICE_CATEGORY, CHOICE_DATE, CHOICE_CODE, CHOICE_ID   
+      FROM (SELECT CHOICE_NO, CHOICE_FREQ, CHOICE_REASON, CHOICE_CATEGORY, CHOICE_DATE, CHOICE_CODE, CHOICE_ID,
+            ROW_NUMBER() OVER (ORDER BY CHOICE_DATE DESC) rank  
+              FROM CHOICE) B
+        WHERE CHOICE_CODE=#{no} and
+           RANK BETWEEN 1 AND 5
+   </select>
+   <select id="moviedetail" resultType="com.soulmovie.vo.MovieVO" parameterType="int">  <!-- 영화 상세정보 출력 -->
+      SELECT MOVIE_CODE, MOVIE_TITLE, MOVIE_DATE, MOVIE_NATION, MOVIE_GENRE, MOVIE_DIRECTOR, MOVIE_ACTOR, MOVIE_CNT,B.rank   
+      FROM (SELECT MOVIE_CODE, MOVIE_TITLE, MOVIE_DATE, MOVIE_NATION, MOVIE_GENRE, MOVIE_DIRECTOR, MOVIE_ACTOR, MOVIE_CNT,
+            ROW_NUMBER() OVER (ORDER BY MOVIE_CNT DESC) rank  
+              FROM MOVIE) B
+        WHERE MOVIE_CODE=#{no}
+   </select>
+   
+   <select id="movielist" resultType="com.soulmovie.vo.MovieVO">
+      SELECT MOVIE_CODE, MOVIE_TITLE, MOVIE_DATE, MOVIE_NATION, MOVIE_GENRE, MOVIE_DIRECTOR, MOVIE_ACTOR, MOVIE_CNT,B.RANK 
+      FROM
+         (SELECT 
+            MOVIE_CODE, MOVIE_TITLE, MOVIE_DATE, MOVIE_NATION, MOVIE_GENRE, MOVIE_DIRECTOR, MOVIE_ACTOR, MOVIE_CNT,
+            ROW_NUMBER() OVER (ORDER BY MOVIE_CNT DESC) RANK    
+         FROM 
+            MOVIE) B
+      WHERE RANK BETWEEN 1 AND 6
+   </select>
+   
+      <select id="moviepagelistText" resultType="com.soulmovie.vo.MovieVO" parameterType="map">
+      SELECT MOVIE_CODE, MOVIE_TITLE, MOVIE_DATE, MOVIE_NATION, MOVIE_GENRE, MOVIE_DIRECTOR, MOVIE_ACTOR, MOVIE_CNT,B.RANK 
+      FROM
+         (SELECT 
+            MOVIE_CODE, MOVIE_TITLE, MOVIE_DATE, MOVIE_NATION, MOVIE_GENRE, MOVIE_DIRECTOR, MOVIE_ACTOR, MOVIE_CNT, 
+            ROW_NUMBER() OVER (ORDER BY MOVIE_CNT DESC) RANK    
+         FROM 
+            MOVIE) B
+         WHERE RANK BETWEEN #{start} AND #{end} 
+            AND B.MOVIE_TITLE LIKE '%' || UPPER(TRIM(#{text})) || '%' 
+           
+   </select>
+   <select id="moviepagelistGenre" resultType="com.soulmovie.vo.MovieVO" parameterType="map">
+      SELECT MOVIE_CODE, MOVIE_TITLE, MOVIE_DATE, MOVIE_NATION, MOVIE_GENRE, MOVIE_DIRECTOR, MOVIE_ACTOR, MOVIE_CNT,B.RANK 
+      FROM
+         (SELECT 
+            MOVIE_CODE, MOVIE_TITLE, MOVIE_DATE, MOVIE_NATION, MOVIE_GENRE, MOVIE_DIRECTOR, MOVIE_ACTOR, MOVIE_CNT,
+            ROW_NUMBER() OVER (ORDER BY MOVIE_CNT DESC) RANK    
+         FROM 
+            MOVIE) B
+         WHERE RANK BETWEEN #{start} AND #{end} 
+            AND B.MOVIE_GENRE LIKE '%' || UPPER(TRIM(#{text})) || '%' 
+           
+   </select>
+   
+   <select id="movielist1" resultType="com.soulmovie.vo.MovieVO" parameterType="map">
+      SELECT MOVIE_CODE, MOVIE_TITLE, MOVIE_DATE, MOVIE_NATION, MOVIE_GENRE, MOVIE_DIRECTOR, MOVIE_ACTOR, MOVIE_CNT,B.RANK 
+      FROM
+         (SELECT 
+            MOVIE_CODE, MOVIE_TITLE, MOVIE_DATE, MOVIE_NATION, MOVIE_GENRE, MOVIE_DIRECTOR, MOVIE_ACTOR, MOVIE_CNT,
+            ROW_NUMBER() OVER (ORDER BY MOVIE_CNT DESC) RANK    
+         FROM 
+            MOVIE) B
+      WHERE RANK BETWEEN #{start} AND #{end}
+   </select>
+   
+   <select id="moviecontent" resultType="com.soulmovie.vo.MovieVO" parameterType="int">
+      SELECT * FROM MOVIE WHERE MOVIE_CODE=#{no}
+   </select>
+   <select id="count" resultType="int" parameterType="String">
+      SELECT COUNT(*) FROM MOVIE WHERE MOVIE_TITLE LIKE '%' || #{text} || '%' 
+   </select>
+   
+   <delete id="deleteMovie" parameterType="com.soulmovie.vo.MovieVO">
+      DELETE FROM MOVIE WHERE MOVIE_CODE = #{movie_code} 
+   </delete>
+   
+   <select id="moviecount" resultType="int" parameterType="String">
+      SELECT COUNT(*) FROM MOVIE
+   </select>
+   <select id ="moviefreq" resultType="com.soulmovie.vo.ChoiceVO" parameterType="int">
+   SELECT NVL(sum(CHOICE.CHOICE_FREQ),0) CHOICE_FREQ ,count(CHOICE.CHOICE_FREQ)
+   FROM MOVIE, CHOICE 
+   WHERE MOVIE.MOVIE_CODE = #{no} AND
      MOVIE.MOVIE_CODE =CHOICE.CHOICE_CODE
-	</select>
+   </select>
 </mapper>
