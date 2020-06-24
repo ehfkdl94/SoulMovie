@@ -28,6 +28,8 @@ public class MovieController {
 			,Model model) {
 		MovieVO list = mDAO.selectMovieOne(movie_code);
 		List<MovieVO> list2 = mDAO.selectMovie();
+		ChoiceVO freq = mDAO.countMovieFreq(list.getMovie_code());
+		list.setMovie_freq(freq.getChoice_freq());
 		model.addAttribute("list", list);
 		model.addAttribute("list2", list2);
 		List<ChoiceVO> review = mDAO.selectMoiveReview(list.getMovie_code());

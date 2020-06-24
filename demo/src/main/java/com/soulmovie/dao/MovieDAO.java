@@ -57,4 +57,8 @@ public class MovieDAO {
 	public int countMovie(String text) {
 		return sqlFactory.openSession().selectOne("Movie.count", text);
 	}
+	public ChoiceVO countMovieFreq(int no) {
+		return sqlFactory.openSession().selectOne("Movie.moviefreq", no);
+	}
+
 }

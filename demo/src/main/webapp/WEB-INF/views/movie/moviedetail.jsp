@@ -56,19 +56,19 @@
 
 
 
-
+ <%@include file="/WEB-INF/views/header.jsp" %>
 
 
 
   <main id="main">
 
     <!-- ======= About Section ======= -->
-    <section id="about" class="about">
+    <section id="about" class="about" style="margin-top:100px;">
       <div class="container">
 
         <div class="row">
-          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-RIG">
-            <img src="http://file.koreafilm.or.kr/thm/02/00/05/21/TN_DPK014660.jpg" class="img-fluid" alt="">
+          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content " data-aos="fade-RIG"  >
+            <img src="http://file.koreafilm.or.kr/thm/02/00/05/21/TN_DPK014660.jpg"  style= "width:300px; height:400px; margin-left:100px ;" "class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left">
             <div class="why-us" data-aos="fade-up">
@@ -111,7 +111,7 @@
           
 
 
-          <div class="row pt-5" >
+          <div class="row justify-content-center" >
             <div class="col-6 col-sm-6 mb-5 mb-lg-0 col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="0">
               <div class="counter-v1 text-center">
                 <span class="number-wrap">
@@ -139,7 +139,7 @@
           
 
 
-          <div class="row pt-5">
+          <div class="row justify-content-center">
           
             <div class="col-6 col-sm-6 mb-5 mb-lg-0 col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
               <div class="counter-v1 text-center">
@@ -169,16 +169,29 @@
       <div class="container">
 
         <div class="row">
-
-          <div class="col-lg-4" data-aos="fade-up">
-            <div class="box">
-              <span>01</span>
-              <h4>Lorem Ipsum</h4>
-              <p>Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="150">
+        <c:if test="${!empty review}">
+						 <c:forEach var="tmp" items="${review}">
+						 <h3 class="h5" style="color:white;">  :</h3>
+                  		   <div class="col-lg-4" data-aos="fade-up">
+					            <div class="box">
+					              <span>${tmp.choice_id}</span>
+					              <h4>Lorem Ipsum</h4>
+					              <p> ${tmp.choice_reason}</p>
+					            </div>
+					       </div>
+						</c:forEach>
+						</c:if>
+						<c:if test="${empty review}">
+						 <div class="box">
+					              <span>${tmp.choice_id}</span>
+					              <h4>Lorem Ipsum</h4>
+					              <p> ${tmp.choice_reason}</p>
+					            </div>
+						</c:if>
+			
+	       
+		
+<!--           <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="150">
             <div class="box">
               <span>02</span>
               <h4>Repellat Nihil</h4>
@@ -195,7 +208,7 @@
             </div>
           </div>
 
-        </div>
+        </div> -->
 
       </div>
     </section><!-- End Why Us Section -->
