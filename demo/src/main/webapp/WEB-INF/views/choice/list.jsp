@@ -18,6 +18,7 @@
 <body>
 <%@include file="/WEB-INF/views/header.jsp" %>
 
+  
 
 	<section id="cta" class="cta" style="height:400px;" >
       <div class="container" data-aos="zoom-in">
@@ -29,7 +30,9 @@
           <a class="cta-btn" href="${pageContext.request.contextPath}/choice/insert">나의 인생영화 등록</a>
         </div>
       </div>
+      
     </section>
+    <%@include file="/WEB-INF/views/sidebar.jsp" %>
  	
  	<section id="about" class="about" style="margin-top:20px;">	
 	<div class="container"> 
@@ -116,7 +119,7 @@
 						window.location.href="/choice/delete?no=" + no;
 					}
 				});
-			});
+			});			
 		}); 
 		// jquery라이브러리 사용 종료
 	</script>	
