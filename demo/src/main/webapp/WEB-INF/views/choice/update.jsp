@@ -22,7 +22,7 @@
     </section>
   
    <%@include file="/WEB-INF/views/sidebar.jsp" %>
-  <section style="margin-top:20px;"> 
+  <section style="margin-top:20px;margin-left:200px;"> 
  	 <div class="section-title">
           <span>SoulMovie</span>
           <h2>인생 영화를 수정합니다<br /></h2>

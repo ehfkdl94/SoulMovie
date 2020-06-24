@@ -10,7 +10,7 @@ public class ChoiceVO {
 	private int choice_code = 0;
 	private int choice_id = 0;
 	private String movie_title = null;
-	private byte[] movie_img = null;
+	private String movie_img = null;
 	private String user_nick = null;
 	
 	
@@ -27,10 +27,10 @@ public class ChoiceVO {
 	public void setMovie_title(String movie_title) {
 		this.movie_title = movie_title;
 	}
-	public byte[] getMovie_img() {
+	public String getMovie_img() {
 		return movie_img;
 	}
-	public void setMovie_img(byte[] movie_img) {
+	public void setMovie_img(String movie_img) {
 		this.movie_img = movie_img;
 	}
 	//Getter Setter

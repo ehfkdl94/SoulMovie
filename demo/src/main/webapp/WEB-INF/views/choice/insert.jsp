@@ -29,7 +29,7 @@
     </section>
 	
  <%@include file="/WEB-INF/views/sidebar.jsp" %>	
-<section id="contact" class="contact" style="margin-top: 100px; margin-left:100px;" >
+<section id="contact" class="contact" style="margin-top:20px;margin-left:200px;">
       <div class="container">
       <div class="section-title">
           <span>SoulMovie</span>
@@ -37,7 +37,7 @@
 			님의 인생영화를 등록하세요!<br /></h2>
           <p></p>
         </div>
-	<div class="col-lg-6" style="margin-top: 40px;">
+	<div class="col-lg-6" style="margin-top: 40px;margin-left:200px;">
 		<form action="${pageContext.request.contextPath}/choice/insert"
 			method="get" class="php-email-form2">
 			
@@ -94,7 +94,7 @@
 		</form>
 	</div>
 
-	<div class="col-lg-6" style="margin-top: 10px;">
+	<div class="col-lg-6" style="margin-top: 10px;margin-left:200px;">
 		<form action="${pageContext.request.contextPath}/choice/insert"
 			method="post" >
 			<input type="hidden" name="choice_code" value="${choice_code}" readonly /><br />
