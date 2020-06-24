@@ -31,6 +31,12 @@
   <link href="${pageContext.request.contextPath}/resources/day/assets/css/style2.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/style1.css" rel="stylesheet">
   
+  <style type="text/css">
+       @FONT-FACE{
+          font-family:'aCinemaL';
+          src:url("${pageContext.request.contextPath}/resources/fonts/aCinemaL.ttf")
+       }
+  </style>
   
 
   <!-- =======================================================
