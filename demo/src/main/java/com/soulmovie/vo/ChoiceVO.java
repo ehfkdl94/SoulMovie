@@ -12,9 +12,9 @@ public class ChoiceVO {
 	private String movie_title = null;
 	private String movie_img = null;
 	private String user_nick = null;
-	private int rown = 0;
 	
 	
+	//Getter Setter
 	public String getUser_nick() {
 		return user_nick;
 	}
@@ -76,14 +76,7 @@ public class ChoiceVO {
 	}
 	public void setChoice_id(int choice_id) {
 		this.choice_id = choice_id;
-	}
-	public int getRown() {
-		return rown;
-	}
-	public void setRown(int rown) {
-		this.rown = rown;
-	}
-	
+	}	
 	
 	//to String
 	@Override
@@ -91,7 +84,7 @@ public class ChoiceVO {
 		return "ChoiceVO [choice_no=" + choice_no + ", choice_freq=" + choice_freq + ", choice_reason=" + choice_reason
 				+ ", choice_category=" + choice_category + ", choice_date=" + choice_date + ", choice_code="
 				+ choice_code + ", choice_id=" + choice_id + ", movie_title=" + movie_title + ", movie_img=" + movie_img
-				+ ", user_nick=" + user_nick + ", rown=" + rown + "]";
+				+ ", user_nick=" + user_nick + "]";
 	}	
 
 }

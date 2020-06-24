@@ -66,7 +66,7 @@
 							<c:if test="${!empty list}">
 								<c:forEach var="tmp" items="${list}">
 									<tr>
-										<td rowspan="3"><input type="checkbox" name="chk"
+										<td rowspan="3"><input type="radio" name="chk"
 											value="${tmp.movie_code}" /></td>
 										<td>영화코드: </td>
 										<td>${tmp.movie_code}</td>
@@ -119,7 +119,7 @@
 				<span id="byteInfo">0</span> / 150bytes<br /> 
 				</div>				
 				<div class="validate"></div>
-				<input type="checkbox" name="choice_category" value="영상미" />영상미
+				<input type="checkbox" name="choice_category" value="영상미" checked />영상미
 				 <input type="checkbox"	name="choice_category" value="스토리" />스토리 
 				<input type="checkbox" name="choice_category" value="연기" />연기 
 				<input type="checkbox" name="choice_category" value="음악" />음악 

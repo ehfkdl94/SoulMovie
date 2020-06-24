@@ -64,10 +64,9 @@
 					<table style="word-break:break-all" class="table">
 						<tbody>
 							<tr>
-								<td colspan="3" class="tdchoiceno" style="display:none;"> ${tmp.choice_no}</td>
+								<td colspan="2" class="tdchoiceno" style="display:none;"> ${tmp.choice_no}</td>
 							</tr>
-							<tr>
-								<td style="width:50px; font-size:30px">${tmp.rown}</td>
+							<tr>								
 								<td rowspan="6" style=" width:400px;" align="center"><img src="${tmp.movie_img}" style="height:300px;"></td>					
 								<td><ul style="font-family:aCinemaL;">
 								<li><i class="icofont-check-circled"></i>영화제목: ${tmp.movie_title}</li>
