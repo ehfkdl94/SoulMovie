@@ -54,8 +54,19 @@ public class SecurityController {
 			
 			userMapper.insertMember(obj);
 					
-			return "redirect:"+request.getContextPath()+"/member/home";
+			return "redirect:"+request.getContextPath()+"/member/joinsuccess";
 		}
+		
+		
+
+		
+		
+		@RequestMapping(value = "/welcome", method = RequestMethod.GET) //테스트용
+		public String joinsuccess(HttpServletRequest request) {
+			
+			return request.getContextPath()+"/member/welcome";
+		}
+		
 		
 		
 		@RequestMapping(value = "/login", method = RequestMethod.GET)
