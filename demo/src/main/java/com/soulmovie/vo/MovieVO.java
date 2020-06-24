@@ -13,7 +13,7 @@ public class MovieVO {
 	private String movie_actor = null;
 	private byte[] movie_img = null;
 	private int movie_cnt = 0;
-	private int movie_freq = 0;
+	private Long movie_freq = 0L;
 	private String rank = null;
 	
 	public String getRank() {
@@ -76,10 +76,11 @@ public class MovieVO {
 	public void setMovie_cnt(int movie_cnt) {
 		this.movie_cnt = movie_cnt;
 	}
-	public int getMovie_freq() {
+	
+	public Long getMovie_freq() {
 		return movie_freq;
 	}
-	public void setMovie_freq(int movie_freq) {
+	public void setMovie_freq(Long movie_freq) {
 		this.movie_freq = movie_freq;
 	}
 	@Override
