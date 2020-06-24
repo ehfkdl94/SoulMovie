@@ -159,7 +159,7 @@
 						<div class="form-group row gsap-reveal" style="margin-left: 42%;">
                     <div class="col-md-12 d-flex align-items-center">
                     
-                       <a class="cta-btn" href="${pageContext.request.contextPath}/member/login" style="font-family:aCinemaL">JOIN</a>
+                       <input type="submit" class="cta-btn" style="font-family:aCinemaL" value="JOIN" />
                       <span class="submitting"></span>
                     </div>
                   </div>

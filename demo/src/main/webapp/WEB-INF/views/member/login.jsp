@@ -95,8 +95,8 @@
 					<section class="cta" style="background-image:none; padding:10px">
 						<div class="form-group row gsap-reveal" style="margin-left: 38%;">
                     <div class="col-md-12 d-flex align-items-center">
-                    
-                       <a class="cta-btn" href="${pageContext.request.contextPath}/member/login" style="font-family:aCinemaL">LOGIN</a>
+                   
+                       <input type="submit" class="cta-btn" style="font-family:aCinemaL" value="LOGIN" />
                       <span class="submitting"></span>
                     </div>
                   </div>
