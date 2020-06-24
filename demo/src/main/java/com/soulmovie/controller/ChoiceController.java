@@ -106,6 +106,8 @@ public class ChoiceController {
 //				System.out.println(user.getUsername());
 				String username = user.getUsername();
 				int userid = uMapper.findUserid(username);
+				String nickname = uMapper.findUserNick(username);				
+				model.addAttribute("user_nick",nickname);
 //				System.out.println(userid);
 				List<ChoiceVO> list = cMapper.selectChoiceList(userid);
 				model.addAttribute("list", list);
@@ -146,9 +148,13 @@ public class ChoiceController {
 	
 	@RequestMapping(value = "/update", method=RequestMethod.GET)
 	public String update(HttpServletRequest request, Model model, @RequestParam(value="no", defaultValue="0") int no) {		
-		System.out.println(no);
-		ChoiceVO obj = cMapper.selectChoice(no);		
+//		System.out.println(no);
+		ChoiceVO obj = cMapper.selectChoice(no);
+		String str = cMapper.selectMovieTitle(obj.getChoice_code());
+//		System.out.println(str);
 		model.addAttribute("obj", obj);
+		model.addAttribute("movie_title", str);
+		
 		return request.getContextPath() + "choice/update";
 		
 	}

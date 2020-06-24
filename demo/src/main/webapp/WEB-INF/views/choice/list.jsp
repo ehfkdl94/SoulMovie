@@ -25,18 +25,19 @@
         <br />
         <br />
         <br />
-          <h3><security:authentication property="name" />님의 인생영화 목록입니다!</h3>          
+          <h3>MY SOUL MOVIE LIST</h3>          
           <a class="cta-btn" href="${pageContext.request.contextPath}/choice/insert">나의 인생영화 등록</a>
         </div>
       </div>
     </section>
  	
- 	<section id="about" class="about" style="margin-top:20px;">
-	<div class="container"> 		
+ 	<section id="about" class="about" style="margin-top:20px;">	
+	<div class="container"> 
+	<h5>${user_nick}님의 인생영화입니다	</h5>	
 		 <div class="row">				
 			<c:if test="${empty list}">
 				<div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left">
-					<security:authentication property="name" />님의 인생 영화를 공유해주세요!<br />
+					${user_nick}님의 인생 영화를 공유해주세요!<br />
 				</div>
 			</c:if>
 			<c:if test="${!empty list}">
@@ -56,7 +57,7 @@
 								<li><i class="icofont-check-circled"></i>카테고리: ${tmp.choice_category}</li>
 								<li><i class="icofont-check-circled"></i><c:set var="dt" value="${fn:split(tmp.choice_date, ' ')}" />
 									등록일: ${dt[0]}</li>
-								<li><a href="${pageContext.request.contextPath}/choice/update?no=${tmp.choice_no}" class="btn btn-primary update">수정</a>
+								<li><a href="${pageContext.request.contextPath}/choice/update?no=${tmp.choice_no}" class="btn btn-dark update">수정</a>
 								<a href="#" class="btn btn-danger delete">삭제</a></li>
 								</ul>
 								</td>

@@ -100,7 +100,7 @@
 			<input type="hidden" name="choice_code" value="${choice_code}" readonly /><br />
 			<div class="form-row">
 				<div class="col-md-6 form-group">
-					영화제목 : ${movie_title} <br /> 
+					영화제목 : <br /> ${movie_title} <br /> 
 					<!--<input type="text" name="name"
 						class="form-control" id="name" placeholder="Your Name"
 						data-rule="minlen:4" data-msg="Please enter at least 4 chars" />-->

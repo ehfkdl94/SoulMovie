@@ -24,6 +24,8 @@ public interface ChoiceMapper {
 	@Select({"SELECT * FROM CHOICE WHERE CHOICE_NO = #{choice_code}"})
 	public ChoiceVO selectChoice(@Param("choice_code") int choice_code);
 	
+	@Select({"SELECT MOVIE_TITLE FROM MOVIE WHERE MOVIE_CODE = #{choice_code}"})
+	public String selectMovieTitle(@Param("choice_code") int choice_code);
 	
 	@Select({"<script>",
 			"SELECT * FROM " ,
