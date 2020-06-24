@@ -11,13 +11,7 @@
 
 <head> 
   <title>My Soul Movie</title> 
-  <%@include file="/WEB-INF/views/head.jsp" %>
-  <style type="text/css">
-       @FONT-FACE{
-          font-family:'aCinemaL';
-          src:url("${pageContext.request.contextPath}/resources/fonts/aCinemaL.ttf")
-       }
-    </style>
+  <%@include file="/WEB-INF/views/head.jsp" %>  
   
 </head>
 
@@ -77,7 +71,7 @@
 								<li><i class="icofont-check-circled"></i><c:set var="dt" value="${fn:split(tmp.choice_date, ' ')}" />
 									등록일: ${dt[0]}</li>
 								<li><a href="${pageContext.request.contextPath}/choice/update?no=${tmp.choice_no}" class="btn btn-dark update">수정</a>
-								<a href="#" class="btn btn-danger delete">삭제</a></li>
+								<a href="#" class="btn btn-danger delete" style="background-color:#ff0000">삭제</a></li>
 								</ul>
 								</td>
 							</tr>							
