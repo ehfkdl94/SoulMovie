@@ -68,7 +68,7 @@
 
         <div class="row">
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content " data-aos="fade-RIG"  >
-            <img src="http://file.koreafilm.or.kr/thm/02/00/05/21/TN_DPK014660.jpg"  style= "width:300px; height:400px; margin-left:100px ;" "class="img-fluid" alt="">
+            <img src="${list.movie_img}"  style= "border: solid 1px black; width:300px; height:400px; margin-left:100px ;" "class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left">
             <div class="why-us" data-aos="fade-up">
