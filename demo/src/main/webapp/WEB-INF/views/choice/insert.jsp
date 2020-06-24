@@ -17,6 +17,16 @@
 
 <body>
 	<%@include file="/WEB-INF/views/header.jsp"%>
+	<section id="cta" class="cta" style="height:400px;" >
+      <div class="container" data-aos="zoom-in">
+        <div class="text-center">
+        <br />
+        <br />
+        <br />
+          <h3>MY SOUL MOVIE</h3>           
+        </div>
+      </div>
+    </section>
 	
 	
 <section id="contact" class="contact" style="margin-top: 100px;">
