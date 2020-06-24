@@ -121,30 +121,30 @@ public class ChoiceController {
 		return request.getContextPath() + "/choice/list";
 	}
 	
-	@RequestMapping(value="/getimg")
-	public ResponseEntity<byte[]> getimg(@RequestParam(value="no") int no, HttpServletRequest request) {
-		
-		MovieVO obj = hDAO.selectBoardImg(no);
-		try {
-			if (obj.getMovie_img().length > 0) {
-				HttpHeaders header = new HttpHeaders();
-				header.setContentType(MediaType.IMAGE_JPEG);
-				ResponseEntity<byte[]> ret = new ResponseEntity<byte[]>(obj.getMovie_img(), header, HttpStatus.OK);
-				return ret;
-			}
-			return null;
-		}catch(Exception e){
-			try{//InputStream in = request.getServletContext().getResourceAsStream() -> /src/main/webapp
-			InputStream in = request.getServletContext().getResourceAsStream("/resources/img/default.jpg");
-			HttpHeaders header = new HttpHeaders();
-			header.setContentType(MediaType.IMAGE_JPEG);
-			ResponseEntity<byte[]> ret = new ResponseEntity<byte[]>(IOUtils.toByteArray(in), header, HttpStatus.OK);
-			return ret;
-			}catch(Exception e1) {
-				return null;
-			}
-		}
-	}
+//	@RequestMapping(value="/getimg")
+//	public ResponseEntity<byte[]> getimg(@RequestParam(value="no") int no, HttpServletRequest request) {
+//		
+//		MovieVO obj = hDAO.selectBoardImg(no);
+//		try {
+//			if (obj.getMovie_img().length > 0) {
+//				HttpHeaders header = new HttpHeaders();
+//				header.setContentType(MediaType.IMAGE_JPEG);
+//				ResponseEntity<byte[]> ret = new ResponseEntity<byte[]>(obj.getMovie_img(), header, HttpStatus.OK);
+//				return ret;
+//			}
+//			return null;
+//		}catch(Exception e){
+//			try{//InputStream in = request.getServletContext().getResourceAsStream() -> /src/main/webapp
+//			InputStream in = request.getServletContext().getResourceAsStream("/resources/img/default.jpg");
+//			HttpHeaders header = new HttpHeaders();
+//			header.setContentType(MediaType.IMAGE_JPEG);
+//			ResponseEntity<byte[]> ret = new ResponseEntity<byte[]>(IOUtils.toByteArray(in), header, HttpStatus.OK);
+//			return ret;
+//			}catch(Exception e1) {
+//				return null;
+//			}
+//		}
+//	}
 	
 	@RequestMapping(value = "/update", method=RequestMethod.GET)
 	public String update(HttpServletRequest request, Model model, @RequestParam(value="no", defaultValue="0") int no) {		
