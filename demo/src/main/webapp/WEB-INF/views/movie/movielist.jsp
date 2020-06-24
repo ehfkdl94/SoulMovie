@@ -129,12 +129,12 @@
 					<c:if test="${param.page != 1}">
 
 					<a style="font-size:20px;"
-						href="${pageContext.request.contextPath}/movie/movielist?page=1&text=${param.text}">맨앞</a>
+						href="${pageContext.request.contextPath}/movie/movielist?page=1&text=${param.text}"><<</a>
 				</c:if>
 				<c:if test="${param.page != 1}">
 
 					<a style="font-size:20px;"
-						href="${pageContext.request.contextPath}/movie/movielist?page=${param.page-1}&text=${param.text}">이전</a>
+						href="${pageContext.request.contextPath}/movie/movielist?page=${param.page-1}&text=${param.text}"><</a>
 				</c:if>
 
 				<c:forEach var="i" begin="${movepage-2}" end="${movepage+2}" step="1">
@@ -151,11 +151,11 @@
 
 				<c:if test="${allpage != param.page}">
 					<a style="font-size:20px;"
-						href="${pageContext.request.contextPath}/movie/movielist?page=${param.page+1}&text=${param.text}">다음</a>
+						href="${pageContext.request.contextPath}/movie/movielist?page=${param.page+1}&text=${param.text}">></a>
 				</c:if>
 				<c:if test="${allpage != param.page}">
 					<a style="font-size:20px;"
-						href="${pageContext.request.contextPath}/movie/movielist?page=${allpage}&text=${param.text}">맨뒤</a>
+						href="${pageContext.request.contextPath}/movie/movielist?page=${allpage}&text=${param.text}">>></a>
 				</c:if>
 			</div>
 			</div>
