@@ -61,8 +61,13 @@ public class SecurityController {
 		
 		
 		@RequestMapping(value = "/welcome", method = RequestMethod.GET) //테스트용
-		public String joinsuccess(HttpServletRequest request) {
+		public String joinsuccess(HttpServletRequest request,  Authentication auth) {
+			if(auth != null) {
 
+
+				
+				return "redirect:"+request.getContextPath()+"/";
+				}
 			
 			return request.getContextPath()+"/member/welcome";
 		}
@@ -70,13 +75,10 @@ public class SecurityController {
 		
 		
 		@RequestMapping(value = "/login", method = RequestMethod.GET)
-		public String login(HttpServletRequest request, Authentication auth) {
+		public String login(HttpServletRequest request) {
 			String referer = request.getHeader("Referer");
 			
-			if(auth != null) {
-				User user = (User)auth.getPrincipal();
-				System.out.println("auth가있다.");
-				return "redirect:"+request.getContextPath()+"/";}
+			
 			request.getSession().setAttribute("prevPage", referer);
 		
 			return request.getContextPath()+"/member/login";
