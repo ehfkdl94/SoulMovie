@@ -92,7 +92,7 @@
 					<div class="mix col-lg-3 col-md-4 col-sm-6 genres">
 						<div class="playlist-item">
 							<a href="${pageContext.request.contextPath}/movie/moviedetail?movie_code=${tmp.movie_code}">
-							<img  style="border: solid 1px red;"
+							<img  style="border: solid 1px red; height:450px;" 
 								src="${tmp.movie_img}"
 								alt=""></a>
 							<h5 style = "color:white;">${tmp.movie_title}</h5>
@@ -129,12 +129,12 @@
 					<c:if test="${param.page != 1}">
 
 					<a style="font-size:20px;"
-						href="${pageContext.request.contextPath}/movie/movielist?page=1&text=${param.text}">맨앞</a>
+						href="${pageContext.request.contextPath}/movie/movielist?page=1&text=${param.text}"><<</a>
 				</c:if>
 				<c:if test="${param.page != 1}">
 
 					<a style="font-size:20px;"
-						href="${pageContext.request.contextPath}/movie/movielist?page=${param.page-1}&text=${param.text}">이전</a>
+						href="${pageContext.request.contextPath}/movie/movielist?page=${param.page-1}&text=${param.text}"><</a>
 				</c:if>
 
 				<c:forEach var="i" begin="${movepage-2}" end="${movepage+2}" step="1">
@@ -151,11 +151,11 @@
 
 				<c:if test="${allpage != param.page}">
 					<a style="font-size:20px;"
-						href="${pageContext.request.contextPath}/movie/movielist?page=${param.page+1}&text=${param.text}">다음</a>
+						href="${pageContext.request.contextPath}/movie/movielist?page=${param.page+1}&text=${param.text}">></a>
 				</c:if>
 				<c:if test="${allpage != param.page}">
 					<a style="font-size:20px;"
-						href="${pageContext.request.contextPath}/movie/movielist?page=${allpage}&text=${param.text}">맨뒤</a>
+						href="${pageContext.request.contextPath}/movie/movielist?page=${allpage}&text=${param.text}">>></a>
 				</c:if>
 			</div>
 			</div>
