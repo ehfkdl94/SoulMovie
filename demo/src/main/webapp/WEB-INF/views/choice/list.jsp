@@ -36,7 +36,11 @@
  	
  	<section id="about" class="about" style="margin-top:20px;">	
 	<div class="container"> 
-	<h5>${user_nick}님의 인생영화입니다	</h5>	
+	<div class="section-title">
+          <span>SoulMovie</span>
+          <h2>${user_nick}님의 인생영화입니다<br /></h2>
+          <p></p>
+      </div>	
 		 <div class="row">				
 			<c:if test="${empty list}">
 				<div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left">

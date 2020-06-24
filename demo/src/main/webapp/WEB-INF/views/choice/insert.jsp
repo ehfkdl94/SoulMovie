@@ -28,8 +28,8 @@
       </div>
     </section>
 	
-	
-<section id="contact" class="contact" style="margin-top: 100px;">
+ <%@include file="/WEB-INF/views/sidebar.jsp" %>	
+<section id="contact" class="contact" style="margin-top: 100px; margin-left:100px;" >
       <div class="container">
       <div class="section-title">
           <span>SoulMovie</span>
@@ -137,6 +137,7 @@
 				<input type="checkbox" name="choice_category" value="연기" />연기 
 				<input type="checkbox" name="choice_category" value="음악" />음악 
 				<input type="checkbox" name="choice_category" value="기타" />기타<br />
+				<input type="hidden" name="choice_id" value="${choice_id}" readonly />
 			</div>
 			<div class="mb-3">
 				<div class="loading">Loading</div>
