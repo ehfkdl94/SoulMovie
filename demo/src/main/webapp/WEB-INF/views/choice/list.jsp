@@ -19,9 +19,12 @@
 <%@include file="/WEB-INF/views/header.jsp" %>
 
 
-	<section id="cta" class="cta" style="margin-top:100px;">
+	<section id="cta" class="cta" style="height:400px;" >
       <div class="container" data-aos="zoom-in">
         <div class="text-center">
+        <br />
+        <br />
+        <br />
           <h3><security:authentication property="name" />님의 인생영화 목록입니다!</h3>          
           <a class="cta-btn" href="${pageContext.request.contextPath}/choice/insert">나의 인생영화 등록</a>
         </div>
