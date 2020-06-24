@@ -72,30 +72,29 @@
           </div>
           <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left">
             <div class="why-us" data-aos="fade-up">
-              <div class="box" style="height:101px;">
-                <span>${list.movie_title}</span>
-
+              <div class="box" style="height:101px; word-break:break-all;"> 
+                <h5 style="color:#ed5b5b; font-weight:bold;">${list.movie_title}</h5>
               </div>
             </div>
             <div class="why-us" data-aos="fade-up">
-              <div class="box" style="height:101px; ">
+              <div class="box" style="height:101px; word-break:break-all; ">
               <c:set var="dt" value= "${fn:split(list.movie_date,' ')}"/>
-					<span>${dt[0]}</span>
+					<span style="word-break:break-all;">${dt[0]}</span>
                 
 
 
               </div>
             </div>
             <div class="why-us" data-aos="fade-up">
-              <div class="box" style="height:101px;">
-                <span>${list.movie_actor}</span>
+              <div class="box" style="height:101px; word-break:break-all;">
+               
 
-
+				 <h6 style="color:#ed5b5b; font-weight:bold;">${list.movie_actor}</h6>
               </div>
             </div>
             <div class="why-us" data-aos="fade-up">
-              <div class="box" style="height:101px;">
-                <span>${list.movie_genre}</span>
+              <div class="box" style="height:101px; ">
+                <span style="word-break:break-all;">${list.movie_genre}</span>
 
 
               </div>
