@@ -71,10 +71,10 @@
 	<!-- Header section end -->
 
 	<!-- Playlist section -->
-	<section class="playlist-section spad" >
+	<section class="playlist-section spad" style="background:black;" >
 		<div class="container-fluid">
 			<div class="section-title">
-				<h2>Movielist</h2>
+				<h2 style="color:white;">Movielist</h2>
 			</div>
 			<!-- <div class="container">
 				<ul class="playlist-filter controls">
@@ -92,10 +92,10 @@
 					<div class="mix col-lg-3 col-md-4 col-sm-6 genres">
 						<div class="playlist-item">
 							<a href="${pageContext.request.contextPath}/movie/moviedetail?movie_code=${tmp.movie_code}">
-							<img 
-								src="http://file.koreafilm.or.kr/thm/02/00/05/21/TN_DPK014660.jpg"
+							<img  style="border: solid 1px red;"
+								src="${tmp.movie_img}"
 								alt=""></a>
-							<h5>${tmp.movie_title}( ${tmp.movie_actor } )</h5>
+							<h5 style = "color:white;">${tmp.movie_title}</h5>
 							<h4 class="blog-date" style="color: red; font-weight:bold;">${tmp.rank }위</h4>
 						</div>
 					</div>
@@ -125,16 +125,21 @@
 					</div>
 				</div>
 				<div class="site-pagination" style="margin:0 auto; margin-top:20px;">
+				
+					<c:if test="${param.page != 1}">
 
+					<a style="font-size:20px;"
+						href="${pageContext.request.contextPath}/movie/movielist?page=1&text=${param.text}">맨앞</a>
+				</c:if>
 				<c:if test="${param.page != 1}">
 
 					<a style="font-size:20px;"
 						href="${pageContext.request.contextPath}/movie/movielist?page=${param.page-1}&text=${param.text}">이전</a>
 				</c:if>
 
-				<c:forEach var="i" begin="1" end="${cnt}" step="1">
+				<c:forEach var="i" begin="${movepage-2}" end="${movepage+2}" step="1">
 					<c:if test="${param.page == i}">
-						<a class="active" style="font-size:20px;"
+						<a class="active" style="font-size:20px;font-weight:bold;"
 							href="${pageContext.request.contextPath}/movie/movielist?page=${i}&text=${param.text}">${i}</a>
 					</c:if>
 					<c:if test="${param.page != i}">
@@ -144,11 +149,14 @@
 				</c:forEach>
 
 
-				<c:if test="${cnt != param.page}">
+				<c:if test="${allpage != param.page}">
 					<a style="font-size:20px;"
 						href="${pageContext.request.contextPath}/movie/movielist?page=${param.page+1}&text=${param.text}">다음</a>
 				</c:if>
-
+				<c:if test="${allpage != param.page}">
+					<a style="font-size:20px;"
+						href="${pageContext.request.contextPath}/movie/movielist?page=${allpage}&text=${param.text}">맨뒤</a>
+				</c:if>
 			</div>
 			</div>
 		</div>

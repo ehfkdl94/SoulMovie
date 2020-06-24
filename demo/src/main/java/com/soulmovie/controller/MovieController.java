@@ -89,8 +89,21 @@ public class MovieController {
 		model.addAttribute("size", list2.size());
 		model.addAttribute("list2", list2);
 		int cnt = mDAO.countBoard(text); //검색어를 넘겨줌.
+		int allpage=(cnt-1)/16+1;
+		int movepage=page;
 	
-		model.addAttribute("cnt", (cnt-1)/16+1);
+		if(movepage==1  || movepage==2) {
+			movepage=3;
+		}
+		else if (movepage == allpage || movepage== allpage-1) {
+			movepage=allpage-2;
+		}
+		else {
+			movepage=page;
+		}
+		System.out.println(movepage);
+		model.addAttribute("movepage",movepage );
+		model.addAttribute("allpage",allpage );
 		return request.getContextPath()+"/movie/movielist";
 	}
 	
