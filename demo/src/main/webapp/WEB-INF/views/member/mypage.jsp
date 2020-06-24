@@ -39,7 +39,7 @@
 	<div class="container" style="margin-top:100px;"> 
 		<div class="section-title">
           <span>SoulMovie</span>
-          <h2>${user_nick}'s Info<br /></h2>
+          <h2 style="font-family:'GothicB'; font-style:oblique;">${user_nick}'s Info<br /></h2>
           <p></p>
       </div>	
       
