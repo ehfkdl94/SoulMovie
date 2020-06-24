@@ -58,16 +58,15 @@
    </select>
    
    <select id="movielist1" resultType="com.soulmovie.vo.MovieVO" parameterType="map">
-      SELECT MOVIE_CODE, MOVIE_TITLE, MOVIE_DATE, MOVIE_NATION, MOVIE_GENRE, MOVIE_DIRECTOR, MOVIE_ACTOR, MOVIE_CNT,B.RANK 
+      SELECT MOVIE_CODE, MOVIE_TITLE, MOVIE_ALTERNATIVETITLE, MOVIE_GENRE, MOVIE_ACTOR, MOVIE_CNT, MOVIE_DATE, MOVIE_IMG,B.RANK 
       FROM
          (SELECT 
-            MOVIE_CODE, MOVIE_TITLE, MOVIE_DATE, MOVIE_NATION, MOVIE_GENRE, MOVIE_DIRECTOR, MOVIE_ACTOR, MOVIE_CNT,
+            MOVIE_CODE, MOVIE_TITLE, MOVIE_ALTERNATIVETITLE, MOVIE_GENRE, MOVIE_ACTOR, MOVIE_CNT, MOVIE_DATE, MOVIE_IMG,
             ROW_NUMBER() OVER (ORDER BY MOVIE_CNT DESC) RANK    
          FROM 
             MOVIE) B
       WHERE RANK BETWEEN #{start} AND #{end}
    </select>
-   
    <select id="moviecontent" resultType="com.soulmovie.vo.MovieVO" parameterType="int">
       SELECT * FROM MOVIE WHERE MOVIE_CODE=#{no}
    </select>

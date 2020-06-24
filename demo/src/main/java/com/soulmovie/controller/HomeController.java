@@ -46,19 +46,19 @@ public class HomeController {
 		return request.getContextPath()+"index3";
 	}
 	
-	@RequestMapping(value="getimg")
-	public ResponseEntity<byte[]> getimg(@RequestParam("no")int no, Model model){
-		MovieVO obj = hDAO.selectBoardImg(no);
-		try {
-			if(obj.getMovie_img().length>0) { 
-				HttpHeaders header = new HttpHeaders();
-				header.setContentType(MediaType.IMAGE_JPEG);
-				ResponseEntity<byte[]> ret = new ResponseEntity<byte[]>(obj.getMovie_img(), header, HttpStatus.OK);
-				return ret;
-			}
-			return null;
-		}catch(Exception e) {
-			return null;
-		}
-	}
+//	@RequestMapping(value="getimg")
+//	public ResponseEntity<byte[]> getimg(@RequestParam("no")int no, Model model){
+//		MovieVO obj = hDAO.selectBoardImg(no);
+//		try {
+//			if(obj.getMovie_img().length>0) { 
+//				HttpHeaders header = new HttpHeaders();
+//				header.setContentType(MediaType.IMAGE_JPEG);
+//				ResponseEntity<byte[]> ret = new ResponseEntity<byte[]>(obj.getMovie_img(), header, HttpStatus.OK);
+//				return ret;
+//			}
+//			return null;
+//		}catch(Exception e) {
+//			return null;
+//		}
+//	}
 }

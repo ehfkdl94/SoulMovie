@@ -38,6 +38,7 @@
     </style>
     <!-- Custom styles for this template -->
     <link href="${pageContext.request.contextPath}/resources/css/cover.css" rel="stylesheet">
+    
   </head>
   <body>
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
@@ -56,7 +57,7 @@
   <main role="main" class="inner cover text-center">
   	<div class="row align-items-stretch" style="margin-top:100px;">
                   <div class="col-md-8" data-aos="fade-up">
-                    <img src="${pageContext.request.contextPath}/getimg?no=${obj.movie_code}" alt="Image" class="img-fluid"
+                    <img src="${obj.movie_img}" alt="Image" class="img-fluid"
                     style= "width:800px;height:800px;"
                     >
                   </div>
@@ -66,10 +67,7 @@
 					<c:set var="dt" value= "${fn:split(obj.movie_date,' ')}"/>
 					 <p class="mb-4"><span class="text-muted">${dt[0]}</span></p> 
 					 
-					 <div class="mb-5">
-						<p>감독 (사라질예정) ${obj.movie_director}</p>
-		  
-					  </div>
+				
 					  <div class="mb-5">
 						<p>출연진 ${obj.movie_actor}</p>
 		  
@@ -88,27 +86,14 @@
 					  </div>
 					  <div class="mb-4">
 						<p>인생 영화 선정수 ${obj.movie_cnt}</p>
-		  
+		  				
 					  </div>
-                    
-                
-                     <h4 class="h4 mb-3" style="color:white;">인생영화리뷰</h4>
-                     <ul class="list-unstyled list-line mb-5">
-						<h3 class="h5" style="color:white;">리뷰1</h3>
-						<h3 class="h5" style="color:white;">리뷰1</h3>
-						<h3 class="h5" style="color:white;">리뷰1</h3>
-						<h3 class="h5" style="color:white;">리뷰1</h3>
-						<h3 class="h5" style="color:white;">리뷰1</h3>
-                     </ul>
-         
-                 
                     </div>
                   </div>
                  </div>
                  <ul class="actions">
 					<button type="button" onclick="location.href='/admin/movie' ">List</button>
-					<button type="button" onclick="location.href='/admin/movieupdate?no=${obj.movie_code}' ">update</button>
-					<button type="button" onclick="location.href='/admin/moviedelete?no=${obj.movie_code}' ">delete</button>
+					
 				 </ul>
   </main>
 

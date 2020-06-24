@@ -19,6 +19,7 @@ import com.soulmovie.dao.BoardDAO;
 import com.soulmovie.dao.MemberDAO;
 import com.soulmovie.dao.MovieDAO;
 import com.soulmovie.vo.BoardVO;
+import com.soulmovie.vo.ChoiceVO;
 import com.soulmovie.vo.MemberVO;
 import com.soulmovie.vo.MovieVO;
 
@@ -98,6 +99,29 @@ public class AdminController {
 	
 		return "/admin/moviecontent";
 	}
+	
+//	@RequestMapping(value = "/moviecontent", method = RequestMethod.GET)
+//	public String moviedetail(HttpServletRequest request,
+//			@RequestParam(value="movie_code", defaultValue="1",required= false) int movie_code
+//			,Model model) {
+//		MovieVO list = mDAO.selectMovieOne(movie_code);
+//		List<MovieVO> list2 = mDAO.selectMovie();
+//		ChoiceVO freq = mDAO.countMovieFreq(list.getMovie_code());
+//		list.setMovie_freq(freq.getChoice_freq());
+//		model.addAttribute("list", list);
+//		model.addAttribute("list2", list2);
+//		List<ChoiceVO> review = mDAO.selectMoiveReview(list.getMovie_code());
+//		for(int i =0; i<review.size(); i++) {
+//			String reviewsplit =review.get(i).getChoice_reason();
+//		    if(reviewsplit.length() >30) {
+//			reviewsplit =reviewsplit.substring(0,30)+"...";
+//			review.get(i).setChoice_reason(reviewsplit);
+//		    }
+//		}
+//		model.addAttribute("review", review);
+//		
+//		return request.getContextPath()+"/movie/moviedetail";
+//	}
 	
 	@RequestMapping(value = "/moviedelete", method = RequestMethod.GET)
 	public String moviedelete(HttpServletRequest request,

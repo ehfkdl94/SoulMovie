@@ -74,7 +74,10 @@
 											<textarea name="message" id="message" rows="4" >${obj.brdcontent}</textarea>
 										</div>
 										<div class="field">
-											<label for="name">작성일 : ${obj.brddate}</label>
+											<label for="name">
+												<c:set var="dt" value="${fn:split(obj.brddate, ' ')}" />
+												가입일 : ${dt[0]}
+											</label>
 										</div>
 									</div>
 										<ul class="actions">

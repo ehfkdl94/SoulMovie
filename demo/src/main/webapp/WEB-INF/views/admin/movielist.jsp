@@ -89,30 +89,37 @@
 						<a href="/admin/moviecontent?no=${tmp.movie_code}">${tmp.movie_title}</a>
 					</td>
 					<td>
-						${tmp.movie_date}
+						<c:set var="dt" value="${fn:split(tmp.movie_date, ' ')}" />
+						${dt[0]}
 					</td>
 				</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-  <div id="pagination-div"></div>
-  </main>
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
+		<c:if test="${param.page != 1}">
 
-	<script>
-		$(function(){
-			$('#pagination-div').twbsPagination({
-		        totalPages: Number('${cnt}'), /* 전체 페이지 수*/
-		        visiblePages: 10, /*화면에 표시할 페이지 수 */
-		        startPage : Number('${param.page}'), /* 주소창에 ~~/board/list?page=1 */
-		        initiateStartPageClick : false,
-		        onPageClick: function (event, page) {
-		             window.location.href = "/admin/movie?page=" + page + "&text=${param.text}";
-		        }
-		    });
-		})
-	</script>
+			<a style="font-size:20px;"
+				href="${pageContext.request.contextPath}/admin/member?page=${param.page-1}&text=${param.text}"><<</a>
+		</c:if>
+
+		<c:forEach var="i" begin="1" end="${cnt}" step="1">
+			<c:if test="${param.page == i}">
+				<a class="active" style="font-size:20px;"
+					href="${pageContext.request.contextPath}/admin/member?page=${i}&text=${param.text}">${i}</a>
+			</c:if>
+			<c:if test="${param.page != i}">
+				<a style="font-size:20px;"
+					href="${pageContext.request.contextPath}/admin/member?page=${i}&text=${param.text}">${i}</a>
+			</c:if>
+		</c:forEach>
+
+
+		<c:if test="${cnt != param.page}">
+			<a style="font-size:20px;"
+				href="${pageContext.request.contextPath}/admin/member?page=${param.page+1}&text=${param.text}">>></a>
+		</c:if>
+  </main>
+	
   <footer class="mastfoot mt-auto text-center">
     <div class="inner">
       <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
