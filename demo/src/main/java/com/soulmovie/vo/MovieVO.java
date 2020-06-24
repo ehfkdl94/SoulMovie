@@ -13,6 +13,14 @@ public class MovieVO {
 	private int movie_cnt = 0;
 	private Long movie_freq = 0L;
 	private String rank = null;
+	private int ROWN =0;
+	
+	public int getROWN() {
+		return ROWN;
+	}
+	public void setROWN(int rOWN) {
+		ROWN = rOWN;
+	}
 	public int getMovie_code() {
 		return movie_code;
 	}
