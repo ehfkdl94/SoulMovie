@@ -92,7 +92,7 @@
 					<div class="mix col-lg-3 col-md-4 col-sm-6 genres">
 						<div class="playlist-item">
 							<a href="${pageContext.request.contextPath}/movie/moviedetail?movie_code=${tmp.movie_code}">
-							<img  style="border: solid 1px red;"
+							<img  style="border: solid 1px red; height:450px;" 
 								src="${tmp.movie_img}"
 								alt=""></a>
 							<h5 style = "color:white;">${tmp.movie_title}</h5>
