@@ -59,7 +59,7 @@
 				<a href="${pageContext.request.contextPath}/admin/movieinsert" class="btn btn-success">글쓰기</a>
 			</div>
 			
-			<form action="${pageContext.request.contextPath}/admin/board" method="get">
+			<form action="${pageContext.request.contextPath}/admin/movie" method="get">
 				<input type="hidden" name="page" value="1" />
 				<input type="text" name="text" class="form-control" placeholder="검색어" />
 				<input type="submit" class="btn btn-success" value="검색어" />
@@ -96,30 +96,24 @@
 				</c:forEach>
 			</tbody>
 		</table>
-		<c:if test="${param.page != 1}">
-
-			<a style="font-size:20px;"
-				href="${pageContext.request.contextPath}/admin/member?page=${param.page-1}&text=${param.text}"><<</a>
-		</c:if>
-
-		<c:forEach var="i" begin="1" end="${cnt}" step="1">
-			<c:if test="${param.page == i}">
-				<a class="active" style="font-size:20px;"
-					href="${pageContext.request.contextPath}/admin/member?page=${i}&text=${param.text}">${i}</a>
-			</c:if>
-			<c:if test="${param.page != i}">
-				<a style="font-size:20px;"
-					href="${pageContext.request.contextPath}/admin/member?page=${i}&text=${param.text}">${i}</a>
-			</c:if>
-		</c:forEach>
-
-
-		<c:if test="${cnt != param.page}">
-			<a style="font-size:20px;"
-				href="${pageContext.request.contextPath}/admin/member?page=${param.page+1}&text=${param.text}">>></a>
-		</c:if>
+		<div id="pagination-div"></div>
   </main>
-	
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
+
+	<script>
+		$(function(){
+			$('#pagination-div').twbsPagination({
+		        totalPages: Number('${cnt}'), /* 전체 페이지 수*/
+		        visiblePages: 10, /*화면에 표시할 페이지 수 */
+		        startPage : Number('${param.page}'), /* 주소창에 ~~/board/list?page=1 */
+		        initiateStartPageClick : false,
+		        onPageClick: function (event, page) {
+		             window.location.href = "/admin/movie?page=" + page + "&text=${param.text}";
+		        }
+		    });
+		})
+	</script>
   <footer class="mastfoot mt-auto text-center">
     <div class="inner">
       <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>

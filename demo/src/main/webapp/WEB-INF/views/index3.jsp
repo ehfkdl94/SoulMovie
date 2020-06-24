@@ -39,7 +39,7 @@
                                  <h1 style="color:#ff0000;">${tmp.rank}</h1>
                                  <h3 style="color:white;">${tmp.movie_title}</h3>
                               </div>
-                              <img class="img-fluid" src="http://file.koreafilm.or.kr/thm/02/00/05/21/TN_DPK014660.jpg" style="height:500px;">
+                              <img class="img-fluid" src="${tmp.movie_img}" style="height:500px;">
                            </a>
                         </div>
                      </div>
