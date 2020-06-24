@@ -96,7 +96,7 @@
 
 	<div class="col-lg-6" style="margin-top: 10px;">
 		<form action="${pageContext.request.contextPath}/choice/insert"
-			method="post" class="php-email-form">
+			method="post" >
 			<input type="hidden" name="choice_code" value="${choice_code}" readonly /><br />
 			<div class="form-row">
 				<div class="col-md-6 form-group">
@@ -139,11 +139,7 @@
 				<input type="checkbox" name="choice_category" value="기타" />기타<br />
 				<input type="hidden" name="choice_id" value="${choice_id}" readonly />
 			</div>
-			<div class="mb-3">
-				<div class="loading">Loading</div>
-				<div class="error-message"></div>
-				<div class="sent-message">인생영화가 등록되었습니다. Thank you!</div>
-			</div>
+			
 			<div class="text-center">
 				<button type="submit">등록</button>
 			</div>
