@@ -10,6 +10,7 @@
 <html lang="zxx">
 
 <head>
+<%@include file="/WEB-INF/views/head.jsp"%>
 <title>SolMusic | HTML Template</title>
 <meta charset="UTF-8">
 <meta name="description" content="SolMusic HTML Template">
@@ -95,7 +96,7 @@
 							<img  style="border: solid 1px red; height:450px;" 
 								src="${tmp.movie_img}"
 								alt=""></a>
-							<h5 style = "color:white;">${tmp.movie_title}</h5>
+							<h5 style = "color:white; font-family:aCinemaL;">${tmp.movie_title}</h5>
 							<h4 class="blog-date" style="color: red; font-weight:bold;">${tmp.rank }위</h4>
 						</div>
 					</div>
