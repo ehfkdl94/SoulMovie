@@ -20,13 +20,13 @@
           <li><a href="${pageContext.request.contextPath}/board/list">board</a></li>
           <li><a href="${pageContext.request.contextPath}/">Contact</a></li>
           <security:authorize access="!isAuthenticated()">
-          	<li><a href="${pageContext.request.contextPath}/">help</a></li>
           	<li><a href="${pageContext.request.contextPath}/member/login">login</a></li>
           	<li><a href="${pageContext.request.contextPath}/member/join" style = "font-weight: bold ;color:#ff0000;">Create an account</a></li>
           </security:authorize>
           <security:authorize access="isAuthenticated()">
           	<li><a href="${pageContext.request.contextPath}/member/mypage?username=<security:authentication property="name"/>">My page</a></li>
           	<li><a href="${pageContext.request.contextPath}/member/logout">logout</a></li>
+          	<li><a href="${pageContext.request.contextPath}/choice/list" style = "font-weight: bold ;color:#ff0000;">+ SoulMovie</a></li>
           </security:authorize>
         </ul>
       </nav><!-- .nav-menu -->
