@@ -12,13 +12,17 @@
 <head> 
   <title>My Soul Movie</title> 
   <%@include file="/WEB-INF/views/head.jsp" %>
+  <style type="text/css">
+       @FONT-FACE{
+          font-family:'aCinemaL';
+          src:url("${pageContext.request.contextPath}/resources/fonts/aCinemaL.ttf")
+       }
+    </style>
   
 </head>
 
 <body>
 <%@include file="/WEB-INF/views/header.jsp" %>
-
-  
 
 	<section id="cta" class="cta" style="height:400px;" >
       <div class="container" data-aos="zoom-in">
@@ -27,7 +31,7 @@
         <br />
         <br />
           <h3>MY SOUL MOVIE LIST</h3>          
-          <a class="cta-btn" href="${pageContext.request.contextPath}/choice/insert">나의 인생영화 등록</a>
+          <a class="cta-btn" href="${pageContext.request.contextPath}/choice/insert" style="font-family:aCinemaL">나의 인생영화 등록</a>
         </div>
       </div>
       
@@ -43,13 +47,13 @@
           <h2>${user_nick}님의 인생영화입니다<br /></h2>
           <p></p>
       </div>	
-		 <div class="row">				
+		 <div class="row" >				
 			<c:if test="${empty list}">
 				<div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left">
 					<table>
 						<tbody>
 							<tr>
-								<td><h5>${user_nick}님의 인생 영화를 공유해주세요!</h5></td>
+								<td><h5 style="font-family:aCinemaL">${user_nick}님의 인생 영화를 공유해주세요!</h5></td>
 							</tr>
 						</tbody>
 					</table>
@@ -65,7 +69,7 @@
 							</tr>
 							<tr>
 								<td rowspan="6" style=" width:400px;" align="center"><img src="${tmp.movie_img}" style="height:300px;"></td>					
-								<td><ul>
+								<td><ul style="font-family:aCinemaL">
 								<li><i class="icofont-check-circled"></i>영화제목: ${tmp.movie_title}</li>
 								<li><i class="icofont-check-circled"></i>관람횟수: ${tmp.choice_freq}</li>
 								<li><i class="icofont-check-circled"></i>인생 영화 선정 이유: ${fn:replace(tmp.choice_reason, newLineChar, "<br />")}</li>
