@@ -73,7 +73,6 @@
 					<th>회원아이디</th>
 					<th>회원닉네임</th>
 					<th>회원 이메일</th>
-					<th>날짜</th>
 				</tr>
 			</thead>
 			
@@ -90,7 +89,6 @@
 					<td><a href="/admin/membercontent?no=${tmp.userid}">${tmp.username}</a></td>
 					<td>${tmp.usernick}</td>
 					<td>${tmp.useremail}</td>
-					<td>${tmp.joindate}</td>
 				</tr>
 				</c:forEach>
 			</tbody>
