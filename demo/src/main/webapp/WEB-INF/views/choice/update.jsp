@@ -28,43 +28,38 @@
           <h2>인생 영화를 수정합니다<br /></h2>
           <p></p>
       </div> 
-  	<div class="col-lg-6" style="margin-top: 10px;">
-		<form action="${pageContext.request.contextPath}/choice/insert"
-			method="post" class="php-email-form">
+  	<div class="col-lg-6" style="margin-top: 10px; margin-left:250px;">
+		<form action="${pageContext.request.contextPath}/choice/update"
+			method="post">
 			<input type="hidden" class="form-control" name="choice_no" value="${obj.choice_no}"/>
 			<div class="form-row">
-				<div class="col-md-6 form-group">
+				<div class="col-md-6 form-group" style="font-family:aCinemaL">
 					영화제목 : <br /> ${movie_title} <br /> 
 					
 					<div class="validate"></div>
 				</div>
-				<div class="col-md-6 form-group">
+				<div class="col-md-6 form-group" style="font-family:aCinemaL">
 					시청 횟수 : <input type="text" class="form-control" name="choice_freq" value="${obj.choice_freq}"/>	<br /> 
 					<div class="validate"></div>
 				</div>
 			</div>
 			
-			<div class="form-group">
+			<div class="form-group" style="font-family:aCinemaL">
 				인생 영화 선택 이유 : <br />
 				<textarea class="form-control" rows="5" id="content"
-					name="choice_reason" data-rule="required" data-msg="이유를 꼭 말해주세요"
+					name="choice_reason" style="font-family:aCinemaL" data-rule="required" data-msg="이유를 꼭 말해주세요"
 					placeholder="${obj.choice_reason}" id="reason"
 					onKeyUp="javascript:fnChkByte(this,'150')"></textarea>
-				<span id="byteInfo">0</span> / 150bytes<br /> 
+				<span id="byteInfo" style="font-family:aCinemaL">0</span> / 150bytes<br /> 
 				
 				<div class="validate"></div>
-				<input type="checkbox" name="choice_category" value="영상미" />영상미
-				 <input type="checkbox"	name="choice_category" value="스토리" />스토리 
-				<input type="checkbox" name="choice_category" value="연기" />연기 
-				<input type="checkbox" name="choice_category" value="음악" />음악 
-				<input type="checkbox" name="choice_category" value="기타" />기타<br />
+				<input type="checkbox" name="choice_category" value="영상미" style="font-family:aCinemaL" />영상미
+				 <input type="checkbox"	name="choice_category" value="스토리" style="font-family:aCinemaL" />스토리 
+				<input type="checkbox" name="choice_category" value="연기" style="font-family:aCinemaL" />연기 
+				<input type="checkbox" name="choice_category" value="음악" style="font-family:aCinemaL" />음악 
+				<input type="checkbox" name="choice_category" value="기타" style="font-family:aCinemaL" />기타<br />
 				<hr />
-			</div>
-			<div class="mb-3">
-				<div class="loading">Loading</div>
-				<div class="error-message"></div>
-				<div class="sent-message">인생영화가 수정되었습니다. Thank you!</div>
-			</div>
+			</div>			
 			<div class="text-center">
 				<button type="submit">저장</button>
 			</div>

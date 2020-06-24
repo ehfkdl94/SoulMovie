@@ -86,23 +86,50 @@ public class MovieController {
 //		list2 =mDAO.selectPageMovieGenre(map);
 //		}
 		
-		model.addAttribute("size", list2.size());
+
 		model.addAttribute("list2", list2);
 		int cnt = mDAO.countBoard(text); //검색어를 넘겨줌.
 		int allpage=(cnt-1)/16+1;
 		int movepage=page;
-	
+	    int start= 1;
+	    int end =0;
+	   
 		if(movepage==1  || movepage==2) {
+			start =1;
+			if (allpage >5) {
+				end = 5;
+			}
+			else {
+				end = allpage;
+			}
 			movepage=3;
 		}
 		else if (movepage == allpage || movepage== allpage-1) {
-			movepage=allpage-2;
+			start = allpage-4;
+			end = allpage;
+	
 		}
 		else {
-			movepage=page;
+			start=page-2;
+			end = page+2;
 		}
+
 		model.addAttribute("movepage",movepage );
 		model.addAttribute("allpage",allpage );
+
+	    
+	   
+	    	
+	    
+		System.out.println(start +"start"+end +"end");
+	
+
+		model.addAttribute("start",start );
+
+		model.addAttribute("end",end );
+		model.addAttribute("allpage",allpage);
+		
+>>>>>>> 3cf87181a41ccf0d5797d3f69a48b4aa4237b848
 		return request.getContextPath()+"/movie/movielist";
 	}
 	
