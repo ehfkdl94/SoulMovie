@@ -126,25 +126,25 @@
 				</div>
 				<div class="site-pagination" style="margin:0 auto; margin-top:20px;">
 				
-					<c:if test="${param.page != 1}">
+				<c:if test="${param.page != 1}">
 
 					<a style="font-size:20px;"
-						href="${pageContext.request.contextPath}/movie/movielist?page=1&text=${param.text}"><<</a>
+						href="${pageContext.request.contextPath}/admin/movie?page=1&text=${param.text}"><<</a>
 				</c:if>
 				<c:if test="${param.page != 1}">
 
 					<a style="font-size:20px;"
-						href="${pageContext.request.contextPath}/movie/movielist?page=${param.page-1}&text=${param.text}"><</a>
+						href="${pageContext.request.contextPath}/admin/movie?page=${param.page-1}&text=${param.text}"><</a>
 				</c:if>
 
 				<c:forEach var="i" begin="${movepage-2}" end="${movepage+2}" step="1">
 					<c:if test="${param.page == i}">
 						<a class="active" style="font-size:20px;font-weight:bold;"
-							href="${pageContext.request.contextPath}/movie/movielist?page=${i}&text=${param.text}">${i}</a>
+							href="${pageContext.request.contextPath}/admin/movie?page=${i}&text=${param.text}">${i}</a>
 					</c:if>
 					<c:if test="${param.page != i}">
 						<a style="font-size:20px;"
-							href="${pageContext.request.contextPath}/movie/movielist?page=${i}&text=${param.text}">${i}</a>
+							href="${pageContext.request.contextPath}/admin/movie?page=${i}&text=${param.text}">${i}</a>
 					</c:if>
 				</c:forEach>
 

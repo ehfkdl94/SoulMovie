@@ -101,7 +101,6 @@ public class MovieController {
 		else {
 			movepage=page;
 		}
-		System.out.println(movepage);
 		model.addAttribute("movepage",movepage );
 		model.addAttribute("allpage",allpage );
 		return request.getContextPath()+"/movie/movielist";

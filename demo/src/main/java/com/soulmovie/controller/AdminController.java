@@ -82,7 +82,21 @@ public class AdminController {
 		List<MovieVO> list = mDAO.selectMovie1(map);
 		int cnt = mDAO.countMovie(text);
 		model.addAttribute("list", list);
-		model.addAttribute("cnt", (int)Math.ceil(cnt/7.0));
+		
+		int allpage=(cnt-1)/16+1;
+		int movepage=page;
+	
+		if(movepage==1  || movepage==2) {
+			movepage=3;
+		}
+		else if (movepage == allpage || movepage== allpage-1) {
+			movepage=allpage-2;
+		}
+		else {
+			movepage=page;
+		}
+		model.addAttribute("movepage",movepage );
+		model.addAttribute("allpage",allpage );
 		return request.getContextPath() +"/admin/movielist";
 	}
 	
