@@ -96,7 +96,7 @@
 								src="http://file.koreafilm.or.kr/thm/02/00/05/21/TN_DPK014660.jpg"
 								alt=""></a>
 							<h5>${tmp.movie_title}( ${tmp.movie_actor } )</h5>
-							<h4 class="blog-date" style="color: red;">${tmp.rank }위</h4>
+							<h4 class="blog-date" style="color: red; font-weight:bold;">${tmp.rank }위</h4>
 						</div>
 					</div>
 				</c:forEach>

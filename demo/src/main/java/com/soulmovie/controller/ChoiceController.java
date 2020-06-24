@@ -63,7 +63,7 @@ public class ChoiceController {
 			System.out.println("security auth null");
 		}
 
-		if(text == null && chk== null) {
+		if(text == null && chk== null ) {
 			return "redirect:"+request.getContextPath()+"/choice/insert?text=&chk=";
 		}
 		if (text.equals("")) {
