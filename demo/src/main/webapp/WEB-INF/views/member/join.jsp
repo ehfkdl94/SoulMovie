@@ -27,7 +27,20 @@
 	<!-- Main Stylesheets -->
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css"/>
 
-
+	<style type="text/javascript">
+	.selectBox01 {
+    	width:200px;height:50px;
+    	padding:10px;
+    	font-size:14px;
+    	border:1px solid #ccc;
+    	background-color:#fff;
+    	appearance:none;
+    	-webkit-appearance:none;
+    	-moz-appearance:none;
+    	-o-appearance:none;
+	}
+	.selectBox01 select::-ms-expand {display:none;}
+	</style>
 	<%@include file="/WEB-INF/views/head.jsp" %>
 </head>
 <body>
@@ -45,45 +58,67 @@
 			<div class="row">
 
 				<div class="col-lg-6 p-0">
-					<div class="contact-warp">
+					<div class="contact-warp" >
 						<div class="section-title mb-0">
 							<h2>Join</h2>
 						</div>
-						<p>디자인 수정 중...</p>
+
 				
 						<form class="contact-from" action="${pageContext.request.contextPath}/member/join" method="post">
 							<div class="row">
+							
+							
 								<div class="col-md-6">
-									<input type="text" name="username" id="username" value="" placeholder="ID"><p id="chk"></p>
+									<input type="text" name="username" id="username" value="" placeholder="ID">
 								</div>
+								<div class="col-md-6" >
+									<p id="chk" style="padding:18px;margin:0px; font-size:16px; color:#ff0000"></p>
+								</div>
+								
+								
+								
 								
 								<div class="col-md-6">
 									<input type="password" name="password" id="password" value="" placeholder="Password" />
 								</div>
+								<div class="col-md-6" >
+									<p id="" style="padding:18px;margin:0px;"></p>
+								</div>
 								
-							
+								
+								
 								<div class="col-md-6">
 									<input type="text" name="userrname" id="userrname" value="" placeholder="Name" />
 								</div>
+							
+							
 								
-								<div class="col-md-6">
-									<label for="usergender">Gender</label>
-									<select name= "usergender" >
+								
+								
+								<div class="col-md-4" style="padding:18px; margin:0px;">
+									<label for="usergender" style="color:#A6A6A6">성별 : </label>
+									<select name= "usergender"  style="border:2px solid #ff0000;background-color:#fff;">
                                           <option id="usergender" value="male">MALE</option>
                                           <option id="usergender" value="female">FEMALE</option>
                                   
                                     </select>
 								</div>
+		
+
+								
+                   
+							
 								
 								
 								<div class="col-md-6">
-									<input type="text" name="usernick" id="usernick" value="" placeholder="Nickname" /><p id="chk2"></p>
+									<input type="email"  name="useremail" id="useremail" value="" placeholder="E-mail" />
 								</div>
 								
 								
-								<div class="col-md-6">
-								 <label for="userage">Age</label>
-                                    <select name= "userage">
+								
+								<div class="col-md-4" style="padding:18px; margin:0px;">
+								 <label for="userage" style="color:#A6A6A6">나이 : </label>
+                                    <select name= "userage" style="border:2px solid #ff0000;background-color:#fff;">
                                           <option id="userage" value="10대">10-19</option>
                                           <option id="userage" value="20대">20-29</option>
                                           <option id="userage" value="30대">30-39</option>
@@ -92,13 +127,34 @@
                                           <option id="userage" value="60대이상">60 over</option>
                                     </select>
                                 </div>
-							
 								
 								
-								<div class="col-md-12">
-									<input type="email"  name="useremail" id="useremail" value="" placeholder="E-mail" />
-									<button class="site-btn" style="background-color:#ff0000">Join In</button>
+								
+								
+								
+										<div class="col-md-6">
+									<input type="text" name="usernick" id="usernick" value="" placeholder="Nickname" />
 								</div>
+								<div class="col-md-6" >
+									<p id="chk2" style="padding:18px;margin:0px; font-size:16px; color:#ff0000"></p>
+								</div>
+								
+								
+								
+								
+								
+
+								
+							    
+							    <br />
+								
+								
+								
+								<div class="col-md-12" >
+									<button class="site-btn" style="background-color:#ff0000; padding:15px;padding-left:40px;padding-right:40px; min-width:100px">Join In</button>
+								</div>
+								
+								
 							</div>
 						</form>
 						

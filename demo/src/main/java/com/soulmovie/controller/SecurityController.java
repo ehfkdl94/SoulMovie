@@ -45,8 +45,7 @@ public class SecurityController {
 
 		@RequestMapping(value = "/join", method = RequestMethod.POST)
 		public String join(@ModelAttribute UserVo obj, HttpServletRequest request) {
-			System.out.println(obj.toString());
-			System.out.println(obj.getUserrname());
+
 			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		
 			String str1 = passwordEncoder.encode(obj.getPassword());
@@ -63,6 +62,7 @@ public class SecurityController {
 		
 		@RequestMapping(value = "/welcome", method = RequestMethod.GET) //테스트용
 		public String joinsuccess(HttpServletRequest request) {
+
 			
 			return request.getContextPath()+"/member/welcome";
 		}

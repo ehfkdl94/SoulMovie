@@ -41,7 +41,6 @@ public interface UserMapper {
 	public int selectMemberNick(@Param("usernick") String usernick);
 	
 	
-	
 	@Update({"UPDATE MEMBER SET USERCCNT = USERCCNT + 1" + 
 	"      WHERE USERID = #{userid}"})
 	public int updateUserCcnt(@Param("userid") int userid);
