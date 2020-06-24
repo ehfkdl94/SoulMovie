@@ -11,7 +11,7 @@ public class ChoiceVO {
 	private int choice_id = 0;
 	private String movie_title = null;
 	private byte[] movie_img = null;
-	
+	private String user_nick = null;
 	
 	
 	//movie getter setter
