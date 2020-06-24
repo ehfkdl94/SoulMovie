@@ -14,6 +14,12 @@ public class ChoiceVO {
 	private String user_nick = null;
 	
 	
+	public String getUser_nick() {
+		return user_nick;
+	}
+	public void setUser_nick(String user_nick) {
+		this.user_nick = user_nick;
+	}
 	//movie getter setter
 	public String getMovie_title() {
 		return movie_title;

@@ -173,9 +173,10 @@
         <div style="margin: 0 auto;  "></div>
 						 <c:forEach var="tmp" items="${review}">
                   		   <div class="col-lg-4" data-aos="fade-up">
-					            <div class="box" >
-					              <span>${tmp.choice_id}</span>
-					              <textarea  style="height:300px; width:100%;" readonly>${tmp.choice_reason} </textarea>
+					            <div class="box" style="height:300px;word-break:break-all;" >
+					              <span>${tmp.user_nick}</span>
+					              <h5>${tmp.choice_reason}</h5>
+					       <!--        <textarea  style="height:300px; width:100%;" readonly> </textarea> -->
 					              <!-- <p> </p> -->
 					            </div>
 					       </div>

@@ -88,7 +88,7 @@ public class ChoiceController {
 	
 	@RequestMapping(value = "/insert", method=RequestMethod.POST)
 	public String insertpost(HttpServletRequest request, @ModelAttribute ChoiceVO obj) {		
-		System.out.println(obj.toString());		
+	
 		int chk = cMapper.insertChoice(obj);
 		int id = obj.getChoice_id();
 //		System.out.println(id);
