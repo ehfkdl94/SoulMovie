@@ -34,6 +34,26 @@
                      <c:forEach var="tmp" items="${list}" varStatus="i">
                      <div class="row" >
                         <div class="item web col-sm-6 col-md-4 col-lg-4 mb-4">
+                       	   <security:authorize access="!isAuthenticated()">
+                       	   		<c:if test="${i.index==0}">
+                       	   			<a href="${pageContext.request.contextPath}/member/login" class="item-wrap fancybox">
+		                              <div class="work-info">
+		                                 <h3 style="color:white;">회원가입 후 확인 할 수 있습니다.</h3>
+		                              </div>
+		                              <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/qm2.jpg" style="height:500px;">
+		                           </a>
+                       	   		</c:if>
+                       	   		<c:if test="${i.index!=0}">
+                       	   			<a href="${pageContext.request.contextPath}/movie/moviedetail?movie_code=${tmp.movie_code}" class="item-wrap fancybox">
+		                              <div class="work-info">
+		                                 <h1 style="color:#ff0000;">${tmp.rank}</h1>
+		                                 <h3 style="color:white;">${tmp.movie_title}</h3>
+		                              </div>
+		                              <img class="img-fluid" src="${tmp.movie_img}" style="height:500px;">
+		                           </a>
+                       	   		</c:if>
+                       	   </security:authorize>
+                       	   <security:authorize access="isAuthenticated()">
                            <a href="${pageContext.request.contextPath}/movie/moviedetail?movie_code=${tmp.movie_code}" class="item-wrap fancybox">
                               <div class="work-info">
                                  <h1 style="color:#ff0000;">${tmp.rank}</h1>
@@ -41,6 +61,7 @@
                               </div>
                               <img class="img-fluid" src="${tmp.movie_img}" style="height:500px;">
                            </a>
+                           </security:authorize>
                         </div>
                      </div>
                      </c:forEach>
