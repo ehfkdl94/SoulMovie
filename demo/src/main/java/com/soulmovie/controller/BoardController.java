@@ -42,12 +42,11 @@ public class BoardController {
 //		}
 //		그렇지 않다면 게시판 글쓰기 화면 표시
 //		model.addAttribute("userid", userid);
-		return request.getContextPath()+"/board/insert2";
+		return request.getContextPath()+"/board/insert3";
 	}
 	
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
-	public String insertBoardPost(@ModelAttribute BoardVO obj,
-			@RequestParam MultipartFile[] imgs, HttpServletRequest request) throws IOException {
+	public String insertBoardPost(@ModelAttribute BoardVO obj, HttpServletRequest request) throws IOException {
 		int userid=bDAO.selectuserid(obj.getUsername());
 		//DAO로 obj값 전달하기
 		obj.setBrdid(userid);
@@ -59,7 +58,8 @@ public class BoardController {
 	
 	@RequestMapping(value = "/content", method = RequestMethod.GET)
 	public String content(Model model, HttpSession httpSession, HttpServletRequest request,
-			@RequestParam(value="no", defaultValue = "0", required = false) int no) {
+			@RequestParam(value="no", defaultValue = "0", required = false) int no,
+			@RequestParam(value="bno")int bno) {
 		if( no == 0) {
 			return request.getContextPath()+"redirect:/board/list";
 		}
@@ -68,11 +68,12 @@ public class BoardController {
 		if (chk != null) {
 			if( chk == 1) {
 				bDAO.updateHit(no);
-				httpSession.setAttribute("SESSION_BOARD_HIT_CHECK", 0);
 			}
+				httpSession.setAttribute("SESSION_BOARD_HIT_CHECK", 0);		
 		}
 		
 		BoardVO obj = bDAO.selectBoardOne(no);
+		obj.setBrdnumber(bno);
 		model.addAttribute("obj", obj);
 		
 		int p = bDAO.selectBoardPrev(no);
@@ -81,7 +82,7 @@ public class BoardController {
 		int n = bDAO.selectBoardNext(no);
 		model.addAttribute("next", n);
 		
-		return request.getContextPath()+"/board/content2";
+		return request.getContextPath()+"/board/content3";
 	}
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
@@ -102,14 +103,21 @@ public class BoardController {
 		map.put("end", page*10);		//종료위치	
 		map.put("text", text);			//검색어
 		List<BoardVO> list = bDAO.selectBoard(map);
+		int j=0;
+		for(int i = list.size(); i>0;i--) {
+			list.get(j).setBrdnumber(i);
+			j++;
+			
+		}
 		model.addAttribute("list", list);
 	
 		
 		// 게시물 개수
 		int cnt = bDAO.countBoard(text); //검색어를 넘겨줌.
 		//System.out.println( (int) Math.ceil(n/10.0) );
-		model.addAttribute("cnt", (cnt-1)/10+1);
-		return request.getContextPath()+"/board/list2";
+		
+		model.addAttribute("cnt", (int)Math.ceil(cnt/10.0));
+		return request.getContextPath()+"/board/list3";
 	}
 	
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
@@ -136,7 +144,7 @@ public class BoardController {
 		}
 		
 		bDAO.updateBoard(obj);
-		return "redirect:" + request.getContextPath() + "/board/content?no="+obj.getBrdno();
+		return "redirect:" + request.getContextPath() + "/board/list";
 	}
 	
 
@@ -172,13 +180,14 @@ public class BoardController {
 		}
 	}
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	public String delete(HttpServletRequest request,
+	public String delete(HttpSession httpSession, HttpServletRequest request,
 			@RequestParam(value="no", defaultValue = "0") int no) {
 		BoardVO obj = new BoardVO();
 		obj.setBrdno(no);
 		
 		int ret = bDAO.deleteBoard(obj);  
 		
+
 		if(ret > 0) {  //성공하면 목록화면 으로
 			return "redirect:" + request.getContextPath() + "/board/list";
 		}

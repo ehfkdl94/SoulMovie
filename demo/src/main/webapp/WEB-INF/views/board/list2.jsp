@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
+
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -23,6 +24,8 @@
    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css"/>
    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl.carousel.min.css"/>
    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/slicknav.min.css"/>
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/csslogin/main.css" />
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/csslogin/noscript.css" />
    <!-- Bootstrap CSS File -->
    <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
 
@@ -86,7 +89,6 @@
    
    
    <section class="hero-section clearfix" >
- 		<div class="hero-slider owl-carousel">
          <div class="hs-item" style="height:800px">
             <div class="container">
 	           	
@@ -117,9 +119,9 @@
 			            <c:if test="${!empty list}">
 			            <c:forEach var="tmp" items="${list}">
 			            <tr>
-			               <td>${tmp.brdno}</td>
+			               <td>${tmp.brdnumber}</td>
 			               <td>
-			                 <a href="/board/content?no=${tmp.brdno}">${tmp.brdtitle}</a>
+			                 <a href="/board/content?no=${tmp.brdno}&bno=${tmp.brdnumber}">${tmp.brdtitle}</a>
 			               </td>
 			               <td>${tmp.username}</td>
 			               <td><fmt:formatNumber value="${tmp.brdhit}" pattern="#,###" /></td>
@@ -133,9 +135,18 @@
 			         </tbody>
 			      </table>
 			      
-		      <div id="pagination-div"></div>
+		      
 		      <a href="${pageContext.request.contextPath}/board/insert" class="btn btn-success">글쓰기</a>
-		      	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		    <div>
+            	<div id="pagination-div"></div>
+            </div>
+            </div>
+            
+				
+         </div>
+        		
+
+      			<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 				<script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>	
 				<script>
 					$(function(){
@@ -149,29 +160,24 @@
 					        }
 					    });
 					})
-				</script>
-            </div>
-            
-
-         </div>
-         
-      </div>
+				</script> 
    </section>
+   
    <!-- Hero section end -->
 
 
 
 
    <!--====== Javascripts & Jquery ======-->
-   <script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
+   <%-- <script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script> --%>
    <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
    <script src="${pageContext.request.contextPath}/resources/js/jquery.slicknav.min.js"></script>
    <script src="${pageContext.request.contextPath}/resources/js/owl.carousel.min.js"></script>
    <script src="${pageContext.request.contextPath}/resources/js/mixitup.min.js"></script>
    <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
    <!-- Vendor JS Files -->
-   <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-   <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery-migrate.min.js"></script>
+   <%-- <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
+   <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery-migrate.min.js"></script> --%>
    <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
    <script src="${pageContext.request.contextPath}/resources/vendor/easing/easing.min.js"></script>
    <script src="${pageContext.request.contextPath}/resources/vendor/php-email-form/validate.js"></script>
@@ -182,7 +188,7 @@
    <!-- Template Main JS File -->
    <script src="${pageContext.request.contextPath}/resources/js/main2.js"></script>
 
-
+				
 	
 
    </body>

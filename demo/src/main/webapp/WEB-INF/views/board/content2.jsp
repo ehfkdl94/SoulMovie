@@ -3,6 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -89,7 +91,8 @@
  		<div class="hero-slider owl-carousel">
          <div class="hs-item" style="height:800px">
             <div class="container" style="color:white;">
-		글번호 : ${obj.brdno}<br />
+            
+		글번호 : ${obj.brdnumber}<br />
 		글제목 : ${obj.brdtitle}<br />
 		글내용 : ${fn:replace(obj.brdcontent, newLineChar, "<br />")}<br />
 		작성자 : ${obj.username}<br />
@@ -98,9 +101,13 @@
 						${dt[0]}<br />
 		<img src="${pageContext.request.contextPath}/board/getimg?no=${obj.brdno}" width="100px" height="100px" /><br />
 		<hr />
-		<a href="${pageContext.request.contextPath}/board/list" class="btn btn-success">목록</a>
+
+			
+		<security:authentication property="name" var="uid" />
+		<c:if test="${uid eq obj.username}">
 		<a href="${pageContext.request.contextPath}/board/update?no=${obj.brdno}" class="btn btn-success">수정</a>
 		<a href="${pageContext.request.contextPath}/board/delete?no=${obj.brdno}" class="btn btn-success">삭제</a>
+		</c:if>		
 		
 		<c:if test="${prev != 0}">
 		<a href="${pageContext.request.contextPath}/board/content?no=${prev}" class="btn btn-success">이전글</a>
@@ -109,6 +116,8 @@
 		<c:if test="${next != 0}">
 		<a href="${pageContext.request.contextPath}/board/content?no=${next}" class="btn btn-success">다음글</a>
 		</c:if>
+		
+
 	</div>
             
 
@@ -122,6 +131,7 @@
 
 
    <!--====== Javascripts & Jquery ======-->
+   
    <script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
    <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
    <script src="${pageContext.request.contextPath}/resources/js/jquery.slicknav.min.js"></script>
@@ -140,7 +150,14 @@
 
    <!-- Template Main JS File -->
    <script src="${pageContext.request.contextPath}/resources/js/main2.js"></script>
+   <script src="${pageContext.request.contextPath}/resources/js/jquery.likebtn.js"></script>
+	<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
 
+<!-- LikeBtn.com BEGIN -->
+
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
 
 	
 

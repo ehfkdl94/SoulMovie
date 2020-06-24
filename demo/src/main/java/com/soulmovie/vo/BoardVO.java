@@ -13,7 +13,14 @@ public class BoardVO {
 	private long brdhit = 0L;
 	private long brdlike = 0L;
 	private String username = null;
+	private int brdnumber = 0;
 	
+	public int getBrdnumber() {
+		return brdnumber;
+	}
+	public void setBrdnumber(int brdnumber) {
+		this.brdnumber = brdnumber;
+	}
 	public String getUsername() {
 		return username;
 	}
@@ -69,6 +76,8 @@ public class BoardVO {
 	public void setBrdlike(long brdlike) {
 		this.brdlike = brdlike;
 	}
+	
+	
 	@Override
 	public String toString() {
 		return "BoardVO [brdno=" + brdno + ", brdid=" + brdid + ", brdtitle=" + brdtitle + ", brddate=" + brddate

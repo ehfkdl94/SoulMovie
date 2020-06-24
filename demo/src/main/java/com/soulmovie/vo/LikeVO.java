@@ -4,8 +4,16 @@ public class LikeVO {
 
 	private long brdno = 0L;
 	private int userid = 0;
+	private int lno = 0;
+
 	
 	
+	public int getLno() {
+		return lno;
+	}
+	public void setLno(int lno) {
+		this.lno = lno;
+	}
 	public long getBrdno() {
 		return brdno;
 	}

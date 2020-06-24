@@ -100,7 +100,7 @@
 	<article>
 		<div class="container" style="color: white;" >
 			<h2 style="color: white;">BOARD</h2>
-			<form name="form" id="form" role="form" method="post" action="/board/insert" enctype="multipart/form-data">
+			<form name="form" id="form" role="form" method="post" action="/board/insert">
 				<div class="mb-3">
 					<label for="title">제목</label>
 					<input type="text" class="form-control" name="brdtitle" id="title" placeholder="제목을 입력해 주세요">
