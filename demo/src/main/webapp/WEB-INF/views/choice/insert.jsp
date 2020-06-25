@@ -97,9 +97,15 @@
 	</div>	
 
 	<div class="col-lg-6" style="margin-top: 10px;margin-left:200px;">
+	<c:if test="${choice_code ne 0}">
 		<form action="${pageContext.request.contextPath}/choice/insert"
 			method="post" >
-			<input type="hidden" name="choice_code" value="${choice_code}" readonly /><br />
+			</c:if>
+			<c:if test="${empty choice_code}">
+			<input type="hidden" name="choice_code" value="0" readonly /><br />			
+			</c:if>
+			<c:if test="${!empty choice_code}">
+			<input type="hidden" name="choice_code" value="${choice_code}" readonly /><br /></c:if>
 			<div class="form-row" style="font-family:aCinemaL;">
 				<div class="col-md-6 form-group">
 					영화제목 : <br /> ${movie_title} <br /> 					
@@ -129,10 +135,17 @@
 			</div>
 			
 			<div class="text-center" style="font-family:aCinemaL;">
+			<c:if test="${choice_code eq 0}">
+				<button class="btn btn-danger check" style="background-color:#ff0000;">등록</button>
+			</c:if>
+			<c:if test="${choice_code ne 0}">
 				<button class="btn btn-danger" type="submit" style="background-color:#ff0000;">등록</button>
+			</c:if>				
 				<a href="${pageContext.request.contextPath}/choice/list" class="btn btn-dark">뒤로</a>
 			</div>
+		<c:if test="${choice_code ne 0}">
 		</form>
+		</c:if>
 	</div>
 	</div>
     </section>	
@@ -173,6 +186,28 @@
 				document.getElementById('byteInfo').innerText = rbyte;
 			}
 		}
+	</script>
+	<script type="text/javascript">
+		//jquery 라이브러리 사용 시작
+		$(function(){			
+			$('.check').click(function(){	
+
+				Swal.fire({
+					title: '영화를 골라주세요.',
+					icon: 'info',
+					showCancelButton: false,
+					confirmButtonColor: '#3085d6',
+					cancelButtonColor: '#d33',
+					confirmButtonText: '확인',
+					
+				}).then((result) => {
+					if (result.value) {
+					
+					}
+				});
+			});			
+		}); 
+		// jquery라이브러리 사용 종료
 	</script>
 	<%@include file="/WEB-INF/views/footer.jsp"%>
 	
