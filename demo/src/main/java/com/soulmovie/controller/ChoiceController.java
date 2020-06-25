@@ -86,13 +86,17 @@ public class ChoiceController {
 	
 	@RequestMapping(value = "/insert", method=RequestMethod.POST)
 	public String insertpost(HttpServletRequest request, @ModelAttribute ChoiceVO obj) {		
-	
-		int chk = cMapper.insertChoice(obj);
 		int id = obj.getChoice_id();
 		int code = obj.getChoice_code();		
-		if(chk == 1) {
-			uMapper.updateUserCcnt(id);
-			mMapper.addMovieCnt(code);
+		int checkcode = cMapper.checkChoiceCode(id, code);
+		if (checkcode == 1) {
+			
+		}else {
+			int chk = cMapper.insertChoice(obj);
+			if(chk == 1) {
+				uMapper.updateUserCcnt(id);
+				mMapper.addMovieCnt(code);
+			}
 		}
 		return "redirect:" + request.getContextPath() + "/choice/list";
 	}
