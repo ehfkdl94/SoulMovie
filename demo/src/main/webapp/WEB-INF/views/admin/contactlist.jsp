@@ -16,8 +16,8 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/cover/">
 
     <!-- Bootstrap core CSS -->
-	<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css" />
+<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
+
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -38,7 +38,6 @@
     </style>
     <!-- Custom styles for this template -->
     <link href="${pageContext.request.contextPath}/resources/css/cover.css" rel="stylesheet">
-    
   </head>
   <body>
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
@@ -56,48 +55,71 @@
   </header>
 
   <main role="main" class="inner cover text-center">
-  	<div class="row align-items-stretch" style="margin-top:100px;">
-                  <div class="col-md-8" data-aos="fade-up">
-                    <img src="${obj.movie_img}" alt="Image" class="img-fluid"
-                    style= "width:800px;height:800px;"
-                    >
-                  </div>
-                  <div class="col-md-3 ml-auto" data-aos="fade-up" data-aos-delay="100">
-                    <div class="sticky-content">
-					 <h3 class="h3" style="color:white;">${obj.movie_title}</h3>
-					<c:set var="dt" value= "${fn:split(obj.movie_date,' ')}"/>
-					 <p class="mb-4"><span class="text-muted">${dt[0]}</span></p> 
-					 
+  	<div class="form-inline">
+			<div style="margin-right:30px">
+				<a href="${pageContext.request.contextPath}/admin/movieinsert" class="btn btn-success">글쓰기</a>
+			</div>
+			
+			<form action="${pageContext.request.contextPath}/admin/contact" method="get">
+				<input type="hidden" name="page" value="1" />
+				<input type="text" name="text" class="form-control" placeholder="검색어" />
+				<input type="submit" class="btn btn-success" value="검색어" />
+			</form>
+		</div>
+	
+		<table class="table table-sm">
+			<thead>
+				<tr>	
+					<th>No</th>
+					<th>Subject</th>
+					<th>ID</th>
+					<th>Email</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<c:if test="${empty list}">
+				<tr>
+					<td colspan="5">검색결과가 없습니다.</td>
+				</tr>
+				</c:if>
 				
-					  <div class="mb-5">
-						<p>출연진 ${obj.movie_actor}</p>
-		  
-					  </div>
-					  <div class="mb-5">
-						<p>장르 ${obj.movie_genre}</p>
-		  
-					  </div>
-					  <div class="mb-5">
-						<p>순위 ${obj.rank}</p>
-		  
-					  </div>
-					  <div class="mb-5">
-						<p>총 누적 관람 횟수 ${obj.movie_freq}</p>
-		  
-					  </div>
-					  <div class="mb-4">
-						<p>인생 영화 선정수 ${obj.movie_cnt}</p>
-		  				
-					  </div>
-                    </div>
-                  </div>
-                 </div>
-                 <ul class="actions">
-					<button type="button" onclick="location.href='/admin/movie' ">List</button>
-					
-				 </ul>
-  </main>
+				<c:forEach var="tmp" items="${list}">
+				<tr>
+					<td>${tmp.cno}</td>
+					<td>
+						<a href="/admin/contactcontent?no=${tmp.cno}">${tmp.csubject}</a>
+					</td>
+					<td>${tmp.cname}</td>
+					<td>${tmp.cemail}</td>
+				</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+		<c:if test="${param.page != 1}">
 
+			<a style="font-size:20px;"
+				href="${pageContext.request.contextPath}/admin/contact?page=${param.page-1}&text=${param.text}"><<</a>
+		</c:if>
+
+		<c:forEach var="i" begin="1" end="${cnt}" step="1">
+			<c:if test="${param.page == i}">
+				<a class="active" style="font-size:20px;"
+					href="${pageContext.request.contextPath}/admin/contact?page=${i}&text=${param.text}">${i}</a>
+			</c:if>
+			<c:if test="${param.page != i}">
+				<a style="font-size:20px;"
+					href="${pageContext.request.contextPath}/admin/contact?page=${i}&text=${param.text}">${i}</a>
+			</c:if>
+		</c:forEach>
+
+
+		<c:if test="${cnt != param.page}">
+			<a style="font-size:20px;"
+				href="${pageContext.request.contextPath}/admin/contact?page=${param.page+1}&text=${param.text}">>></a>
+		</c:if>
+  </main>
+  
   <footer class="mastfoot mt-auto text-center">
     <div class="inner">
       <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>

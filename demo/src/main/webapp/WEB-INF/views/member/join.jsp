@@ -79,6 +79,7 @@
                 <div class="form-group row mb-0">
 
                   <div class="col-md-7 form-group gsap-reveal">
+                   
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                     <label for="username">ID</label>
                     <input name="username" type="text" class="form-control" id="username">
@@ -108,16 +109,16 @@
     
                     <div class="col-md-4 form-group gsap-reveal" style="padding:18px; color:#fff; margin:0px;">
                         <label for="usergender" style="color:#A6A6A6">Gender</label><br />
-                        <input type="radio" name= "usergender" id="usergender" value="male">Male &nbsp; &nbsp;
-                        <input type="radio" name= "usergender" id="usergender" value="female">Female
+                        <input type="radio" name= "usergender" id="usergender" value="Male">Male &nbsp; &nbsp;
+                        <input type="radio" name= "usergender" id="usergender" value="Female">Female
                       
                              
                     </div>
                     
                     
-                    <div class="col-md-4 form-group gsap-reveal" style="padding:18px; margin:0px;">
+                       <div class="col-md-4 form-group gsap-reveal" style="padding:18px; margin:0px;">
 					 <label for="userage" style="color:#A6A6A6">Age</label><br />
-                                 <select name= "userage" style="border:1px solid #A6A6A6;background-color:#D5D5D5;">
+                                 <select name= "userage" style="border:1px solid #A6A6A6;background-color:#A6A6A6; border: 1px solid #fff; color:#fff;">
                                        <option id="userage" value="10대">10-19</option>
                                        <option id="userage" value="20대">20-29</option>
                                        <option id="userage" value="30대">30-39</option>
@@ -159,7 +160,7 @@
 						<div class="form-group row gsap-reveal" style="margin-left: 42%;">
                     <div class="col-md-12 d-flex align-items-center">
                     
-                       <input type="submit" class="cta-btn" style="font-family:aCinemaL" value="JOIN" />
+                       <input type="submit" class="cta-btn" style="font-family:aCinemaL;" value="JOIN" />
                       <span class="submitting"></span>
                     </div>
                   </div>
