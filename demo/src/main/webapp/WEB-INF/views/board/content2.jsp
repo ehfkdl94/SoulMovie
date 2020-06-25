@@ -63,41 +63,62 @@
 <body>
 
 	<%@include file="/WEB-INF/views/header.jsp"%>
+	
+	<section id="cta" class="cta2" style="height:400px;" >
+      <div class="container" data-aos="zoom-in">
+        <div class="text-center">
+        <br />
+        <br />
+        <br />
+          <h3 style="font-family:'PlayfairB';">MY SOUL BOARD</h3>          
+          
+         
+       </div>
+      </div>
+      
+    </section>
 	<main id="main">
-    <section id="contact" class="contact">
-      <div class="container" style="height:600px; margin-top:100px;">
+    <section id="contact" class="contact" ">
+      <div class="container" style="height:600px; font-family:'aCinemaL';margin-top:10px;">
       <h2>Board content</h2><br/>
 
-		Board Num : ${obj.brdnumber}
+		Board Num : ${bno}
 		Views : ${obj.brdhit}
 		Date :<c:set var="dt" value="${fn:split(obj.brddate, ' ')}" />
 			${dt[0]}<br/>
+          <div class="like-content" > 
+			  <button class="btn-secondary like-review" style="margin-left:680px; padding:4px; font-size:13px; font-family:'aCinemaL';">
+			    <i class="fa fa-heart" aria-hidden="true" id="like">Like</i> 
+			  </button>				 
+		  </div>
+          
           <form action="/board/insert" method="post" style="box-sizing: content-box;">
+
               <div class="form-row">
-                
-                <div class="col-md-6 form-group">
+                <div class="col-md-8 form-group">
                   <label for="Writer">Writer</label>
                   <input type="text" class="form-control" style="color:#000000;" name="username" value="<security:authentication property="name"/>" readonly/>
                   <div class="validate"></div>
                 </div>
               </div>
 
-              <div class="form-group">
+               <div class="form-row">
+                <div class="col-md-8 form-group">
               	<label for="title">Subject</label>
                 <input type="text" class="form-control" style="color:#000000;"name="brdtitle" value="${obj.brdtitle}" id="subject" readonly/>
                 <div class="validate"></div>
               </div>
-              <div class="form-group">
+              </div>
+              
+               <div class="form-row">
+                <div class="col-md-8 form-group">
               	<label for="content">Contents</label>
                 <textarea class="form-control" style="color:#000000;" name="brdcontent" rows="5" data-rule="required" readonly>${fn:replace(obj.brdcontent, newLineChar, "<br />")}</textarea>
                 <div class="validate"></div>
               </div>
+              </div>
             </form>
-            <div class="like-content"> 
-				  <button class="btn-secondary like-review">
-				    <i class="fa fa-heart" aria-hidden="true" id="like">Like</i> 
-				  </button>
-			  </div>
+       
 					<security:authentication property="name" var="uid" />
 					<c:if test="${uid eq obj.username}">
 						<a href="${pageContext.request.contextPath}/board/list" class="btn btn-sm btn-success">List</a>
