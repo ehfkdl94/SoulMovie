@@ -109,10 +109,10 @@
 										<td><c:set var="dt"
 												value="${fn:split(tmp.movie_date, ' ')}" /> ${dt[0]}<br /></td>										
 									</tr>								
-								</c:forEach>															
-								<div class="text-right" style="font-family:aCinemaL;">
-								<input type="submit" class="btn btn-dark" value="선택" />
-								</div>
+								</c:forEach>
+								<tr>									
+								<td colspan="4"><input type="submit" class="btn btn-dark" value="선택" /></td>						
+								</tr>
 							</c:if>
 						</c:if>
 					</tbody>
