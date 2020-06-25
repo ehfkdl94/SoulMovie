@@ -35,10 +35,10 @@
           scrollTop: scrollto
         }, 1500, 'easeInOutExpo');
 
-        /*if ($(this).parents('.nav-menu, .mobile-nav').length) {
+        if ($(this).parents('.nav-menu, .mobile-nav').length) {
           $('.nav-menu .active, .mobile-nav .active').removeClass('active');
           $(this).closest('li').addClass('active');
-        }*/
+        }
 
         if ($('body').hasClass('mobile-nav-active')) {
           $('body').removeClass('mobile-nav-active');
@@ -122,7 +122,7 @@
   });
 
   // Toggle .header-scrolled class to #header when page is scrolled
-  /*$(window).scroll(function() {
+  (window).scroll(function() {
     if ($(this).scrollTop() > 100) {
       $('#header').addClass('header-scrolled');
       $('#topbar').addClass('topbar-scrolled');
@@ -144,7 +144,7 @@
     } else {
       $('.back-to-top').fadeOut('slow');
     }
-  });*/
+  });
 
   $('.back-to-top').click(function() {
     $('html, body').animate({
