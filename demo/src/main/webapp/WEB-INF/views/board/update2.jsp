@@ -78,7 +78,7 @@
               <div class="form-row">                
                 <div class="col-md-8 form-group">
               	<label for="title">Subject</label>
-                <input type="text" class="form-control" name="brdtitle"  value="${vo.brdtitle}" style="color:#000000;"/>
+                <input type="text" class="form-control" name="brdtitle"  value="${obj.brdtitle}" style="color:#000000;"/>
                 <div class="validate"></div>
               </div>
               </div>
@@ -86,7 +86,7 @@
               <div class="form-row">                
                 <div class="col-md-8 form-group">
               	<label for="content">Contents</label>
-                <textarea class="form-control" name="brdcontent" rows="5" data-rule="required" style="color:#000000;">${vo.brdcontent}</textarea>
+                <textarea class="form-control" name="brdcontent" rows="5" data-rule="required" style="color:#000000;">${obj.brdcontent}</textarea>
                 <div class="validate"></div>
               </div>
               </div>

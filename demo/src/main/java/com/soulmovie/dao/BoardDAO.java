@@ -57,6 +57,10 @@ public class BoardDAO {
 		return sqlFactory.openSession().selectList("Board.selectList", map);
 	}
 	
+	public List<BoardVO> selectBoard1(HashMap<String, Object> map) {
+		return sqlFactory.openSession().selectList("Board.selectList1", map);
+	}
+	
 	public int countBoard(String text) {
 		return sqlFactory.openSession().selectOne("Board.count", text);
 	}
@@ -77,6 +81,10 @@ public class BoardDAO {
 
 	public int deleteBoard(BoardVO obj) {
 		return sqlFactory.openSession().delete("Board.deleteBoard", obj);
+	}
+	
+	public int deleteLikeBoard(BoardVO obj) {
+		return sqlFactory.openSession().delete("Board.deleteLikeBoard", obj);
 	}
 	
   

@@ -50,6 +50,18 @@
     order by brdno ASC   
 	</select>
 	
+	<select id="selectList1" parameterType="map" resultType="com.soulmovie.vo.BoardVO">  
+     SELECT * FROM
+			(SELECT 
+				BRDNO, BRDID, BRDTITLE, BRDDATE, BRDCONTENT, BRDIMG, BRDHIT, BRDLIKE, 
+				ROW_NUMBER() OVER (ORDER BY BRDDATE DESC) ROWN 
+			FROM 
+				BOARD
+			WHERE
+				BRDTITLE LIKE '%' || #{text} || '%')
+		WHERE ROWN BETWEEN #{start} AND #{end}   
+	</select>
+	
 	<select id="count" parameterType="String" resultType="int">
 		SELECT COUNT(*) FROM BOARD
 		WHERE BRDTITLE LIKE '%' || #{text} || '%' 
@@ -75,8 +87,12 @@
 		WHERE BRDNO = #{brdno} AND USERID = #{userid}
 	</update>
 	<delete id="deleteBoard" parameterType="com.soulmovie.vo.BoardVO">
-		DELETE FROM BOARD WHERE BRDNO = #{brdno} 
+		DELETE FROM BOARD WHERE BRDNO = #{brdno}
 	</delete>
+	<delete id="deleteLikeBoard" parameterType="com.soulmovie.vo.BoardVO">
+		DELETE FROM LIKEBOARD WHERE BRDNO=#{brdno}
+	</delete>
+	
 	
 	
 	<update id="updateBoardOne" parameterType="com.soulmovie.vo.BoardVO">
