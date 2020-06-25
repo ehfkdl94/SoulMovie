@@ -519,6 +519,7 @@ section {
   text-align: center;
   padding: 30px 0;
   position: relative;
+ 
 }
 
 .section-title h2 {
@@ -530,6 +531,8 @@ section {
   color: #191919;
   position: relative;
   z-index: 2;
+  font-family:'GothicB';
+  font-style: oblique;
 }
 
 .section-title span {

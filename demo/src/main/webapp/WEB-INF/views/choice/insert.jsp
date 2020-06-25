@@ -68,7 +68,8 @@
 									<tr>
 										<td rowspan="3"><input type="radio" name="chk"
 											value="${tmp.movie_code}" /></td>
-										<td>영화코드: </td>
+										<td rowspan="3" width="100px"><img src="${tmp.movie_img}" style="width:100px;"></td>
+										<td width="90px">영화코드: </td>
 										<td>${tmp.movie_code}</td>
 									</tr>
 									<tr>

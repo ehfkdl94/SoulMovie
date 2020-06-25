@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.User;
 import com.soulmovie.vo.MovieVO;
 
 public interface MovieMapper {
-	@Select({"SELECT MOVIE_CODE, MOVIE_TITLE, MOVIE_DATE FROM MOVIE WHERE MOVIE_TITLE LIKE '%'|| #{text} ||'%' "
+	@Select({"SELECT MOVIE_CODE, MOVIE_TITLE, MOVIE_DATE, MOVIE_IMG FROM MOVIE WHERE MOVIE_TITLE LIKE '%'|| #{text} ||'%' "
 			, "AND MOVIE_CODE NOT IN (SELECT CHOICE_CODE FROM CHOICE,MEMBER WHERE CHOICE_ID = USERID AND USERNAME= #{user} )"})
 	public List<MovieVO> selectMovie(@Param("text") String text, @Param("user") String user);
 	

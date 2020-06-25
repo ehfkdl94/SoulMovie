@@ -44,7 +44,7 @@
 	<div class="container"> 
 	<div class="section-title" style="font-family:'GothicB';">
           <span>SoulMovie</span>
-          <h2 style="font-family:'GothicB'; font-style:oblique;">${user_nick}님의 인생영화입니다<br /></h2>          
+          <h2>${user_nick}님의 인생영화입니다<br /></h2>          
       </div>	
 		 <div class="row" >				
 			<c:if test="${empty list}">
