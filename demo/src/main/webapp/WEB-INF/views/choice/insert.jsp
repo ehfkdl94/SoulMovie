@@ -106,8 +106,8 @@
 					<div class="validate"></div>
 				</div>
 				<div class="col-md-6 form-group">
-					관람 횟수: <input type="text" name="choice_freq" class="form-control"
-						style="color:#000000;"/> <br /> 						
+					관람 횟수: <input type="number" name="choice_freq" class="form-control" 
+						style="color:#000000;" value="1"/> <br /> 						
 					<div class="validate"></div>
 				</div>
 			</div>			

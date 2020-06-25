@@ -237,7 +237,11 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Open Sans", sans-serif;
 }
 
-.nav-menu > ul > li:hover, .nav-menu .active {
+/* .nav-menu > ul > li:hover, .nav-menu .active {
+  background: #cc1616;
+} */
+
+.nav-menu > ul > li:hover, .nav-menu .active1 {
   background: #cc1616;
 }
 
@@ -274,9 +278,9 @@ h1, h2, h3, h4, h5, h6 {
   color: #191919;
 }
 
-.nav-menu .drop-down ul a:hover, .nav-menu .drop-down ul .active > a, .nav-menu .drop-down ul li:hover > a {
+/* .nav-menu .drop-down ul a:hover, .nav-menu .drop-down ul .active > a, .nav-menu .drop-down ul li:hover > a {
   color: #e82d2d;
-}
+} */
 
 .nav-menu .drop-down > a:after {
   content: "\ea99";
@@ -369,10 +373,10 @@ h1, h2, h3, h4, h5, h6 {
   outline: none;
 }
 
-.mobile-nav a:hover, .mobile-nav .active > a, .mobile-nav li:hover > a {
+/* .mobile-nav a:hover, .mobile-nav .active > a, .mobile-nav li:hover > a {
   color: #e82d2d;
   text-decoration: none;
-}
+} */
 
 .mobile-nav .drop-down > a:after {
   content: "\ea99";
