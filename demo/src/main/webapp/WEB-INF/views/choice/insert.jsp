@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -23,7 +24,7 @@
         <br />
         <br />
         <br />
-          <h3 style="font-family:'GothicB';">MY SOUL MOVIE</h3>           
+          <h3 style="font-family:'PlayfairB';">MY SOUL MOVIE</h3>           
         </div>
       </div>
     </section>
