@@ -87,26 +87,28 @@
 								
 								<form action="${pageContext.request.contextPath}/member/mypage" method="post" enctype="multipart/form-data">
 										<ul>
-										<li><i class="icofont-check-circled"></i>ID<input type="text" class="form-control" name="username" value="${obj.username}" style="color:#fff;background-color:#ff0000; opacity:50%;" readonly /></li>
-										<br />
-	
-										<li><i class="icofont-check-circled"></i>NAME<input id="text" class="form-control" name="userrname" value="${obj.userrname}" style="color:#fff;background-color:#ff0000; opacity:75%;" readonly /></li>
+										<li><i class="icofont-check-circled"></i>ID<input type="text" class="form-control" name="username" value="${obj.username}" style="color:#fff;background-color:#000; opacity:15%;" readonly /></li>
 										<br />
 										
-										<li><i class="icofont-check-circled"></i>NICKNAME<input id="text" class="form-control" name="usernick" value="${obj.usernick}" style="color:#fff;background-color:#ff0000; opacity:75%;" readonly /></li>
+										<li><i class="icofont-check-circled"></i>ID : ${obj.username}</li>
+	
+										<li><i class="icofont-check-circled"></i>NAME<input id="userrname" class="form-control" name="userrname" value="${obj.userrname}" style="color:#fff;background-color:#000; opacity:15%;" readonly /></li>
+										<br />
+										
+										<li><i class="icofont-check-circled"></i>NICKNAME<input id="text" class="form-control" name="usernick" value="${obj.usernick}" style="color:#fff;background-color:#000; opacity:15%;" readonly /></li>
 										<br />
 									
-							            <li><i class="icofont-check-circled"></i>AGE<input id="text" class="form-control" name="usernick" value="${obj.userage}" style="color:#fff;background-color:#ff0000; opacity:75%;" readonly /></li>
+							            <li><i class="icofont-check-circled"></i>AGE<input id="text" class="form-control" name="usernick" value="${obj.userage}" style="color:#fff;background-color:#000; opacity:15%;" readonly /></li>
 							            <br />
 							                       
-										<li><i class="icofont-check-circled"></i>GENDER<input type="text" class="form-control" name="usergender" value="${obj.usergender}" style="color:#fff;background-color:#ff0000; opacity:75%;" readonly /></li>
+										<li><i class="icofont-check-circled"></i>GENDER<input type="text" class="form-control" name="usergender" value="${obj.usergender}" style="color:#fff;background-color:#000; opacity:15%;" readonly /></li>
 										<br />
 										
-										<li><i class="icofont-check-circled"></i>E-MAIL<input id="text" class="form-control" name="useremail" value="${obj.useremail}" style="color:#fff;background-color:#ff0000; opacity:75%;" readonly /></li>
+										<li><i class="icofont-check-circled"></i>E-MAIL<input id="text" class="form-control" name="useremail" value="${obj.useremail}" style="color:#fff;background-color:#000; opacity:15%;" readonly /></li>
 										<br />
 										
 										<li><i class="icofont-check-circled"></i>JOIN DATE<c:set var="dt" value="${fn:split(obj.joindate, ' ')}" />
-										<input id="text" class="form-control" name="joindate" value="${dt[0]}" readonly style="color:#fff;background-color:#ff0000; opacity:75%;" /></li>
+										<input id="text" class="form-control" name="joindate" value="${dt[0]}" readonly style="color:#fff;background-color:#000; opacity:15%;" /></li>
 										<br />
 										</ul>
 							

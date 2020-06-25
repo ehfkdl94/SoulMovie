@@ -63,7 +63,7 @@
          <br />
         <br />
         <br />
-        <h3 style="color:#fff">Welcome to Soul Movie</h3>
+        <h3 style="color:#fff; font-family:'PlayfairB';">Welcome</h3>
 
         </div>
       </div>

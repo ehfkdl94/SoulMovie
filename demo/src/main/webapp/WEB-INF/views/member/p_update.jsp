@@ -94,11 +94,11 @@
                               <li><i class="icofont-check-circled"></i>ID<input type="text" class="form-control" name="username" value="${obj.username}" style="color:#000;"readonly /></li>
                               <br />
                               
-                              <li><i class="icofont-check-circled"></i>PASSWORD<input id="chk1" type="password" class="form-control" name="password" style="color:#000;"/></li>
+                              <li><i class="icofont-check-circled"></i>PASSWORD<input id="chk1" type="password" class="form-control" name="password" style="color:#000; border-color:#ff0000;"/></li>
                               <br />
                               
-                              <li><i class="icofont-check-circled"></i>PASSWORD<input id="chk2" type="password" class="form-control" name="correct" style="color:#000;"/></li>
-                              <p id="chk"></p>
+                              <li><i class="icofont-check-circled"></i>PASSWORD CHECK<input id="chk2" type="password" class="form-control" name="correct" style="color:#000; border-color:#ff0000;"/></li>
+                              <p id="chk" style="color:#ff0000;"></p>
                               <br />
                               
                               

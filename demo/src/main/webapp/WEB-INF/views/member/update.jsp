@@ -54,7 +54,7 @@
                     <br />
                     <br />
                     <br />
-                      <h3 style="font-family:'PlayfairB';">MY Info</h3>          
+                      <h3 style="font-family:'PlayfairB';">MY INFORMATION</h3>          
                  </div>
             </div>
          
@@ -87,28 +87,29 @@
                         <td>
                         <form action="${pageContext.request.contextPath}/member/update" method="post" enctype="multipart/form-data">
                         	<ul>
-                              <li><i class="icofont-check-circled"></i>ID<input type="text" class="form-control" name="username" value="${obj.username}" style="color:#000;"readonly /></li>
+                              <li><i class="icofont-check-circled"></i>ID<input id="username" type="text" class="form-control" name="username" value="${obj.username}" style="color:#000;"readonly /></li>
                               <br />
                               
                       
                               
                      
-                              <li><i class="icofont-check-circled"></i>NAME<input id="text" class="form-control" name="userrname" value="${obj.userrname}" style="color:#000;" readonly/></li>
+                              <li><i class="icofont-check-circled"></i>NAME<input id="userrname" class="form-control" name="userrname" value="${obj.userrname}" style="color:#000;" readonly/></li>
                               <br />
                               
                               
                               
                               
-                              <li><i class="icofont-check-circled"></i>NICKNAME<input id="text" class="form-control" name="usernick" value="${obj.usernick}" style="color:#848484;"></li>
-                                  <p id="chk2" style="padding:18px;margin:0px; font-size:16px; color:#ff0000">중복확인</p>
-                              <br />
+                              <li><i class="icofont-check-circled"></i>NICKNAME<input id="usernick" class="form-control" name="usernick" value="${obj.usernick}" style="color:#000; background-color:#fff; border-color:#ff0000;"></li>
+                                  <p id="chk" style="color:#ff0000;"></p>
+                                  <br />
+                          
                            
                            
                            
                            
                            
                                  <li><i class="icofont-check-circled"></i><label for="userage" >AGE</label><br />
-                                    <select name= "userage" style="color:#848484;">
+                                    <select name= "userage" style="color:#000; border-color:#ff0000;">
                                           <option id="userage" value="10대">10-19</option>
                                           <option id="userage" value="20대">20-29</option>
                                           <option id="userage" value="30대">30-39</option>
@@ -121,7 +122,7 @@
                               <li><i class="icofont-check-circled"></i>GENDER<input type="text" class="form-control" name="usergender" value="${obj.usergender}" style="color:#000;" readonly /></li>
                               <br />
                               
-                              <li><i class="icofont-check-circled"></i>E-MAIL<input id="text" class="form-control" name="useremail" value="${obj.useremail}" style="color:#848484;" /></li>
+                              <li><i class="icofont-check-circled"></i>E-MAIL<input type="email" id="usereamil" class="form-control" name="useremail" value="${obj.useremail}" style="color:#000; border-color:#ff0000;" /></li>
                               <br />
                               
                               <li><i class="icofont-check-circled"></i>JOIN DATE<c:set var="dt" value="${fn:split(obj.joindate, ' ')}" />
@@ -129,7 +130,7 @@
                                     
                               
                               <hr />
-                              <input type="submit" class="btn btn-danger " style="background-color:#ff0000;" value="저장" />
+                               <input type="submit" class="btn btn-danger " style="background-color:#ff0000;" value="저장" />
                      
 								</ul>
 				             </form>
@@ -137,33 +138,46 @@
 				                        
 				                        		               
 				               
-				               		<script type="text/javascript" 
+				       <script type="text/javascript" 
 						src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
 					
 					
 				 		<script>
+				 		$(function(){
+							//nickname이 usernick인 tag의 키보드가 up되면
+							$('#usernick').bind('keyup',function(){
+								var unick = $('#usernick').val(); //입력했던 값을 받아와서 unick변수에 보관
+					
+								//restcontroller를 호출해서 값을 받아옴
+						
+									if (unick.length >= 2){
+										//restcontroller를 호출해서 값을 받아옴
+										$.get('/member/rest/membernickcheck.json?usernick=' + unick,function(data){
+											console.log("GET", data);
+											//console.log("GET", data);  {"ret":1}  or {"ret":0}
+											if(data.ret == 1){
+												$('#chk').text('이미 사용 중인 닉네임입니다.');
+											}
+											else if(data.ret == 0){
+												$('#chk').text('사용가능');
+											}
+										}, 'json');
+										}
+									else{
+										$('#chk').text('닉네임을 두 글자 이상으로 설정해 주세요.');
+										}
+								
+						
+								
+								/*
+								$.post('/rest/memberidcheck.json', {id:'a'}, function(data){
+									console.log("POST", data);
+								}, 'json');
+								*/
+							});
+						});
 
-
-                              $(function(){
-                                 //nickname이 usernick인 tag의 키보드가 up되면
-                                 $('#usernick').bind('keyup',function(){
-                                    var unick = $('#usernick').val(); //입력했던 값을 받아와서 unick변수에 보관
-                           
-                                    //restcontroller를 호출해서 값을 받아옴
-                                    $.get('/member/rest/membernickcheck.json?usernick=' + unick,function(data){
-                                       console.log("GET", data);
-                                       //console.log("GET", data);  {"ret":1}  or {"ret":0}
-                                       if(data.ret == 1){
-                                          $('#chk2').text('이미 사용 중인 닉네임입니다.');
-                                       }
-                                       else if(data.ret == 0){
-                                          $('#chk2').text('사용가능');
-                                       }
-                                    }, 'json');
-                                    
-           
-                                 });
-                              });
+                       
                            
   
               
