@@ -18,8 +18,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.soulmovie.dao.BoardDAO;
 import com.soulmovie.dao.MemberDAO;
 import com.soulmovie.dao.MovieDAO;
+import com.soulmovie.mapper.ContactMapper;
 import com.soulmovie.vo.BoardVO;
-import com.soulmovie.vo.ChoiceVO;
+import com.soulmovie.vo.ContactVO;
 import com.soulmovie.vo.MemberVO;
 import com.soulmovie.vo.MovieVO;
 
@@ -35,6 +36,9 @@ public class AdminController {
 	
 	@Autowired
 	private MemberDAO memberDAO = null;
+	
+	@Autowired
+	private ContactMapper cMapper = null;
 	
 	@RequestMapping(value="/test")
 	public String test(HttpServletRequest request) {
@@ -298,5 +302,41 @@ public class AdminController {
 		
 		return "redirect:" + request.getContextPath() + "/admin/member";
 		
+	}
+	
+	@RequestMapping(value="/contact", method=RequestMethod.GET)
+	public String contactlist(Model model, HttpSession httpSession,
+			HttpServletRequest request,
+			@RequestParam(value="page", defaultValue="0", required=false) int page,
+			@RequestParam(value="text", defaultValue="", required=false) String text) {
+		if(page==0) {
+			return "redirect:"+request.getContextPath()+"/admin/contact?page=1";
+		}
+
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("start", (page*7)-6);//�떆�옉�쐞移�
+		map.put("end", page*7); //醫낅즺�쐞移�
+		map.put("text", text); //寃��깋�뼱
+		//紐⑸줉
+		List<ContactVO> list = cMapper.selectContact(map);
+		int cnt = cMapper.countContact(text);
+		model.addAttribute("list", list);
+		model.addAttribute("cnt", (int)Math.ceil(cnt/7.0));
+		return request.getContextPath() +"/admin/contactlist";
+	}
+	
+	@RequestMapping(value = "/contactcontent", method = RequestMethod.GET)
+	public String contactcontent(Model model, HttpSession httpSession, HttpServletRequest request,
+			@RequestParam(value="no", defaultValue = "0", required = false) int no) {
+		if( no == 0) {
+			return "redirect:"+request.getContextPath()+"/admin/contact";
+		}
+		
+		ContactVO obj = cMapper.selectContactOne(no);
+		model.addAttribute("obj", obj);
+		
+	
+		return request.getContextPath() + "/admin/contactcontent";
 	}
 }
