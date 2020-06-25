@@ -20,16 +20,16 @@
 	</insert>
 	
 	<select id="selectList" parameterType="map" resultType="com.soulmovie.vo.BoardVO">
-		SELECT  BRDNO, BRDNO,BRDTITLE,BRDID,BRDHIT,BRDDATE,ROWN, MEMBER.USERNAME FROM
-	      (select
-		      BRDNO, BRDTITLE, BRDID, BRDHIT, BRDDATE,
-		      	ROW_NUMBER() OVER (ORDER BY BRDNO DESC) ROWN
-		      FROM
-		      	BOARD
-		      WHERE BRDTITLE LIKE '%' || #{text} || '%'
-	     	) A ,MEMBER 
-	      WHERE ROWN BETWEEN #{start} AND #{end} 
-	      	AND A.BRDID = MEMBER.USERID
+SELECT  BRDNO, BRDTITLE, BRDID, BRDHIT, BRDDATE,USERNAME, A.ROWN ROWN
+    FROM 
+            (select
+            BRDNO, BRDTITLE, BRDID, BRDHIT, BRDDATE,USERNAME,
+               ROW_NUMBER() OVER (ORDER BY BRDDATE ASC) ROWN,ROWNUM NUMBER1
+            FROM
+               BOARD, MEMBER
+            WHERE BRDTITLE LIKE '%' || '' || '%'
+            AND BRDID = MEMBER.USERID
+           ) A 
 	</select>
 	
 	<select id="count" parameterType="String" resultType="int">
@@ -53,10 +53,7 @@
 	
 	<update id="updateBoardOne" parameterType="com.soulmovie.vo.BoardVO">
 		UPDATE BOARD SET BRDTITLE=#{brdtitle}, BRDCONTENT=#{brdcontent} 
-		
-		<if test="brdimg != null">,BRDIMG=#{brdimg, jdbcType=BLOB}
-		</if>
-			WHERE BRDNO = #{brdno} 
+		WHERE BRDNO = #{brdno} 
 	</update>
 	
 	

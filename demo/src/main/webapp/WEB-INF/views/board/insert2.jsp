@@ -1,156 +1,158 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
+<%@ taglib prefix="security" uri= "http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
+
 <head>
-   <title>board insert</title>
-   <meta charset="UTF-8">
-   <meta name="description" content="SolMusic HTML Template">
-   <meta name="keywords" content="music, html">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-   <!-- Favicon -->
-   <link href="${pageContext.request.contextPath}/resources/img/favicon.ico" rel="shortcut icon"/>
-
-   <!-- Google font -->
-   <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
-
-   <!-- Stylesheets -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"/>
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css"/>
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl.carousel.min.css"/>
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/slicknav.min.css"/>
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/csslogin/main.css" />
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/csslogin/noscript.css" />
-	<!-- Bootstrap CSS File -->
-    <link href="${pageContext.request.contextPath}/resources/css/bootstrap.css" rel="stylesheet">
-
-   <!-- Vendor CSS Files -->
-   <link href="${pageContext.request.contextPath}/resources/vendor/icofont/icofont.min.css" rel="stylesheet">
-   <link href="${pageContext.request.contextPath}/resources/vendor/line-awesome/css/line-awesome.min.css" rel="stylesheet">
-   <link href="${pageContext.request.contextPath}/resources/vendor/aos/aos.css" rel="stylesheet">
-   <link href="${pageContext.request.contextPath}/resources/vendor/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
-   <!-- Main Stylesheets -->
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css"/>
-   <link href="${pageContext.request.contextPath}/resources/css/style1.css" rel="stylesheet">
-
-
-   <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-   <![endif]-->
-
+  <%@include file="/WEB-INF/views/head.jsp" %>
 </head>
+
 <body>
-   <!-- Page Preloder -->
-   <div id="preloder">
-      <div class="loader"></div>
-   </div>
 
-   <!-- Header section -->
-   <header class="header-section clearfix">
-      <a href="index.html" class="site-logo">
-         <img src="${pageContext.request.contextPath}/resources/img/logo4.png" alt="">
-      </a>
-      <div class="header-right">
-         <a href="#" class="hr-btn">Help</a>
-			<span>|</span>
-			<security:authorize access="!isAuthenticated()">
-			<div class="user-panel">
-				<a href="${pageContext.request.contextPath}/member/login" class="login">Login</a>
-				<a href="${pageContext.request.contextPath}/member/join" class="register">Create an account</a>
-			</div>
-			</security:authorize>
-			
-			<security:authorize access="isAuthenticated()">
-				<div class="user-panel">
-				<a href="${pageContext.request.contextPath}/member/logout" class="logout">Logout</a>
-				<a href="${pageContext.request.contextPath}/member/join" class="register">Create an account</a>
-			</div>
-			</security:authorize>
-		</div>
-		<ul class="main-menu">
-			<li><a href="/">Home</a></li>
-			<li><a href="${pageContext.request.contextPath}/movie/movielist">Movie</a>
-				<!--  
-				<ul class="sub-menu">
-					<li><a href="category.html">Category</a></li>
-					<li><a href="playlist.html">Playlist</a></li>
-					<li><a href="artist.html">Artist</a></li>
-					<li><a href="blog.html">Blog</a></li>
-					<li><a href="contact.html">Contact</a></li>
-				</ul>
-				-->
-			</li>
-			<li><a href="${pageContext.request.contextPath}/board/list">Board</a></li>
-			<li><a href="contact.html">Contact</a></li>
-		</ul>
-	</header>
-   <!-- Header section end -->
+	<%@include file="/WEB-INF/views/header.jsp"%>
+	<main id="main">
+    <section id="contact" class="contact">
+      <div class="container" style="height:600px; margin-top:100px;">
+      <h2>Board insert</h2><br/>
+          <form action="/board/insert" method="post" style="box-sizing: content-box;">
+              <div class="form-row">
+              
+              <!--  
+                <div class="col-md-6 form-group">
+                  <label for="title">Subject</label>
+                  <input type="text" name="subject" class="form-control" id="subject" placeholder="Please enter the subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                  <div class="validate"></div>
+                </div>
+                -->
+                
+                <div class="col-md-6 form-group">
+                  <label for="reg_id">Writer</label>
+                  <input type="text" class="form-control" name="username" value="<security:authentication property="name"/>"readonly />
+                  <div class="validate"></div>
+                </div>
+              </div>
 
-   <!-- Hero section -->
-   <section class="hero-section" >
-   
-         <div class="hs-item" style="height:700px">
-	<article>
-		<div class="container" style="color: white;" >
-			<h2 style="color: white;">BOARD</h2>
-			<form name="form" id="form" role="form" method="post" action="/board/insert">
-				<div class="mb-3">
-					<label for="title">제목</label>
-					<input type="text" class="form-control" name="brdtitle" id="title" placeholder="제목을 입력해 주세요">
-				</div>
-				<div class="mb-3">
-					<label for="content">내용</label>
-					<textarea class="form-control" rows="5" name="brdcontent" id="content" placeholder="내용을 입력해 주세요" ></textarea>
-				</div>
-				<div class="mb-3">
-					<label for="reg_id">작성자</label>
-					<input type="text" class="form-control" name="username" value= "<security:authentication property="name"/>" >
-				</div>				
-				<input type="submit" class="btn btn-sm btn-primary" value="저장">
-				<button type="button" class="btn btn-sm btn-primary"  onclick="location.href='/board/list'" id="btnList">목록</button>
-			</form>
-		</div>
-	</article>
-            
+              <div class="form-group">
+              	<label for="title">Subject</label>
+                <input type="text" class="form-control" name="brdtitle" id="subject" placeholder="Please enter the subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                <div class="validate"></div>
+              </div>
+              <div class="form-group">
+              	<label for="content">Contents</label>
+                <textarea class="form-control" name="brdcontent" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Please enter your details"></textarea>
+                <div class="validate"></div>
+              </div>
+              
+              <div class="text-center">
 
-         </div>
-         
-      </div>
-   </section>
-   <!-- Hero section end -->
+              <button type="submit" class="btn btn-sm btn-success">Save</button>
+			  <button type="button" class="btn btn-sm btn-success"
+				onclick="location.href='/board/list'" id="btnList">List</button>              
+              </div>
+            </form>
 
+        </div>
 
-
-
-   <!--====== Javascripts & Jquery ======-->
-   <script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
-   <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-   <script src="${pageContext.request.contextPath}/resources/js/jquery.slicknav.min.js"></script>
-   <script src="${pageContext.request.contextPath}/resources/js/owl.carousel.min.js"></script>
-   <script src="${pageContext.request.contextPath}/resources/js/mixitup.min.js"></script>
-   <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
-   <!-- Vendor JS Files -->
-   <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-   <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery-migrate.min.js"></script>
-   <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
-   <script src="${pageContext.request.contextPath}/resources/vendor/easing/easing.min.js"></script>
-   <script src="${pageContext.request.contextPath}/resources/vendor/php-email-form/validate.js"></script>
-   <script src="${pageContext.request.contextPath}/resources/vendor/isotope/isotope.pkgd.min.js"></script>
-   <script src="${pageContext.request.contextPath}/resources/vendor/aos/aos.js"></script>
-   <script src="${pageContext.request.contextPath}/resources/vendor/owlcarousel/owl.carousel.min.js"></script>
-
-   <!-- Template Main JS File -->
-   <script src="${pageContext.request.contextPath}/resources/js/main2.js"></script>
-
-
+    </section>
+     
+    <!-- End Contact Section -->
+	</main>
 	
+	<!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
 
-   </body>
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-info">
+              <<h3>Day</h3>>
+              <p>
+                A108 Adam Street <br>
+                NY 535022, USA<br><br>
+                <strong>Phone:</strong> +1 5589 55488 55<br>
+                <strong>Email:</strong> info@example.com<br>
+              </p>
+              <div class="social-links mt-3">
+                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Our Newsletter</h4>
+            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
+            </form>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Day</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/day-multipurpose-html-template-for-free/ -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/jquery/jquery.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/php-email-form/validate.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/venobox/venobox.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/aos/aos.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="${pageContext.request.contextPath}/resources/day/assets/js/main.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/main2.js"></script>
+
+</body>
+
 </html>
