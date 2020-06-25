@@ -115,13 +115,27 @@
 		Views : ${obj.brdhit}
 		Date :<c:set var="dt" value="${fn:split(obj.brddate, ' ')}" />
 			${dt[0]}<br/>
+		<form action="/board/likeinsert" method ="post" >
+		<input type="hidden" name="brdno" value="${obj.brdno}" />
+		<input type="hidden" name="userid" value="${obj.userid}" />
+		<input type="hidden" name="brdnumber" value="${obj.brdnumber}" />
 		
           <div class="like-content" > 
-			  <button class="btn-secondary like-review" style="margin-left:680px; padding:4px; font-size:13px; font-family:'aCinemaL';">
-			    <i class="fa fa-heart" aria-hidden="true" id="like">Like</i> 
-			  </button>
-		  </div>
+          <c:if test="${LikeCheck eq 0}">
           
+			  <button class="btn-secondary like-review" style="margin-left:680px; padding:4px; font-size:13px; font-family:'aCinemaL';">
+			    <i class="fa fa-heart-o"  aria-hidden="true" id="like" >Like </i>
+			  </button>
+			  </c:if>
+			  <c:if test="${LikeCheck eq 1}">
+          
+			  <button class="btn-secondary like-review" style="margin-left:680px; padding:4px; font-size:13px; font-family:'aCinemaL';">
+			    <i class="fa fa-heart"  aria-hidden="true" id="like" >Like </i>
+			  </button>
+			  </c:if>
+			  
+		  </div>
+		</form>		          
           <form action="/board/insert" method="post" style="box-sizing: content-box;">
 
               <div class="form-row">
@@ -280,7 +294,7 @@ $(function(){
 		var a1 = $('#like').text();
 		console.log(a1);
 		if(a1=='Like'){
-			$('#like').text("You liked this");
+			$('#like').text("Like");
 			
 			//$(this).html('<i class="fa fa-heart" aria-hidden="true"></i> You liked this');
 			//$(this).children('.fa-heart').addClass('animate-like');
