@@ -14,43 +14,57 @@
 <body>
 
 	<%@include file="/WEB-INF/views/header.jsp"%>
+	
+	<section id="cta" class="cta2" style="height:400px;" >
+      <div class="container" data-aos="zoom-in">
+        <div class="text-center">
+        <br />
+        <br />
+        <br />
+          <h3 style="font-family:'PlayfairB';">MY SOUL BOARD</h3>          
+          
+         
+       </div>
+      </div>
+      
+    </section>
 	<main id="main">
     <section id="contact" class="contact">
-      <div class="container" style="height:600px; margin-top:100px;">
+      <div class="container" style="height:600px; margin-top:10px;font-family:'aCinemaL';">
       <h2>Board update</h2><br/>
       	Board Num : ${bno}
 		Views : ${obj.brdhit}
 		Date :<c:set var="dt" value="${fn:split(obj.brddate, ' ')}" />
 			${dt[0]}<br/> 	
           <form action="/board/update" method="post" style="box-sizing: content-box;">
-          	<input type="hidden" value="${obj.brdno}" name="brdno"/>
+          	<input type="hidden" value="${obj.brdno}" style="color:#000000;" name="brdno"/>
               <div class="form-row">                
-                <div class="col-md-6 form-group">
+                <div class="col-md-8 form-group">
                   <label for="reg_id">Writer</label>
-                  <input type="text" class="form-control" name="username" value="<security:authentication property="name"/>"readonly />
+                  <input type="text" class="form-control" style="color:#000000;" name="username" value="<security:authentication property="name"/>"readonly />
                   <div class="validate"></div>
                 </div>
               </div>
 
-              <div class="form-group">
+              <div class="form-row">                
+                <div class="col-md-8 form-group">
               	<label for="title">Subject</label>
-                <input type="text" class="form-control" name="brdtitle"  value="${vo.brdtitle}" />
+                <input type="text" class="form-control" name="brdtitle"  value="${vo.brdtitle}" style="color:#000000;"/>
                 <div class="validate"></div>
               </div>
-              <div class="form-group">
-              	<label for="content">Contents</label>
-                <textarea class="form-control" name="brdcontent" rows="5" data-rule="required">${vo.brdcontent}</textarea>
-                <div class="validate"></div>
               </div>
-              <hr/>
               
-              <div class="text-center">
-
-<!--               <button type="submit" class="btn btn-sm btn-success">Save</button>
-			  <button type="button" class="btn btn-sm btn-success"
-				onclick="location.href='/board/list'" id="btnList">List</button>  --> 
-			  <input type="submit" class="btn btn-success" value="Edit" />
-			  <a href="${pageContext.request.contextPath}/board/list" class="btn btn-success">List</a>	
+              <div class="form-row">                
+                <div class="col-md-8 form-group">
+              	<label for="content">Contents</label>
+                <textarea class="form-control" name="brdcontent" rows="5" data-rule="required" style="color:#000000;">${vo.brdcontent}</textarea>
+                <div class="validate"></div>
+              </div>
+              </div>
+              
+              <div class="text">
+			  <input type="submit" class="btn btn-sm btn-success" value="Edit" />
+			  <a href="${pageContext.request.contextPath}/board/list" class="btn btn-sm btn-success">List</a>	
 			            
               </div>
               

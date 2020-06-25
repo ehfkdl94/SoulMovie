@@ -19,36 +19,31 @@
       <div class="container" style="height:600px; margin-top:100px;">
       <h2>Board insert</h2><br/>
           <form action="/board/insert" method="post" style="box-sizing: content-box;">
-              <div class="form-row">
-              
-              <!--  
-                <div class="col-md-6 form-group">
-                  <label for="title">Subject</label>
-                  <input type="text" name="subject" class="form-control" id="subject" placeholder="Please enter the subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                  <div class="validate"></div>
-                </div>
-                -->
-                
-                <div class="col-md-6 form-group">
+              <div class="form-row">           
+              <div class="col-md-8 form-group">
                   <label for="reg_id">Writer</label>
-                  <input type="text" class="form-control" name="username" value="<security:authentication property="name"/>"readonly />
+                  <input type="text" class="form-control" style="color:#000000;" name="username" value="<security:authentication property="name"/>"readonly />
                   <div class="validate"></div>
                 </div>
               </div>
 
-              <div class="form-group">
+              <div class="form-row">           
+              <div class="col-md-8 form-group">
               	<label for="title">Subject</label>
-                <input type="text" class="form-control" name="brdtitle" id="subject" placeholder="Please enter the subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                <input type="text" class="form-control" style="color:#000000;" name="brdtitle" id="subject" placeholder="Please enter the subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
                 <div class="validate"></div>
               </div>
-              <div class="form-group">
-              	<label for="content">Contents</label>
-                <textarea class="form-control" name="brdcontent" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Please enter your details"></textarea>
-                <div class="validate"></div>
               </div>
               
-              <div class="text-center">
-
+              <div class="form-row">           
+              <div class="col-md-8 form-group">
+              	<label for="content">Contents</label>
+                <textarea class="form-control" name="brdcontent" style="color:#000000;" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Please enter your details"></textarea>
+                <div class="validate"></div>
+              </div>
+              </div>
+              
+              <div class="text">
               <button type="submit" class="btn btn-sm btn-success">Save</button>
 			  <button type="button" class="btn btn-sm btn-success"
 				onclick="location.href='/board/list'" id="btnList">List</button>              
