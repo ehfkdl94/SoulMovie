@@ -5,10 +5,10 @@
 <div id="wrapper" class="active" style="font-family:'PlayfairB';">
      
       <div id="sidebar-wrapper">
-      <ul id="sidebar_menu" class="sidebar-nav">
+      <ul id="sidebar_menu" class="sidebar-nav" style="font-family:'PlayfairB';">
            <li class="sidebar-brand"><a id="menu-toggle" href="#">Menu<span id="main_icon" class="glyphicon glyphicon-align-justify"></span></a></li>
       </ul>
-        <ul id="sidebar" class="sidebar-nav">     
+        <ul id="sidebar" class="sidebar-nav" style="font-family:'PlayfairB';">     
           <li><a href="${pageContext.request.contextPath}/member/mypage">My Info<span class="sub_icon glyphicon glyphicon-link"></span></a></li>
           <li><a href="${pageContext.request.contextPath}/choice/list">My SoulMovie<span class="sub_icon glyphicon glyphicon-link"></span></a></li>
         </ul>
