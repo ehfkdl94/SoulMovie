@@ -8,57 +8,30 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Day Bootstrap Template - Index</title>
-  <meta content="" name="descriptison">
-  <meta content="" name="keywords">
-
-  <!-- Favicons -->
-  <link href="${pageContext.request.contextPath}/resources/day/assets/img/favicon.png" rel="icon">
-  <link href="${pageContext.request.contextPath}/resources/day/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="${pageContext.request.contextPath}/resources/day/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/day/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/day/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/day/assets/vendor/venobox/venobox.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/day/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/day/assets/vendor/aos/aos.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="${pageContext.request.contextPath}/resources/day/assets/css/style2.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Day - v2.1.0
-  * Template URL: https://bootstrapmade.com/day-multipurpose-html-template-for-free/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-  <!--fold -->
-  <!-- Theme Style -->
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/unfold/css/vendor/icomoon/style.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/unfold/css/vendor/owl.carousel.min.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/unfold/css/vendor/animate.min.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/unfold/css/vendor/aos.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/unfold/css/vendor/bootstrap.min.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/unfold/css/vendor/jquery.fancybox.min.css">
-  <!-- <link rel="stylesheet" href="css/style.css"> -->
+  
+  <%@include file="/WEB-INF/views/head.jsp"%>
+  <title>Soul Movie Detail</title>
 </head>
 
 <body>
 
 
+<%@include file="/WEB-INF/views/header.jsp"%>
 
- <%@include file="/WEB-INF/views/header.jsp" %>
-
-
+<section id="cta" class="cta" style="height:400px;" >
+      <div class="container" data-aos="zoom-in">
+        <div class="text-center">
+        <br />
+        <br />
+        <br />
+          <h3 style="font-family:'PlayfairB';">MOVIE LIST</h3>          
+          
+         
+        </div>
+      </div>
+      
+    </section>
 
   <main id="main">
 
@@ -146,7 +119,7 @@
                   <span class="number number-counter" style="color:#ff0000;" data-number=" ${list.movie_cnt}">0</span>
                   <span class="append-text"></span>
                 </span>
-                <span class="counter-label">number of spectators</span>
+                <span class="counter-label">reviews</span>
               </div>
             </div>
            <!--  <div class="col-6 col-sm-6 mb-5 mb-lg-0 col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
