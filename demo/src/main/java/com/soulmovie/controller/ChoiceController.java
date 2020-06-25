@@ -45,8 +45,9 @@ public class ChoiceController {
 	public String insert(Model model, Authentication auth, HttpServletRequest request,
 			@RequestParam(value="text", required = false) String text,
 			@RequestParam(value="chk", required = false) String chk) {
+		User user = null;
 		if(auth != null) {
-			User user = (User)auth.getPrincipal();
+			 user = (User)auth.getPrincipal();
 			if(user != null) {
 //				System.out.println(user.getUsername());
 				String username = user.getUsername();
@@ -70,7 +71,8 @@ public class ChoiceController {
 			model.addAttribute("list", list);			
 		}else {
 			
-			List<MovieVO> list = mMapper.selectMovie(text);
+			System.out.println(user.getUsername());
+			List<MovieVO> list = mMapper.selectMovie(text,user.getUsername());
 			model.addAttribute("list", list);			
 		}
 		if(chk!=null) {

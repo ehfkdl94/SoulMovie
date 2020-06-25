@@ -5,12 +5,14 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+import org.springframework.security.core.userdetails.User;
 
 import com.soulmovie.vo.MovieVO;
 
 public interface MovieMapper {
-	@Select({"SELECT MOVIE_CODE, MOVIE_TITLE, MOVIE_DATE FROM MOVIE WHERE MOVIE_TITLE LIKE '%'|| #{text} ||'%'"})
-	public List<MovieVO> selectMovie(@Param("text") String text);
+	@Select({"SELECT MOVIE_CODE, MOVIE_TITLE, MOVIE_DATE FROM MOVIE WHERE MOVIE_TITLE LIKE '%'|| #{text} ||'%' "
+			, "AND MOVIE_CODE NOT IN (SELECT CHOICE_CODE FROM CHOICE,MEMBER WHERE CHOICE_ID = USERID AND USERNAME= #{user} )"})
+	public List<MovieVO> selectMovie(@Param("text") String text, @Param("user") String user);
 	
 	@Select({"SELECT MOVIE_TITLE FROM MOVIE WHERE MOVIE_CODE=#{chk}"})
 	public String findMovieTitle(@Param("chk") String chk);
