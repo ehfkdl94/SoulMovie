@@ -14,7 +14,37 @@
 </head>
 
 <body>
-<%@include file="/WEB-INF/views/header.jsp" %>
+
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top" style="background:rgba(0, 0, 0, 0.9);">
+    <div class="container d-flex align-items-center">
+
+      <h1 class="logo mr-auto"><a href="${pageContext.request.contextPath}/"><img src="${pageContext.request.contextPath}/resources/day/assets/img/logo4.png" alt=""></a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li><a href="${pageContext.request.contextPath}/">Home</a></li>
+          <li><a href="${pageContext.request.contextPath}/movie/movielist">Movie</a></li>
+          <li><a href="${pageContext.request.contextPath}/board/list">board</a></li>
+          <li><a href="${pageContext.request.contextPath}/">Contact</a></li>
+          <security:authorize access="!isAuthenticated()">
+          	<li><a href="${pageContext.request.contextPath}/member/login">login</a></li>
+          	<li><a href="${pageContext.request.contextPath}/member/join" style = "font-weight: bold ;color:#ff0000;">Create an account</a></li>
+          </security:authorize>
+          <security:authorize access="isAuthenticated()">
+          	<li class="active1"><a href="${pageContext.request.contextPath}/member/mypage?username=<security:authentication property="name"/>">My page</a></li>
+          	<li><a href="${pageContext.request.contextPath}/member/logout">logout</a></li>
+          	<li><a href="${pageContext.request.contextPath}/choice/list" style = "font-weight: bold ;color:#ff0000;">+ SoulMovie</a></li>
+          </security:authorize>
+        </ul>
+      </nav><!-- .nav-menu -->
+
+    </div>
+  </header><!-- End Header -->
+ 
 
 
 		<section id="cta" class="cta" style="height:400px;" >
@@ -23,57 +53,71 @@
 				        <br />
 				        <br />
 				        <br />
-				          <h3>MY Info</h3>          
+				          <h3 style="font-family:'GothicB';">MY Info</h3>          
 			        </div>
 		      </div>
 	      
 	    </section>
 	    
+	    
 
 			
     <%@include file="/WEB-INF/views/sidebar.jsp" %>
     
-<section style="margin-top:20px;margin-left:200px;">
+	<section id="about" class="about" style="margin-top:20px;margin-left:200px;">
 
- <div class="hs-item" style="height:1200px;">
-	<div class="container" style="margin-top:100px;"> 
-		<div class="section-title">
-          <span>SoulMovie</span>
-          <h2 style="font-family:'GothicB'; font-style:oblique;">${user_nick}'s Info<br /></h2>
-          <p></p>
+<div class="hs-item" style="height:1200px;">
+	<div class="container" style="margin-top:90px;"> 
+	
+	
+	 <div class="section-title" style="font-family:'GothicB';">
+	 <span style="margin-right:100px;">SoulMovie</span>
+          <h2 style="margin-right:100px;">${user_nick}'s Info<br /></h2>       
       </div>	
       
-      		 <div class="row" >				
+	
+             <div class="row" style="margin-left:200px;" >      
 	
 					
-				<div class="col-lg-12 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right">
+				<div class="col-lg-8 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" style="font-family:aCinemaL;">
 					<table style="word-break:break-all" class="table">
 						<tbody>
 							<tr>					
-								<td><ul style="font-family:aCinemaL">
-								<form action="${pageContext.request.contextPath}/member/update" method="post" enctype="multipart/form-data">
-										ID : <input type="text" class="form-control" name="username" value="${obj.username}" readonly />
-										PASSWORD : <input type="password" class="form-control" name="password" value="" placeholder="**********" readonly />
-										NAME : <input id="text" class="form-control" name="userrname" value="${obj.userrname}" readonly />
-										NICKNAME : <input id="text" class="form-control" name="usernick" value="${obj.usernick}" readonly />
+							  <td>
+								
+								<form action="${pageContext.request.contextPath}/member/mypage" method="post" enctype="multipart/form-data">
+										<ul>
+										<li><i class="icofont-check-circled"></i>ID : <input type="text" class="form-control" name="username" value="${obj.username}" style="background-color:#F6CED8; opacity:70%;" readonly /></li>
+										<br />
+	
+										<li><i class="icofont-check-circled"></i>NAME : <input id="text" class="form-control" name="userrname" value="${obj.userrname}" style="background-color:#F6CED8; opacity:70%;" readonly /></li>
+										<br />
+										
+										<li><i class="icofont-check-circled"></i>NICKNAME : <input id="text" class="form-control" name="usernick" value="${obj.usernick}" style="background-color:#F6CED8; opacity:70%;" readonly /></li>
+										<br />
 									
-							            AGE : <input id="text" class="form-control" name="usernick" value="${obj.userage}" readonly />
+							            <li><i class="icofont-check-circled"></i>AGE : <input id="text" class="form-control" name="usernick" value="${obj.userage}" style="background-color:#F6CED8; opacity:70%;" readonly /></li>
+							            <br />
 							                       
-										GENDER : <input type="text" class="form-control" name="usergender" value="${obj.usergender}" readonly />
+										<li><i class="icofont-check-circled"></i>GENDER : <input type="text" class="form-control" name="usergender" value="${obj.usergender}" style="background-color:#F6CED8; opacity:70%;" readonly /></li>
+										<br />
 										
-										E-MAIL : <input id="text" class="form-control" name="useremail" value="${obj.useremail}" readonly />
+										<li><i class="icofont-check-circled"></i>E-MAIL : <input id="text" class="form-control" name="useremail" value="${obj.useremail}" style="background-color:#F6CED8; opacity:70%;" readonly /></li>
+										<br />
 										
-										JOIN DATE : <c:set var="dt" value="${fn:split(obj.joindate, ' ')}" />
-													<input id="text" class="form-control" name="joindate" value="${dt[0]}" readonly />
-										
+										<li><i class="icofont-check-circled"></i>JOIN DATE : <c:set var="dt" value="${fn:split(obj.joindate, ' ')}" />
+										<input id="text" class="form-control" name="joindate" value="${dt[0]}" readonly style="background-color:#F6CED8; opacity:70%;" /></li>
+										<br />
+										</ul>
+							
 											<hr />
 											
-											<a href="${pageContext.request.contextPath}/member/update" class="btn btn-danger " style="background-color:#ff0000;">Update</a>
+											<a href="${pageContext.request.contextPath}/member/update" class="btn btn-danger " style="background-color:#ff0000;">수정하기</a>
 									
 
 								</form>
 
-								</ul>
+						
 								</td>
 							</tr>							
 						</tbody>

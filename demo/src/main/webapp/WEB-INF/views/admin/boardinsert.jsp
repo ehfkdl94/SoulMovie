@@ -51,6 +51,7 @@
         <a class="nav-link" href="${pageContext.request.contextPath}/admin/member">Member</a>
         <a class="nav-link" href="${pageContext.request.contextPath}/admin/movie">Movie</a>
         <a class="nav-link" href="${pageContext.request.contextPath}/admin/board">Board</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/admin/contact">Contact</a>
       </nav>
     </div>
   </header>

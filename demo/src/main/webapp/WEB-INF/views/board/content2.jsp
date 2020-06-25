@@ -62,7 +62,34 @@
 </style>
 <body>
 
-	<%@include file="/WEB-INF/views/header.jsp"%>
+ <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top" style="background:rgba(0, 0, 0, 0.9);">
+    <div class="container d-flex align-items-center">
+
+      <h1 class="logo mr-auto"><a href="${pageContext.request.contextPath}/"><img src="${pageContext.request.contextPath}/resources/day/assets/img/logo4.png" alt=""></a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li><a href="${pageContext.request.contextPath}/">Home</a></li>
+          <li><a href="${pageContext.request.contextPath}/movie/movielist">Movie</a></li>
+          <li class="active1"><a href="${pageContext.request.contextPath}/board/list">board</a></li>
+          <li><a href="${pageContext.request.contextPath}/contact">Contact</a></li>
+          <security:authorize access="!isAuthenticated()">
+          	<li><a href="${pageContext.request.contextPath}/member/login">login</a></li>
+          	<li><a href="${pageContext.request.contextPath}/member/join" style = "font-weight: bold ;color:#ff0000;">Create an account</a></li>
+          </security:authorize>
+          <security:authorize access="isAuthenticated()">
+          	<li><a href="${pageContext.request.contextPath}/member/mypage?username=<security:authentication property="name"/>">My page</a></li>
+          	<li><a href="${pageContext.request.contextPath}/member/logout">logout</a></li>
+          	<li><a href="${pageContext.request.contextPath}/choice/list" style = "font-weight: bold ;color:#ff0000;">+ SoulMovie</a></li>
+          </security:authorize>
+        </ul>
+      </nav><!-- .nav-menu -->
+
+    </div>
+  </header><!-- End Header -->
 	
 	<section id="cta" class="cta2" style="height:400px;" >
       <div class="container" data-aos="zoom-in">
@@ -78,20 +105,21 @@
       
     </section>
 	<main id="main">
-    <section id="contact" class="contact" ">
+    <section id="contact" class="contact">
     	<div class="section-title" >
           <span>Content</span>
           <h2>Content</h2>
         </div>
       <div class="container" style="height:600px; font-family:'aCinemaL';margin-top:10px;margin-left:400px;">
-		Board Num : ${bno}
+		Board Num : ${obj.brdnumber}
 		Views : ${obj.brdhit}
 		Date :<c:set var="dt" value="${fn:split(obj.brddate, ' ')}" />
 			${dt[0]}<br/>
+		
           <div class="like-content" > 
 			  <button class="btn-secondary like-review" style="margin-left:680px; padding:4px; font-size:13px; font-family:'aCinemaL';">
 			    <i class="fa fa-heart" aria-hidden="true" id="like">Like</i> 
-			  </button>				 
+			  </button>
 		  </div>
           
           <form action="/board/insert" method="post" style="box-sizing: content-box;">
@@ -122,9 +150,8 @@
             </form>
        
 					<security:authentication property="name" var="uid" />
+					<a href="${pageContext.request.contextPath}/board/list" class="btn btn-sm btn-success">List</a>
 					<c:if test="${uid eq obj.username}">
-						<a href="${pageContext.request.contextPath}/board/list" class="btn btn-sm btn-success">List</a>
-
 						<a
 							href="${pageContext.request.contextPath}/board/update?no=${obj.brdno}&bno=${obj.brdnumber}"
 							class="btn btn-sm btn-success">Update</a>
@@ -139,7 +166,7 @@
 							class="btn btn-sm btn-success">Previous</a>
 					</c:if>
 
-					<c:if test="${next != 0}">
+					<c:if test="${obj.brdnumber != cnt}">
 						<a
 							href="${pageContext.request.contextPath}/board/content?no=${next}&bno=${obj.brdnumber+1}"
 							class="btn btn-sm btn-success">Next</a>

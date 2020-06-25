@@ -76,6 +76,9 @@ public class BoardController {
 		BoardVO obj = bDAO.selectBoardOne(no);
 		obj.setBrdnumber(bno);
 		model.addAttribute("obj", obj);
+		int cnt = bDAO.countBoard("");
+		model.addAttribute("cnt", cnt);
+		System.out.println(cnt);
 		
 		int p = bDAO.selectBoardPrev(no);
 		model.addAttribute("prev", p);
@@ -159,8 +162,8 @@ public class BoardController {
 			@RequestParam(value="no", defaultValue = "0") int no,
 			@RequestParam(value="bno", defaultValue = "0") int bno) {
 		BoardVO obj = bDAO.selectBoardOne(no);
+		obj.setBrdnumber(bno);
 		model.addAttribute("obj", obj);
-		model.addAttribute("bno", bno);
 		return request.getContextPath()+"/board/update2";
 	}
 

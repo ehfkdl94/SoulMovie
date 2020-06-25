@@ -98,7 +98,7 @@
             <form action="${pageContext.request.contextPath}/contact" method="post" role="form" style="padding:30px;height:100%;background:white;box-shadow:0 0 30px rgba(214, 215, 216, 0.6);">
               <div class="form-row">
                 <div class="col-md-6 form-group">
-                  <input type="text" name="cname" class="form-control" style="color:black;" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  <input type="text" name="cname" class="form-control" style="color:black;" id="name" placeholder="Your Name" data-rule="minlen:3" data-msg="Please enter at least 4 chars" />
                   <div class="validate"></div>
                 </div>
                 <div class="col-md-6 form-group">
