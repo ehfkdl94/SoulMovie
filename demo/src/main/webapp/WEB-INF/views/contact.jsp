@@ -39,7 +39,7 @@
             <div class="info-box mb-4">
               <i class="bx bx-map"></i>
               <h3>Our Address</h3>
-              <p>A108 Adam Street, New York, NY 535022</p>
+              <p>5F, 799, Jungang-daero, Busanjin-gu, Busan, Republic of Korea</p>
             </div>
           </div>
 
@@ -47,7 +47,7 @@
             <div class="info-box  mb-4">
               <i class="bx bx-envelope"></i>
               <h3>Email Us</h3>
-              <p>contact@example.com</p>
+              <p>ehfkdl94@naver.com</p>
             </div>
           </div>
 
@@ -55,7 +55,7 @@
             <div class="info-box  mb-4">
               <i class="bx bx-phone-call"></i>
               <h3>Call Us</h3>
-              <p>+1 5589 55488 55</p>
+              <p>+82 10 4164 1458</p>
             </div>
           </div>
 
@@ -68,31 +68,27 @@
           </div>
 
           <div class="col-lg-6">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form" style="height:100%;">
+            <form action="${pageContext.request.contextPath}/contact" method="post" role="form" style="padding:30px;height:100%;background:white;box-shadow:0 0 30px rgba(214, 215, 216, 0.6);">
               <div class="form-row">
                 <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  <input type="text" name="cname" class="form-control" style="color:black;" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                   <div class="validate"></div>
                 </div>
                 <div class="col-md-6 form-group">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                  <input type="email" class="form-control" name="cemail" style="color:black;" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
                   <div class="validate"></div>
                 </div>
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                <input type="text" class="form-control" name="csubject" style="color:black;" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
                 <div class="validate"></div>
               </div>
               <div class="form-group">
-                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                <textarea class="form-control" style="color:black;" name="Cmessage" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
                 <div class="validate"></div>
               </div>
-              <div class="mb-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
+             
+              <div class="text-center"> <input type="submit" value="submit" style="width:153.38px;height:44px;color:#ffffff;background:#cc1616;padding:10px 24px;font-size:16px; border:0px;" /></div>
             </form>
           </div>
 

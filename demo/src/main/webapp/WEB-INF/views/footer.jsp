@@ -1,6 +1,51 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
 
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-info">
+              <h3>SoulMovie</h3>
+              <p>
+                5F, 799, Jungang-daero, Busanjin-gu,  <br>
+                Busan, Republic of Korea<br><br>
+                <strong>Phone:</strong> +82 10 4164 1458<br>
+                <strong>Email:</strong> ehfkdl94@naver.com<br>
+              </p>
+              <div class="social-links mt-3">
+                <a href="https://twitter.com" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="https://www.facebook.com" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="https://www.instagram.com/" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="https://skype.daesung.com/main.asp" class="google-plus"><i class="bx bxl-skype"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="${pageContext.request.contextPath}/">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="${pageContext.request.contextPath}/movie/movielist">Movie</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="${pageContext.request.contextPath}/board/list">Board</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
 
 <div class="container">
       <div class="copyright">
