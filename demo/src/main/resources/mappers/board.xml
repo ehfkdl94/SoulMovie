@@ -9,8 +9,6 @@
 		<result column="BRDNO" property="brdno"/>
 
 	</resultMap>
-	<select id="selectBoardImg" resultMap="img" parameterType="int">
-		SELECT BRDNO, BRDIMG FROM BOARD WHERE BRDNO = #{no} </select>
 	
 	<insert id="insertBoard" parameterType="com.soulmovie.vo.BoardVO">
 		INSERT INTO BOARD(BRDNO, BRDTITLE, BRDCONTENT,BRDIMG, 
@@ -27,7 +25,7 @@ SELECT  BRDNO, BRDTITLE, BRDID, BRDHIT, BRDDATE,USERNAME, A.ROWN ROWN
                ROW_NUMBER() OVER (ORDER BY BRDDATE ASC) ROWN,ROWNUM NUMBER1
             FROM
                BOARD, MEMBER
-            WHERE BRDTITLE LIKE '%' || '' || '%'
+            WHERE BRDTITLE LIKE '%' || #{text} || '%'
             AND BRDID = MEMBER.USERID
            ) A 
 	</select>
