@@ -21,26 +21,25 @@
 			<div class="hs-item" style="height: 1200px;">
 				<div class="container">
 					<h2 style="color: white;">BOARD</h2>
-					<form name="form" id="form" role="form" method="post"
-						action="/board/insert">
+					<form name="form" id="form" role="form" method="post" action="/board/insert">
 						<div class="mb-3">
-							<label for="title">제목</label> <input type="text"
+							<label for="title">Subject</label> <input type="text"
 								class="form-control" name="brdtitle" id="title"
-								placeholder="제목을 입력해 주세요">
+								placeholder="Please enter the subject">
 						</div>
 						<div class="mb-3">
-							<label for="content">내용</label>
+							<label for="content">Contents</label>
 							<textarea class="form-control" rows="5" name="brdcontent"
-								id="content" placeholder="내용을 입력해 주세요"></textarea>
+								id="content" placeholder="Please enter your details"></textarea>
 						</div>
 						<div class="mb-3">
-							<label for="reg_id">작성자</label> <input type="text"
+							<label for="reg_id">Writer</label> <input type="text"
 								class="form-control" name="username"
 								value="<security:authentication property="name"/>">
 						</div>
-						<input type="submit" class="btn btn-sm btn-primary" value="저장">
-						<button type="button" class="btn btn-sm btn-primary"
-							onclick="location.href='/board/list'" id="btnList">목록</button>
+						<input type="submit" class="btn btn-sm btn-success" value="Save">
+						<button type="button" class="btn btn-sm btn-success"
+							onclick="location.href='/board/list'" id="btnList">List</button>
 					</form>
 				</div>
 			</div>

@@ -20,17 +20,14 @@
 		<section id="rank" class="about">
 			<div class="hs-item" style="height: 1200px;">
 				<div class="container">
-					<form action="${pageContext.request.contextPath}/board/update"
-						method="post" enctype="multipart/form-data">
-						<input type="text" class="form-control" name="brdno"
-							value="${vo.brdno}" readonly /> <input type="text"
-							class="form-control" name="brdtitle" value="${vo.brdtitle}" />
+					<form action="${pageContext.request.contextPath}/board/update" method="post" enctype="multipart/form-data"> value="${vo.brdno}" readonly /> 
+						<input type="text" class="form-control" name="brdtitle" value="${vo.brdtitle}" />
 						<textarea id="content" class="form-control" name="brdcontent">${vo.brdcontent}</textarea>
 						<input type="text" class="form-control" name="brdid"
 							value="${vo.brdid}" readonly />
 						<hr />
-						<input type="submit" class="btn btn-success" value="글수정 " /> <a
-							href="${pageContext.request.contextPath}/board/list"
+						<input type="submit" class="btn btn-success" value="글수정 " />
+						 <a href="${pageContext.request.contextPath}/board/list"
 							class="btn btn-success">글목록</a>
 					</form>
 				</div>

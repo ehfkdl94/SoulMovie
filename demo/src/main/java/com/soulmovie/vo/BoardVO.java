@@ -14,7 +14,14 @@ public class BoardVO {
 	private long brdlike = 0L;
 	private String username = null;
 	private int brdnumber = 0;
+	private int ROWN= 0;
 	
+	public int getROWN() {
+		return ROWN;
+	}
+	public void setROWN(int rOWN) {
+		ROWN = rOWN;
+	}
 	public int getBrdnumber() {
 		return brdnumber;
 	}
