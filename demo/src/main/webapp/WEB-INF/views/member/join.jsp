@@ -199,16 +199,18 @@
 		<script type="text/javascript" 
 			src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
 		
+	 
+
+
 	 	<script>
-
-
+ 		$(function(){
+			//nickname이 usernick인 tag의 키보드가 up되면
+			$('#usernick').bind('keyup',function(){
+				var unick = $('#usernick').val(); //입력했던 값을 받아와서 unick변수에 보관
 	
-
-				$(function(){
-					//nickname이 usernick인 tag의 키보드가 up되면
-					$('#usernick').bind('keyup',function(){
-						var unick = $('#usernick').val(); //입력했던 값을 받아와서 unick변수에 보관
-			
+				//restcontroller를 호출해서 값을 받아옴
+		
+					if (unick.length >= 2){
 						//restcontroller를 호출해서 값을 받아옴
 						$.get('/member/rest/membernickcheck.json?usernick=' + unick,function(data){
 							console.log("GET", data);
@@ -220,47 +222,45 @@
 								$('#chk2').text('사용가능');
 							}
 						}, 'json');
-						
-						/*
-						$.post('/rest/memberidcheck.json', {id:'a'}, function(data){
-							console.log("POST", data);
-						}, 'json');
-						*/
-					});
-				});
-			
+						}
+					else{
+						$('#chk2').text('닉네임을 두 글자 이상으로 설정해 주세요.');
+						}
 
-
-
-			
-		
-		$(function(){
-			//id가 userid인 tag의 키보드가 up되면
-			$('#username').bind('keyup',function(){
-				var uid = $('#username').val(); //입력했던 값을 받아와서 uid변수에 보관
-
-				if (uid.length >= 2){
-				//restcontroller를 호출해서 값을 받아옴
-				$.get('/member/rest/memberidcheck.json?username=' + uid,function(data){
-					console.log("GET", data);
-					//console.log("GET", data);  {"ret":1}  or {"ret":0}
-					if(data.ret == 1){
-						$('#chk').text('이미 사용중인 아이디입니다.');
-					}
-					else if(data.ret == 0){
-						$('#chk').text('사용가능');
-					}
-				}, 'json');
-				}
-			
-				
-				/*
-				$.post('/rest/memberidcheck.json', {id:'a'}, function(data){
-					console.log("POST", data);
-				}, 'json');
-				*/
 			});
 		});
+
+       
+ 		$(function(){
+			//nickname이 usernick인 tag의 키보드가 up되면
+			$('#username').bind('keyup',function(){
+				var uid = $('#username').val(); //입력했던 값을 받아와서 unick변수에 보관
+	
+				//restcontroller를 호출해서 값을 받아옴
+		
+					if (uid.length >= 3){
+						//restcontroller를 호출해서 값을 받아옴
+						$.get('/member/rest/memberidcheck.json?username=' + uid,function(data){
+							console.log("GET", data);
+							//console.log("GET", data);  {"ret":1}  or {"ret":0}
+							if(data.ret == 1){
+								$('#chk').text('이미 사용 중인 아이디입니다.');
+							}
+							else if(data.ret == 0){
+								$('#chk').text('사용가능');
+							}
+						}, 'json');
+						}
+					else{
+						$('#chk').text('아이디를 세 글자 이상으로 설정해 주세요.');
+						}
+
+			});
+		});
+           
+
+
+		
 		</script>
  
  
