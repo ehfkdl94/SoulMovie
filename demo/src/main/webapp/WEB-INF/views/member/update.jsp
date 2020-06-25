@@ -119,8 +119,21 @@
                                     </select></li>
                                     <br />
                                             
-                              <li><i class="icofont-check-circled"></i>GENDER<input type="text" class="form-control" name="usergender" value="${obj.usergender}" style="color:#000;" readonly /></li>
+                              <li><i class="icofont-check-circled"></i><label for="usergender" >GENDER</label><br />
+                           		            
+		                        <input type="radio" name= "usergender" id="usergender" value="Male">Male &nbsp; &nbsp;
+		                        <input type="radio" name= "usergender" id="usergender" value="Female">Female
+		                        </li>
+		                        
+		                        
+		                        <!-- 
+                              <input type="text" class="form-control" name="usergender" value="${obj.usergender}" style="color:#000;" readonly />
+                               -->
                               <br />
+                              
+     
+        
+                              
                               
                               <li><i class="icofont-check-circled"></i>E-MAIL<input type="email" id="usereamil" class="form-control" name="useremail" value="${obj.useremail}" style="color:#000; border-color:#ff0000;" /></li>
                               <br />

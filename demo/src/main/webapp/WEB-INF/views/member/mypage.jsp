@@ -90,8 +90,10 @@
 										<li><i class="icofont-check-circled"></i>ID<input type="text" class="form-control" name="username" value="${obj.username}" style="color:#fff;background-color:#000; opacity:15%;" readonly /></li>
 										<br />
 										
+										<!-- 
 										<li><i class="icofont-check-circled"></i>ID : ${obj.username}</li>
-	
+										 -->
+										 
 										<li><i class="icofont-check-circled"></i>NAME<input id="userrname" class="form-control" name="userrname" value="${obj.userrname}" style="color:#fff;background-color:#000; opacity:15%;" readonly /></li>
 										<br />
 										
