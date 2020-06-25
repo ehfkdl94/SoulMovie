@@ -438,7 +438,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #hero:before {
   content: "";
-  background: rgba(0, 0, 0, 0.5);
+  background: #000000;
   position: absolute;
   bottom: 0;
   top: 0;
@@ -1535,11 +1535,11 @@ section {
 }
 
 #sidebar_menu li a, .sidebar-nav li a {
-    color: #999;
+    color: #ffffff;
     display: block;
     float: left;
-    text-decoration: none;
-    width: 150px;
+    text-decoration: underline;
+    width: 200px;
     background: #252525;
     border-top: 1px solid #373737;
     border-bottom: 1px solid #1A1A1A;
@@ -1553,7 +1553,6 @@ section {
 .sidebar_name {
     padding-top: 25px;
     color: #fff;
-    opacity: .7;
 }
 
 .sidebar-nav li {
@@ -1562,7 +1561,7 @@ section {
 }
 
 .sidebar-nav li a {
-  color: #999999;
+  color: #ffffff;
   display: block;
   text-decoration: none;
 }

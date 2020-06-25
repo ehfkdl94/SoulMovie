@@ -8,7 +8,7 @@
       <ul id="sidebar_menu" class="sidebar-nav">
            <li class="sidebar-brand"><a id="menu-toggle" href="#">Menu<span id="main_icon" class="glyphicon glyphicon-align-justify"></span></a></li>
       </ul>
-        <ul class="sidebar-nav" id="sidebar">     
+        <ul id="sidebar" class="sidebar-nav">     
           <li><a href="${pageContext.request.contextPath}/member/mypage">My Info<span class="sub_icon glyphicon glyphicon-link"></span></a></li>
           <li><a href="${pageContext.request.contextPath}/choice/list">My SoulMovie<span class="sub_icon glyphicon glyphicon-link"></span></a></li>
         </ul>
