@@ -81,15 +81,15 @@
         <ul>
           <li><a href="${pageContext.request.contextPath}/">Home</a></li>
           <li class="active1"><a href="${pageContext.request.contextPath}/movie/movielist">Movie</a></li>
-          <li><a href="${pageContext.request.contextPath}/board/list">board</a></li>
+          <li><a href="${pageContext.request.contextPath}/board/list">Board</a></li>
           <li><a href="${pageContext.request.contextPath}/contact">Contact</a></li>
           <security:authorize access="!isAuthenticated()">
-          	<li><a href="${pageContext.request.contextPath}/member/login">login</a></li>
+          	<li><a href="${pageContext.request.contextPath}/member/login">Login</a></li>
           	<li><a href="${pageContext.request.contextPath}/member/join" style = "font-weight: bold ;color:#ff0000;">Create an account</a></li>
           </security:authorize>
           <security:authorize access="isAuthenticated()">
           	<li><a href="${pageContext.request.contextPath}/member/mypage?username=<security:authentication property="name"/>">My page</a></li>
-          	<li><a href="${pageContext.request.contextPath}/member/logout">logout</a></li>
+          	<li><a href="${pageContext.request.contextPath}/member/logout">Logout</a></li>
           	<li><a href="${pageContext.request.contextPath}/choice/list" style = "font-weight: bold ;color:#ff0000;">+ SoulMovie</a></li>
           </security:authorize>
         </ul>
@@ -153,15 +153,35 @@
 			<div class="clearfix"></div>
 			<div class="row playlist-area" >
 
-				<c:forEach var="tmp" items="${list2}">
+				<c:forEach var="tmp" items="${list2}" varStatus="i">
 					<div class="mix col-lg-3 col-md-4 col-sm-6 genres">
 						<div class="playlist-item">
-							<a href="${pageContext.request.contextPath}/movie/moviedetail?movie_code=${tmp.movie_code}">
-							<img  style="border: solid 1px red; height:450px;" 
-								src="${tmp.movie_img}"
-								alt=""></a>
-							<h5 style = "color:black; font-family:aCinemaL;">${tmp.movie_title}</h5>
-							<h4 class="blog-date" style="color: red; font-weight:bold;">${tmp.rank }위</h4>
+							<security:authorize access="!isAuthenticated()">
+                       	   		<c:if test="${i.index==0}">
+                       	   			<a href="${pageContext.request.contextPath}/member/login" class="item-wrap fancybox"></a>
+		                              
+		                              <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/qm3.jpg" style="border: solid 1px red; height:450px;">
+		                              <h5 style = "color:black; font-family:aCinemaL;">회원가입 후 확인 할 수 있습니다.</h5>
+									  <h4 class="blog-date" style="color: red; font-weight:bold;">?</h4>
+		                           
+                       	   		</c:if>
+                       	   		<c:if test="${i.index!=0}">
+                       	   			<a href="${pageContext.request.contextPath}/movie/moviedetail?movie_code=${tmp.movie_code}">
+									<img  style="border: solid 1px red; height:450px;" 
+										src="${tmp.movie_img}"
+										alt=""></a>
+									<h5 style = "color:black; font-family:aCinemaL;">${tmp.movie_title}</h5>
+									<h4 class="blog-date" style="color: red; font-weight:bold;">${tmp.rank }위</h4>
+                       	   		</c:if>
+                       	   	</security:authorize>
+                       	   	<security:authorize access="isAuthenticated()">
+								<a href="${pageContext.request.contextPath}/movie/moviedetail?movie_code=${tmp.movie_code}">
+								<img  style="border: solid 1px red; height:450px;" 
+									src="${tmp.movie_img}"
+									alt=""></a>
+								<h5 style = "color:black; font-family:aCinemaL;">${tmp.movie_title}</h5>
+								<h4 class="blog-date" style="color: red; font-weight:bold;">${tmp.rank }위</h4>
+							</security:authorize>
 						</div>
 					</div>
 				</c:forEach>
