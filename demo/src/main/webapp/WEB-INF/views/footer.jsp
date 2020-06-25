@@ -24,25 +24,16 @@
           </div>
 
           <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Useful Links</h4>
+            <h4>Our Services</h4>
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="${pageContext.request.contextPath}/">Home</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="${pageContext.request.contextPath}/movie/movielist">Movie</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="${pageContext.request.contextPath}/board/list">Board</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Contact</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="${pageContext.request.contextPath}/cantact">Contact</a></li>
             </ul>
           </div>
 
-          <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Our Services</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-            </ul>
-          </div>
+          
         </div>
       </div>
     </div>
