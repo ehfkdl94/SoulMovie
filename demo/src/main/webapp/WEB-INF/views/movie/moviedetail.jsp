@@ -10,7 +10,7 @@
 <head>
 
   
-  <%@include file="/WEB-INF/views/head.jsp"%>
+    <%@include file="/WEB-INF/views/head.jsp" %>
   <title>Soul Movie Detail</title>
 </head>
 
@@ -217,6 +217,7 @@
       </div>
       </div>
     </section><!-- End Why Us Section -->
+     <%@include file="/WEB-INF/views/footer.jsp" %>
 
     <div id="preloader"></div>
 
