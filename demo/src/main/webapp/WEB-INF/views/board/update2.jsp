@@ -62,7 +62,7 @@
           <h2>Update</h2>
         </div>  
       <div class="container" style="height:600px; margin-top:10px;margin-left:400px;font-family:'aCinemaL';">
-    	Board Num : ${bno}
+    	Board Num : ${obj.brdnumber}
 		Views : ${obj.brdhit}
 		Date :<c:set var="dt" value="${fn:split(obj.brddate, ' ')}" />
 			${dt[0]}<br/> 	

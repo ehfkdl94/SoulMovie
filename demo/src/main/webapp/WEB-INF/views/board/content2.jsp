@@ -105,20 +105,21 @@
       
     </section>
 	<main id="main">
-    <section id="contact" class="contact" ">
+    <section id="contact" class="contact">
     	<div class="section-title" >
           <span>Content</span>
           <h2>Content</h2>
         </div>
       <div class="container" style="height:600px; font-family:'aCinemaL';margin-top:10px;margin-left:400px;">
-		Board Num : ${bno}
+		Board Num : ${obj.brdnumber}
 		Views : ${obj.brdhit}
 		Date :<c:set var="dt" value="${fn:split(obj.brddate, ' ')}" />
 			${dt[0]}<br/>
+		
           <div class="like-content" > 
 			  <button class="btn-secondary like-review" style="margin-left:680px; padding:4px; font-size:13px; font-family:'aCinemaL';">
 			    <i class="fa fa-heart" aria-hidden="true" id="like">Like</i> 
-			  </button>				 
+			  </button>
 		  </div>
           
           <form action="/board/insert" method="post" style="box-sizing: content-box;">
@@ -149,9 +150,8 @@
             </form>
        
 					<security:authentication property="name" var="uid" />
+					<a href="${pageContext.request.contextPath}/board/list" class="btn btn-sm btn-success">List</a>
 					<c:if test="${uid eq obj.username}">
-						<a href="${pageContext.request.contextPath}/board/list" class="btn btn-sm btn-success">List</a>
-
 						<a
 							href="${pageContext.request.contextPath}/board/update?no=${obj.brdno}&bno=${obj.brdnumber}"
 							class="btn btn-sm btn-success">Update</a>
@@ -166,7 +166,7 @@
 							class="btn btn-sm btn-success">Previous</a>
 					</c:if>
 
-					<c:if test="${next != 0}">
+					<c:if test="${obj.brdnumber != cnt}">
 						<a
 							href="${pageContext.request.contextPath}/board/content?no=${next}&bno=${obj.brdnumber+1}"
 							class="btn btn-sm btn-success">Next</a>
