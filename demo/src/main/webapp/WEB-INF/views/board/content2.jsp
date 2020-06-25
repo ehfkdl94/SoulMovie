@@ -3,163 +3,250 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
-<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
-
+<%@ taglib prefix="security" uri= "http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
+
 <head>
-   <title>SolMusic | HTML Template</title>
-   <meta charset="UTF-8">
-   <meta name="description" content="SolMusic HTML Template">
-   <meta name="keywords" content="music, html">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-   <!-- Favicon -->
-   <link href="${pageContext.request.contextPath}/resources/img/favicon.ico" rel="shortcut icon"/>
-
-   <!-- Google font -->
-   <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
-
-   <!-- Stylesheets -->
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"/>
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css"/>
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl.carousel.min.css"/>
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/slicknav.min.css"/>
-   <!-- Bootstrap CSS File -->
-   <link href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-   <!-- Vendor CSS Files -->
-   <link href="${pageContext.request.contextPath}/resources/vendor/icofont/icofont.min.css" rel="stylesheet">
-   <link href="${pageContext.request.contextPath}/resources/vendor/line-awesome/css/line-awesome.min.css" rel="stylesheet">
-   <link href="${pageContext.request.contextPath}/resources/vendor/aos/aos.css" rel="stylesheet">
-   <link href="${pageContext.request.contextPath}/resources/vendor/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
-   <!-- Main Stylesheets -->
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css"/>
-   <link href="${pageContext.request.contextPath}/resources/css/style1.css" rel="stylesheet">
-
-
-   <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-   <![endif]-->
-
+  <%@include file="/WEB-INF/views/head.jsp" %>
+ 
 </head>
+<style>
+.like-content {
+    display: inline-block;
+    width: 100%;
+
+    font-size: 18px;
+
+    text-align: center;
+}
+.like-content span {
+	color: #9d9da4;
+	font-family: monospace;
+}
+.like-content .btn-secondary {
+	  display: block;
+	  margin: 0px auto 0px;
+    text-align: center;
+    background: #ed2553;
+    border-radius: 3px;
+    box-shadow: 0 10px 20px -8px rgb(240, 75, 113);
+    padding: 10px 17px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    text-decoration: none;
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+}
+.like-content .btn-secondary:hover {
+	  transform: translateY(-3px);
+}
+.like-content .btn-secondary .fa {
+	  margin-right: 5px;
+}
+.animate-like {
+	animation-name: likeAnimation;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+	animation-duration: 0.65s;
+}
+@keyframes likeAnimation {
+  0%   { transform: scale(30); }
+  100% { transform: scale(1); }
+}
+
+
+</style>
 <body>
-   <!-- Page Preloder -->
-   <div id="preloder">
-      <div class="loader"></div>
-   </div>
 
-   <!-- Header section -->
-   <header class="header-section clearfix">
-      <a href="index.html" class="site-logo">
-         <img src="${pageContext.request.contextPath}/resources/img/logo4.png" alt="">
-      </a>
-      <div class="header-right">
-         <a href="#" class="hr-btn">Help</a>
-         <span>|</span>
-         <div class="user-panel">
-            <a href="${pageContext.request.contextPath}/member/login" class="login">Login</a>
-            <a href="" class="register">Create an account</a>
-         </div>
-      </div>
-      <ul class="main-menu">
-         <li><a href="/">Home</a></li>
-         <li><a href="#">About</a></li>
-         <li><a href="#">Movie</a>
-            <!--  
-            <ul class="sub-menu">
-               <li><a href="category.html">Category</a></li>
-               <li><a href="playlist.html">Playlist</a></li>
-               <li><a href="artist.html">Artist</a></li>
-               <li><a href="blog.html">Blog</a></li>
-               <li><a href="contact.html">Contact</a></li>
-            </ul>
-            -->
-         </li>
-         <li><a href="${pageContext.request.contextPath}/board/list">Board</a></li>
-         <li><a href="contact.html">Contact</a></li>
-      </ul>
-   </header>
-   <!-- Header section end -->
+	<%@include file="/WEB-INF/views/header.jsp"%>
+	<main id="main">
+    <section id="contact" class="contact">
+      <div class="container" style="height:600px; margin-top:100px;">
+      <h2>Board content</h2><br/>
 
-   <!-- Hero section -->
-   
-   
-   <section class="hero-section clearfix" >
- 		<div class="hero-slider owl-carousel">
-         <div class="hs-item" style="height:800px">
-            <div class="container" style="color:white;">
-            
-		글번호 : ${obj.brdnumber}<br />
-		글제목 : ${obj.brdtitle}<br />
-		글내용 : ${fn:replace(obj.brdcontent, newLineChar, "<br />")}<br />
-		작성자 : ${obj.username}<br />
-		조회수 : ${obj.brdhit}<br />
-		날짜 : <c:set var="dt" value="${fn:split(obj.brddate, ' ')}" />
-						${dt[0]}<br />
-		<img src="${pageContext.request.contextPath}/board/getimg?no=${obj.brdno}" width="100px" height="100px" /><br />
-		<hr />
+		Board Num : ${obj.brdnumber}
+		Views : ${obj.brdhit}
+		Date :<c:set var="dt" value="${fn:split(obj.brddate, ' ')}" />
+			${dt[0]}<br/>
+          <form action="/board/insert" method="post" style="box-sizing: content-box;">
+              <div class="form-row">
+                
+                <div class="col-md-6 form-group">
+                  <label for="Writer">Writer</label>
+                  <input type="text" class="form-control" style="color:#000000;" name="username" value="<security:authentication property="name"/>" readonly/>
+                  <div class="validate"></div>
+                </div>
+              </div>
 
-			
-		<security:authentication property="name" var="uid" />
-		<c:if test="${uid eq obj.username}">
-		<a href="${pageContext.request.contextPath}/board/update?no=${obj.brdno}" class="btn btn-success">수정</a>
-		<a href="${pageContext.request.contextPath}/board/delete?no=${obj.brdno}" class="btn btn-success">삭제</a>
-		</c:if>		
-		
-		<c:if test="${prev != 0}">
-		<a href="${pageContext.request.contextPath}/board/content?no=${prev}" class="btn btn-success">이전글</a>
-		</c:if>
-		
-		<c:if test="${next != 0}">
-		<a href="${pageContext.request.contextPath}/board/content?no=${next}" class="btn btn-success">다음글</a>
-		</c:if>
-		
+              <div class="form-group">
+              	<label for="title">Subject</label>
+                <input type="text" class="form-control" style="color:#000000;"name="brdtitle" value="${obj.brdtitle}" id="subject" readonly/>
+                <div class="validate"></div>
+              </div>
+              <div class="form-group">
+              	<label for="content">Contents</label>
+                <textarea class="form-control" style="color:#000000;" name="brdcontent" rows="5" data-rule="required" readonly>${fn:replace(obj.brdcontent, newLineChar, "<br />")}</textarea>
+                <div class="validate"></div>
+              </div>
+            </form>
+            <div class="like-content"> 
+				  <button class="btn-secondary like-review">
+				    <i class="fa fa-heart" aria-hidden="true" id="like">Like</i> 
+				  </button>
+			  </div>
+					<security:authentication property="name" var="uid" />
+					<c:if test="${uid eq obj.username}">
+						<a href="${pageContext.request.contextPath}/board/list" class="btn btn-sm btn-success">List</a>
 
-	</div>
-            
+						<a
+							href="${pageContext.request.contextPath}/board/update?no=${obj.brdno}&bno=${obj.brdnumber}"
+							class="btn btn-sm btn-success">Update</a>
+						<a
+							href="${pageContext.request.contextPath}/board/delete?no=${obj.brdno}"
+							class="btn btn-sm btn-success">Delete</a>
+					</c:if>
 
-         </div>
-         
-      </div>
-   </section>
-   <!-- Hero section end -->
+					<c:if test="${prev != 0}">
+						<a
+							href="${pageContext.request.contextPath}/board/content?no=${prev}&bno=${obj.brdnumber-1}"
+							class="btn btn-sm btn-success">Previous</a>
+					</c:if>
 
+					<c:if test="${next != 0}">
+						<a
+							href="${pageContext.request.contextPath}/board/content?no=${next}&bno=${obj.brdnumber+1}"
+							class="btn btn-sm btn-success">Next</a>
+					</c:if>
 
+        </div>
 
-
-   <!--====== Javascripts & Jquery ======-->
-   
-   <script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
-   <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-   <script src="${pageContext.request.contextPath}/resources/js/jquery.slicknav.min.js"></script>
-   <script src="${pageContext.request.contextPath}/resources/js/owl.carousel.min.js"></script>
-   <script src="${pageContext.request.contextPath}/resources/js/mixitup.min.js"></script>
-   <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
-   <!-- Vendor JS Files -->
-   <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-   <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery-migrate.min.js"></script>
-   <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
-   <script src="${pageContext.request.contextPath}/resources/vendor/easing/easing.min.js"></script>
-   <script src="${pageContext.request.contextPath}/resources/vendor/php-email-form/validate.js"></script>
-   <script src="${pageContext.request.contextPath}/resources/vendor/isotope/isotope.pkgd.min.js"></script>
-   <script src="${pageContext.request.contextPath}/resources/vendor/aos/aos.js"></script>
-   <script src="${pageContext.request.contextPath}/resources/vendor/owlcarousel/owl.carousel.min.js"></script>
-
-   <!-- Template Main JS File -->
-   <script src="${pageContext.request.contextPath}/resources/js/main2.js"></script>
-   <script src="${pageContext.request.contextPath}/resources/js/jquery.likebtn.js"></script>
-	<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
-<!-- LikeBtn.com END -->
-
-<!-- LikeBtn.com BEGIN -->
-
-<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
-<!-- LikeBtn.com END -->
-
+    </section>
+     
+    <!-- End Contact Section -->
+	</main>
 	
+	<!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
 
-   </body>
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-info">
+              <<h3>Day</h3>>
+              <p>
+                A108 Adam Street <br>
+                NY 535022, USA<br><br>
+                <strong>Phone:</strong> +1 5589 55488 55<br>
+                <strong>Email:</strong> info@example.com<br>
+              </p>
+              <div class="social-links mt-3">
+                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Our Newsletter</h4>
+            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
+            </form>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Day</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/day-multipurpose-html-template-for-free/ -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/jquery/jquery.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/php-email-form/validate.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/venobox/venobox.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/aos/aos.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="${pageContext.request.contextPath}/resources/day/assets/js/main.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/main2.js"></script>
+
+</body>
+
 </html>
+
+<script>
+$(function(){
+	$('.like-review').bind('click', '.like-review', function(e) {
+		var a1 = $('#like').text();
+		console.log(a1);
+		if(a1=='Like'){
+			$('#like').text("You liked this");
+			
+			//$(this).html('<i class="fa fa-heart" aria-hidden="true"></i> You liked this');
+			//$(this).children('.fa-heart').addClass('animate-like');
+		}
+		else{
+			$('#like').text("Like");
+			//$(this).html('<i class="fa fa-heart" aria-hidden="true"></i> Like');
+			//$(this).children('.fa-heart').removeClass('animate-like');
+		}
+	});
+
+	/*
+	$(document).one('click', '.like-review', function(e) {
+		$(this).html('<i class="fa fa-heart" aria-hidden="true"></i> Like');
+		$(this).children('.fa-heart').removeClass('animate-like');
+	});
+	*/
+});
+</script>

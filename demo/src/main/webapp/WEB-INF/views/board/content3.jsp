@@ -20,60 +20,44 @@
 		<section id="rank" class="about">
 			<div class="hs-item" style="height: 1200px;">
 				<div class="container" style="margin-top: 100px;">
-					글번호 : ${obj.brdnumber}<br /> 글제목 : ${obj.brdtitle}<br /> 글내용 :
-					${fn:replace(obj.brdcontent, newLineChar, "<br />")}<br /> 작성자 :
-					${obj.username}<br /> 조회수 : ${obj.brdhit}<br /> 날짜 :
-					<c:set var="dt" value="${fn:split(obj.brddate, ' ')}" />
-					${dt[0]}<br /> 
+					Num : ${obj.brdnumber}<br /> 
+					Subject : ${obj.brdtitle}<br /> 
+					Contents : ${fn:replace(obj.brdcontent, newLineChar, "<br />")}<br /> 
+					Writer : ${obj.username}<br /> 
+					Views : ${obj.brdhit}<br /> 
+					Date :<c:set var="dt" value="${fn:split(obj.brddate, ' ')}" />
+						${dt[0]}<br /> 
 					<hr />
 
 
 					<security:authentication property="name" var="uid" />
 					<c:if test="${uid eq obj.username}">
-						<a href="${pageContext.request.contextPath}/board/list" class="btn btn-success">목록</a>
+						<a href="${pageContext.request.contextPath}/board/list" class="btn btn-sm btn-success">List</a>
 					
 						<a
 							href="${pageContext.request.contextPath}/board/update?no=${obj.brdno}"
-							class="btn btn-success">수정</a>
+							class="btn btn-sm btn-success">Update</a>
 						<a
 							href="${pageContext.request.contextPath}/board/delete?no=${obj.brdno}"
-							class="btn btn-success">삭제</a>
+							class="btn btn-sm btn-success">Delete</a>
 					</c:if>
 
 					<c:if test="${prev != 0}">
 						<a
 							href="${pageContext.request.contextPath}/board/content?no=${prev}"
-							class="btn btn-success">이전글</a>
+							class="btn btn-sm btn-success">Previous</a>
 					</c:if>
 
 					<c:if test="${next != 0}">
 						<a
 							href="${pageContext.request.contextPath}/board/content?no=${next}"
-							class="btn btn-success">다음글</a>
+							class="btn btn-sm btn-success">Next</a>
 					</c:if>
 
 
 				</div>
 
 			</div>
-			<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-			<script
-				src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
-			<script>
-				$(function() {
-					$('#pagination-div').twbsPagination(
-							{
-								totalPages : Number('${cnt}'), /* 전체 페이지 수*/
-								visiblePages : 10, /*화면에 표시할 페이지 수 */
-								startPage : Number('${param.page}'), /* 주소창에 ~~/board/list?page=1 */
-								initiateStartPageClick : false,
-								onPageClick : function(event, page) {
-									window.location.href = "/board/list?page="
-											+ page + "&text=${param.text}";
-								}
-							});
-				})
-			</script>
 
 		</section>
 	</main>

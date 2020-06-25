@@ -126,7 +126,7 @@
 				var no = $('.tdchoiceno').eq(idx).text();
 
 				Swal.fire({
-					title: '인생영화는 10개까지 등록 가능',
+					title: '10개까지 등록 가능합니다.',
 					icon: 'info',
 					showCancelButton: false,
 					confirmButtonColor: '#3085d6',
