@@ -104,24 +104,24 @@
 		<c:if test="${param.page != 1}">
 
 			<a style="font-size:20px;"
-				href="${pageContext.request.contextPath}/admin/member?page=${param.page-1}&text=${param.text}"><<</a>
+				href="${pageContext.request.contextPath}/admin/board?page=${param.page-1}&text=${param.text}"><<</a>
 		</c:if>
 
 		<c:forEach var="i" begin="1" end="${cnt}" step="1">
 			<c:if test="${param.page == i}">
 				<a class="active" style="font-size:20px;"
-					href="${pageContext.request.contextPath}/admin/member?page=${i}&text=${param.text}">${i}</a>
+					href="${pageContext.request.contextPath}/admin/board?page=${i}&text=${param.text}">${i}</a>
 			</c:if>
 			<c:if test="${param.page != i}">
 				<a style="font-size:20px;"
-					href="${pageContext.request.contextPath}/admin/member?page=${i}&text=${param.text}">${i}</a>
+					href="${pageContext.request.contextPath}/admin/board?page=${i}&text=${param.text}">${i}</a>
 			</c:if>
 		</c:forEach>
 
 
 		<c:if test="${cnt != param.page}">
 			<a style="font-size:20px;"
-				href="${pageContext.request.contextPath}/admin/member?page=${param.page+1}&text=${param.text}">>></a>
+				href="${pageContext.request.contextPath}/admin/board?page=${param.page+1}&text=${param.text}">>></a>
 		</c:if>
 		
   </main>

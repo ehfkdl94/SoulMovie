@@ -171,7 +171,7 @@ public class AdminController {
 		map.put("end", page*7); //醫낅즺�쐞移�
 		map.put("text", text); //寃��깋�뼱
 		//紐⑸줉
-		List<BoardVO> list = bDAO.selectBoard(map);
+		List<BoardVO> list = bDAO.selectBoard1(map);
 		int cnt = bDAO.countBoard(text);
 		model.addAttribute("list", list);
 		model.addAttribute("cnt", (int)Math.ceil(cnt/7.0));

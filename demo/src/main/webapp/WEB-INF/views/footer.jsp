@@ -7,12 +7,12 @@
 
           <div class="col-lg-4 col-md-6">
             <div class="footer-info">
-              <h3>SoulMovie</h3>
-              <p>
+              <h3 style="color:white;">SoulMovie</h3>
+              <p style="color:white;">
                 5F, 799, Jungang-daero, Busanjin-gu,  <br>
                 Busan, Republic of Korea<br><br>
-                <strong>Phone:</strong> +82 10 4164 1458<br>
-                <strong>Email:</strong> ehfkdl94@naver.com<br>
+                <strong style="color:white;">Phone:</strong> +82 10 4164 1458<br>
+                <strong style="color:white;">Email:</strong> ehfkdl94@naver.com<br>
               </p>
               <div class="social-links mt-3">
                 <a href="https://twitter.com" class="twitter"><i class="bx bxl-twitter"></i></a>
@@ -22,8 +22,13 @@
               </div>
             </div>
           </div>
-
-          <div class="col-lg-2 col-md-6 footer-links">
+		  <div class="col-lg-2 col-md-6 footer-links">
+		  </div>
+		  <div class="col-lg-2 col-md-6 footer-links">
+		  </div>
+		  <div class="col-lg-2 col-md-6 footer-links">
+		  </div>
+          <div class="col-lg-2 col-md-6 footer-links" style="margin-top:50px;">
             <h4>Our Services</h4>
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="${pageContext.request.contextPath}/">Home</a></li>
@@ -32,7 +37,7 @@
               <li><i class="bx bx-chevron-right"></i> <a href="${pageContext.request.contextPath}/cantact">Contact</a></li>
             </ul>
           </div>
-
+		  
           
         </div>
       </div>

@@ -140,7 +140,7 @@
               <div class="form-row">
                 <div class="col-md-8 form-group">
                   <label for="Writer">Writer</label>
-                  <input type="text" class="form-control" style="color:#000000;" name="username" value="<security:authentication property="name"/>" readonly/>
+                  <input type="text" class="form-control" style="color:#000000;" name="username" value="${obj.username }" readonly/>
                   <div class="validate"></div>
                 </div>
               </div>

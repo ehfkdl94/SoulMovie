@@ -281,11 +281,11 @@ public class BoardController {
 			@RequestParam(value="no", defaultValue = "0") int no) {
 		BoardVO obj = new BoardVO();
 		obj.setBrdno(no);
-		
-		int ret = bDAO.deleteBoard(obj);  
+		int ret = bDAO.deleteLikeBoard(obj);
+		int ret1 = bDAO.deleteBoard(obj);  
 		
 
-		if(ret > 0) {  //성공하면 목록화면 으로
+		if(ret1 > 0) {  //성공하면 목록화면 으로
 			return "redirect:" + request.getContextPath() + "/board/list";
 		}
 		//실패하면 이전화면 즉, 상세화면으로
