@@ -45,7 +45,7 @@ from (SELECT MOVIE_CODE, MOVIE_TITLE, MOVIE_ALTERNATIVETITLE, MOVIE_GENRE, MOVIE
             MOVIE
          WHERE MOVIE_TITLE LIKE '%' || '' || '%' ) B)
          WHERE MOVIE_TITLE LIKE '%' || UPPER(TRIM(#{text})) || '%' AND
-          ROWNUM BETWEEN #{start} AND #{end} 
+          RANK BETWEEN #{start} AND #{end} 
            
    </select>
    <select id="moviepagelistGenre" resultType="com.soulmovie.vo.MovieVO" parameterType="map">
