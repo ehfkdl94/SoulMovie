@@ -6,17 +6,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.soulmovie.dao.HomeDAO;
+import com.soulmovie.mapper.ContactMapper;
 import com.soulmovie.mapper.HomeMapper;
+import com.soulmovie.vo.ContactVO;
 import com.soulmovie.vo.MovieVO;
 
 @Controller
@@ -24,11 +23,13 @@ import com.soulmovie.vo.MovieVO;
 //public class HomeController extends Controller {
 public class HomeController {
 	@Autowired
-	HomeMapper mMapper;
+	private HomeMapper mMapper = null;
 	
 	@Autowired
-	HomeDAO hDAO = null;
+	private HomeDAO hDAO = null;
 	
+	@Autowired
+	private ContactMapper cMapper= null;
 	
 	@RequestMapping(value="/")
 	public String home(HttpSession httpSession, Model model, HttpServletRequest request) {
@@ -49,6 +50,12 @@ public class HomeController {
 	@RequestMapping(value="/contact")
 	public String contact(HttpServletRequest request) {
 		return request.getContextPath() + "contact";
+	}
+	
+	@RequestMapping(value="/contact", method=RequestMethod.POST)
+	public String contactpost(HttpServletRequest request, @ModelAttribute ContactVO obj) {
+		cMapper.insertContact(obj);
+		return "redirect:" + request.getContextPath() + "/contact";
 	}
 	
 //	@RequestMapping(value="getimg")

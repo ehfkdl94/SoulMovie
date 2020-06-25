@@ -122,24 +122,26 @@ public class BoardController {
 	         System.out.println("test");
 	       List<BoardVO> list3= new ArrayList<BoardVO>();
 	       if( (int)Math.ceil(cnt/10.0) == page) {  //마지막페이지일경우에만
-	          System.out.println("마지막으로 오나?");
 	             
+	    	   if(cnt%10 ==0 )  {
+	    		   
+	    		   for(int i =page*10-10; i<page*10 ;i++) {
+			    	   list3.add( list2.get(i));
+			    	  j++;
+			    	  
+			       }
+	    	   }
+	    	   else {
 	          for(int i =page*10-10; i<page*10-10+cnt%10 ;i++) {
-	 	    	 
-		    	   
 		    	   list3.add( list2.get(i));
-		    	   
-		    	 
 		    	  j++;
+		    	  
 		       }
+	    	   }
 	       }
 	       else {
 	       for(int i =page*10-10; i<page*10 ;i++) {
-	    	 
-	    	   
 	    	   list3.add( list2.get(i));
-	    	   
-	    	
 	       }
 	       }
 		model.addAttribute("list", list3);
