@@ -12,6 +12,7 @@ public interface UserMapper {
 	@Insert({"INSERT INTO MEMBER(USERID, USERNAME, PASSWORD, USERRNAME, USERGENDER, USERNICK, USERAGE, USEREMAIL, ADMIN, JOINDATE)"
 			," VALUES (MY_GET_SEQ_MEMBER_NUMBER,#{obj.username}, #{obj.password},#{obj.userrname},#{obj.usergender},"
 					+ "#{obj.usernick},#{obj.userage},#{obj.useremail},#{obj.admin},SYSDATE )"})
+	
 	public int insertMember(@Param("obj") UserVo obj);
 	@Select({"SELECT USERNICK FROM MEMBER WHERE USERNAME=#{username}"})
 	public String findUserNick(@Param("username") String username);
@@ -56,7 +57,9 @@ public interface UserMapper {
 	"      WHERE USERID = #{userid}"})
 	public int deleteUserCcnt(@Param("userid") int userid);
 
-		
+	@Update({"UPDATE MEMBER SET PASSWORD = #{obj.password}" +
+			"      WHERE USERNAME = #{obj.username}"})
+	public int updateUserPassword(@Param("obj") UserVo obj );
 	
 	}
 
