@@ -3,8 +3,8 @@ package com.soulmovie.vo;
 public class ChoiceVO {
 	
 	private long choice_no = 0L;
-	private long choice_freq = 0L;
-	private String choice_reason = null;
+	private int choice_freq = 0;
+	private String choice_reason = "";
 	private String choice_category = null;
 	private String choice_date = null;
 	private int choice_code = 0;
@@ -38,13 +38,13 @@ public class ChoiceVO {
 	public long getChoice_no() {
 		return choice_no;
 	}
-	public void setChoice_no(long choice_no) {
+	public void setChoice_no(int choice_no) {
 		this.choice_no = choice_no;
 	}
 	public long getChoice_freq() {
 		return choice_freq;
 	}
-	public void setChoice_freq(long choice_freq) {
+	public void setChoice_freq(int choice_freq) {
 		this.choice_freq = choice_freq;
 	}
 	public String getChoice_reason() {
