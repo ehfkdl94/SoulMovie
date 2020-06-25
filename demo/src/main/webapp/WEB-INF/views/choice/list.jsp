@@ -122,9 +122,6 @@
 		//jquery 라이브러리 사용 시작
 		$(function(){			
 			$('.check').click(function(){
-				var idx = $(this).index('.check');
-				var no = $('.tdchoiceno').eq(idx).text();
-
 				Swal.fire({
 					title: '10개까지 등록 가능합니다.',
 					icon: 'info',
