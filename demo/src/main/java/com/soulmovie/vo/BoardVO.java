@@ -13,9 +13,16 @@ public class BoardVO {
 	private long brdhit = 0L;
 	private long brdlike = 0L;
 	private String username = null;
+	private int userid = 0;
 	private int brdnumber = 0;
 	private int ROWN= 0;
 	
+	public int getUserid() {
+		return userid;
+	}
+	public void setUserid(int userid) {
+		this.userid = userid;
+	}
 	public int getROWN() {
 		return ROWN;
 	}
@@ -83,15 +90,15 @@ public class BoardVO {
 	public void setBrdlike(long brdlike) {
 		this.brdlike = brdlike;
 	}
-	
-	
 	@Override
 	public String toString() {
 		return "BoardVO [brdno=" + brdno + ", brdid=" + brdid + ", brdtitle=" + brdtitle + ", brddate=" + brddate
 				+ ", brdcontent=" + brdcontent + ", brdimg=" + Arrays.toString(brdimg) + ", brdhit=" + brdhit
-				+ ", brdlike=" + brdlike + ", username=" + username + "]";
+				+ ", brdlike=" + brdlike + ", username=" + username + ", userid=" + userid + ", brdnumber=" + brdnumber
+				+ ", ROWN=" + ROWN + "]";
 	}
 	
+
 	
 
 }

@@ -84,6 +84,7 @@
 								<th>Writer</th>
 								<th>Views</th>
 								<th>Date</th>
+								<th>Likes</th>
 							</tr>
 						</thead>
 
@@ -104,7 +105,9 @@
 												pattern="#,###" /></td>
 										<td><c:set var="dt" value="${fn:split(tmp.brddate, ' ')}" />
 											${dt[0]}</td>
+									<td>${tmp.brdlike}</td> 
 									</tr>
+									
 								</c:forEach>
 							</c:if>
 						</tbody>

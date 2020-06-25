@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -15,6 +16,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -22,14 +25,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
 import com.soulmovie.dao.BoardDAO;
+import com.soulmovie.mapper.UserMapper;
 import com.soulmovie.vo.BoardVO;
 
 @Controller
 @RequestMapping(value = "/board")
 public class BoardController {
-	
+	@Autowired
+	public UserMapper uMapper;
 	@Autowired
 	private BoardDAO bDAO =null;
 	
@@ -48,10 +55,17 @@ public class BoardController {
 	
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public String insertBoardPost(@ModelAttribute BoardVO obj, HttpServletRequest request) throws IOException {
-		int userid=bDAO.selectuserid(obj.getUsername());
+		int userid=bDAO.selectuserid(obj.getUsername());  //로그인 한 코드를 들고옴
+		
 		//DAO로 obj값 전달하기
 		obj.setBrdid(userid);
+		//brd_no를 불러와야해 
+//		System.out.println(obj.toString());
 		bDAO.insertBoard(obj);
+//		BoardVO obj2 = 	bDAO.insertSelectBoard(); //brdno를 가져오는거 
+	//라이크보드에 값넣기	
+		//bDAO.insertLikeBoard(obj);
+		
 		
 		
 		return "redirect:"+request.getContextPath()+"/board/list";
@@ -60,7 +74,28 @@ public class BoardController {
 	@RequestMapping(value = "/content", method = RequestMethod.GET)
 	public String content(Model model, HttpSession httpSession, HttpServletRequest request,
 			@RequestParam(value="no", defaultValue = "0", required = false) int no,
-			@RequestParam(value="bno")int bno) {
+			@RequestParam(value="bno")int bno ,
+			HttpServletRequest req, Authentication auth) {
+		User user = (User)auth.getPrincipal();
+		String username = user.getUsername();
+		int userid = uMapper.findUserid(username);
+		BoardVO obj2 = bDAO.selectBoardOne(no);
+		obj2.setUserid(userid);
+		int likeCheck = bDAO.LikeCheck(obj2);
+		System.out.println(likeCheck +"likeCheck");
+		model.addAttribute("LikeCheck",likeCheck);
+		
+		
+		Map<String,?> map = RequestContextUtils.getInputFlashMap(req);
+		if(map!=null) {
+		if (	(int)map.get("LikeCheck") == 1 )
+		{
+			model.addAttribute("LikeCheck",1);
+		}
+		else {
+			model.addAttribute("LikeCheck",0);
+		}
+		}
 		if( no == 0) {
 			return request.getContextPath()+"redirect:/board/list";
 		}
@@ -76,6 +111,7 @@ public class BoardController {
 		BoardVO obj = bDAO.selectBoardOne(no);
 		obj.setBrdnumber(bno);
 		model.addAttribute("obj", obj);
+	    
 		int cnt = bDAO.countBoard("");
 		model.addAttribute("cnt", cnt);
 		System.out.println(cnt);
@@ -83,7 +119,7 @@ public class BoardController {
 		int p = bDAO.selectBoardPrev(no);
 		model.addAttribute("prev", p);
 		
-		int n = bDAO.selectBoardNext(no);
+		int n = bDAO.selectBoardNext(no); 
 		model.addAttribute("next", n);
 		
 		return request.getContextPath()+"/board/content2";
@@ -108,6 +144,7 @@ public class BoardController {
 		map.put("start", page*10-9); 	//시작위치
 		map.put("end", page*10);		//종료위치	
 		map.put("text", text);			//검색어
+		map.put("brdno", text);
 		// 게시물 개수
 				int cnt = bDAO.countBoard(text); //검색어를 넘겨줌.
 				//System.out.println( (int) Math.ceil(n/10.0) );
@@ -147,6 +184,7 @@ public class BoardController {
 	    	   list3.add( list2.get(i));
 	       }
 	       }
+	     System.out.println(list3.get(0).toString());
 		model.addAttribute("list", list3);
 	
 		
@@ -166,7 +204,7 @@ public class BoardController {
 		model.addAttribute("obj", obj);
 		return request.getContextPath()+"/board/update2";
 	}
-
+	
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String update(HttpServletRequest request,
 			@ModelAttribute BoardVO obj) throws IOException {  //변수명 == <input name="img"
@@ -176,7 +214,36 @@ public class BoardController {
 		bDAO.updateBoard(obj);
 		return "redirect:" + request.getContextPath() + "/board/list";
 	}
-	
+	@RequestMapping(value = "/likeinsert", method = RequestMethod.POST)
+	public String likeinsert(HttpServletRequest request,
+			@ModelAttribute BoardVO obj 
+			,RedirectAttributes redirectAttributes ,Authentication auth) throws IOException {  //변수명 == <input name="img"
+		//이미지는 수동으로 obj에 추가함.
+		User user = (User)auth.getPrincipal();
+		String username = user.getUsername();
+		int userid = uMapper.findUserid(username);
+		obj.setUserid(userid);
+		int check = bDAO.selecttLikeBoard(obj);
+		System.out.println(obj.toString()+"@@@@@#@");
+		if (check==0) {  //좋아요가 없거나 안눌럿을때
+			bDAO.insertLikeBoard(obj);
+			
+		}
+		else  { //좋아요를 눌린상태
+			int LikeCheck=bDAO.LikeCheck(obj);
+			if(LikeCheck == 1) { 
+			bDAO.updateLikeBoard(obj);
+			}
+			else if (LikeCheck ==0) {
+				bDAO.updateLikeBoard2(obj);
+			}
+		}
+		int LikeCheck2=bDAO.LikeCheck(obj);
+		
+		redirectAttributes.addFlashAttribute("LikeCheck", LikeCheck2);
+		System.out.println(obj.toString());
+		return "redirect:" + request.getContextPath() + "/board/content?no="+obj.getBrdno()+"&bno="+obj.getBrdnumber();
+	}
 
 	@RequestMapping(value="/getimg")
 	public ResponseEntity<byte[]> getimg(

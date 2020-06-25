@@ -16,9 +16,22 @@
 		VALUES (SEQ_BOARD_NO.NEXTVAL, #{brdtitle}, #{brdcontent}, #{brdimg, jdbcType=BLOB}, 
 		#{brdid}, #{brdhit}, SYSDATE) 
 	</insert>
+	<insert id="insertLikeBoard" parameterType="com.soulmovie.vo.BoardVO">
+		INSERT INTO LIKEBOARD(BRDNO, USERID, LNO,LIKEDATE)
+		VALUES (#{brdno}, #{userid}, 1  ,SYSDATE) 
+	</insert>
+	<select id="selecttLikeBoard" parameterType="com.soulmovie.vo.BoardVO" resultType="int">
+		SELECT COUNT(*) FROM LIKEBOARD WHERE USERID=#{userid} AND BRDNO=#{brdno}
+	</select>
+	<select id="LikeCheck" parameterType="com.soulmovie.vo.BoardVO" resultType="int">
+		SELECT LNO FROM LIKEBOARD WHERE USERID=#{userid} AND BRDNO=#{brdno}
+	</select>
 	
 	<select id="selectList" parameterType="map" resultType="com.soulmovie.vo.BoardVO">
-SELECT  BRDNO, BRDTITLE, BRDID, BRDHIT, BRDDATE,USERNAME, A.ROWN ROWN
+
+    
+    
+     SELECT A.BRDNO, A.BRDTITLE, A.BRDID, A.BRDHIT, A.BRDDATE,A.USERNAME, A.ROWN ROWN,NVL(B.BRDLIKE,0) brdlike
     FROM 
             (select
             BRDNO, BRDTITLE, BRDID, BRDHIT, BRDDATE,USERNAME,
@@ -27,7 +40,14 @@ SELECT  BRDNO, BRDTITLE, BRDID, BRDHIT, BRDDATE,USERNAME, A.ROWN ROWN
                BOARD, MEMBER
             WHERE BRDTITLE LIKE '%' || #{text} || '%'
             AND BRDID = MEMBER.USERID
-           ) A 
+           ) A left outer join
+           (select BOARD.BRDNO,count(*) brdlike
+            FROM BOARD, MEMBER,LIKEBOARD
+            WHERE BRDTITLE LIKE '%' || #{text} || '%'
+            AND BOARD.BRDID = MEMBER.USERID 
+            AND BOARD.BRDNO= LIKEBOARD.BRDNO AND LIKEBOARD.LNO=1
+            group by BOARD.BRDNO) B ON A.BRDNO=B.BRDNO
+    order by brdno ASC   
 	</select>
 	
 	<select id="count" parameterType="String" resultType="int">
@@ -36,14 +56,24 @@ SELECT  BRDNO, BRDTITLE, BRDID, BRDHIT, BRDDATE,USERNAME, A.ROWN ROWN
 	</select>
 	
 	<select id="selectBoardOne" parameterType="int" resultType="com.soulmovie.vo.BoardVO">
-		SELECT  BRDNO, BRDID, BRDTITLE, BRDDATE, BRDCONTENT, BRDIMG, BRDHIT, BRDLIKE, MEMBER.USERNAME FROM BOARD,MEMBER WHERE BRDNO = #{no} AND BOARD.BRDID=MEMBER.USERID 
+		SELECT  BRDNO, BRDID, BRDTITLE, BRDDATE, BRDCONTENT, BRDIMG, BRDHIT, BRDLIKE, MEMBER.USERNAME,MEMBER.USERID FROM BOARD,MEMBER WHERE BRDNO = #{no} AND BOARD.BRDID=MEMBER.USERID 
+	</select>
+	<select id="insertSelectBoard"  resultType="com.soulmovie.vo.BoardVO">
+		SELECT  BRDNO FROM BOARD WHERE BRDDATE = (SELECT MAX(BRDDATE) FROM BOARD) 
 	</select>
 	
 	<update id="updateHit" parameterType="int">
 		UPDATE BOARD SET BRDHIT = BRDHIT + 1 
 		WHERE BRDNO = #{no} 
 	</update>
-	
+		<update id="updateLikeBoard" parameterType="com.soulmovie.vo.BoardVO">
+		UPDATE LIKEBOARD SET LNO = 0 , LIKEDATE =SYSDATE
+		WHERE BRDNO = #{brdno} AND USERID = #{userid}
+	</update>
+	<update id="updateLikeBoard2" parameterType="com.soulmovie.vo.BoardVO">
+		UPDATE LIKEBOARD SET LNO = 1 , LIKEDATE =SYSDATE
+		WHERE BRDNO = #{brdno} AND USERID = #{userid}
+	</update>
 	<delete id="deleteBoard" parameterType="com.soulmovie.vo.BoardVO">
 		DELETE FROM BOARD WHERE BRDNO = #{brdno} 
 	</delete>

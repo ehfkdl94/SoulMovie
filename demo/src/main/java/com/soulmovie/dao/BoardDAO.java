@@ -21,13 +21,28 @@ public class BoardDAO {
 	public int insertBoard(BoardVO obj) {
 		return sqlFactory.openSession().insert("Board.insertBoard", obj);
 	}
-
+	public int insertLikeBoard(BoardVO obj) {
+		return sqlFactory.openSession().insert("Board.insertLikeBoard", obj);
+	}
 	public int updateHit(int no) {
 		return sqlFactory.openSession().update("Board.updateHit", no);
 	}
-
+	
+	public int selecttLikeBoard(BoardVO obj) {
+		return sqlFactory.openSession().selectOne("Board.selecttLikeBoard", obj);
+	}
+	public int LikeCheck(BoardVO obj) {
+		if(sqlFactory.openSession().selectOne("Board.LikeCheck", obj) ==null) {
+			return 0;
+		}
+		return sqlFactory.openSession().selectOne("Board.LikeCheck", obj);
+	}
+	
 	public BoardVO selectBoardOne(int no) {
 		return sqlFactory.openSession().selectOne("Board.selectBoardOne", no);
+	}
+	public BoardVO insertSelectBoard() {
+		return sqlFactory.openSession().selectOne("Board.insertSelectBoard");
 	}
 	
 	public int selectBoardPrev(int no) {
@@ -49,7 +64,13 @@ public class BoardDAO {
 	public int updateBoard(BoardVO obj) {
 		return sqlFactory.openSession().update("Board.updateBoardOne", obj);
 	}
-
+	public int updateLikeBoard(BoardVO obj) {
+		return sqlFactory.openSession().update("Board.updateLikeBoard", obj);
+	}
+	public int updateLikeBoard2(BoardVO obj) {
+		return sqlFactory.openSession().update("Board.updateLikeBoard2", obj);
+	}
+	
 	public BoardVO selectBoardImg(int no) {
 		return sqlFactory.openSession().selectOne("Home.selectBoardImg", no);
 	}
@@ -58,7 +79,7 @@ public class BoardDAO {
 		return sqlFactory.openSession().delete("Board.deleteBoard", obj);
 	}
 	
-
+  
 	public int selectuserid(String username) {
 		return sqlFactory.openSession().selectOne("Board.selectuserid", username);
 	}
