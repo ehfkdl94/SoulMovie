@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -57,9 +56,9 @@
     </section>
 	
  <%@include file="/WEB-INF/views/sidebar.jsp" %>	
-<section id="contact" class="contact" style="margin-top:20px;margin-left:200px;">
+	<section id="contact" class="contact" style="margin-top:20px;margin-left:200px;">
       <div class="container">
-      <div class="section-title">
+     	 <div class="section-title">
           <span>SoulMovie</span>
           <h2>${ user_nick}
 			님의 인생영화를 등록하세요!<br /></h2>
@@ -72,8 +71,7 @@
 			<div class="form-row">
 				<div class="col-md-12 form-group">
 					<input type="text" name="text" 
-						placeholder="영화 제목을 입력하세요." class="form-control" style="color:#000000;font-family:aCinemaL;"/> 
-						
+						placeholder="영화 제목을 입력하세요." class="form-control" style="color:#000000;font-family:aCinemaL;"/> 						
 					<div class="validate"></div>
 				</div>
 			<div class="text-right" style="font-family:aCinemaL;">
@@ -88,7 +86,6 @@
 							</tr>
 						</c:if>
 						<c:if test="${list eq '@@@@초기값'}">
-
 						</c:if>
 						<c:if test="${list ne '@@@@초기값'}">
 							<c:if test="${!empty list}">
@@ -125,56 +122,45 @@
 	</div>	
 
 	<div class="col-lg-6" style="margin-top: 10px;margin-left:200px;">
-	<c:if test="${choice_code ne 0}">
-		<form action="${pageContext.request.contextPath}/choice/insert"
-			method="post" >
-			</c:if>
-			<c:if test="${empty choice_code}">
-			<input type="hidden" name="choice_code" value="0" readonly /><br />			
-			</c:if>
-			<c:if test="${!empty choice_code}">
-			<input type="hidden" name="choice_code" value="${choice_code}" readonly /><br /></c:if>
-			<div class="form-row" style="font-family:aCinemaL;">
-				<div class="col-md-6 form-group">
-					영화제목 : <br /> ${movie_title} <br /> 					
+			<c:if test="${!empty choice_code}">	
+			<form action="${pageContext.request.contextPath}/choice/insert" method="post" >
+				<input type="hidden" name="choice_code" value="${choice_code}" readonly /><br />
+				<div class="form-row" style="font-family:aCinemaL;">
+					<div class="col-md-6 form-group">
+						영화제목 : <br /> ${movie_title} <br /> 					
+						<div class="validate"></div>
+					</div>
+					<div class="col-md-6 form-group">
+						관람 횟수: <input type="number" name="choice_freq" class="form-control" 
+							style="color:#000000;" value="1"/> <br /> 						
+						<div class="validate"></div>
+					</div>
+				</div>			
+				<div class="form-group" style="font-family:aCinemaL;">
+					<textarea class="form-control" rows="5" id="content"
+						name="choice_reason" data-rule="required" data-msg="이유를 꼭 말해주세요"
+						placeholder="내용을 입력하세요." id="reason"
+						onKeyUp="javascript:fnChkByte(this,'150')" style="color:#000000;"></textarea>
+					<div class="text-right">
+						<span id="byteInfo">0</span> / 150bytes<br /> 
+					</div>				
 					<div class="validate"></div>
+					<input type="checkbox" name="choice_category" value="영상미" checked />영상미
+					<input type="checkbox"	name="choice_category" value="스토리" />스토리 
+					<input type="checkbox" name="choice_category" value="연기" />연기 
+					<input type="checkbox" name="choice_category" value="음악" />음악 
+					<input type="checkbox" name="choice_category" value="기타" />기타<br />
+					<input type="hidden" name="choice_id" value="${choice_id}" readonly />
+				</div>			
+				<div class="text-center" style="font-family:aCinemaL;">			
+					<button class="btn btn-danger" type="submit" style="background-color:#ff0000;">등록</button>
 				</div>
-				<div class="col-md-6 form-group">
-					관람 횟수: <input type="number" name="choice_freq" class="form-control" 
-						style="color:#000000;" value="1"/> <br /> 						
-					<div class="validate"></div>
-				</div>
-			</div>			
-			<div class="form-group" style="font-family:aCinemaL;">
-				<textarea class="form-control" rows="5" id="content"
-					name="choice_reason" data-rule="required" data-msg="이유를 꼭 말해주세요"
-					placeholder="내용을 입력하세요." id="reason"
-					onKeyUp="javascript:fnChkByte(this,'150')" style="color:#000000;"></textarea>
-				<div class="text-right">
-				<span id="byteInfo">0</span> / 150bytes<br /> 
-				</div>				
-				<div class="validate"></div>
-				<input type="checkbox" name="choice_category" value="영상미" checked />영상미
-				 <input type="checkbox"	name="choice_category" value="스토리" />스토리 
-				<input type="checkbox" name="choice_category" value="연기" />연기 
-				<input type="checkbox" name="choice_category" value="음악" />음악 
-				<input type="checkbox" name="choice_category" value="기타" />기타<br />
-				<input type="hidden" name="choice_id" value="${choice_id}" readonly />
-			</div>
-			
-			<div class="text-center" style="font-family:aCinemaL;">
-			<c:if test="${choice_code eq 0}">
-				<button class="btn btn-danger check" style="background-color:#ff0000;">등록</button>
-			</c:if>
-			<c:if test="${choice_code ne 0}">
-				<button class="btn btn-danger" type="submit" style="background-color:#ff0000;">등록</button>
-			</c:if>				
-				<a href="${pageContext.request.contextPath}/choice/list" class="btn btn-dark">뒤로</a>
-			</div>
-		<c:if test="${choice_code ne 0}">
-		</form>
-		</c:if>
-	</div>
+			</form>
+			</c:if>			
+			<div class="text-right" style="font-family:aCinemaL;">	
+				<a href="${pageContext.request.contextPath}/choice/list" class="btn btn-secondary">뒤로</a>
+			</div>	
+		</div>
 	</div>
     </section>	
 
@@ -213,30 +199,9 @@
 			} else {
 				document.getElementById('byteInfo').innerText = rbyte;
 			}
-		}
+		}		
 	</script>
-	<script type="text/javascript">
-		//jquery 라이브러리 사용 시작
-		$(function(){			
-			$('.check').click(function(){	
-
-				Swal.fire({
-					title: '영화를 골라주세요.',
-					icon: 'info',
-					showCancelButton: false,
-					confirmButtonColor: '#3085d6',
-					cancelButtonColor: '#d33',
-					confirmButtonText: '확인',
-					
-				}).then((result) => {
-					if (result.value) {
-					
-					}
-				});
-			});			
-		}); 
-		// jquery라이브러리 사용 종료
-	</script>
+	
 	<%@include file="/WEB-INF/views/footer.jsp"%>
 	
 </body>
