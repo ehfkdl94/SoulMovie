@@ -54,7 +54,7 @@
                     <br />
                     <br />
                     <br />
-                      <h3>MY Info</h3>          
+                      <h3 style="font-family:'PlayfairB';">MY Info</h3>          
                  </div>
             </div>
          
