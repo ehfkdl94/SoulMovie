@@ -10,8 +10,9 @@
 <html lang="zxx">
 
 <head>
+
 <%@include file="/WEB-INF/views/head.jsp"%>
-<title>SolMusic | HTML Template</title>
+<title>MovieList</title>
 <meta charset="UTF-8">
 <meta name="description" content="SolMusic HTML Template">
 <meta name="keywords" content="music, html">
@@ -62,21 +63,61 @@
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
-
+	<style type ="text/css">
+		button:hover{
+		background: blue;
+		}
+	</style>
 </head>
 
 <body>
-	
+
 
  <%@include file="/WEB-INF/views/header.jsp" %>
+ <section id="cta100" class="cta100" style="height:400px;" >
+      <div class="container" data-aos="zoom-in">
+        <div class="text-center">
+        <br />
+        <br />
+        <br />
+          <h3 style="font-family:'PlayfairB';">MOVIE LIST</h3>          
+          
+         
+        </div>
+      </div>
+      
+    </section>
 	<!-- Header section end -->
+<!-- Help section end -->
+	<section class="help-section spad pt-0" style= "margin-top:60px; height:10px;">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+				
 
-	<!-- Playlist section -->
-	<section class="playlist-section spad" style="background:black;" >
-		<div class="container-fluid">
-			<div class="section-title">
-				<h2 style="color:white; font-family:aCinemaL; ">Movielist</h2>
+				</div>
+				<div class="col-lg-6">
+					<div class="d-flex h-100 align-items-end">
+						<form class="search-form">
+						<input type="hidden" name="page" value="1" /> 
+							<input type="text" name="text" placeholder="MovieTitle">
+						
+							<button style="font-family:aCinemaL;background:#cc1616; " >Search</button>
+							
+                 		
+						</form>
+					</div>
+				</div>
+				
 			</div>
+		</div>
+	</section>
+		
+	<!-- Help section end -->
+	<!-- Playlist section -->
+	<section class="playlist-section spad" style="background:white;" >
+		<div class="container-fluid">
+		
 			<!-- <div class="container">
 				<ul class="playlist-filter controls">
 					<li class="control" data-filter=".genres">Genres</li>
@@ -96,7 +137,7 @@
 							<img  style="border: solid 1px red; height:450px;" 
 								src="${tmp.movie_img}"
 								alt=""></a>
-							<h5 style = "color:white; font-family:aCinemaL;">${tmp.movie_title}</h5>
+							<h5 style = "color:black; font-family:aCinemaL;">${tmp.movie_title}</h5>
 							<h4 class="blog-date" style="color: red; font-weight:bold;">${tmp.rank }위</h4>
 						</div>
 					</div>
@@ -147,30 +188,7 @@
 	</section>
 	<!-- Playlist section end -->
 
-	<!-- Help section end -->
-	<section class="help-section spad pt-0">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6">
-					<div class="section-title mb-0 pb-4">
-						<h2>Search for?</h2>
-					</div>
-
-				</div>
-				<div class="col-lg-6">
-					<div class="d-flex h-100 align-items-end">
-						<form class="search-form">
-						<input type="hidden" name="page" value="1" /> 
-							<input type="text" name="text" placeholder="MovieTitle">
-							<button>Search</button>
-						</form>
-					</div>
-				</div>
-				
-			</div>
-		</div>
-	</section>
-	<!-- Help section end -->
+	
 	<!-- <section class="help-section spad pt-0">
 		<div class="container">
 	<div class="row">
