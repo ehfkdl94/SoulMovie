@@ -28,15 +28,15 @@
         <ul>
           <li><a href="${pageContext.request.contextPath}/">Home</a></li>
           <li><a href="${pageContext.request.contextPath}/movie/movielist">Movie</a></li>
-          <li><a href="${pageContext.request.contextPath}/board/list">board</a></li>
+          <li><a href="${pageContext.request.contextPath}/board/list">Board</a></li>
           <li><a href="${pageContext.request.contextPath}/">Contact</a></li>
           <security:authorize access="!isAuthenticated()">
-          	<li><a href="${pageContext.request.contextPath}/member/login">login</a></li>
+          	<li><a href="${pageContext.request.contextPath}/member/login">Login</a></li>
           	<li><a href="${pageContext.request.contextPath}/member/join" style = "font-weight: bold ;color:#ff0000;">Create an account</a></li>
           </security:authorize>
           <security:authorize access="isAuthenticated()">
           	<li class="active1"><a href="${pageContext.request.contextPath}/member/mypage?username=<security:authentication property="name"/>">My page</a></li>
-          	<li><a href="${pageContext.request.contextPath}/member/logout">logout</a></li>
+          	<li><a href="${pageContext.request.contextPath}/member/logout">Logout</a></li>
           	<li><a href="${pageContext.request.contextPath}/choice/list" style = "font-weight: bold ;color:#ff0000;">+ SoulMovie</a></li>
           </security:authorize>
         </ul>
@@ -53,7 +53,7 @@
 				        <br />
 				        <br />
 				        <br />
-				          <h3 style="font-family:'GothicB';">MY Info</h3>          
+				          <h3 style="font-family:'PlayfairB';">MY INFORMATION</h3>          
 			        </div>
 		      </div>
 	      
@@ -87,33 +87,34 @@
 								
 								<form action="${pageContext.request.contextPath}/member/mypage" method="post" enctype="multipart/form-data">
 										<ul>
-										<li><i class="icofont-check-circled"></i>ID : <input type="text" class="form-control" name="username" value="${obj.username}" style="background-color:#F6CED8; opacity:70%;" readonly /></li>
+										<li><i class="icofont-check-circled"></i>ID<input type="text" class="form-control" name="username" value="${obj.username}" style="color:#fff;background-color:#ff0000; opacity:50%;" readonly /></li>
 										<br />
 	
-										<li><i class="icofont-check-circled"></i>NAME : <input id="text" class="form-control" name="userrname" value="${obj.userrname}" style="background-color:#F6CED8; opacity:70%;" readonly /></li>
+										<li><i class="icofont-check-circled"></i>NAME<input id="text" class="form-control" name="userrname" value="${obj.userrname}" style="color:#fff;background-color:#ff0000; opacity:75%;" readonly /></li>
 										<br />
 										
-										<li><i class="icofont-check-circled"></i>NICKNAME : <input id="text" class="form-control" name="usernick" value="${obj.usernick}" style="background-color:#F6CED8; opacity:70%;" readonly /></li>
+										<li><i class="icofont-check-circled"></i>NICKNAME<input id="text" class="form-control" name="usernick" value="${obj.usernick}" style="color:#fff;background-color:#ff0000; opacity:75%;" readonly /></li>
 										<br />
 									
-							            <li><i class="icofont-check-circled"></i>AGE : <input id="text" class="form-control" name="usernick" value="${obj.userage}" style="background-color:#F6CED8; opacity:70%;" readonly /></li>
+							            <li><i class="icofont-check-circled"></i>AGE<input id="text" class="form-control" name="usernick" value="${obj.userage}" style="color:#fff;background-color:#ff0000; opacity:75%;" readonly /></li>
 							            <br />
 							                       
-										<li><i class="icofont-check-circled"></i>GENDER : <input type="text" class="form-control" name="usergender" value="${obj.usergender}" style="background-color:#F6CED8; opacity:70%;" readonly /></li>
+										<li><i class="icofont-check-circled"></i>GENDER<input type="text" class="form-control" name="usergender" value="${obj.usergender}" style="color:#fff;background-color:#ff0000; opacity:75%;" readonly /></li>
 										<br />
 										
-										<li><i class="icofont-check-circled"></i>E-MAIL : <input id="text" class="form-control" name="useremail" value="${obj.useremail}" style="background-color:#F6CED8; opacity:70%;" readonly /></li>
+										<li><i class="icofont-check-circled"></i>E-MAIL<input id="text" class="form-control" name="useremail" value="${obj.useremail}" style="color:#fff;background-color:#ff0000; opacity:75%;" readonly /></li>
 										<br />
 										
-										<li><i class="icofont-check-circled"></i>JOIN DATE : <c:set var="dt" value="${fn:split(obj.joindate, ' ')}" />
-										<input id="text" class="form-control" name="joindate" value="${dt[0]}" readonly style="background-color:#F6CED8; opacity:70%;" /></li>
+										<li><i class="icofont-check-circled"></i>JOIN DATE<c:set var="dt" value="${fn:split(obj.joindate, ' ')}" />
+										<input id="text" class="form-control" name="joindate" value="${dt[0]}" readonly style="color:#fff;background-color:#ff0000; opacity:75%;" /></li>
 										<br />
 										</ul>
 							
 											<hr />
 											
-											<a href="${pageContext.request.contextPath}/member/update" class="btn btn-danger " style="background-color:#ff0000;">수정하기</a>
-									
+											<a href="${pageContext.request.contextPath}/member/p_update" class="btn btn-danger " style="background-color:#ffff; color:#ff0000;">비밀번호 변경하기</a>
+											<a href="${pageContext.request.contextPath}/member/update" class="btn btn-danger " style="background-color:#ff0000;">정보 수정하기</a>
+											
 
 								</form>
 

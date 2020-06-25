@@ -12,7 +12,7 @@
 <html lang="en">
 <head>
 
-   <title>update</title>
+   <title>p_update</title>
   <%@include file="/WEB-INF/views/head.jsp" %>
   
 </head>
@@ -48,17 +48,18 @@
 
 
 
-      <section id="cta" class="cta" style="height:400px;" >
-            <div class="container" data-aos="zoom-in">
-                 <div class="text-center">
-                    <br />
-                    <br />
-                    <br />
-                      <h3>MY Info</h3>          
-                 </div>
-            </div>
-         
-       </section>
+		<section id="cta" class="cta" style="height:400px;" >
+		      <div class="container" data-aos="zoom-in">
+			        <div class="text-center">
+				        <br />
+				        <br />
+				        <br />
+				          <h3 style="font-family:'PlayfairB';">MY INFORMATION</h3>          
+			        </div>
+		      </div>
+	      
+	    </section>
+	    
        
 
          
@@ -71,9 +72,12 @@
  <div class="hs-item" style="height:1200px;">
     
    <div class="container" style="margin-top:90px;"> 
-      <div class="section-title">
+   
+   
+   
+      <div class="section-title" style="font-family:'GothicB';">
           <span style="margin-right:100px;">SoulMovie</span>
-          <h2 style="margin-right:100px;">정보 수정<br /></h2>
+          <h2 style="margin-right:100px;">비밀번호 수정<br /></h2>
           <p></p>
       </div>   
       
@@ -85,51 +89,26 @@
                   <tbody>
                      <tr>               
                         <td>
-                        <form action="${pageContext.request.contextPath}/member/update" method="post" enctype="multipart/form-data">
+                        <form action="${pageContext.request.contextPath}/member/p_update" method="post" enctype="multipart/form-data" id="form">
                         	<ul>
                               <li><i class="icofont-check-circled"></i>ID<input type="text" class="form-control" name="username" value="${obj.username}" style="color:#000;"readonly /></li>
                               <br />
                               
+                              <li><i class="icofont-check-circled"></i>PASSWORD<input id="chk1" type="password" class="form-control" name="password" style="color:#000;"/></li>
+                              <br />
+                              
+                              <li><i class="icofont-check-circled"></i>PASSWORD<input id="chk2" type="password" class="form-control" name="correct" style="color:#000;"/></li>
+                              <p id="chk"></p>
+                              <br />
+                              
+                              
                       
                               
                      
-                              <li><i class="icofont-check-circled"></i>NAME<input id="text" class="form-control" name="userrname" value="${obj.userrname}" style="color:#000;" readonly/></li>
-                              <br />
-                              
-                              
-                              
-                              
-                              <li><i class="icofont-check-circled"></i>NICKNAME<input id="text" class="form-control" name="usernick" value="${obj.usernick}" style="color:#848484;"></li>
-                                  <p id="chk2" style="padding:18px;margin:0px; font-size:16px; color:#ff0000">중복확인</p>
-                              <br />
                            
-                           
-                           
-                           
-                           
-                                 <li><i class="icofont-check-circled"></i><label for="userage" >AGE</label><br />
-                                    <select name= "userage" style="color:#848484;">
-                                          <option id="userage" value="10대">10-19</option>
-                                          <option id="userage" value="20대">20-29</option>
-                                          <option id="userage" value="30대">30-39</option>
-                                          <option id="userage" value="40대">40-49</option>
-                                          <option id="userage" value="50대">50-59</option>
-                                          <option id="userage" value="60대이상">60 over</option>
-                                    </select></li>
-                                    <br />
-                                            
-                              <li><i class="icofont-check-circled"></i>GENDER<input type="text" class="form-control" name="usergender" value="${obj.usergender}" style="color:#000;" readonly /></li>
-                              <br />
-                              
-                              <li><i class="icofont-check-circled"></i>E-MAIL<input id="text" class="form-control" name="useremail" value="${obj.useremail}" style="color:#848484;" /></li>
-                              <br />
-                              
-                              <li><i class="icofont-check-circled"></i>JOIN DATE<c:set var="dt" value="${fn:split(obj.joindate, ' ')}" />
-                                       <input id="text" class="form-control" name="joindate" value="${dt[0]}" style="color:#000;" readonly /></li>
-                                    
                               
                               <hr />
-                              <input type="submit" class="btn btn-danger " style="background-color:#ff0000;" value="저장" />
+                              <input type="button" id="check" class="btn btn-danger " style="background-color:#ff0000;" value="저장" />
                      
 								</ul>
 				             </form>
@@ -142,8 +121,53 @@
 					
 					
 				 		<script>
+					 		/* $(function(){
+	                            //nickname이 usernick인 tag의 키보드가 up되면
+	                            $('#chk2').bind('keyup',function(){
+	                               var chk1 = $('#chk1').val(); //입력했던 값을 받아와서 unick변수에 보관
+	                      		   var chk2 = $('#chk2').val();
+	                      		   if(chk1==chk2){
+										$('#chk').text('비밀번호가 일치합니다.');
+		                      		}
+	                      		   else{
+	                      			 $('#chk').text('비밀번호가 일치하지 않습니다.');
+		                      		 }
+	                               //restcontroller를 호출해서 값을 받아옴
+	                               $.get('/member/rest/membernickcheck.json?usernick=' + unick,function(data){
+	                                  console.log("GET", data);
+	                                  //console.log("GET", data);  {"ret":1}  or {"ret":0}
+	                                  if(data.ret == 1){
+	                                     $('#chk2').text('이미 사용 중인 닉네임입니다.');
+	                                  }
+	                                  else if(data.ret == 0){
+	                                     $('#chk2').text('사용가능');
+	                                  }
+	                               }, 'json');
+	                               
+	      
+	                            });
+	                         }); */
+
+					 		$(function(){
+                                //nickname이 usernick인 tag의 키보드가 up되면
+                                $('#check').bind('click',function(){
+                                   var chk1 = $('#chk1').val(); //입력했던 값을 받아와서 unick변수에 보관
+                          		   var chk2 = $('#chk2').val();
+
+                          		   if(chk1==chk2){
+                              		   $('#form').submit();
+                              		   //location.href="${pageContext.request.contextPath}/member/p_update";
+                              		}
+                          		   else{
+										$('#chk').text('비밀번호가 일치하지 않습니다.');
+										return false;
+                              		}
+                                });
+                             });
 
 
+
+	                         /*
                               $(function(){
                                  //nickname이 usernick인 tag의 키보드가 up되면
                                  $('#usernick').bind('keyup',function(){
@@ -164,6 +188,7 @@
            
                                  });
                               });
+                              */
                            
   
               
