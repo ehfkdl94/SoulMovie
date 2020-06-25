@@ -46,6 +46,11 @@ public class HomeController {
 		return request.getContextPath()+"index3";
 	}
 	
+	@RequestMapping(value="/contact")
+	public String contact(HttpServletRequest request) {
+		return request.getContextPath() + "contact";
+	}
+	
 //	@RequestMapping(value="getimg")
 //	public ResponseEntity<byte[]> getimg(@RequestParam("no")int no, Model model){
 //		MovieVO obj = hDAO.selectBoardImg(no);
