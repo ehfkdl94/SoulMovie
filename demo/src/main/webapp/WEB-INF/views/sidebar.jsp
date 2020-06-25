@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <aside>
-<div id="wrapper" class="active" style="height=1000px;">
+<div id="wrapper" class="active" style="font-family:'PlayfairB'; height=1000px;">
      
       <div id="sidebar-wrapper">
       <ul id="sidebar_menu" class="sidebar-nav">

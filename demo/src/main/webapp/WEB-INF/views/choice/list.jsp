@@ -24,7 +24,7 @@
         <br />
         <br />
         <br />
-          <h3 style="font-family:'GothicB';">MY SOUL MOVIE LIST</h3>          
+          <h3 style="font-family:'PlayfairB';">MY SOUL MOVIE LIST</h3>          
           
           <c:if test="${userccnt<10}">
           <a class="cta-btn" href="${pageContext.request.contextPath}/choice/insert" style="font-family:aCinemaL;">나의 인생영화 등록</a>

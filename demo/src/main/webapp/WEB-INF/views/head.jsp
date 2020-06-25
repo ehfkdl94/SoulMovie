@@ -39,8 +39,8 @@
   </style>
   <style type="text/css">
        @FONT-FACE{
-          font-family:'GothicB';
-          src:url("${pageContext.request.contextPath}/resources/fonts/NanumGothicB.ttf")
+          font-family:'PlayfairB';
+          src:url("${pageContext.request.contextPath}/resources/fonts/PlayfairDisplay-Bold.ttf")
        }
   </style>
   
