@@ -25,6 +25,8 @@ public class SecurityController {
 		@Autowired
 		private UserMapper userMapper;
 		
+		
+		
 		@RequestMapping(value = "/home", method = RequestMethod.GET) //테스트용
 		public String home1(HttpServletRequest request) {
 			
@@ -33,7 +35,10 @@ public class SecurityController {
 		
 		
 		@RequestMapping(value = "/join", method = RequestMethod.GET)
-		public String join(HttpServletRequest request) {
+		public String join(HttpServletRequest request, Authentication auth) {
+			if(auth != null) {
+				return "redirect:"+request.getContextPath()+"/";
+				}
 		
 			
 			return request.getContextPath()+"/member/join";
@@ -45,15 +50,16 @@ public class SecurityController {
 
 		@RequestMapping(value = "/join", method = RequestMethod.POST)
 		public String join(@ModelAttribute UserVo obj, HttpServletRequest request) {
+			
 
 			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		
 			String str1 = passwordEncoder.encode(obj.getPassword());
 			obj.setPassword(str1);
 			
 			userMapper.insertMember(obj);
 					
 			return "redirect:"+request.getContextPath()+"/member/welcome";
+			
 		}
 		
 		
@@ -75,13 +81,20 @@ public class SecurityController {
 		
 		
 		@RequestMapping(value = "/login", method = RequestMethod.GET)
-		public String login(HttpServletRequest request) {
+		public String login(HttpServletRequest request, Authentication auth) {
+			if(auth != null) {
+			return "redirect:"+request.getContextPath()+"/";
+			}
+		
 			String referer = request.getHeader("Referer");
 			
 			
 			request.getSession().setAttribute("prevPage", referer);
-		
+			
+
+			
 			return request.getContextPath()+"/member/login";
+	
 		}
 		
 		
@@ -142,6 +155,8 @@ public class SecurityController {
 			
 			return "redirect:" + request.getContextPath() + "/member/mypage";
 		}
+		
+		
 		@RequestMapping(value = "/edit", method = RequestMethod.GET)
 		public String edit( Model model,HttpServletRequest request ){
 		    //jsp로 값을 전달함.

@@ -33,7 +33,6 @@ public class RestMemberController {
 		if (ret > 0) {
 			map.put("ret", 1);
 
-			System.out.println("로그인값이 있어요");
 		}
 		return map;
 	}
