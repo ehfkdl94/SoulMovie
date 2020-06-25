@@ -78,7 +78,9 @@ public class MovieController {
 		map.put("start", page*16-15); 	//시작위치
 		map.put("end", page*16);		//종료위치
 		map.put("text", text);
-		List<MovieVO> list2 = mDAO.selectPageMovieText(map);
+		//List<MovieVO> list2 = mDAO.selectPageMovieText(map);
+		List<MovieVO> list2 = mDAO.selectMovie1(map);
+		
 //		if(category.equals("title")) {
 //		list2 = mDAO.selectPageMovieText(map);
 //		}
