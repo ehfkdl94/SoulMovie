@@ -14,11 +14,27 @@
 <body>
 
 	<%@include file="/WEB-INF/views/header.jsp"%>
+	<section id="cta" class="cta2" style="height:400px;" >
+      <div class="container" data-aos="zoom-in">
+        <div class="text-center">
+        <br />
+        <br />
+        <br />
+          <h3>Board</h3>          
+          
+         
+       </div>
+      </div>
+      
+    </section>
 	<main id="main">
     <section id="contact" class="contact">
-      <div class="container" style="height:600px; margin-top:100px;">
-      <h2>Board insert</h2><br/>
-          <form action="/board/insert" method="post" style="box-sizing: content-box;">
+    	<div class="section-title" >
+          <span>Insert</span>
+          <h2>Insert</h2>
+        </div>  
+      <div class="container" style="height:600px; margin-top:10px;margin-left:400px;">
+	         <form action="/board/insert" method="post" style="box-sizing: content-box;">
               <div class="form-row">           
               <div class="col-md-8 form-group">
                   <label for="reg_id">Writer</label>

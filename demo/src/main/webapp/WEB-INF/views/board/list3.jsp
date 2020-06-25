@@ -23,7 +23,7 @@
         <br />
         <br />
         <br />
-          <h3 style="font-family:'PlayfairB';">MY SOUL BOARD</h3>          
+          <h3>Board</h3>          
           
          
        </div>
@@ -36,7 +36,11 @@
     <section id="rank" class="about">
 			<div class="hs-item" style="height: 600px;">
 				<div class="container" style="margin-top: 10px;">
-					<h2 >Board list</h2><br/>
+				
+		<div class="section-title">
+          <span>List</span>
+          <h2>List</h2>
+        </div>
 					
 					<form action="${pageContext.request.contextPath}/board/list" method="get"  style="font-family:'aCinemaL';">
 						<input type="hidden" name="page" value="1"/>

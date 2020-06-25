@@ -21,7 +21,7 @@
         <br />
         <br />
         <br />
-          <h3 style="font-family:'PlayfairB';">MY SOUL BOARD</h3>          
+          <h3>Board</h3>          
           
          
        </div>
@@ -30,9 +30,12 @@
     </section>
 	<main id="main">
     <section id="contact" class="contact">
-      <div class="container" style="height:600px; margin-top:10px;font-family:'aCinemaL';">
-      <h2>Board update</h2><br/>
-      	Board Num : ${bno}
+    	<div class="section-title" >
+          <span>Update</span>
+          <h2>Update</h2>
+        </div>  
+      <div class="container" style="height:600px; margin-top:10px;margin-left:400px;font-family:'aCinemaL';">
+    	Board Num : ${bno}
 		Views : ${obj.brdhit}
 		Date :<c:set var="dt" value="${fn:split(obj.brddate, ' ')}" />
 			${dt[0]}<br/> 	
