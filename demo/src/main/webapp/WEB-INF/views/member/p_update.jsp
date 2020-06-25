@@ -76,7 +76,7 @@
    
    
       <div class="section-title" style="font-family:'GothicB';">
-          <span style="margin-right:100px;">SoulMovie</span>
+          <span style="margin-right:100px;">Information</span>
           <h2 style="margin-right:100px;">비밀번호 수정<br /></h2>
           <p></p>
       </div>   

@@ -71,7 +71,7 @@
 	
 	
 	 <div class="section-title" style="font-family:'GothicB';">
-	 <span style="margin-right:100px;">SoulMovie</span>
+	 <span style="margin-right:100px;">Information</span>
           <h2 style="margin-right:100px;">${user_nick}님의 정보<br /></h2>       
       </div>	
       
@@ -117,7 +117,7 @@
 											<hr />
 											
 											<a href="${pageContext.request.contextPath}/member/p_update" class="btn btn-danger " style="background-color:#ffff; color:#ff0000;">비밀번호 변경</a>
-											<a href="${pageContext.request.contextPath}/member/update" class="btn btn-danger " style="background-color:#ff0000;">정보 수정</a>
+											<a href="${pageContext.request.contextPath}/member/update" class="btn btn-danger " style="background-color:#ff0000;">내 정보 수정</a>
 											
 
 								</form>

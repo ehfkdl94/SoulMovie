@@ -72,7 +72,7 @@
     
    <div class="container" style="margin-top:90px;"> 
       <div class="section-title">
-          <span style="margin-right:100px;">SoulMovie</span>
+          <span style="margin-right:100px;">Information</span>
           <h2 style="margin-right:100px;">정보 수정<br /></h2>
           <p></p>
       </div>   
