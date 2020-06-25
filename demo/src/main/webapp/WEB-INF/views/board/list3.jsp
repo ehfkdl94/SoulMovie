@@ -18,78 +18,85 @@
 
     <!-- ======= About Section ======= -->
     <section id="rank" class="about">
-      <div class="hs-item" style="height:1200px;">
-			<div class="container"  style="margin-top:100px;">
-				<form action="${pageContext.request.contextPath}/board/list" method="get">
-		            <input type="hidden" name="page" value="1" />
-		            <div style = "display:inline-block;">
-		            <input type="text" style = "width:120px;" name="text" class="form-control" placeholder="검색어" />
-		            <input type="submit" class="btn btn-success" value="검색" />
-		            </div>
-		         </form>
+			<div class="hs-item" style="height: 1200px;">
+				<div class="container" style="margin-top: 100px;">
+					<h2>Board list</h2><br/>
+					
+					<form action="${pageContext.request.contextPath}/board/list" method="get">
+						<input type="hidden" name="page" value="1"/>
+						<input type="text" name="text" placeholder="Please enter a search" style="float:left"/>
+						<input type="submit" class="btn btn-sm btn-success" value="Search"/>
+						<a href="${pageContext.request.contextPath}/board/insert" class="btn btn-sm btn-success">Write</a>
+			 	</form>
 
-   
-			      <table class="table table-sm">
-			         <thead>
-			            <tr>   
-			               <th>번호</th>
-			               <th>제목</th>
-			               <th>작성자</th>
-			               <th>조회수</th>
-			               <th>날짜</th>
-			            </tr>
-			         </thead>
-			         
-			         <tbody>
-			            <c:if test="${empty list}">
-			            <tr>
-			               <td colspan="5">검색결과가 없습니다.</td>
-			            </tr>
-			            </c:if>
-			            <c:if test="${!empty list}">
-			            <c:forEach var="tmp" items="${list}">
-			            <tr>
-			               <td>${tmp.brdnumber}</td>
-			               <td>
-			                 <a href="/board/content?no=${tmp.brdno}&bno=${tmp.brdnumber}">${tmp.brdtitle}</a>
-			               </td>
-			               <td>${tmp.username}</td>
-			               <td><fmt:formatNumber value="${tmp.brdhit}" pattern="#,###" /></td>
-			               <td>
-			                  <c:set var="dt" value="${fn:split(tmp.brddate, ' ')}" />
-						${dt[0]}
-			               </td>
-			            </tr>
-			            </c:forEach>
-			            </c:if>
-			         </tbody>
-			      </table>
-			      
-		      
-		      <a href="${pageContext.request.contextPath}/board/insert" class="btn btn-success">글쓰기</a>
-		    <div>
-            	<div id="pagination-div"></div>
-            </div>  
+					<table class="table table-sm">
+						<thead>
+							<tr>
+								<th>Num</th>
+								<th>Subject</th>
+								<th>Writer</th>
+								<th>Views</th>
+								<th>Date</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<c:if test="${empty list}">
+								<tr>
+									<td colspan="5">No results were found for your search.</td>
+								</tr>
+							</c:if>
+							<c:if test="${!empty list}">
+								<c:forEach var="tmp" items="${list}">
+									<tr>
+										<td>${tmp.ROWN}</td>
+										<td><a
+											href="/board/content?no=${tmp.brdno}&bno=${tmp.brdnumber}">${tmp.brdtitle}</a>
+										</td>
+										<td>${tmp.username}</td>
+										<td><fmt:formatNumber value="${tmp.brdhit}"
+												pattern="#,###" /></td>
+										<td><c:set var="dt" value="${fn:split(tmp.brddate, ' ')}" />
+											${dt[0]}</td>
+									</tr>
+								</c:forEach>
+							</c:if>
+						</tbody>
+					</table>
+					<c:if test="${param.page != 1}">
+
+				<a style="font-size: 20px;"
+					href="${pageContext.request.contextPath}/admin/member?page=${param.page-1}&text=${param.text}"><<</a>
+			</c:if>
+
+			<c:forEach var="i" begin="1" end="${cnt}" step="1">
+				<c:if test="${param.page == i}">
+					<a class="active" style="font-size: 20px;"
+						href="${pageContext.request.contextPath}/board/list?page=${i}&text=${param.text}">${i}</a>
+				</c:if>
+				<c:if test="${param.page != i}">
+					<a style="font-size: 20px;"
+						href="${pageContext.request.contextPath}/board/list?page=${i}&text=${param.text}">${i}</a>
+				</c:if>
+			</c:forEach>
+
+
+			<c:if test="${cnt != param.page}">
+				<a style="font-size: 20px;"
+					href="${pageContext.request.contextPath}/board/list?page=${param.page+1}&text=${param.text}">>></a>
+			</c:if>
+				</div>
+				
 			</div>
-			
-		</div>
-		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-				<script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>	
-				<script>
-					$(function(){
-						$('#pagination-div').twbsPagination({
-					        totalPages: Number('${cnt}'), /* 전체 페이지 수*/
-					        visiblePages: 10, /*화면에 표시할 페이지 수 */
-					        startPage : Number('${param.page}'), /* 주소창에 ~~/board/list?page=1 */
-					        initiateStartPageClick : false,
-					        onPageClick: function (event, page) {
-					             window.location.href = "/board/list?page=" + page + "&text=${param.text}";
-					        }
-					    });
-					})
-				</script> 
 
-   </section>
+			<!--  
+			<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+			<script
+				src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
+			-->
+			
+
+		</section>
    </main>
   <!-- ======= Footer ======= -->
   <footer id="footer">

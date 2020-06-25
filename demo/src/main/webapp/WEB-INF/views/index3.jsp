@@ -25,9 +25,9 @@
   <main id="main">
 
     <!-- ======= About Section ======= -->
-    <section id="rank" class="about">
-      <div class="hs-item" style="height:1200px;">
-            <div class="container">
+    <section id="rank" class="about" >
+      <div class="hs-item" style="height:1200px;" >
+            <div class="container" >
                <div style="margin-bottom: 250px;">
                                     
                   <div id="portfolio-grid" class="row no-gutter" >
@@ -40,7 +40,7 @@
 		                              <div class="work-info">
 		                                 <h3 style="color:white;">회원가입 후 확인 할 수 있습니다.</h3>
 		                              </div>
-		                              <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/qm2.jpg" style="height:500px;">
+		                              <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/qm3.jpg" style="height:500px;">
 		                           </a>
                        	   		</c:if>
                        	   		<c:if test="${i.index!=0}">

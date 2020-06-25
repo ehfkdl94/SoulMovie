@@ -2,6 +2,7 @@ package com.soulmovie.controller;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -42,7 +43,7 @@ public class BoardController {
 //		}
 //		그렇지 않다면 게시판 글쓰기 화면 표시
 //		model.addAttribute("userid", userid);
-		return request.getContextPath()+"/board/insert3";
+		return request.getContextPath()+"/board/insert2";
 	}
 	
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
@@ -82,7 +83,7 @@ public class BoardController {
 		int n = bDAO.selectBoardNext(no);
 		model.addAttribute("next", n);
 		
-		return request.getContextPath()+"/board/content3";
+		return request.getContextPath()+"/board/content2";
 	}
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
@@ -99,22 +100,52 @@ public class BoardController {
 
 		// 목록
 		HashMap<String, Object> map = new HashMap<String, Object>();
+		int cnt1 = bDAO.countBoard("");
+		 
 		map.put("start", page*10-9); 	//시작위치
 		map.put("end", page*10);		//종료위치	
 		map.put("text", text);			//검색어
+		// 게시물 개수
+				int cnt = bDAO.countBoard(text); //검색어를 넘겨줌.
+				//System.out.println( (int) Math.ceil(n/10.0) );
 		List<BoardVO> list = bDAO.selectBoard(map);
-		int j=0;
-		for(int i = list.size(); i>0;i--) {
-			list.get(j).setBrdnumber(i);
-			j++;
-			
-		}
-		model.addAttribute("list", list);
+		List<BoardVO> list2 = bDAO.selectBoard(map); 
+	      int j=0;
+	       
+	       for(int i =list.size()-1;i>=0;i--) {
+	          list2.set(j, list.get(i));
+
+	          j++;
+	          
+	       }
+	         j=0;
+	         System.out.println("test");
+	       List<BoardVO> list3= new ArrayList<BoardVO>();
+	       if( (int)Math.ceil(cnt/10.0) == page) {  //마지막페이지일경우에만
+	          System.out.println("마지막으로 오나?");
+	             
+	          for(int i =page*10-10; i<page*10-10+cnt%10 ;i++) {
+	 	    	 
+		    	   
+		    	   list3.add( list2.get(i));
+		    	   
+		    	 
+		    	  j++;
+		       }
+	       }
+	       else {
+	       for(int i =page*10-10; i<page*10 ;i++) {
+	    	 
+	    	   
+	    	   list3.add( list2.get(i));
+	    	   
+	    	
+	       }
+	       }
+		model.addAttribute("list", list3);
 	
 		
-		// 게시물 개수
-		int cnt = bDAO.countBoard(text); //검색어를 넘겨줌.
-		//System.out.println( (int) Math.ceil(n/10.0) );
+		
 		
 		model.addAttribute("cnt", (int)Math.ceil(cnt/10.0));
 		return request.getContextPath()+"/board/list3";
@@ -123,25 +154,19 @@ public class BoardController {
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
 	public String update(HttpServletRequest request,
 			Model model,
-			@RequestParam(value="no", defaultValue = "0") int no) {
-		BoardVO vo = bDAO.selectBoardOne(no);
-		model.addAttribute("vo", vo);
+			@RequestParam(value="no", defaultValue = "0") int no,
+			@RequestParam(value="bno", defaultValue = "0") int bno) {
+		BoardVO obj = bDAO.selectBoardOne(no);
+		model.addAttribute("obj", obj);
+		model.addAttribute("bno", bno);
 		return request.getContextPath()+"/board/update2";
 	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String update(HttpServletRequest request,
-			@ModelAttribute BoardVO obj,
-			@RequestParam MultipartFile[] img) throws IOException {  //변수명 == <input name="img"
+			@ModelAttribute BoardVO obj) throws IOException {  //변수명 == <input name="img"
 		//이미지는 수동으로 obj에 추가함.
-		if(img != null) {
-			for ( MultipartFile one : img   ) {
-				if(one.getSize() > 0) { //첨부한 파일의 용량이 있느냐?
-				//if(!one.getOriginalFilename().equals("")) { //파일명이 비어 있지 않다면
-					obj.setBrdimg( one.getBytes() );
-				}
-			}
-		}
+		
 		
 		bDAO.updateBoard(obj);
 		return "redirect:" + request.getContextPath() + "/board/list";
