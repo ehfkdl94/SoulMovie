@@ -63,7 +63,7 @@
          <br />
         <br />
         <br />
-        <h3 style="color:#fff; font-family:'PlayfairB';">Welcome</h3>
+        <h3 style="color:#fff; font-family:'PlayfairB';">Welcome!</h3>
 
         </div>
       </div>
@@ -84,7 +84,9 @@
 		    				<div class="row justify-content-start pb-3">
 				          <div class="col-md-12 heading-section ftco-animate">
 				          
-							              <h3>회원가입이 완료되었습니다!</h3><br />  
+							              <h3 style="font-family:'GothicB';"><b>SOUL MOVIE</b></h3><br />
+							              <h4>회원가입이 완료되었습니다.</h4><br />  
+							             
 							              <!--     
 				            <ul class="about-info mt-4 px-md-0 px-2">
 				            	<li class="flex"><span>님 환영합니다</span></li>
@@ -93,7 +95,7 @@
 				            
 				            <div class="col-md-12 ">
 				            	
-				            	<h6>아래의 버튼을 클릭하여 로그인하세요.</h6><br />
+				            	<h6>아래의 버튼을 클릭하여 로그인 하세요.</h6><br />
 		                      <a class="btn" href="${pageContext.request.contextPath}/member/login" style="background-color:#ff0000; color:white;">LOGIN</a>
 		                      <span class="submitting"></span>
 		                    
