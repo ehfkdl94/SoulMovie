@@ -119,10 +119,13 @@
                                     </select></li>
                                     <br />
                                             
+                                            
+                                            
+                                            
                               <li><i class="icofont-check-circled"></i><label for="usergender" >GENDER</label><br />
                            		            
-		                        <input type="radio" name= "usergender" id="usergender" value="Male">Male &nbsp; &nbsp;
-		                        <input type="radio" name= "usergender" id="usergender" value="Female">Female
+		                        <label><input type="radio" name= "usergender" id="usergender" value="Male">Male &nbsp; &nbsp;</label>
+		                        <label><input type="radio" name= "usergender" id="usergender" value="Female">Female</label>
 		                        </li>
 		                        
 		                        

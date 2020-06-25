@@ -66,13 +66,13 @@
     
 	<section id="about" class="about" style="margin-top:20px;margin-left:200px;">
 
-<div class="hs-item" style="height:1200px;">
-	<div class="container" style="margin-top:90px;"> 
+
+	<div class="container"> 
 	
 	
 	 <div class="section-title" style="font-family:'GothicB';">
 	 <span style="margin-right:100px;">SoulMovie</span>
-          <h2 style="margin-right:100px;">${user_nick}'s Info<br /></h2>       
+          <h2 style="margin-right:100px;">${user_nick}님의 정보<br /></h2>       
       </div>	
       
 	
@@ -103,7 +103,7 @@
 							            <li><i class="icofont-check-circled"></i>AGE<input id="text" class="form-control" name="usernick" value="${obj.userage}" style="color:#fff;background-color:#000; opacity:15%;" readonly /></li>
 							            <br />
 							                       
-										<li><i class="icofont-check-circled"></i>GENDER<input type="text" class="form-control" name="usergender" value="${obj.usergender}" style="color:#fff;background-color:#000; opacity:15%;" readonly /></li>
+										<li><i class="icofont-check-circled"></i>GENDER<input type="text" id="usergender" class="form-control" name="usergender" value="${obj.usergender}" style="color:#fff;background-color:#000; opacity:15%;" readonly /></li>
 										<br />
 										
 										<li><i class="icofont-check-circled"></i>E-MAIL<input id="text" class="form-control" name="useremail" value="${obj.useremail}" style="color:#fff;background-color:#000; opacity:15%;" readonly /></li>
@@ -116,8 +116,8 @@
 							
 											<hr />
 											
-											<a href="${pageContext.request.contextPath}/member/p_update" class="btn btn-danger " style="background-color:#ffff; color:#ff0000;">비밀번호 변경하기</a>
-											<a href="${pageContext.request.contextPath}/member/update" class="btn btn-danger " style="background-color:#ff0000;">정보 수정하기</a>
+											<a href="${pageContext.request.contextPath}/member/p_update" class="btn btn-danger " style="background-color:#ffff; color:#ff0000;">비밀번호 변경</a>
+											<a href="${pageContext.request.contextPath}/member/update" class="btn btn-danger " style="background-color:#ff0000;">정보 수정</a>
 											
 
 								</form>
@@ -138,7 +138,7 @@
 		
 	
 	</div>
-	</div>
+
 	</section>
 
 

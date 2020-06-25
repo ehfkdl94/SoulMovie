@@ -29,7 +29,7 @@ public interface UserMapper {
 	@Select({"SELECT USERNICK FROM MEMBER WHERE USERID=#{username}"})
 	public String findtoUseridFromUsername(@Param("username") int username);
 	
-	@Update({"UPDATE MEMBER SET USERNICK = #{obj.usernick}, USERAGE = #{obj.userage}, USEREMAIL = #{obj.useremail}"
+	@Update({"UPDATE MEMBER SET USERNICK = #{obj.usernick}, USERAGE = #{obj.userage}, USERGENDER=#{obj.usergender}, USEREMAIL = #{obj.useremail}"
 			+ "WHERE USERNAME = #{obj.username}"})
 	public int updateMember(@Param("obj") UserVo obj);
 	
