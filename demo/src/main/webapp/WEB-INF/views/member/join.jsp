@@ -42,7 +42,7 @@
           <li><a href="${pageContext.request.contextPath}/">Home</a></li>
           <li><a href="${pageContext.request.contextPath}/movie/movielist">Movie</a></li>
           <li><a href="${pageContext.request.contextPath}/board/list">board</a></li>
-          <li><a href="${pageContext.request.contextPath}/">Contact</a></li>
+          <li><a href="${pageContext.request.contextPath}/contact">Contact</a></li>
           <security:authorize access="!isAuthenticated()">
           	<li><a href="${pageContext.request.contextPath}/member/login">login</a></li>
           	<li><a href="${pageContext.request.contextPath}/member/join" style = "font-weight: bold ;color:#ff0000;">Create an account</a></li>

@@ -29,7 +29,7 @@
           	<li><a href="${pageContext.request.contextPath}/member/join" style = "font-weight: bold ;color:#ff0000;">Create an account</a></li>
           </security:authorize>
           <security:authorize access="isAuthenticated()">
-          	<li class="ative1"><a href="${pageContext.request.contextPath}/member/mypage?username=<security:authentication property="name"/>">My page</a></li>
+          	<li class="active1"><a href="${pageContext.request.contextPath}/member/mypage?username=<security:authentication property="name"/>">My page</a></li>
           	<li><a href="${pageContext.request.contextPath}/member/logout">Logout</a></li>
           	<li><a href="${pageContext.request.contextPath}/choice/list" style = "font-weight: bold ;color:#ff0000;">+ SoulMovie</a></li>
           </security:authorize>

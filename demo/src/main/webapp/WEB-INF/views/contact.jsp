@@ -48,7 +48,7 @@
 			        <br />
 			        <br />
 			        <br />
-			          <h2 style="color:white;"><strong>Contact</strong></h2>          
+			          <h2 style="color:white;font-family:'PlayfairB';"><strong>Contact</strong></h2>          
 		        </div>
 	      </div>
 	   </section>
