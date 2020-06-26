@@ -94,7 +94,7 @@
 								<td colspan="2" class="tdchoiceno" style="display:none;"> ${tmp.choice_no}</td>
 							</tr>
 							<tr>								
-								<td rowspan="6" style=" width:400px;" align="center"><img src="${tmp.movie_img}" style="height:300px;"></td>					
+								<td rowspan="6" style=" width:350px;" align="center"><img src="${tmp.movie_img}" ></td>					
 								<td><ul style="font-family:aCinemaL;">
 								<li><i class="icofont-check-circled"></i>영화제목: ${tmp.movie_title}</li>
 								<li><i class="icofont-check-circled"></i>관람횟수: ${tmp.choice_freq}</li>
