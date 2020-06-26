@@ -46,7 +46,7 @@
         <br />
         <br />
         <br />
-          <h3>Board</h3>          
+          <h3 style="font-family:'PlayfairB';">Board</h3>          
           
          
        </div>
@@ -86,7 +86,7 @@
               </div>
               
               <div class="text">
-              <button type="submit" class="btn btn-sm btn-success">Save</button>
+              <button type="submit" class="btn btn-sm btn-success" style="background-color:#ffff; color:#ff0000;">Save</button>
 			  <button type="button" class="btn btn-sm btn-success"
 				onclick="location.href='/board/list'" id="btnList">List</button>              
               </div>

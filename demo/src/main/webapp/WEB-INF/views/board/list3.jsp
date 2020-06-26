@@ -49,7 +49,7 @@
         <br />
         <br />
         <br />
-          <h3>Board</h3>          
+          <h3 style="font-family:'PlayfairB';">Board</h3>          
           
          
        </div>
@@ -68,12 +68,15 @@
           <h2>List</h2>
         </div>
 					
-					<form action="${pageContext.request.contextPath}/board/list" method="get"  style="font-family:'aCinemaL';">
-						<input type="hidden" name="page" value="1"/>
-						<input type="text" name="text" placeholder="Please enter a search" style="float:left"/>
-						<input type="submit" class="btn btn-sm btn-success" value="Search"/>
-						<a href="${pageContext.request.contextPath}/board/insert" class="btn btn-sm btn-success">Write</a>
-			 		</form>
+			<form action="${pageContext.request.contextPath}/board/list" method="get"  style="font-family:'aCinemaL';">
+                  <a href="${pageContext.request.contextPath}/board/insert" class="btn btn-sm btn-success" style=" float:left;font-family:'aCinemaL';">Write</a>
+      
+                  <input type="hidden" name="page" value="1"/>
+                  
+                  <input type="submit" class="btn btn-sm btn-success" style ="float:right"; value="Search"/>
+                  <input type="text" name="text" placeholder="Please enter a search" style ="float:right";/>
+                </form>
+
 
 					<table class="table table-sm" style="font-family:'aCinemaL';">
 						<thead>

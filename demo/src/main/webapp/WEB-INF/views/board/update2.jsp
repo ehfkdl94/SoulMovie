@@ -47,7 +47,7 @@
         <br />
         <br />
         <br />
-          <h3>Board</h3>          
+          <h3 style="font-family:'PlayfairB';">Board</h3>          
           
          
        </div>
@@ -92,7 +92,7 @@
               </div>
               
               <div class="text">
-			  <input type="submit" class="btn btn-sm btn-success" value="Edit" />
+			  <input type="submit" class="btn btn-sm btn-success" value="Edit" style="background-color:#ffff; color:#ff0000;" />
 			  <a href="${pageContext.request.contextPath}/board/list" class="btn btn-sm btn-success">List</a>	
 			            
               </div>

@@ -96,7 +96,7 @@
         <br />
         <br />
         <br />
-          <h3>Board</h3>          
+          <h3 style="font-family:'PlayfairB';">Board</h3>          
           
          
        </div>
@@ -163,27 +163,36 @@
             </form>
        
 					<security:authentication property="name" var="uid" />
-					<a href="${pageContext.request.contextPath}/board/list" class="btn btn-sm btn-success">List</a>
-					<c:if test="${uid eq obj.username}">
-						<a
+				<c:if test="${prev != 0}">
+					<a
+						href="${pageContext.request.contextPath}/board/content?no=${prev}&bno=${obj.brdnumber-1}"
+						class="btn btn-sm btn-success" style="background-color:#ffff; color:#ff0000;">Previous</a>
+				</c:if>
+
+				<c:if test="${obj.brdnumber != cnt}">
+					<a
+						href="${pageContext.request.contextPath}/board/content?no=${next}&bno=${obj.brdnumber+1}"
+						class="btn btn-sm btn-success" style="background-color:#ffff; color:#ff0000;">Next</a>
+				</c:if>
+					
+					<a href="${pageContext.request.contextPath}/board/list" class="btn btn-sm btn-success" >List</a>	
+						
+						<c:if test="${uid eq obj.username}">
+					<a
 							href="${pageContext.request.contextPath}/board/update?no=${obj.brdno}&bno=${obj.brdnumber}"
-							class="btn btn-sm btn-success">Update</a>
-						<a
+							class="btn btn-sm btn-success" style="margin-left:440px;">Update</a>
+					<a
 							href="${pageContext.request.contextPath}/board/delete?no=${obj.brdno}"
 							class="btn btn-sm btn-success">Delete</a>
+							
+							
 					</c:if>
+					
+					
 
-					<c:if test="${prev != 0}">
-						<a
-							href="${pageContext.request.contextPath}/board/content?no=${prev}&bno=${obj.brdnumber-1}"
-							class="btn btn-sm btn-success">Previous</a>
-					</c:if>
 
-					<c:if test="${obj.brdnumber != cnt}">
-						<a
-							href="${pageContext.request.contextPath}/board/content?no=${next}&bno=${obj.brdnumber+1}"
-							class="btn btn-sm btn-success">Next</a>
-					</c:if>
+
+
 
         </div>
 
