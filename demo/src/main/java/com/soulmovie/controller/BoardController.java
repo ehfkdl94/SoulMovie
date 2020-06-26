@@ -161,6 +161,8 @@ public class BoardController {
 	         j=0;
 	         System.out.println("test");
 	       List<BoardVO> list3= new ArrayList<BoardVO>();
+	       System.out.println(list3.size()+"@@@@@");
+	       if(list3.size() != 0) {
 	       if( (int)Math.ceil(cnt/10.0) == page) {  //마지막페이지일경우에만
 	             
 	    	   if(cnt%10 ==0 )  {
@@ -184,7 +186,8 @@ public class BoardController {
 	    	   list3.add( list2.get(i));
 	       }
 	       }
-	     System.out.println(list3.get(0).toString());
+	       }
+	 
 		model.addAttribute("list", list3);
 	
 		
