@@ -165,44 +165,6 @@ public class SecurityController {
 		    //jsp를 화면에 표시함.
 		    return request.getContextPath()+"alert"; 
 		}
-		
-		
-		
-		@RequestMapping(value = "/p_update", method = RequestMethod.GET)
-		public String pupdate(HttpServletRequest request, Authentication auth,
-				Model model) {
-			if(auth != null) {
-				User user = (User)auth.getPrincipal();
-
-				if(user != null) {
-				String username = user.getUsername();		
-				UserVo obj = userMapper.findByUsername(username);
-				model.addAttribute("obj", obj);
-					}			
-							
-				}
-
-			return request.getContextPath()+"/member/p_update";
-		}
-		
-		
-
-		@RequestMapping(value = "/p_update", method = RequestMethod.POST)
-		public String pupdatepost(@ModelAttribute UserVo obj, HttpServletRequest request)  { 
-			System.out.println(obj.toString());
-			System.out.println(obj.getUserrname());
-			
-			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		
-			String str1 = passwordEncoder.encode(obj.getPassword());
-			obj.setPassword(str1);
-
-			userMapper.updateUserPassword(obj);
-			
-			return "redirect:" + request.getContextPath() + "/member/mypage";
-		}
-		
-		
 			
 				
 }

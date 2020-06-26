@@ -169,7 +169,7 @@
 									<img  style="border: solid 1px red; height:450px;" 
 										src="${tmp.movie_img}"
 										alt=""></a>
-									<h5 style = "color:black; font-family:aCinemaL;">${tmp.movie_title}</h5>
+									<h5 style ="color:black;font-family:aCinemaL;">${tmp.movie_title}</h5>
 									<h4 class="blog-date" style="color: red; font-weight:bold;">${tmp.rank }위</h4>
                        	   		</c:if>
                        	   	</security:authorize>

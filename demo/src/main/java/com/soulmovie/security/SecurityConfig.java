@@ -56,10 +56,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			 .formLogin()
 	        	.loginPage("/member/login")  //로그인 페이지 url
 	        	.loginProcessingUrl("/loginProcess") //<form action="?"
-	        	.permitAll()							//누구나 접근
+	        	.failureUrl("/member/edit")//누구나 접근
 	        	.defaultSuccessUrl("/") 	//성공시 이동할 페이지
 	        	.successHandler(successHandler())
-	        	.failureUrl("/member/edit")
+	        	.permitAll()
 	        	.and()
 			 .logout()
 			 	.logoutUrl("/member/logout")  //로그아웃페이지

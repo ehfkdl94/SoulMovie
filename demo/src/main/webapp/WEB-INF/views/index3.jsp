@@ -76,8 +76,8 @@
                        	   		<c:if test="${i.index!=0}">
                        	   			<a href="${pageContext.request.contextPath}/movie/moviedetail?movie_code=${tmp.movie_code}" class="item-wrap fancybox">
 		                              <div class="work-info">
-		                                 <h1 style="color:#ff0000;">${tmp.rank}</h1>
-		                                 <h3 style="color:white;">${tmp.movie_title}</h3>
+		                                 <h1 style="color:#ff0000;font-family:'NanumGothicBold';font-weight:bold;">${tmp.rank}위</h1>
+                                 		 <h3 style="color:white;font-family:'aCinemaL';">${tmp.movie_title}</h3>
 		                              </div>
 		                              <img class="img-fluid" src="${tmp.movie_img}" style="height:500px;">
 		                           </a>
@@ -86,8 +86,8 @@
                        	   <security:authorize access="isAuthenticated()">
                            <a href="${pageContext.request.contextPath}/movie/moviedetail?movie_code=${tmp.movie_code}" class="item-wrap fancybox">
                               <div class="work-info">
-                                 <h1 style="color:#ff0000;">${tmp.rank}</h1>
-                                 <h3 style="color:white;">${tmp.movie_title}</h3>
+                                 <h1 style="color:#ff0000;font-family:'NanumGothicBold';font-weight:bold;">${tmp.rank}위</h1>
+                                 <h3 style="color:white;font-family:'aCinemaL';">${tmp.movie_title}</h3>
                               </div>
                               <img class="img-fluid" src="${tmp.movie_img}" style="height:500px;">
                            </a>
