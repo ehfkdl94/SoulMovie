@@ -89,7 +89,7 @@
 				<tr>
 					<td>${tmp.brdno}</td>
 					<td>
-						<a href="/admin/boardcontent?no=${tmp.brdno}">${tmp.brdtitle}</a>
+						<a href="${pageContext.request.contextPath}/admin/boardcontent?no=${tmp.brdno}">${tmp.brdtitle}</a>
 					</td>
 					<td>${tmp.username}</td>
 					<td><fmt:formatNumber value="${tmp.brdhit}" pattern="#,###" /></td>

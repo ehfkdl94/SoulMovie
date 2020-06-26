@@ -138,7 +138,7 @@
 					cancelButtonText: '취소'
 				}).then((result) => {
 					if (result.value) {
-						window.location.href="/choice/delete?no=" + no;
+						window.location.href="${pageContext.request.contextPath}/choice/delete?no=" + no;
 					}
 				});
 			});			

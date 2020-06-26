@@ -93,7 +93,7 @@
                   </div>
                  </div>
                  <ul class="actions">
-					<button type="button" onclick="location.href='/admin/movie' ">List</button>
+					<button type="button" onclick="location.href='${pageContext.request.contextPath}/admin/movie' ">List</button>
 					
 				 </ul>
   </main>

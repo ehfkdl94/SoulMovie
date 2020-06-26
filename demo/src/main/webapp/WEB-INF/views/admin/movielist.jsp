@@ -87,7 +87,7 @@
 				<tr>
 					<td>${tmp.movie_code}</td>
 					<td>
-						<a href="/admin/moviecontent?no=${tmp.movie_code}">${tmp.movie_title}</a>
+						<a href="${pageContext.request.contextPath}/admin/moviecontent?no=${tmp.movie_code}">${tmp.movie_title}</a>
 					</td>
 					<td>
 						<c:set var="dt" value="${fn:split(tmp.movie_date, ' ')}" />

@@ -124,7 +124,7 @@
                                             
                               <li><i class="icofont-check-circled"></i><label for="usergender" >GENDER</label><br />
                            		            
-		                        <label><input type="radio" name= "usergender" id="usergender" value="Male">Male &nbsp; &nbsp;</label>
+		                        <label><input type="radio" name= "usergender" id="usergender" value="Male" checked>Male &nbsp; &nbsp;</label>
 		                        <label><input type="radio" name= "usergender" id="usergender" value="Female">Female</label>
 		                        </li>
 		                        
@@ -168,7 +168,7 @@
 						
 									if (unick.length >= 2){
 										//restcontroller를 호출해서 값을 받아옴
-										$.get('/member/rest/membernickcheck.json?usernick=' + unick,function(data){
+										$.get('${pageContext.request.contextPath}/member/rest/membernickcheck.json?usernick=' + unick,function(data){
 											console.log("GET", data);
 											//console.log("GET", data);  {"ret":1}  or {"ret":0}
 											if(data.ret == 1){
