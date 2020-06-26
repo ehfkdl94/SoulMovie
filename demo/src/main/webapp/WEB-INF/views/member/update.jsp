@@ -124,7 +124,7 @@
                                             
                               <li><i class="icofont-check-circled"></i><label for="usergender" >GENDER</label><br />
                            		            
-		                        <label><input type="radio" name= "usergender" id="usergender" value="Male">Male &nbsp; &nbsp;</label>
+		                        <label><input type="radio" name= "usergender" id="usergender" value="Male" checked>Male &nbsp; &nbsp;</label>
 		                        <label><input type="radio" name= "usergender" id="usergender" value="Female">Female</label>
 		                        </li>
 		                        
