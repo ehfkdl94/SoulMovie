@@ -162,7 +162,7 @@ public class BoardController {
 	         System.out.println("test");
 	       List<BoardVO> list3= new ArrayList<BoardVO>();
 	       System.out.println(list3.size()+"@@@@@");
-	       if(list3.size() != 0) {
+	       if(list2.size() != 0) {
 	       if( (int)Math.ceil(cnt/10.0) == page) {  //마지막페이지일경우에만
 	             
 	    	   if(cnt%10 ==0 )  {
