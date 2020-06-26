@@ -88,7 +88,7 @@
 				<tr>
 					<td>${tmp.cno}</td>
 					<td>
-						<a href="/admin/contactcontent?no=${tmp.cno}">${tmp.csubject}</a>
+						<a href="${pageContext.request.contextPath}/admin/contactcontent?no=${tmp.cno}">${tmp.csubject}</a>
 					</td>
 					<td>${tmp.cname}</td>
 					<td>${tmp.cemail}</td>

@@ -107,7 +107,7 @@
 		-->
 	</article>
 	<ul class="actions">
-		<button type="button" onclick="location.href='/admin/contact' ">List</button>
+		<button type="button" onclick="location.href='${pageContext.request.contextPath}/admin/contact' ">List</button>
 	</ul>
   </main>
 

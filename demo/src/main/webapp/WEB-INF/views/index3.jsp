@@ -44,19 +44,22 @@
   <section id="hero" class="d-flex align-items-center">
     <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
       <h1>Welcome to SoulMovie</h1>
-      <h2>We are team of talanted designers making websites with Bootstrap</h2>
       <a href="#rank" class="btn-get-started scrollto">Show Rank!</a>
     </div>
   </section><!-- End Hero -->
-
+	
   <main id="main">
-
     <!-- ======= About Section ======= -->
     <section id="rank" class="about" >
       <div class="hs-item" style="height:1200px;" >
+            <div style="padding-left:230px;margin-bottom:30px;">
+            	<h1 style="font-family:'raleway', san-selif;font-weight:bold;word-break:break-all;float:left;">RANK&nbsp;</h1>
+            <h1 style="font-family:'raleway', san-selif;font-weight:bold;color:#cc1616;">TOP6</h1>
+            </div>
             <div class="container" >
+            	
                <div style="margin-bottom: 250px;">
-                                    
+                   
                   <div id="portfolio-grid" class="row no-gutter" >
                      <c:forEach var="tmp" items="${list}" varStatus="i">
                      <div class="row" >
@@ -106,6 +109,7 @@
       <div class="container" >
         <div class="unslate_co--section section-counter" id="skills-section">
             <div class="row pt-5">
+              
               <div class="col-6 col-sm-6 mb-5 mb-lg-0 col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="0">
                 <div class="counter-v1 text-center">
                   <span class="number-wrap">

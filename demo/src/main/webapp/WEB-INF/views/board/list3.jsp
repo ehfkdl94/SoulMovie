@@ -49,7 +49,7 @@
         <br />
         <br />
         <br />
-          <h3 style="font-family:'PlayfairB';">Board</h3>          
+          <h3 style="font-family:'PlayfairB';">BOARD</h3>          
           
          
        </div>
@@ -100,7 +100,7 @@
 								<c:forEach var="tmp" items="${list}">
 									<tr>
 										<td>${tmp.ROWN}</td>
-										<td><a href="/board/content?no=${tmp.brdno}&bno=${tmp.ROWN}">${tmp.brdtitle}</a>
+										<td><a href="${pageContext.request.contextPath}/board/content?no=${tmp.brdno}&bno=${tmp.ROWN}">${tmp.brdtitle}</a>
 										</td>
 										<td>${tmp.username}</td>
 										<td><fmt:formatNumber value="${tmp.brdhit}"

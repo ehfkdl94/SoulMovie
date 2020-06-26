@@ -105,7 +105,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value = "/moviecontent", method = RequestMethod.GET)
-	public String moviecontent(Model model, HttpSession httpSession, 
+	public String moviecontent(Model model, HttpSession httpSession, HttpServletRequest request,
 			@RequestParam(value="no", defaultValue = "0", required = false) int no) {
 		if( no == 0) {
 			return "redirect:/admin/movie";
@@ -115,7 +115,7 @@ public class AdminController {
 		model.addAttribute("obj", obj);
 		
 	
-		return "/admin/moviecontent";
+		return request.getContextPath() + "/admin/moviecontent";
 	}
 	
 //	@RequestMapping(value = "/moviecontent", method = RequestMethod.GET)
@@ -179,7 +179,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value = "/boardcontent", method = RequestMethod.GET)
-	public String boardcontent(Model model, HttpSession httpSession, 
+	public String boardcontent(Model model, HttpSession httpSession, HttpServletRequest request,
 			@RequestParam(value="no", defaultValue = "0", required = false) int no) {
 		if( no == 0) {
 			return "redirect:/admin/board";
@@ -189,7 +189,7 @@ public class AdminController {
 		model.addAttribute("obj", obj);
 		
 	
-		return "/admin/boardcontent";
+		return request.getContextPath() +"/admin/boardcontent";
 	}
 	
 	@RequestMapping(value = "/boarddelete", method = RequestMethod.GET)

@@ -16,7 +16,7 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/cover/">
 
     <!-- Bootstrap core CSS -->
-<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -116,9 +116,9 @@
 		-->
 	</article>
 	<ul class="actions">
-		<button type="button" onclick="location.href='/admin/member' ">List</button>
-		<button type="button" onclick="location.href='/admin/memberupdate?no=${obj.userid}' ">update</button>
-		<button type="button" onclick="location.href='/admin/memberdelete?no=${obj.userid}' ">delete</button>
+		<button type="button" onclick="location.href='${pageContext.request.contextPath}/admin/member' ">List</button>
+		<button type="button" onclick="location.href='${pageContext.request.contextPath}/admin/memberupdate?no=${obj.userid}' ">update</button>
+		<button type="button" onclick="location.href='${pageContext.request.contextPath}/admin/memberdelete?no=${obj.userid}' ">delete</button>
 	</ul>
   </main>
 

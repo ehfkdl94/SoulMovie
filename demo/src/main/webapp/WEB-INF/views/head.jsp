@@ -36,13 +36,16 @@
           font-family:'aCinemaL';
           src:url("${pageContext.request.contextPath}/resources/fonts/aCinemaL.ttf")
        }
-  </style>
-  <style type="text/css">
        @FONT-FACE{
           font-family:'PlayfairB';
           src:url("${pageContext.request.contextPath}/resources/fonts/PlayfairDisplay-Bold.ttf")
        }
+       @FONT-FACE{
+          font-family:'NanumGothicBold';
+          src:url("${pageContext.request.contextPath}/resources/fonts/NanumGothicBold.ttf")
+       }
   </style>
+  
   
 
   <!-- =======================================================
