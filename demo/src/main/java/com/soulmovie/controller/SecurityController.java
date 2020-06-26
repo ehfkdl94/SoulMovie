@@ -89,9 +89,10 @@ public class SecurityController {
 			String referer = request.getHeader("Referer");
 			System.err.println();
 			System.out.println(referer);
+			if (referer !=null) {
 			if(!referer.substring(referer.length()-12, referer.length()).equals("/member/edit")    )
 				request.getSession().setAttribute("prevPage", referer);
-			
+			}
 
 			
 			return request.getContextPath()+"/member/login";
