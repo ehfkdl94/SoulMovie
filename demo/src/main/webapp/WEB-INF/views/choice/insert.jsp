@@ -241,7 +241,8 @@
 				document.getElementById('byteInfo').innerText = rbyte;
 			}
 		}
-
+	</script>
+	<script type="text/javascript">
 		$(function(){
 			//수정 버튼이 클릭되면
 			$('.contact').click(function(){
@@ -249,7 +250,6 @@
 				$('#exampleModal').modal('show');
 			})		
 	</script>
-	
 	<%@include file="/WEB-INF/views/footer.jsp"%>
 	
 </body>
