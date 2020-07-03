@@ -85,8 +85,9 @@
 								<td colspan="5">검색결과가 없습니다.</td>
 							</tr>
 							<tr>
-								<td colspan="5">찾으시는 영화가 없으신가요? 저희에게 알려주세요!<br />
-								<a href="${pageContext.request.contextPath}/contact" class="btn btn-danger" >문의하기</a></td>
+								<td colspan="5">찾으시는 영화가 없으신가요? 저희에게 알려주세요!<br />								
+								<button type="button" class="btn btn-danger contact" data-toggle="modal" data-target="#exampleModal">문의하기</button>
+								</td>
 							</tr>
 						</c:if>
 						<c:if test="${list eq '@@@@초기값'}">
@@ -167,6 +168,42 @@
 		</div>
 	</div>
     </section>	
+    
+   <!-- modal --> 
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel" style="font-family:'YDHB';">문의하기</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body" style="font-family:aCinemaL;">
+	        <form action="${pageContext.request.contextPath}/contact1" method="post" role="form">
+	          <div class="form-group">
+	            <label for="name" class="col-form-label">이름:</label>
+	            <input type="text" name="cname" class="form-control" id="name" style="color:#000000;">
+	          </div>
+	          <div class="form-group">
+	            <label for="email" class="col-form-label">이메일:</label>
+	            <input type="text" name="cemail" class="form-control" id="email" style="color:#000000;">
+	          </div>
+	          <div class="form-group">
+	            <label for="subject" class="col-form-label">제목:</label>
+	            <input type="text" name="csubject" class="form-control" id="subject" style="color:#000000;">
+	          </div>
+	          <div class="form-group">
+	            <label for="message-text" class="col-form-label">내용:</label>
+	            <textarea class="form-control" name="cmessage" rows="5" data-rule="required" id="message-text" style="color:#000000;"></textarea>
+	          </div>
+	          <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+	          <button type="submit" class="btn btn-danger">보내기</button>	       	  
+	        </form>
+	      </div>	      
+	    </div>
+	  </div>
+	</div>
 
 	<script
 		src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"
@@ -203,7 +240,14 @@
 			} else {
 				document.getElementById('byteInfo').innerText = rbyte;
 			}
-		}		
+		}
+
+		$(function(){
+			//수정 버튼이 클릭되면
+			$('.contact').click(function(){
+				//class가 modal인 것을 찾아서 화면에 표시
+				$('#exampleModal').modal('show');
+			})		
 	</script>
 	
 	<%@include file="/WEB-INF/views/footer.jsp"%>

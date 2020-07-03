@@ -44,6 +44,10 @@
           font-family:'NanumGothicBold';
           src:url("${pageContext.request.contextPath}/resources/fonts/NanumGothicBold.ttf")
        }
+       @FONT-FACE{
+       font-family:'YDHB';
+       src:url("${pageContext.request.contextPath}/resources/fonts/YOONDAEHANB.TTF")
+       }
   </style>
   
   

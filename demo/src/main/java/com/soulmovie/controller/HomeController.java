@@ -58,6 +58,12 @@ public class HomeController {
 		return "redirect:" + request.getContextPath() + "/contact";
 	}
 	
+	@RequestMapping(value="/contact1", method=RequestMethod.POST)
+	public String contactpost1(HttpServletRequest request, @ModelAttribute ContactVO obj) {
+		cMapper.insertContact(obj);
+		return "redirect:" + request.getContextPath() + "/choice/insert";
+	}
+	
 //	@RequestMapping(value="getimg")
 //	public ResponseEntity<byte[]> getimg(@RequestParam("no")int no, Model model){
 //		MovieVO obj = hDAO.selectBoardImg(no);
