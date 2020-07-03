@@ -84,6 +84,10 @@
 							<tr>
 								<td colspan="5">검색결과가 없습니다.</td>
 							</tr>
+							<tr>
+								<td colspan="5">찾으시는 영화가 없으신가요? 저희에게 알려주세요!<br />
+								<a href="${pageContext.request.contextPath}/contact" class="btn btn-danger" >문의하기</a></td>
+							</tr>
 						</c:if>
 						<c:if test="${list eq '@@@@초기값'}">
 						</c:if>
