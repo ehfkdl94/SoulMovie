@@ -20,13 +20,20 @@
 		INSERT INTO LIKEBOARD(BRDNO, USERID, LNO,LIKEDATE)
 		VALUES (#{brdno}, #{userid}, 1  ,SYSDATE) 
 	</insert>
+	<insert id="insertBoardChat" parameterType="com.soulmovie.vo.BoardChatVO">
+		INSERT INTO BOARDCHAT(NO, USERID, USERNICK, CONTENT, CREATEDATE, BRDNO,USERNAME, BRDNUMBER)
+		VALUES (SEQ_BOARDCHAT_NO.NEXTVAL,#{userid},#{usernick},#{content}, SYSDATE,#{brdno},#{username},#{brdnumber}) 
+	</insert>
+	
 	<select id="selecttLikeBoard" parameterType="com.soulmovie.vo.BoardVO" resultType="int">
 		SELECT COUNT(*) FROM LIKEBOARD WHERE USERID=#{userid} AND BRDNO=#{brdno}
 	</select>
 	<select id="LikeCheck" parameterType="com.soulmovie.vo.BoardVO" resultType="int">
 		SELECT LNO FROM LIKEBOARD WHERE USERID=#{userid} AND BRDNO=#{brdno}
 	</select>
-	
+	<select id="selectChat" parameterType="int" resultType="com.soulmovie.vo.BoardChatVO">
+	  SELECT * FROM BOARDCHAT WHERE BRDNO= #{no}
+	</select>
 	<select id="selectList" parameterType="map" resultType="com.soulmovie.vo.BoardVO">
 
     
@@ -88,6 +95,9 @@
 	</update>
 	<delete id="deleteBoard" parameterType="com.soulmovie.vo.BoardVO">
 		DELETE FROM BOARD WHERE BRDNO = #{brdno}
+	</delete>
+	<delete id="deleteBoardChat" parameterType="int">
+		DELETE FROM BOARDCHAT WHERE NO = #{no}
 	</delete>
 	<delete id="deleteLikeBoard" parameterType="com.soulmovie.vo.BoardVO">
 		DELETE FROM LIKEBOARD WHERE BRDNO=#{brdno}

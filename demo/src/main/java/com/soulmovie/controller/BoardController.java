@@ -29,8 +29,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
 import com.soulmovie.dao.BoardDAO;
+import com.soulmovie.dao.MemberDAO;
 import com.soulmovie.mapper.UserMapper;
+import com.soulmovie.vo.BoardChatVO;
 import com.soulmovie.vo.BoardVO;
+import com.soulmovie.vo.MemberVO;
 
 @Controller
 @RequestMapping(value = "/board")
@@ -39,6 +42,8 @@ public class BoardController {
 	public UserMapper uMapper;
 	@Autowired
 	private BoardDAO bDAO =null;
+	@Autowired
+	private MemberDAO mDAO =null;
 	
 	
 	@RequestMapping(value = "/insert", method = RequestMethod.GET)
@@ -50,9 +55,51 @@ public class BoardController {
 //		}
 //		그렇지 않다면 게시판 글쓰기 화면 표시
 //		model.addAttribute("userid", userid);
+		
 		return request.getContextPath()+"/board/insert2";
 	}
+	@RequestMapping(value = "/insertChat", method = RequestMethod.POST)
+	public String insertBoardChat(HttpSession httpSession, Model model, HttpServletRequest request 
+			,@ModelAttribute BoardChatVO obj) {
+		//세션에서 로그인한 사용자의 아이디값을 가져옴.
+//		String userid = (String)httpSession.getAttribute("SESSION_ID");
+//		if(userid == null) { //아이디값이 없다면 로그인되지 않은 상태
+//			return request.getContextPath()+"redirect:/member/login"; //로그인 페이지로 이동
+//		}
+//		그렇지 않다면 게시판 글쓰기 화면 표시
+//		model.addAttribute("userid", userid);	 
+		
+		MemberVO a =mDAO.boardChatMember(obj.getUsername());
+		System.out.println(a.getUserid() +"id");
+		System.out.println(a.getUsernick()+"닉네임");
+		System.out.println(obj.getContent().length()+"길이");
+		obj.setUserid(a.getUserid());
+		obj.setUsernick(a.getUsernick());
 	
+		if( obj.getContent().length()>0) {
+		bDAO.insertBoardChat(obj);
+		}
+
+		return "redirect:" + request.getContextPath() + "/board/content?no="+obj.getBrdno()+"&bno="+obj.getBrdnumber();
+	}
+	@RequestMapping(value = "/deleteChat", method = RequestMethod.POST)
+	public String 	deleteBoardChat(HttpSession httpSession, Model model, HttpServletRequest request 
+			,@ModelAttribute BoardChatVO obj) {
+		//세션에서 로그인한 사용자의 아이디값을 가져옴.
+//		String userid = (String)httpSession.getAttribute("SESSION_ID");
+//		if(userid == null) { //아이디값이 없다면 로그인되지 않은 상태
+//			return request.getContextPath()+"redirect:/member/login"; //로그인 페이지로 이동
+//		}
+//		그렇지 않다면 게시판 글쓰기 화면 표시
+//		model.addAttribute("userid", userid);	 
+		
+	    //System.out.println(obj.toString());   
+	    bDAO.deleteBoardChat((int)obj.getNo());
+		
+      
+		return "redirect:" + request.getContextPath() + "/board/content?no="+obj.getBrdno()+"&bno="+obj.getBrdnumber();
+	}
+
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public String insertBoardPost(@ModelAttribute BoardVO obj, HttpServletRequest request) throws IOException {
 		int userid=bDAO.selectuserid(obj.getUsername());  //로그인 한 코드를 들고옴
@@ -72,16 +119,18 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/content", method = RequestMethod.GET)
-	public String content(Model model, HttpSession httpSession, HttpServletRequest request,
+	public String content(Model model, HttpSession httpSession, HttpServletRequest request, Authentication auth
+			,
 			@RequestParam(value="no", defaultValue = "0", required = false) int no,
 			@RequestParam(value="bno")int bno ,
-			HttpServletRequest req, Authentication auth) {
+			HttpServletRequest req) {
 		User user = (User)auth.getPrincipal();
 		String username = user.getUsername();
 		int userid = uMapper.findUserid(username);
 		BoardVO obj2 = bDAO.selectBoardOne(no);
 		obj2.setUserid(userid);
 		int likeCheck = bDAO.LikeCheck(obj2);
+		
 		System.out.println(likeCheck +"likeCheck");
 		model.addAttribute("LikeCheck",likeCheck);
 		
@@ -121,7 +170,14 @@ public class BoardController {
 		
 		int n = bDAO.selectBoardNext(no); 
 		model.addAttribute("next", n);
-		
+	 //board chat 값 넣어주기
+		System.out.println(no+"@@@@@@");
+		List<BoardChatVO> a =bDAO.selectChat(no);
+		model.addAttribute("chat", a);
+		User user1 = (User)auth.getPrincipal();
+		String username1 = user.getUsername();
+		System.out.println(username1);
+		model.addAttribute("userid2",username1);
 		return request.getContextPath()+"/board/content2";
 	}
 
@@ -222,6 +278,7 @@ public class BoardController {
 			@ModelAttribute BoardVO obj 
 			,RedirectAttributes redirectAttributes ,Authentication auth) throws IOException {  //변수명 == <input name="img"
 		//이미지는 수동으로 obj에 추가함.
+		
 		User user = (User)auth.getPrincipal();
 		String username = user.getUsername();
 		int userid = uMapper.findUserid(username);

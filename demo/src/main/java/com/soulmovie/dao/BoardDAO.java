@@ -1,7 +1,6 @@
 package com.soulmovie.dao;
 
 import java.util.HashMap;
-
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -9,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.soulmovie.vo.BoardChatVO;
 import com.soulmovie.vo.BoardVO;
 
 @Service
@@ -18,6 +18,15 @@ public class BoardDAO {
 	@Autowired 
 	private SqlSessionFactory sqlFactory = null;
 	
+	
+	public List<BoardChatVO> selectChat(int no) {
+		return sqlFactory.openSession().selectList("Board.selectChat", no);
+	}
+	public int insertBoardChat(BoardChatVO obj) {
+		System.out.println(obj.toString()+"오비제이");
+		
+		return sqlFactory.openSession().insert("Board.insertBoardChat", obj);
+	}
 	public int insertBoard(BoardVO obj) {
 		return sqlFactory.openSession().insert("Board.insertBoard", obj);
 	}
@@ -82,7 +91,9 @@ public class BoardDAO {
 	public int deleteBoard(BoardVO obj) {
 		return sqlFactory.openSession().delete("Board.deleteBoard", obj);
 	}
-	
+	public int deleteBoardChat(int no) {
+		return sqlFactory.openSession().delete("Board.deleteBoardChat", no);
+	}
 	public int deleteLikeBoard(BoardVO obj) {
 		return sqlFactory.openSession().delete("Board.deleteLikeBoard", obj);
 	}

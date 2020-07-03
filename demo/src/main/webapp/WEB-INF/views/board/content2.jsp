@@ -103,8 +103,8 @@
       </div>
       
     </section>
-	<main id="main">
-    <section id="contact" class="contact">
+	<main id="main" >
+    <section id="contact" class="contact" style="height:2000px;">
     	<div class="section-title" >
           <span>Content</span>
           <h2>Content</h2>
@@ -161,8 +161,45 @@
               </div>
               </div>
             </form>
-       
+            <label for="content">댓글</label>
+       		<c:forEach var="tmp" items="${chat}">		    
+                <div class="col-md-8 form-group">
+               <form action="${pageContext.request.contextPath}/board/deleteChat" method="post" style="box-sizing: content-box;">
+        		<input type="hidden" class="form-control" style="color:#000000;" name="brdno" value="${obj.brdno}" />
+              	<input type="hidden" name="brdnumber" value="${obj.brdnumber}" />
+              	<input type="hidden" class="form-control" style="color:#000000;" name="username" value="<security:authentication property="name"/>"readonly />
+                <input type="hidden" class="form-control" style="color:#000000;" name="no" value="${tmp.no }" />
+                
+              	 <input type="text" class="form-control" style="color:#000000;" name="username" value="${tmp.usernick }" readonly/>
+                <textarea class="form-control" style="color:#000000;" name="brdcontent" rows="5" data-rule="required" readonly>${tmp.content}</textarea>
+                
+                <div class="validate"></div>
+                 
+                 <c:if test="${tmp.username eq userid2}"> 
+                <button type="submit" class="btn btn-sm btn-success" style="background-color:#ffff; color:#ff0000;">Delete</button>
+               </c:if> 
+               </form>
+                </div>
+          </c:forEach>
+           <form action="${pageContext.request.contextPath}/board/insertChat" method="post" style="box-sizing: content-box;">
+              <div class="form-row">           
+              <div class="col-md-8 form-group">
+              	<label for="content">댓글달기</label>
+              	<input type="hidden" class="form-control" style="color:#000000;" name="brdno" value="${obj.brdno}" />
+              	<input type="hidden" name="brdnumber" value="${obj.brdnumber}" />
+              	<input type="hidden" class="form-control" style="color:#000000;" name="username" value="<security:authentication property="name"/>"readonly />
+              	
+                <textarea class="form-control" name="content" style="color:#000000;" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Please enter your details"></textarea>
+                <div class="validate"></div>
+              </div>
+              </div>
+              
+              <div class="text">
+              <button type="submit" class="btn btn-sm btn-success" style="background-color:#ffff; color:#ff0000;">Save</button>      
+              </div>
+            </form>
 					<security:authentication property="name" var="uid" />
+					
 				<c:if test="${prev != 0}">
 					<a
 						href="${pageContext.request.contextPath}/board/content?no=${prev}&bno=${obj.brdnumber-1}"
@@ -195,6 +232,7 @@
 
 
         </div>
+        
 
     </section>
      

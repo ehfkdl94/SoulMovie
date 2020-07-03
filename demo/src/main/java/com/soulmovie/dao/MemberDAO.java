@@ -19,6 +19,7 @@ public class MemberDAO {
 	private SqlSessionFactory sqlFactory = null;
 	
 	
+	
 	public List<MemberVO> selectMember(HashMap<String, Object> map) {
 		return sqlFactory.openSession().selectList("Member.selectList", map);
 	}
@@ -34,7 +35,9 @@ public class MemberDAO {
 	public int findId(String username) {
 		return sqlFactory.openSession().selectOne("Member.findId", username);
 	}
-	
+	public MemberVO boardChatMember(String username) {
+		return sqlFactory.openSession().selectOne("Member.boardChatMember", username);
+	}
 	public int updateMember(MemberVO obj) {
 		return sqlFactory.openSession().update("Member.updateMemberOne", obj);
 	}
