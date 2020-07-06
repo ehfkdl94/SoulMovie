@@ -65,7 +65,7 @@
 		Views : ${obj.brdhit}
 		Date :<c:set var="dt" value="${fn:split(obj.brddate, ' ')}" />
 			${dt[0]}<br/> 	
-          <form action="/board/update" method="post" style="box-sizing: content-box;">
+          <form action="${pageContext.request.contextPath}/board/update" method="post" style="box-sizing: content-box;">
           	<input type="hidden" value="${obj.brdno}" style="color:#000000;" name="brdno"/>
               <div class="form-row">                
                 <div class="col-md-8 form-group">

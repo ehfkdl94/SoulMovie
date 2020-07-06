@@ -41,18 +41,18 @@ public class AdminController {
 	private ContactMapper cMapper = null;
 	
 	@RequestMapping(value="/test")
-	public String test(HttpServletRequest request) {
-		return request.getContextPath() + "/admin/boardcontent2";
+	public String test() {
+		return "/admin/boardcontent2";
 	}
 	
 	@RequestMapping(value="/home")
-	public String home(HttpServletRequest request) {
-		return request.getContextPath() + "/admin/home";
+	public String home() {
+		return "/admin/home";
 	}
 	
 	@RequestMapping(value="/login", method=RequestMethod.GET)
-	public String login(HttpServletRequest request) {
-		return request.getContextPath() + "/admin/login";
+	public String login() {
+		return "/admin/login";
 	}
 	
 //	@RequestMapping(value="/login", method=RequestMethod.POST)
@@ -74,7 +74,7 @@ public class AdminController {
 			@RequestParam(value="page", defaultValue="0", required=false) int page,
 			@RequestParam(value="text", defaultValue="", required=false) String text) {
 		if(page==0) {
-			return "redirect:"+request.getContextPath()+"/admin/movie?page=1";
+			return "redirect:/admin/movie?page=1";
 		}
 
 		
@@ -101,7 +101,7 @@ public class AdminController {
 		}
 		model.addAttribute("movepage",movepage );
 		model.addAttribute("allpage",allpage );
-		return request.getContextPath() +"/admin/movielist";
+		return "/admin/movielist";
 	}
 	
 	@RequestMapping(value = "/moviecontent", method = RequestMethod.GET)
@@ -115,7 +115,7 @@ public class AdminController {
 		model.addAttribute("obj", obj);
 		
 	
-		return request.getContextPath() + "/admin/moviecontent";
+		return "/admin/moviecontent";
 	}
 	
 //	@RequestMapping(value = "/moviecontent", method = RequestMethod.GET)
@@ -150,10 +150,10 @@ public class AdminController {
 		int ret = mDAO.deleteMovie(obj);  
 		
 		if(ret > 0) {  //성공하면 목록화면 으로
-			return "redirect:" + request.getContextPath() + "/admin/movie";
+			return "redirect:/admin/movie";
 		}
 		//실패하면 이전화면 즉, 상세화면으로
-		return "redirect:" + request.getContextPath() + "/admin/moviecontent?no=" + no;
+		return "redirect:/admin/moviecontent?no=" + no;
 	}
 	
 	@RequestMapping(value="/board", method=RequestMethod.GET)
@@ -162,7 +162,7 @@ public class AdminController {
 			@RequestParam(value="page", defaultValue="0", required=false) int page,
 			@RequestParam(value="text", defaultValue="", required=false) String text) {
 		if(page==0) {
-			return "redirect:"+request.getContextPath()+"/admin/board?page=1";
+			return "redirect:/admin/board?page=1";
 		}
 
 		
@@ -175,7 +175,7 @@ public class AdminController {
 		int cnt = bDAO.countBoard(text);
 		model.addAttribute("list", list);
 		model.addAttribute("cnt", (int)Math.ceil(cnt/7.0));
-		return request.getContextPath() +"/admin/boardlist";
+		return "/admin/boardlist";
 	}
 	
 	@RequestMapping(value = "/boardcontent", method = RequestMethod.GET)
@@ -189,7 +189,7 @@ public class AdminController {
 		model.addAttribute("obj", obj);
 		
 	
-		return request.getContextPath() +"/admin/boardcontent";
+		return "/admin/boardcontent";
 	}
 	
 	@RequestMapping(value = "/boarddelete", method = RequestMethod.GET)
@@ -201,14 +201,14 @@ public class AdminController {
 		int ret = bDAO.deleteBoard(obj);  
 		
 		if(ret > 0) {  //성공하면 목록화면 으로
-			return "redirect:" + request.getContextPath() + "/admin/board";
+			return "redirect:/admin/board";
 		}
 		//실패하면 이전화면 즉, 상세화면으로
-		return "redirect:" + request.getContextPath() + "/admin/boardcontent?no=" + no;
+		return "redirect:/admin/boardcontent?no=" + no;
 	}
 	
 	@RequestMapping(value = "/boardinsert", method = RequestMethod.GET)
-	public String boardinsert(HttpSession httpSession, Model model, HttpServletRequest request) {
+	public String boardinsert(HttpSession httpSession, Model model) {
 		//세션에서 로그인한 사용자의 아이디값을 가져옴.
 //		String userid = (String)httpSession.getAttribute("SESSION_ID");
 //		if(userid == null) { //아이디값이 없다면 로그인되지 않은 상태
@@ -216,7 +216,7 @@ public class AdminController {
 //		}
 		//그렇지 않다면 게시판 글쓰기 화면 표시
 //		model.addAttribute("userid", userid);
-		return request.getContextPath()+"/admin/boardinsert";
+		return "/admin/boardinsert";
 	}
 	
 	@RequestMapping(value = "/boardinsert", method = RequestMethod.POST)
@@ -227,14 +227,14 @@ public class AdminController {
 		//DAO로 obj값 전달하기
 		bDAO.insertBoard(obj);
 		
-		return "redirect:"+request.getContextPath()+"/admin/board";
+		return "redirect:/admin/board";
 	}
 	
 	@RequestMapping(value="/boardupdate")
-	public String boardupdate(Model model, HttpServletRequest request, @RequestParam(value="no")int no) {
+	public String boardupdate(Model model, @RequestParam(value="no")int no) {
 		BoardVO obj = bDAO.selectBoardOne(no);
 		model.addAttribute("obj", obj);
-		return request.getContextPath() + "/admin/boardupdate";
+		return "/admin/boardupdate";
 	}
 	
 	@RequestMapping(value="/boardupdate", method=RequestMethod.POST)
@@ -246,7 +246,7 @@ public class AdminController {
 	
 		bDAO.updateBoard(obj);
 		
-		return "redirect:" + request.getContextPath() + "/admin/board";
+		return "redirect:/admin/board";
 		
 	}
 	
@@ -256,7 +256,7 @@ public class AdminController {
 			@RequestParam(value="page", defaultValue="0", required=false) int page,
 			@RequestParam(value="text", defaultValue="", required=false) String text) {
 		if(page==0) {
-			return "redirect:"+request.getContextPath()+"/admin/member?page=1";
+			return "redirect:/admin/member?page=1";
 		}
 
 		
@@ -269,28 +269,28 @@ public class AdminController {
 		int cnt = memberDAO.countMember(text);
 		model.addAttribute("list", list);
 		model.addAttribute("cnt", (int)Math.ceil(cnt/7.0));
-		return request.getContextPath() +"/admin/memberlist";
+		return "/admin/memberlist";
 	}
 	
 	@RequestMapping(value = "/membercontent", method = RequestMethod.GET)
 	public String membercontent(Model model, HttpSession httpSession, HttpServletRequest request,
 			@RequestParam(value="no", defaultValue = "0", required = false) int no) {
 		if( no == 0) {
-			return "redirect:"+request.getContextPath()+"/admin/member";
+			return "redirect:/admin/member";
 		}
 		
 		MemberVO obj = memberDAO.selectMemberOne(no);
 		model.addAttribute("obj", obj);
 		
 	
-		return request.getContextPath() + "/admin/membercontent";
+		return "/admin/membercontent";
 	}
 	
 	@RequestMapping(value="/memberupdate")
-	public String memberupdate(Model model, HttpServletRequest request, @RequestParam(value="no")int no) {
+	public String memberupdate(Model model, @RequestParam(value="no")int no) {
 		MemberVO obj = memberDAO.selectMemberOne(no);
 		model.addAttribute("obj", obj);
-		return request.getContextPath() + "/admin/memberupdate";
+		return "/admin/memberupdate";
 	}
 	
 	@RequestMapping(value="/memberupdate", method=RequestMethod.POST)
@@ -300,7 +300,7 @@ public class AdminController {
 
 		memberDAO.updateMember(obj);
 		
-		return "redirect:" + request.getContextPath() + "/admin/member";
+		return "redirect:/admin/member";
 		
 	}
 	
@@ -310,7 +310,7 @@ public class AdminController {
 			@RequestParam(value="page", defaultValue="0", required=false) int page,
 			@RequestParam(value="text", defaultValue="", required=false) String text) {
 		if(page==0) {
-			return "redirect:"+request.getContextPath()+"/admin/contact?page=1";
+			return "redirect:/admin/contact?page=1";
 		}
 
 		
@@ -323,20 +323,20 @@ public class AdminController {
 		int cnt = cMapper.countContact(text);
 		model.addAttribute("list", list);
 		model.addAttribute("cnt", (int)Math.ceil(cnt/7.0));
-		return request.getContextPath() +"/admin/contactlist";
+		return "/admin/contactlist";
 	}
 	
 	@RequestMapping(value = "/contactcontent", method = RequestMethod.GET)
 	public String contactcontent(Model model, HttpSession httpSession, HttpServletRequest request,
 			@RequestParam(value="no", defaultValue = "0", required = false) int no) {
 		if( no == 0) {
-			return "redirect:"+request.getContextPath()+"/admin/contact";
+			return "redirect:/admin/contact";
 		}
 		
 		ContactVO obj = cMapper.selectContactOne(no);
 		model.addAttribute("obj", obj);
 		
 	
-		return request.getContextPath() + "/admin/contactcontent";
+		return "/admin/contactcontent";
 	}
 }

@@ -26,7 +26,7 @@ public class MovieController {
 	@Autowired
 	UserMapper uMapper = null;
 	@RequestMapping(value = "/moviedetail", method = RequestMethod.GET)
-	public String moviedetail(HttpServletRequest request,
+	public String moviedetail(
 			@RequestParam(value="movie_code", defaultValue="1",required= false) int movie_code
 			,Model model) {
 		
@@ -59,7 +59,7 @@ public class MovieController {
 		
 		model.addAttribute("review", review);
 		
-		return request.getContextPath()+"/movie/moviedetail";
+		return "/movie/moviedetail";
 	}
 	@RequestMapping(value = "/movielist", method = RequestMethod.GET)
 	public String movielist(HttpServletRequest request, 
@@ -71,7 +71,7 @@ public class MovieController {
 			Model model) {
 		System.out.println(category);
 		if(page == 0) {
-			return "redirect:" + request.getContextPath() + "/movie/movielist?page=1"; 
+			return "redirect:/movie/movielist?page=1"; 
 		}
 		
 		HashMap<String, Object> map = new HashMap<String, Object>();
@@ -131,7 +131,7 @@ public class MovieController {
 		model.addAttribute("end",end );
 		model.addAttribute("allpage",allpage);
 		
-		return request.getContextPath()+"/movie/movielist";
+		return "/movie/movielist";
 	}
 	
 	

@@ -60,7 +60,7 @@
           <h2>Insert</h2>
         </div>  
       <div class="container" style="height:600px; margin-top:10px;margin-left:400px;">
-	         <form action="/board/insert" method="post" style="box-sizing: content-box;">
+	         <form action="${pageContext.request.contextPath}/board/insert" method="post" style="box-sizing: content-box;">
               <div class="form-row">           
               <div class="col-md-8 form-group">
                   <label for="reg_id">Writer</label>

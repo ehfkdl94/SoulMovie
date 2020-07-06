@@ -61,7 +61,7 @@ public class ChoiceController {
 		}
 
 		if(text == null && chk== null ) {
-			return "redirect:"+request.getContextPath()+"/choice/insert?text=&chk=";
+			return "redirect:/choice/insert?text=&chk=";
 		}
 		if (text.equals("")) {
 			String list = "@@@@초기값";
@@ -77,7 +77,7 @@ public class ChoiceController {
 			String title = mMapper.findMovieTitle(chk);
 			model.addAttribute("movie_title", title);
 		}
-		return request.getContextPath() + "/choice/insert";
+		return "/choice/insert";
 		}
 	
 	
@@ -95,11 +95,11 @@ public class ChoiceController {
 				mMapper.addMovieCnt(code);
 			}
 		}
-		return "redirect:" + request.getContextPath() + "/choice/list";
+		return "redirect:/choice/list";
 	}
 	
 	@RequestMapping(value="/list", method=RequestMethod.GET)
-	public String selectlist(HttpServletRequest request, Authentication auth, Model model) {
+	public String selectlist(Authentication auth, Model model) {
 		if(auth != null) {
 			User user = (User)auth.getPrincipal();
 			if(user != null) {
@@ -121,7 +121,7 @@ public class ChoiceController {
 			System.out.println("security auth null");
 		}
 		
-		return request.getContextPath() + "/choice/list";
+		return "/choice/list";
 	}
 	
 //	@RequestMapping(value="/getimg")
@@ -150,7 +150,7 @@ public class ChoiceController {
 //	}
 	
 	@RequestMapping(value = "/update", method=RequestMethod.GET)
-	public String update(HttpServletRequest request, Model model, @RequestParam(value="no", defaultValue="0") int no) {		
+	public String update(Model model, @RequestParam(value="no", defaultValue="0") int no) {		
 //		System.out.println(no);
 		ChoiceVO obj = cMapper.selectChoice(no);
 		String str = cMapper.selectMovieTitle(obj.getChoice_code());
@@ -158,14 +158,14 @@ public class ChoiceController {
 		model.addAttribute("obj", obj);
 		model.addAttribute("movie_title", str);
 		
-		return request.getContextPath() + "choice/update";
+		return "choice/update";
 		
 	}
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String update(HttpServletRequest request, @ModelAttribute ChoiceVO obj){
 //		System.out.println(obj);
 		cMapper.updateChoice(obj);		
-		return "redirect:" + request.getContextPath() + "/choice/list";
+		return "redirect:/choice/list";
 	}
 	
 	@RequestMapping(value = "/delete")
@@ -177,6 +177,6 @@ public class ChoiceController {
 			uMapper.deleteUserCcnt(id);	
 			mMapper.deleteMovieCnt(code);
 		}
-		return "redirect:" + request.getContextPath() + "/choice/list";
+		return "redirect:/choice/list";
 	}
 }

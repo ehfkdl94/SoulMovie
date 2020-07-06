@@ -28,20 +28,20 @@ public class SecurityController {
 		
 		
 		@RequestMapping(value = "/home", method = RequestMethod.GET) //테스트용
-		public String home1(HttpServletRequest request) {
+		public String home1() {
 			
-			return request.getContextPath()+"/home";
+			return "/home";
 		}
 		
 		
 		@RequestMapping(value = "/join", method = RequestMethod.GET)
 		public String join(HttpServletRequest request, Authentication auth) {
 			if(auth != null) {
-				return "redirect:"+request.getContextPath()+"/";
+				return "redirect:/";
 				}
 		
 			
-			return request.getContextPath()+"/member/join";
+			return "/member/join";
 		}
 		
 		
@@ -58,7 +58,7 @@ public class SecurityController {
 			
 			userMapper.insertMember(obj);
 					
-			return "redirect:"+request.getContextPath()+"/member/welcome";
+			return "redirect:/member/welcome";
 			
 		}
 		
@@ -72,10 +72,10 @@ public class SecurityController {
 
 
 				
-				return "redirect:"+request.getContextPath()+"/";
+				return "redirect:/";
 				}
 			
-			return request.getContextPath()+"/member/welcome";
+			return "/member/welcome";
 		}
 		
 		
@@ -83,7 +83,7 @@ public class SecurityController {
 		@RequestMapping(value = "/login", method = RequestMethod.GET)
 		public String login(HttpServletRequest request, Authentication auth) {
 			if(auth != null) {
-			return "redirect:"+request.getContextPath()+"/";
+			return "redirect:/";
 			}
 		
 			String referer = request.getHeader("Referer");
@@ -95,7 +95,7 @@ public class SecurityController {
 			}
 
 			
-			return request.getContextPath()+"/member/login";
+			return "/member/login";
 	
 		}
 		
@@ -120,7 +120,7 @@ public class SecurityController {
 							
 				}
 					
-			return request.getContextPath()+"/member/mypage";
+			return "/member/mypage";
 			}
 		
 		
@@ -138,7 +138,7 @@ public class SecurityController {
 							
 				}
 
-			return request.getContextPath()+"/member/update";
+			return "/member/update";
 		}
 		
 		
@@ -155,7 +155,7 @@ public class SecurityController {
 
 			userMapper.updateMember(obj);
 			
-			return "redirect:" + request.getContextPath() + "/member/mypage";
+			return "redirect:/member/mypage";
 		}
 		
 		
@@ -163,9 +163,44 @@ public class SecurityController {
 		public String edit( Model model,HttpServletRequest request ){
 		    //jsp로 값을 전달함.
 		    model.addAttribute("msg", "로그인 실패"); 
-		    model.addAttribute("url", request.getContextPath()+"/member/login"); 
+		    model.addAttribute("url", "/member/login"); 
 		    //jsp를 화면에 표시함.
-		    return request.getContextPath()+"alert"; 
+		    return "alert"; 
+		}
+		
+		
+		@RequestMapping(value = "/p_update", method = RequestMethod.GET)
+		public String pupdate(HttpServletRequest request, Authentication auth,
+				Model model) {
+			if(auth != null) {
+				User user = (User)auth.getPrincipal();
+
+				if(user != null) {
+				String username = user.getUsername();		
+				UserVo obj = userMapper.findByUsername(username);
+				model.addAttribute("obj", obj);
+					}			
+							
+				}
+
+			return "/member/p_update";
+		}
+		
+		
+
+		@RequestMapping(value = "/p_update", method = RequestMethod.POST)
+		public String pupdatepost(@ModelAttribute UserVo obj, HttpServletRequest request)  { 
+			System.out.println(obj.toString());
+			System.out.println(obj.getUserrname());
+			
+			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		
+			String str1 = passwordEncoder.encode(obj.getPassword());
+			obj.setPassword(str1);
+
+			userMapper.updateUserPassword(obj);
+			
+			return "redirect:/member/mypage";
 		}
 			
 				

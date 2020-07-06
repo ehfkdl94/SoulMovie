@@ -47,7 +47,7 @@ public class BoardController {
    
    
    @RequestMapping(value = "/insert", method = RequestMethod.GET)
-   public String insertBoard(HttpSession httpSession, Model model, HttpServletRequest request) {
+   public String insertBoard(HttpSession httpSession, Model model) {
       //세션에서 로그인한 사용자의 아이디값을 가져옴.
 //      String userid = (String)httpSession.getAttribute("SESSION_ID");
 //      if(userid == null) { //아이디값이 없다면 로그인되지 않은 상태
@@ -80,7 +80,7 @@ public class BoardController {
       bDAO.insertBoardChat(obj);
       }
 
-      return "redirect:" + request.getContextPath() + "/board/content?no="+obj.getBrdno()+"&bno="+obj.getBrdnumber();
+      return "redirect:/board/content?no="+obj.getBrdno()+"&bno="+obj.getBrdnumber();
    }
    @RequestMapping(value = "/deleteChat", method = RequestMethod.POST)
    public String    deleteBoardChat(HttpSession httpSession, Model model, HttpServletRequest request 
@@ -108,7 +108,7 @@ public class BoardController {
       }
    
        
-      return "redirect:" + request.getContextPath() + "/board/content?no="+obj.getBrdno()+"&bno="+obj.getBrdnumber();
+      return "redirect:/board/content?no="+obj.getBrdno()+"&bno="+obj.getBrdnumber();
    }
 
    @RequestMapping(value = "/insert", method = RequestMethod.POST)
@@ -126,11 +126,11 @@ public class BoardController {
       
       
       
-      return "redirect:"+request.getContextPath()+"/board/list";
+      return "redirect:/board/list";
    }
    
    @RequestMapping(value = "/content", method = RequestMethod.GET)
-   public String content(Model model, HttpSession httpSession, HttpServletRequest request, Authentication auth
+   public String content(Model model, HttpSession httpSession, Authentication auth
          ,
          @RequestParam(value="no", defaultValue = "0", required = false) int no,
          @RequestParam(value="bno")int bno ,
@@ -146,7 +146,7 @@ public class BoardController {
       model.addAttribute("LikeCheck",likeCheck);
       
       
-      Map<String,?> map = RequestContextUtils.getInputFlashMap(req);
+      Map<String,Object> map = (Map<String, Object>) RequestContextUtils.getInputFlashMap(req);
       if(map!=null) {
       if (   (int)map.get("LikeCheck") == 1 )
       {
@@ -157,7 +157,7 @@ public class BoardController {
       }
       }
       if( no == 0) {
-         return request.getContextPath()+"redirect:/board/list";
+         return "redirect:/board/list";
       }
             
       Integer chk = (Integer)httpSession.getAttribute("SESSION_BOARD_HIT_CHECK");
@@ -211,7 +211,7 @@ public class BoardController {
          @RequestParam(value="text", defaultValue = "", required = false) String text) {
       
       if(page == 0) {
-         return "redirect:" + request.getContextPath() + "/board/list?page=1"; 
+         return "redirect:/board/list?page=1"; 
       }
       
       httpSession.setAttribute("SESSION_BOARD_HIT_CHECK", 1);
@@ -294,7 +294,7 @@ public class BoardController {
       
       
       bDAO.updateBoard(obj);
-      return "redirect:" + request.getContextPath() + "/board/list";
+      return "redirect:/board/list";
    }
    @RequestMapping(value = "/likeinsert", method = RequestMethod.POST)
    public String likeinsert(HttpServletRequest request,
@@ -325,7 +325,7 @@ public class BoardController {
       
       redirectAttributes.addFlashAttribute("LikeCheck", LikeCheck2);
       System.out.println(obj.toString());
-      return "redirect:" + request.getContextPath() + "/board/content?no="+obj.getBrdno()+"&bno="+obj.getBrdnumber();
+      return "redirect:/board/content?no="+obj.getBrdno()+"&bno="+obj.getBrdnumber();
    }
 
    @RequestMapping(value="/getimg")
@@ -369,10 +369,10 @@ public class BoardController {
       
 
       if(ret1 > 0) {  //성공하면 목록화면 으로
-         return "redirect:" + request.getContextPath() + "/board/list";
+         return "redirect:/board/list";
       }
       //실패하면 이전화면 즉, 상세화면으로
-      return "redirect:" + request.getContextPath() + "/board/content?no=" + no;
+      return "redirect:/board/content?no=" + no;
    }
    
    

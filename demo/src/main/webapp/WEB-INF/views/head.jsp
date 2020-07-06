@@ -29,6 +29,7 @@
   <!-- Template Main CSS File -->
   <link href="${pageContext.request.contextPath}/resources/day/assets/css/style.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/day/assets/css/style2.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/day/assets/css/style5.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/css/style1.css" rel="stylesheet">
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> 
   <style type="text/css">

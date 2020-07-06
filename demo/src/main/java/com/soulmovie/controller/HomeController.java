@@ -32,7 +32,7 @@ public class HomeController {
 	private ContactMapper cMapper= null;
 	
 	@RequestMapping(value="/")
-	public String home(HttpSession httpSession, Model model, HttpServletRequest request) {
+	public String home(HttpSession httpSession, Model model) {
 		List<MovieVO> list = hDAO.selectBoard();
 		int Moviecnt = hDAO.countMovie();
 		int Membercnt = hDAO.countMember();
@@ -44,24 +44,24 @@ public class HomeController {
 		model.addAttribute("boardcnt", Boardcnt);
 		model.addAttribute("choicecnt", Choicecnt);
 		model.addAttribute("list", list);
-		return request.getContextPath()+"index3";
+		return "index3";
 	}
 	
 	@RequestMapping(value="/contact")
-	public String contact(HttpServletRequest request) {
-		return request.getContextPath() + "contact";
+	public String contact() {
+		return "contact";
 	}
 	
 	@RequestMapping(value="/contact", method=RequestMethod.POST)
 	public String contactpost(HttpServletRequest request, @ModelAttribute ContactVO obj) {
 		cMapper.insertContact(obj);
-		return "redirect:" + request.getContextPath() + "/contact";
+		return "redirect:/contact";
 	}
 	
 	@RequestMapping(value="/contact1", method=RequestMethod.POST)
 	public String contactpost1(HttpServletRequest request, @ModelAttribute ContactVO obj) {
 		cMapper.insertContact(obj);
-		return "redirect:" + request.getContextPath() + "/choice/insert";
+		return "redirect:/choice/insert";
 	}
 	
 //	@RequestMapping(value="getimg")
