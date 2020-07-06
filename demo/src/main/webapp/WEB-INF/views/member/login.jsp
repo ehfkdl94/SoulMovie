@@ -50,7 +50,7 @@
           <security:authorize access="isAuthenticated()">
           	<li><a href="${pageContext.request.contextPath}/member/mypage?username=<security:authentication property="name"/>">My page</a></li>
           	<li><a href="${pageContext.request.contextPath}/member/logout">Logout</a></li>
-          	<li><a href="${pageContext.request.contextPath}/choice/list" style = "font-weight: bold ;color:#ff0000;">+ SoulMovie</a></li>
+          	<li><a href="${pageContext.request.contextPath}/choice/insert" style = "font-weight: bold ;color:#ff0000;">Add SoulMovie</a></li>
           </security:authorize>
         </ul>
       </nav><!-- .nav-menu -->
