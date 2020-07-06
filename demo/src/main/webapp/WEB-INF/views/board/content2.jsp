@@ -162,18 +162,19 @@
               </div>
             </form>
             <hr/>
-            <label for="content">댓글</label>
+            <label for="content" style="font-family:'aCinemaL';">Comments</label>
+            
              <c:forEach var="tmp" items="${chat}">          
                 <div class="col-md-8 form-group">
                <form action="${pageContext.request.contextPath}/board/deleteChat" method="post" style="box-sizing: content-box;">
               <c:if test = "${tmp.no ne updatecheckno }">
               <input type="hidden" class="form-control" style="color:#000000;" name="brdno" value="${obj.brdno}" />
                  <input type="hidden" name="brdnumber" value="${obj.brdnumber}" />
-                 <input type="hidden" class="form-control" style="color:#000000;" name="username" value="<security:authentication property="name"/>"readonly />
+                 <input type="hidden" class="form-control" style="color:#000000;" name="username" value="<security:authentication property="name"/>"readonly />             
                 <input type="hidden" class="form-control" style="color:#000000;" name="no" value="${tmp.no }" />
-                    
-                  <input type="text" class="form-control" style="color:#000000;" name="username" value="${tmp.usernick }" readonly/>
-                <textarea class="form-control" style="color:#000000;" name="brdcontent" rows="5" data-rule="required" readonly>${tmp.content}</textarea>
+                   Writer : ${tmp.usernick }
+                  <%-- <input type="text" class="form-control" style="color:#000000;" name="username" value="${tmp.usernick }" readonly/> --%>
+                <textarea class="form-control" style="color:#000000;" name="brdcontent" rows="1" data-rule="required" readonly>${tmp.content}</textarea>
                 
                 <div class="validate"></div>
                </c:if>
@@ -202,12 +203,12 @@
            <form action="${pageContext.request.contextPath}/board/insertChat" method="post" style="box-sizing: content-box;">
               <div class="form-row">           
               <div class="col-md-8 form-group">
-                 <label for="content">댓글달기</label>
+               <label for="content">Enter comment</label>
                  <input type="hidden" class="form-control" style="color:#000000;" name="brdno" value="${obj.brdno}" />
                  <input type="hidden" name="brdnumber" value="${obj.brdnumber}" />
                  <input type="hidden" class="form-control" style="color:#000000;" name="username" value="<security:authentication property="name"/>"readonly />
                  
-                <textarea class="form-control" name="content" style="color:#000000;" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Please enter your details"></textarea>
+                <textarea class="form-control" name="content" style="color:#000000;" rows="1" data-rule="required" data-msg="Please write something for us" ></textarea>
                 <div class="validate"></div>
               </div>
               </div>
