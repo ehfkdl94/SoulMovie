@@ -134,12 +134,12 @@
 			</div>
 		</div>
 	</section>
-		
+
 	<!-- Help section end -->
 	<!-- Playlist section -->
-	<section class="playlist-section spad" style="background:white;" >
+	<section class="playlist-section spad" style="background: white;">
 		<div class="container-fluid">
-		
+
 			<!-- <div class="container">
 				<ul class="playlist-filter controls">
 					<li class="control" data-filter=".genres">Genres</li>
@@ -150,83 +150,89 @@
 				</ul>
 			</div> -->
 			<div class="clearfix"></div>
-			<div class="row playlist-area" >
+			<div class="row playlist-area">
 
 				<c:forEach var="tmp" items="${list2}" varStatus="i">
 					<div class="mix col-lg-3 col-md-4 col-sm-6 genres">
 						<div class="playlist-item">
 							<security:authorize access="!isAuthenticated()">
-                       	   		<c:if test="${i.index==0}">
-                       	   			<a href="${pageContext.request.contextPath}/member/login" class="item-wrap fancybox"></a>
-		                              
-		                              <img class="img-fluid" src="${pageContext.request.contextPath}/resources/img/qm3.jpg" style="border: solid 1px red; height:450px;">
-		                              <h5 style = "color:black; font-family:aCinemaL;">회원가입 후 확인 할 수 있습니다.</h5>
-									  <h4 class="blog-date" style="color: red; font-weight:bold;">?</h4>
-		                           
-                       	   		</c:if>
-                       	   		<c:if test="${i.index!=0}">
-                       	   			<a href="${pageContext.request.contextPath}/movie/moviedetail?movie_code=${tmp.movie_code}">
-									<img  style="border: solid 1px red; height:450px;" 
-										src="${tmp.movie_img}"
-										alt=""></a>
-									<h5 style ="color:black;font-family:aCinemaL;">${tmp.movie_title}</h5>
-									<h4 class="blog-date" style="color: red; font-weight:bold;">${tmp.rank }위</h4>
-                       	   		</c:if>
-                       	   	</security:authorize>
-                       	   	<security:authorize access="isAuthenticated()">
-								<a href="${pageContext.request.contextPath}/movie/moviedetail?movie_code=${tmp.movie_code}">
-								<img  style="border: solid 1px red; height:450px;" 
-									src="${tmp.movie_img}"
-									alt=""></a>
-								<h5 style = "color:black; font-family:aCinemaL;">${tmp.movie_title}</h5>
-								<h4 class="blog-date" style="color: red; font-weight:bold;">${tmp.rank }위</h4>
+								<c:if test="${i.index==0}">
+									<a href="${pageContext.request.contextPath}/member/login"
+										class="item-wrap fancybox"></a>
+
+									<img class="img-fluid"
+										src="${pageContext.request.contextPath}/resources/img/qm3.jpg"
+										style="border: solid 1px red; height: 450px;">
+									<h5 style="color: black; font-family: aCinemaL;">회원가입 후 확인
+										할 수 있습니다.</h5>
+									<h4 class="blog-date" style="color: red; font-weight: bold;">?</h4>
+
+								</c:if>
+								<c:if test="${i.index!=0}">
+									<a
+										href="${pageContext.request.contextPath}/movie/moviedetail?movie_code=${tmp.movie_code}">
+										<img style="border: solid 1px red; height: 450px;"
+										src="${tmp.movie_img}" alt="">
+									</a>
+									<h5 style="color: black; font-family: aCinemaL;">${tmp.movie_title}</h5>
+									<h4 class="blog-date" style="color: red; font-weight: bold;">${tmp.rank }위</h4>
+								</c:if>
+							</security:authorize>
+							<security:authorize access="isAuthenticated()">
+								<a
+									href="${pageContext.request.contextPath}/movie/moviedetail?movie_code=${tmp.movie_code}">
+									<img style="border: solid 1px red; height: 450px;"
+									src="${tmp.movie_img}" alt="">
+								</a>
+								<h5 style="color: black; font-family: aCinemaL;">${tmp.movie_title}</h5>
+								<h4 class="blog-date" style="color: red; font-weight: bold;">${tmp.rank }위</h4>
 							</security:authorize>
 						</div>
 					</div>
 				</c:forEach>
 			</div>
-			
-		<div class="site-pagination" style="margin:0 auto; margin-top:20px; ">
-				
-			
-				<c:if test="${param.page != 1}">
 
+			<div class="container">
+				<div class="row mb-5">
+					<nav aria-label="Page navigation example" class="mb-4">
+						<ul
+							class="custom-pagination pagination-primary pagination align-items-stretch">
+							<c:if test="${param.page != 1}">
+								<li class="page-item"><a class="page-link"
+									href="${pageContext.request.contextPath}/movie/movielist?page=1&text=${param.text}"
+									aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+								</a></li>
+								<li class="page-item"><a class="page-link"
+									href="${pageContext.request.contextPath}/movie/movielist?page=${param.page-1}&text=${param.text}"
+									aria-label="Previous"> <span aria-hidden="true">&lt;</span>
+								</a></li>
+							</c:if>
+							<c:forEach var="i" begin="${start}" end="${end}" step="1">
+								<c:if test="${param.page == i}">
+									<li class="page-item active"><a class="page-link"
+										href="${pageContext.request.contextPath}/movie/movielist?page=${i}&text=${param.text}">${i}</a></li>
+								</c:if>
 
-					<a style="font-size:20px; color:red;"
-						href="${pageContext.request.contextPath}/movie/movielist?page=1&text=${param.text}"><<</a>
-				</c:if>
-				<c:if test="${param.page != 1}">
+								<c:if test="${param.page != i}">
+									<li class="page-item"><a class="page-link"
+										href="${pageContext.request.contextPath}/movie/movielist?page=${i}&text=${param.text}">${i}</a></li>
 
-					<a style="font-size:20px;color:red;"
-						href="${pageContext.request.contextPath}/movie/movielist?page=${param.page-1}&text=${param.text}"><</a>
+								</c:if>
+							</c:forEach>
+							<c:if test="${allpage != param.page}">
+								<li class="page-item"><a class="page-link"
+									href="${pageContext.request.contextPath}/movie/movielist?page=${param.page+1}&text=${param.text}"
+									aria-label="Next"><span aria-hidden="true">&gt;</span></a></li>
 
-				</c:if>
-
-				<c:forEach var="i" begin="${start}" end="${end}" step="1">
-					<c:if test="${param.page == i}">
-							<a class="active" style="font-size:20px;font-weight:bold; color:red;"
-							href="${pageContext.request.contextPath}/movie/movielist?page=${i}&text=${param.text}">${i}</a>
-						
-					</c:if>
-
-					<c:if test="${param.page != i}">
-						<a style="font-size:20px; color:red;"
-							href="${pageContext.request.contextPath}/movie/movielist?page=${i}&text=${param.text}">${i}</a>
-
-					</c:if>
-				</c:forEach>
-
-
-				<c:if test="${allpage != param.page}">
-					<a style="font-size:20px;color:red;"
-						href="${pageContext.request.contextPath}/movie/movielist?page=${param.page+1}&text=${param.text}">></a>
-				</c:if>
-				<c:if test="${allpage != param.page}">
-					<a style="font-size:20px; color:red;"
-						href="${pageContext.request.contextPath}/movie/movielist?page=${allpage}&text=${param.text}">>></a>
-				</c:if>
+								<li class="page-item"><a class="page-link"
+									href="${pageContext.request.contextPath}/movie/movielist?page=${allpage}&text=${param.text}">&raquo;</a></li>
+							</c:if>
+						</ul>
+					</nav>
+				</div>
 			</div>
 		</div>
+
 	</section>
 	<!-- Playlist section end -->
 

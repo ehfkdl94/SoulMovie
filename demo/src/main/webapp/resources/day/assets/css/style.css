@@ -1658,3 +1658,63 @@ section {
     width: 150px;
     transition: all .4s ease 0s;
 }
+
+/*--------------------------------------------------------------
+# pagination
+--------------------------------------------------------------*/
+.custom-pagination {
+  font-size: 13px; }
+  .custom-pagination .page-item .page-link {
+    color: #000;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0;
+    margin: 0 2px;
+    text-align: center; }
+    .custom-pagination .page-item .page-link:active, .custom-pagination .page-item .page-link:focus, .custom-pagination .page-item .page-link:hover {
+      outline: none;
+      -webkit-box-shadow: none;
+      box-shadow: none; }
+  .custom-pagination .page-item span.page-link {
+    color: #6c757d;
+    letter-spacing: .1rem; }
+    .custom-pagination .page-item span.page-link:hover {
+      background: none !important; }
+  .custom-pagination.pagination-primary .page-item.active .page-link {
+    background-color: #ff0000;
+    color: #fff;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(243, 69, 115, 0.2);
+    box-shadow: 0 2px 5px 0 rgba(243, 69, 115, 0.2); }
+  .custom-pagination.pagination-secondary .page-item.active .page-link {
+    background-color: #6c757d;
+    color: #fff;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(108, 117, 125, 0.2);
+    box-shadow: 0 2px 5px 0 rgba(108, 117, 125, 0.2); }
+  .custom-pagination.pagination-success .page-item.active .page-link {
+    background-color: #7fbb00;
+    color: #fff;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(127, 187, 0, 0.2);
+    box-shadow: 0 2px 5px 0 rgba(127, 187, 0, 0.2); }
+  .custom-pagination.pagination-danger .page-item.active .page-link {
+    background-color: #ec1c24;
+    color: #fff;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(236, 28, 36, 0.2);
+    box-shadow: 0 2px 5px 0 rgba(236, 28, 36, 0.2); }
+  .custom-pagination.pagination-warning .page-item.active .page-link {
+    background-color: #ffd900;
+    color: #fff;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(255, 217, 0, 0.2);
+    box-shadow: 0 2px 5px 0 rgba(255, 217, 0, 0.2); }
+  .custom-pagination.pagination-info .page-item.active .page-link {
+    background-color: #1cc7d0;
+    color: #fff;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(28, 199, 208, 0.2);
+    box-shadow: 0 2px 5px 0 rgba(28, 199, 208, 0.2); }
+
+.bg-image {
+  height: 80vh;
+  background-size: cover;
+  background-position: center center; }
