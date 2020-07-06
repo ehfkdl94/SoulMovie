@@ -180,3 +180,4 @@ public class ChoiceController {
 		return "redirect:" + request.getContextPath() + "/choice/list";
 	}
 }
+///test!!!!
