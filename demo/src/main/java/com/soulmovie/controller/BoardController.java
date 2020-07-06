@@ -130,7 +130,7 @@ public class BoardController {
    }
    
    @RequestMapping(value = "/content", method = RequestMethod.GET)
-   public String content(Model model, HttpSession httpSession, HttpServletRequest request, Authentication auth
+   public String content(Model model, HttpSession httpSession, Authentication auth
          ,
          @RequestParam(value="no", defaultValue = "0", required = false) int no,
          @RequestParam(value="bno")int bno ,
@@ -157,7 +157,7 @@ public class BoardController {
       }
       }
       if( no == 0) {
-         return request.getContextPath()+"redirect:/board/list";
+         return "redirect:/board/list";
       }
             
       Integer chk = (Integer)httpSession.getAttribute("SESSION_BOARD_HIT_CHECK");

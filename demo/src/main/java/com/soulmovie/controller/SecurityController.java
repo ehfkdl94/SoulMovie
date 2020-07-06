@@ -28,9 +28,9 @@ public class SecurityController {
 		
 		
 		@RequestMapping(value = "/home", method = RequestMethod.GET) //테스트용
-		public String home1(HttpServletRequest request) {
+		public String home1() {
 			
-			return request.getContextPath()+"/home";
+			return "/home";
 		}
 		
 		
@@ -41,7 +41,7 @@ public class SecurityController {
 				}
 		
 			
-			return request.getContextPath()+"/member/join";
+			return "/member/join";
 		}
 		
 		
@@ -75,7 +75,7 @@ public class SecurityController {
 				return "redirect:"+request.getContextPath()+"/";
 				}
 			
-			return request.getContextPath()+"/member/welcome";
+			return "/member/welcome";
 		}
 		
 		
@@ -95,7 +95,7 @@ public class SecurityController {
 			}
 
 			
-			return request.getContextPath()+"/member/login";
+			return "/member/login";
 	
 		}
 		
