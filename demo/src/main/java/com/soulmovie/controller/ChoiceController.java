@@ -61,7 +61,7 @@ public class ChoiceController {
 		}
 
 		if(text == null && chk== null ) {
-			return "redirect:"+request.getContextPath()+"/choice/insert?text=&chk=";
+			return "redirect:/choice/insert?text=&chk=";
 		}
 		if (text.equals("")) {
 			String list = "@@@@초기값";
@@ -95,7 +95,7 @@ public class ChoiceController {
 				mMapper.addMovieCnt(code);
 			}
 		}
-		return "redirect:" + request.getContextPath() + "/choice/list";
+		return "redirect:/choice/list";
 	}
 	
 	@RequestMapping(value="/list", method=RequestMethod.GET)
@@ -165,7 +165,7 @@ public class ChoiceController {
 	public String update(HttpServletRequest request, @ModelAttribute ChoiceVO obj){
 //		System.out.println(obj);
 		cMapper.updateChoice(obj);		
-		return "redirect:" + request.getContextPath() + "/choice/list";
+		return "redirect:/choice/list";
 	}
 	
 	@RequestMapping(value = "/delete")
@@ -177,6 +177,6 @@ public class ChoiceController {
 			uMapper.deleteUserCcnt(id);	
 			mMapper.deleteMovieCnt(code);
 		}
-		return "redirect:" + request.getContextPath() + "/choice/list";
+		return "redirect:/choice/list";
 	}
 }

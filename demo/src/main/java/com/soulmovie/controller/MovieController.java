@@ -71,7 +71,7 @@ public class MovieController {
 			Model model) {
 		System.out.println(category);
 		if(page == 0) {
-			return "redirect:" + request.getContextPath() + "/movie/movielist?page=1"; 
+			return "redirect:/movie/movielist?page=1"; 
 		}
 		
 		HashMap<String, Object> map = new HashMap<String, Object>();

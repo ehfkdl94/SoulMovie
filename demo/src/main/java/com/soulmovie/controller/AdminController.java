@@ -74,7 +74,7 @@ public class AdminController {
 			@RequestParam(value="page", defaultValue="0", required=false) int page,
 			@RequestParam(value="text", defaultValue="", required=false) String text) {
 		if(page==0) {
-			return "redirect:"+request.getContextPath()+"/admin/movie?page=1";
+			return "redirect:/admin/movie?page=1";
 		}
 
 		
@@ -108,7 +108,7 @@ public class AdminController {
 	public String moviecontent(Model model, HttpSession httpSession, HttpServletRequest request,
 			@RequestParam(value="no", defaultValue = "0", required = false) int no) {
 		if( no == 0) {
-			return "redirect:"+request.getContextPath()+"/admin/movie";
+			return "redirect:/admin/movie";
 		}
 		
 		MovieVO obj = mDAO.selectMovieOne1(no);
@@ -150,10 +150,10 @@ public class AdminController {
 		int ret = mDAO.deleteMovie(obj);  
 		
 		if(ret > 0) {  //성공하면 목록화면 으로
-			return "redirect:" + request.getContextPath() + "/admin/movie";
+			return "redirect:/admin/movie";
 		}
 		//실패하면 이전화면 즉, 상세화면으로
-		return "redirect:" + request.getContextPath() + "/admin/moviecontent?no=" + no;
+		return "redirect:/admin/moviecontent?no=" + no;
 	}
 	
 	@RequestMapping(value="/board", method=RequestMethod.GET)
@@ -162,7 +162,7 @@ public class AdminController {
 			@RequestParam(value="page", defaultValue="0", required=false) int page,
 			@RequestParam(value="text", defaultValue="", required=false) String text) {
 		if(page==0) {
-			return "redirect:"+request.getContextPath()+"/admin/board?page=1";
+			return "redirect:/admin/board?page=1";
 		}
 
 		
@@ -182,7 +182,7 @@ public class AdminController {
 	public String boardcontent(Model model, HttpSession httpSession, HttpServletRequest request,
 			@RequestParam(value="no", defaultValue = "0", required = false) int no) {
 		if( no == 0) {
-			return "redirect:"+request.getContextPath()+"/admin/board";
+			return "redirect:/admin/board";
 		}
 		
 		BoardVO obj = bDAO.selectBoardOne(no);
@@ -201,10 +201,10 @@ public class AdminController {
 		int ret = bDAO.deleteBoard(obj);  
 		
 		if(ret > 0) {  //성공하면 목록화면 으로
-			return "redirect:" + request.getContextPath() + "/admin/board";
+			return "redirect:/admin/board";
 		}
 		//실패하면 이전화면 즉, 상세화면으로
-		return "redirect:" + request.getContextPath() + "/admin/boardcontent?no=" + no;
+		return "redirect:/admin/boardcontent?no=" + no;
 	}
 	
 	@RequestMapping(value = "/boardinsert", method = RequestMethod.GET)
@@ -227,7 +227,7 @@ public class AdminController {
 		//DAO로 obj값 전달하기
 		bDAO.insertBoard(obj);
 		
-		return "redirect:"+request.getContextPath()+"/admin/board";
+		return "redirect:/admin/board";
 	}
 	
 	@RequestMapping(value="/boardupdate")
@@ -246,7 +246,7 @@ public class AdminController {
 	
 		bDAO.updateBoard(obj);
 		
-		return "redirect:" + request.getContextPath() + "/admin/board";
+		return "redirect:/admin/board";
 		
 	}
 	
@@ -256,7 +256,7 @@ public class AdminController {
 			@RequestParam(value="page", defaultValue="0", required=false) int page,
 			@RequestParam(value="text", defaultValue="", required=false) String text) {
 		if(page==0) {
-			return "redirect:"+request.getContextPath()+"/admin/member?page=1";
+			return "redirect:/admin/member?page=1";
 		}
 
 		
@@ -276,7 +276,7 @@ public class AdminController {
 	public String membercontent(Model model, HttpSession httpSession, HttpServletRequest request,
 			@RequestParam(value="no", defaultValue = "0", required = false) int no) {
 		if( no == 0) {
-			return "redirect:"+request.getContextPath()+"/admin/member";
+			return "redirect:/admin/member";
 		}
 		
 		MemberVO obj = memberDAO.selectMemberOne(no);
@@ -300,7 +300,7 @@ public class AdminController {
 
 		memberDAO.updateMember(obj);
 		
-		return "redirect:" + request.getContextPath() + "/admin/member";
+		return "redirect:/admin/member";
 		
 	}
 	
@@ -310,7 +310,7 @@ public class AdminController {
 			@RequestParam(value="page", defaultValue="0", required=false) int page,
 			@RequestParam(value="text", defaultValue="", required=false) String text) {
 		if(page==0) {
-			return "redirect:"+request.getContextPath()+"/admin/contact?page=1";
+			return "redirect:/admin/contact?page=1";
 		}
 
 		
@@ -330,7 +330,7 @@ public class AdminController {
 	public String contactcontent(Model model, HttpSession httpSession, HttpServletRequest request,
 			@RequestParam(value="no", defaultValue = "0", required = false) int no) {
 		if( no == 0) {
-			return "redirect:"+request.getContextPath()+"/admin/contact";
+			return "redirect:/admin/contact";
 		}
 		
 		ContactVO obj = cMapper.selectContactOne(no);

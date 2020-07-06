@@ -55,13 +55,13 @@ public class HomeController {
 	@RequestMapping(value="/contact", method=RequestMethod.POST)
 	public String contactpost(HttpServletRequest request, @ModelAttribute ContactVO obj) {
 		cMapper.insertContact(obj);
-		return "redirect:" + request.getContextPath() + "/contact";
+		return "redirect:/contact";
 	}
 	
 	@RequestMapping(value="/contact1", method=RequestMethod.POST)
 	public String contactpost1(HttpServletRequest request, @ModelAttribute ContactVO obj) {
 		cMapper.insertContact(obj);
-		return "redirect:" + request.getContextPath() + "/choice/insert";
+		return "redirect:/choice/insert";
 	}
 	
 //	@RequestMapping(value="getimg")

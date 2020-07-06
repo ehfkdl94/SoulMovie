@@ -82,9 +82,9 @@
 										</div>
 									</div>
 										<ul class="actions">
-											<button type="button" onclick="location.href='/admin/board' ">List</button>
-											<button type="button" onclick="location.href='/admin/boardupdate?no=${obj.brdno}' ">update</button>
-											<button type="button" onclick="location.href='/admin/boarddelete?no=${obj.brdno}' ">delete</button>
+											<button type="button" onclick="location.href='${pageContext.request.contextPath}/admin/board' ">List</button>
+											<button type="button" onclick="location.href='${pageContext.request.contextPath}/admin/boardupdate?no=${obj.brdno}' ">update</button>
+											<button type="button" onclick="location.href='${pageContext.request.contextPath}/admin/boarddelete?no=${obj.brdno}' ">delete</button>
 										</ul>
 								
 								</form>
