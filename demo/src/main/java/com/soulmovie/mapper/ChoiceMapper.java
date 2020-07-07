@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.soulmovie.vo.ChoiceVO;
+import com.soulmovie.vo.insertDateVO;
 
 
 
@@ -41,6 +42,8 @@ public interface ChoiceMapper {
 			+ "WHERE CHOICE_NO = #{obj.choice_no}"})
 	public int updateChoice(@Param("obj") ChoiceVO obj);
 	
+	@Select({"SELECT substr(CHOICE_DATE,0,8) CHOICEDATE, count(*) COUNT FROM CHOICE group by substr(CHOICE_DATE,0,8)"})
+	public List<insertDateVO> InsertDate();
 	
 	@Delete({"DELETE FROM CHOICE WHERE CHOICE_NO = #{choiceno}"})
 	public int deleteChoice(@Param("choiceno") int choiceno);

@@ -69,9 +69,9 @@ from (SELECT MOVIE_CODE, MOVIE_TITLE, MOVIE_ALTERNATIVETITLE, MOVIE_GENRE, MOVIE
             MOVIE A,
             (SELECT MOVIE_CODE,ROW_NUMBER() OVER (ORDER BY MOVIE_CNT DESC ,MOVIE_TITLE ASC) RANK
             FROM MOVIE) B
-         WHERE REPLACE(UPPER(TRIM(MOVIE_TITLE)),' ','') LIKE '%' || REPLACE(UPPER(TRIM('')),' ','') || '%' 
+         WHERE REPLACE(UPPER(TRIM(MOVIE_TITLE)),' ','') LIKE '%' || REPLACE(UPPER(TRIM(#{text})),' ','') || '%' 
                AND b.MOVIE_CODE = A.MOVIE_CODE    
-        AND RANK BETWEEN #{start} AND #{end}
+        AND ROWNUM BETWEEN #{start} AND #{end}
         ORDER BY RANK
    </select>
 

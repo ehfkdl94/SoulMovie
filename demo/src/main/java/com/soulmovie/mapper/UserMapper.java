@@ -1,11 +1,16 @@
 package com.soulmovie.mapper;
 
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import com.soulmovie.vo.JoinDateVO;
 import com.soulmovie.vo.UserVo;
 
 public interface UserMapper {
@@ -23,6 +28,8 @@ public interface UserMapper {
 	@Select({"SELECT USERCCNT FROM MEMBER WHERE USERNAME=#{username}"})
 	public int findUserCcnt(@Param("username") String username);
 	
+	@Select({"SELECT substr(JOINDATE,0,8) JOINDATE, count(*) COUNT FROM MEMBER group by substr(JOINDATE,0,8)"})
+	public List<JoinDateVO> JoindateMember();
 	
 	@Select({"SELECT USERID FROM MEMBER WHERE USERNAME =#{username}"})
 	public int findUserid(@Param("username") String username);

@@ -17,7 +17,8 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 @ComponentScan({"com.soulmovie.controller",
 	"com.soulmovie.security",
-	"com.soulmovie.dao"
+	"com.soulmovie.dao",
+	"com.soulmovie.rest_controller"
 
 	}) 
 

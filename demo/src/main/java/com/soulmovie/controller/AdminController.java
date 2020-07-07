@@ -117,7 +117,12 @@ public class AdminController {
 	
 		return "/admin/moviecontent";
 	}
-	
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	public String test(Model model, HttpSession httpSession, HttpServletRequest request,
+			@RequestParam(value="no", defaultValue = "0", required = false) int no) {
+		
+		return "/admin/test";
+	}
 //	@RequestMapping(value = "/moviecontent", method = RequestMethod.GET)
 //	public String moviedetail(HttpServletRequest request,
 //			@RequestParam(value="movie_code", defaultValue="1",required= false) int movie_code
