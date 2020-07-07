@@ -217,6 +217,7 @@
       </div>
       </div>
     </section><!-- End Why Us Section -->
+    </main>
      <%@include file="/WEB-INF/views/footer.jsp" %>
 
    
