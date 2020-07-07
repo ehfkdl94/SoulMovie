@@ -162,7 +162,7 @@
 
 									<img class="img-fluid"
 										src="${pageContext.request.contextPath}/resources/img/qm3.jpg"
-										style="border: solid 1px red; height: 450px;">
+										style=" height: 450px;">
 									<h5 style="color: black; font-family: aCinemaL;">회원가입 후 확인
 										할 수 있습니다.</h5>
 									<h4 class="blog-date" style="color: red; font-weight: bold;">?</h4>
@@ -171,7 +171,7 @@
 								<c:if test="${i.index!=0}">
 									<a
 										href="${pageContext.request.contextPath}/movie/moviedetail?movie_code=${tmp.movie_code}">
-										<img style="border: solid 1px red; height: 450px;"
+										<img style=" height: 450px;"
 										src="${tmp.movie_img}" alt="">
 									</a>
 									<h5 style="color: black; font-family: aCinemaL;">${tmp.movie_title}</h5>
