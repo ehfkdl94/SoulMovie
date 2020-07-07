@@ -114,28 +114,68 @@
 							</c:if>
 						</tbody>
 					</table>
-					<c:if test="${param.page != 1}">
-
-				<a style="font-size: 20px; 
-					href="${pageContext.request.contextPath}/admin/member?page=${param.page-1}&text=${param.text}"><<</a>
-			</c:if>
-
+					
+					
+					<div class="container">
+				<div class="row mb-5">
+					<nav aria-label="Page navigation example" class="mb-4">
+						<ul
+							class="custom-pagination pagination-primary pagination align-items-stretch">
+							
+							
+							
+							<c:if test="${param.page != 1}">
+								<li class="page-item"><a class="page-link"
+									href="${pageContext.request.contextPath}/board/list?page=1&text=${param.text}"
+									aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+								</a></li>
+								<li class="page-item"><a class="page-link"
+									href="${pageContext.request.contextPath}/board/list?page=${param.page-1}&text=${param.text}"
+									aria-label="Previous"> <span aria-hidden="true">&lt;</span>
+								</a></li>
+							</c:if>
+							
+							
+			
+						
+						
+							
 			<c:forEach var="i" begin="1" end="${cnt}" step="1">
 				<c:if test="${param.page == i}">
-					<a class="active" style="font-size: 20px;"
-						href="${pageContext.request.contextPath}/board/list?page=${i}&text=${param.text}">${i}</a>
+					<li class="page-item active"><a class="page-link"
+						href="${pageContext.request.contextPath}/board/list?page=${i}&text=${param.text}">${i}</a></li>
 				</c:if>
 				<c:if test="${param.page != i}">
-					<a style="font-size: 20px;"
-						href="${pageContext.request.contextPath}/board/list?page=${i}&text=${param.text}">${i}</a>
+					<li class="page-item"><a class="page-link"
+						href="${pageContext.request.contextPath}/board/list?page=${i}&text=${param.text}">${i}</a></li>
 				</c:if>
 			</c:forEach>
+							
+							
+
+						
+							<c:if test="${cnt != param.page}">
+								<li class="page-item"><a class="page-link"
+									href="${pageContext.request.contextPath}/board/list?page=${param.page+1}&text=${param.text}"
+									aria-label="Next"><span aria-hidden="true">&gt;</span></a></li>
+
+								<li class="page-item"><a class="page-link"
+									href="${pageContext.request.contextPath}/board/list?page=${cnt}&text=${param.text}">&raquo;</a></li>
+							</c:if>
+						</ul>
+					</nav>
+				</div>
+			</div>
+			
+			
+					
+
+				
 
 
-			<c:if test="${cnt != param.page}">
-				<a style="font-size: 20px;"
-					href="${pageContext.request.contextPath}/board/list?page=${param.page+1}&text=${param.text}">>></a>
-			</c:if>
+
+		
+		
 				</div>
 				
 			</div>
