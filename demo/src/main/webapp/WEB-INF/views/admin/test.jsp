@@ -21,42 +21,51 @@
 
 <body>
 	<div class="container">
-		<h4>chart 표시</h4>
-		<div class="chart1"></div>
+		<h4>날짜별 가입/리뷰 Count</h4>
+		<div class="chart1" style="width:1000px; height:700px;"></div>
 	</div>
 
 	<script type="text/javascript">
 		$(function() {
 			$.get('/rest/itemorder.json', function(data) {
-				var cnt = data.ret.length; //배열의 개수 구하기
-				var tmp = [];
-				var tmp1 =[];
-				var tmp3 = [];
+				var cnt = data.x.length; //배열의 개수 구하기
+				var member = [];
+				var choice =[];
+				const x = [];
 				for (var i = 0; i < cnt; i++) {
-					tmp3.push(data.ret[i].joindate.replace('/', '').replace('/', ''))
+					x.push(data.x[i])
 					
 				}
 				for (var i = 0; i < cnt; i++) {
-					tmp.push([data.ret[i].count ])
+					member.push([data.member[i] ])
 					
 				}
 				for (var i = 0; i < cnt; i++) {
-					tmp1.push([data.ret1[i].count ])
+					choice.push([data.choice[i] ])
 					
 				}
-				console.log(tmp3);
+				console.log(x.toString().split(','));
+
+				console.log(member);
+				console.log(choice);
 				var chart = c3.generate({
 					bindto : '.chart1',
 					data : {
-						    x : 'tmp3',
+						    x : 'year',
 							columns : [
-									['tmp3', tmp3[0], tmp3[1], tmp3[2], tmp3[3]],
-									['member', tmp[0], tmp[1], tmp[2], tmp[3]],
-									['choice', tmp1[0], tmp1[1], tmp1[2], tmp1[3]]
+									['year',...x ],
+									['member', ...member],
+									['choice', ...choice]
 								]
 				
 
 					},
+					axis: {
+		                x: {
+		                    type: 'category',
+		                    
+		                },
+					}
 				});
 			}, 'json');
 

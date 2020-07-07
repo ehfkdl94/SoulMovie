@@ -1,6 +1,7 @@
 package com.soulmovie.rest_controller;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -48,10 +49,74 @@ public class RestTestController {
 //		}
 		//String str = "aaa";//String.format("['data1', %d, %d, %d, %d, %d, %d]",a,b,c,d,e,f);
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("ret", list);
-		map.put("ret1", list1);
-		System.out.println(list.toString());
-		System.out.println(list1.toString());
+		ArrayList<String> x =new ArrayList<String>() ;
+		ArrayList<Integer> choice =new ArrayList<Integer>() ;
+		ArrayList<Integer> member =new ArrayList<Integer>() ;
+		int choiceCnt=0;
+		int memberCnt=0;
+		boolean power = true;
+		while(power) {	
+				
+				if(list.get(memberCnt).getJoindate().compareTo(list1.get(choiceCnt).getChoicedate())==0){
+					 x.add(list.get(memberCnt).getJoindate());
+					 member.add(list.get(memberCnt).getCount());
+					 choice.add(list1.get(choiceCnt).getCount());
+					 memberCnt++;
+					 choiceCnt++;
+					 
+				}
+				else if(list.get(memberCnt).getJoindate().compareTo(list1.get(choiceCnt).getChoicedate())==1){
+					x.add(list1.get(choiceCnt).getChoicedate());
+					member.add(0);
+					choice.add(list1.get(choiceCnt).getCount());
+					choiceCnt++;
+
+					 
+				}
+				else  {
+					x.add(list.get(memberCnt).getJoindate());
+					member.add(list.get(memberCnt).getCount());
+					choice.add(0);
+					memberCnt++;
+					
+				}
+				if(list.size() == memberCnt) {
+					if(list1.size() >choiceCnt) {
+						for(int a =choiceCnt ; a<list1.size();a++) {
+							x.add(list1.get(a).getChoicedate());
+							member.add(0);
+							choice.add(list1.get(a).getCount());
+							
+						}
+						
+					}
+					 
+					power= false;
+					break;
+				}
+				else if(list1.size() == choiceCnt) {
+					if(list.size() >memberCnt) {
+						for(int a =memberCnt ; a<list1.size();a++) {
+							x.add(list.get(a).getJoindate());
+							member.add(list.get(a).getCount());
+							choice.add(0);
+						}
+						
+					}
+					 
+					power= false;
+					break;
+				}
+				
+			}
+		System.out.println(x.toString());
+		System.out.println(choice.toString());
+		System.out.println(member.toString());
+		map.put("x", x);
+		map.put("member", member);
+
+		map.put("choice", choice);
+	
 	
 		return map;
 	}

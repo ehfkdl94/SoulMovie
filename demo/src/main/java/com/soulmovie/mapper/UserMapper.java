@@ -28,7 +28,7 @@ public interface UserMapper {
 	@Select({"SELECT USERCCNT FROM MEMBER WHERE USERNAME=#{username}"})
 	public int findUserCcnt(@Param("username") String username);
 	
-	@Select({"SELECT substr(JOINDATE,0,8) JOINDATE, count(*) COUNT FROM MEMBER group by substr(JOINDATE,0,8)"})
+	@Select({"SELECT substr(JOINDATE,0,8) JOINDATE, count(*) COUNT FROM MEMBER group by substr(JOINDATE,0,8) ORDER BY JOINDATE"})
 	public List<JoinDateVO> JoindateMember();
 	
 	@Select({"SELECT USERID FROM MEMBER WHERE USERNAME =#{username}"})

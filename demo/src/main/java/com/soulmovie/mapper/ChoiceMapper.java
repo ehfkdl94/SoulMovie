@@ -42,7 +42,7 @@ public interface ChoiceMapper {
 			+ "WHERE CHOICE_NO = #{obj.choice_no}"})
 	public int updateChoice(@Param("obj") ChoiceVO obj);
 	
-	@Select({"SELECT substr(CHOICE_DATE,0,8) CHOICEDATE, count(*) COUNT FROM CHOICE group by substr(CHOICE_DATE,0,8)"})
+	@Select({"SELECT substr(CHOICE_DATE,0,8) CHOICEDATE, count(*) COUNT FROM CHOICE group by substr(CHOICE_DATE,0,8) ORDER BY CHOICEDATE"})
 	public List<insertDateVO> InsertDate();
 	
 	@Delete({"DELETE FROM CHOICE WHERE CHOICE_NO = #{choiceno}"})

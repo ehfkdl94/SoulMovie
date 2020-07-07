@@ -62,7 +62,7 @@ public class MovieController {
 		return "/movie/moviedetail";
 	}
 	@RequestMapping(value = "/movielist", method = RequestMethod.GET)
-	public String movielist(HttpServletRequest request, 
+	public String movielist(HttpServletRequest request, 	
 			@RequestParam(value="movie_code", defaultValue="1",required= false) int movie_code
 			,@RequestParam(value = "page", defaultValue = "0", required = false) int page,
 			@RequestParam(value = "text", defaultValue = "", required = false) String text,
