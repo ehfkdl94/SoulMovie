@@ -15,10 +15,9 @@ swal({
   icon: 'error',
   showCancelButton: false,
   confirmButtonColor: '#3085d6',
-  cancelButtonColor: '#d33',
-  confirmButtonText: 'Yes, delete it!'
+  cancelButtonColor: '#d33'
 }).then((result) => {
-    window.location.href="/member/login" ;
+    window.location.href="${pageContext.request.contextPath}/member/login" ;
    
   
 })
