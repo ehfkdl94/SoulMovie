@@ -156,7 +156,7 @@
                <div class="form-row">
                 <div class="col-md-8 form-group">
                  <label for="content">Contents</label>
-                <textarea class="form-control" style="color:#000000;" name="brdcontent" rows="5" data-rule="required" readonly>${fn:replace(obj.brdcontent, newLineChar, "<br />")}</textarea>
+                <textarea class="form-control" style="color:#000000;" name="brdcontent" rows="15" data-rule="required" readonly>${fn:replace(obj.brdcontent, newLineChar, "<br />")}</textarea>
                 <div class="validate"></div>
               </div>
               </div>
