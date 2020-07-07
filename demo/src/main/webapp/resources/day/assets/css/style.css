@@ -24,6 +24,7 @@ a:hover {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Raleway", sans-serif;
+  font-weight:700;
 }
 
 /*--------------------------------------------------------------
@@ -610,14 +611,14 @@ section {
 
 .why-us .box span {
   display: block;
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 700;
   color: #ed5b5b;
 }
 
 .why-us .box h4 {
   font-size: 24px;
-  font-weight: 600;
+  font-weight: bold;
   padding: 0;
   margin: 20px 0;
   color: #191919;
