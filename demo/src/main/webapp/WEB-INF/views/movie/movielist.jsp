@@ -114,11 +114,11 @@
 	<section class="help-section spad pt-0" style= "margin-top:60px; height:10px;">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-6">
+				<div class="col-lg-7">
 				
 
 				</div>
-				<div class="col-lg-6">
+				<div class="col-lg-5">
 					<div class="d-flex h-100 align-items-end">
 						<form class="search-form">
 						<input type="hidden" name="page" value="1" /> 
@@ -175,17 +175,18 @@
 										src="${tmp.movie_img}" alt="">
 									</a>
 									<h5 style="color: black; font-family: aCinemaL;">${tmp.movie_title}</h5>
-									<h4 class="blog-date" style="color: red; font-weight: bold;">${tmp.rank }위</h4>
+									<h4 class="blog-date" style="color: red; font-family: aCinemaL; font-weight: bold;">${tmp.rank }위</h4>
 								</c:if>
 							</security:authorize>
 							<security:authorize access="isAuthenticated()">
 								<a
 									href="${pageContext.request.contextPath}/movie/moviedetail?movie_code=${tmp.movie_code}">
-									<img style="border: solid 1px red; height: 450px;"
+									<img style="border: solid 1px white; height: 450px;"
 									src="${tmp.movie_img}" alt="">
 								</a>
-								<h5 style="color: black; font-family: aCinemaL;">${tmp.movie_title}</h5>
-								<h4 class="blog-date" style="color: red; font-weight: bold;">${tmp.rank }위</h4>
+								<h5 class="blog-date" style="color: red; background-color:rgba( 0, 0, 0, 0.8 ); font-family: aCinemaL; font-weight: bold;">NO.${tmp.rank }</h5>
+								<h4 style="color: black; font-family: aCinemaL;">${tmp.movie_title}</h4>
+								
 							</security:authorize>
 						</div>
 					</div>
