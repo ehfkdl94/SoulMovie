@@ -86,7 +86,7 @@
               <div class="form-row">                
                 <div class="col-md-8 form-group">
               	<label for="content">Contents</label>
-                <textarea class="form-control" name="brdcontent" rows="5" data-rule="required" style="color:#000000;">${obj.brdcontent}</textarea>
+                <textarea class="form-control" name="brdcontent" rows="15" data-rule="required" style="color:#000000;">${obj.brdcontent}</textarea>
                 <div class="validate"></div>
               </div>
               </div>

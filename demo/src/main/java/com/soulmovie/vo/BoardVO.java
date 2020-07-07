@@ -13,35 +13,13 @@ public class BoardVO {
 	private long brdhit = 0L;
 	private long brdlike = 0L;
 	private String username = null;
+	private String usernick = null;
 	private int userid = 0;
 	private int brdnumber = 0;
 	private int ROWN= 0;
 	
-	public int getUserid() {
-		return userid;
-	}
-	public void setUserid(int userid) {
-		this.userid = userid;
-	}
-	public int getROWN() {
-		return ROWN;
-	}
-	public void setROWN(int rOWN) {
-		ROWN = rOWN;
-	}
-	public int getBrdnumber() {
-		return brdnumber;
-	}
-	public void setBrdnumber(int brdnumber) {
-		this.brdnumber = brdnumber;
-	}
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	//Getter Setter
+	
+
 	public long getBrdno() {
 		return brdno;
 	}
@@ -90,14 +68,45 @@ public class BoardVO {
 	public void setBrdlike(long brdlike) {
 		this.brdlike = brdlike;
 	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getUsernick() {
+		return usernick;
+	}
+	public void setUsernick(String usernick) {
+		this.usernick = usernick;
+	}
+	public int getUserid() {
+		return userid;
+	}
+	public void setUserid(int userid) {
+		this.userid = userid;
+	}
+	public int getBrdnumber() {
+		return brdnumber;
+	}
+	public void setBrdnumber(int brdnumber) {
+		this.brdnumber = brdnumber;
+	}
+	public int getROWN() {
+		return ROWN;
+	}
+	public void setROWN(int rOWN) {
+		ROWN = rOWN;
+	}
+
 	@Override
 	public String toString() {
 		return "BoardVO [brdno=" + brdno + ", brdid=" + brdid + ", brdtitle=" + brdtitle + ", brddate=" + brddate
 				+ ", brdcontent=" + brdcontent + ", brdimg=" + Arrays.toString(brdimg) + ", brdhit=" + brdhit
-				+ ", brdlike=" + brdlike + ", username=" + username + ", userid=" + userid + ", brdnumber=" + brdnumber
-				+ ", ROWN=" + ROWN + "]";
+				+ ", brdlike=" + brdlike + ", username=" + username + ", usernick=" + usernick + ", userid=" + userid
+				+ ", brdnumber=" + brdnumber + ", ROWN=" + ROWN + "]";
 	}
-	
+
 
 	
 

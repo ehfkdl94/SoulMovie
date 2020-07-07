@@ -80,7 +80,7 @@
               <div class="form-row">           
               <div class="col-md-8 form-group">
               	<label for="content">Contents</label>
-                <textarea class="form-control" name="brdcontent" style="color:#000000;" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Please enter your details"></textarea>
+                <textarea class="form-control" name="brdcontent" style="color:#000000;" rows="15" data-rule="required" data-msg="Please write something for us" placeholder="Please enter your details"></textarea>
                 <div class="validate"></div>
               </div>
               </div>

@@ -102,7 +102,7 @@
 										<td>${tmp.ROWN}</td>
 										<td><a href="${pageContext.request.contextPath}/board/content?no=${tmp.brdno}&bno=${tmp.ROWN}">${tmp.brdtitle}</a>
 										</td>
-										<td>${tmp.username}</td>
+										<td>${tmp.usernick}</td>
 										<td><fmt:formatNumber value="${tmp.brdhit}"
 												pattern="#,###" /></td>
 										<td><c:set var="dt" value="${fn:split(tmp.brddate, ' ')}" />
