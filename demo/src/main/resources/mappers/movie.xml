@@ -43,8 +43,8 @@ from (SELECT MOVIE_CODE, MOVIE_TITLE, MOVIE_ALTERNATIVETITLE, MOVIE_GENRE, MOVIE
             ROW_NUMBER() OVER (ORDER BY MOVIE_CNT DESC) RANK    
          FROM 
             MOVIE
-         WHERE MOVIE_TITLE LIKE '%' || '' || '%' ) B)
-         WHERE MOVIE_TITLE LIKE '%' || UPPER(TRIM(#{text})) || '%' AND
+         WHERE UPPER(TRIM(MOVIE_TITLE)) LIKE '%' || '' || '%' ) B)
+         WHERE UPPER(TRIM(MOVIE_TITLE)) LIKE '%' || UPPER(TRIM(#{text})) || '%' AND
           RANK BETWEEN #{start} AND #{end} 
            
    </select>
@@ -69,7 +69,7 @@ from (SELECT MOVIE_CODE, MOVIE_TITLE, MOVIE_ALTERNATIVETITLE, MOVIE_GENRE, MOVIE
             ROW_NUMBER() OVER (ORDER BY MOVIE_CNT DESC) RANK    
          FROM 
             MOVIE
-         WHERE MOVIE_TITLE LIKE '%' || #{text} || '%' ) B
+         WHERE REPLACE(UPPER(TRIM(MOVIE_TITLE)),' ','') LIKE '%' || REPLACE(UPPER(TRIM(#{text})),' ','') || '%' ) B
       WHERE RANK BETWEEN #{start} AND #{end}
    </select>
 
