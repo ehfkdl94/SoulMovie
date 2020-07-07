@@ -77,35 +77,25 @@
               </div>
             </div>
             <div class="why-us" data-aos="fade-up">
-              <div class="box" style="height:101px; word-break:break-all; ">
+              <div class="box" style="height:300px; word-break:break-all; ">
               <c:set var="dt" value= "${fn:split(list.movie_date,' ')}"/>
-					<h5 style="word-break:break-all;">${dt[0]}</h5>
-                
-
-
-              </div>
-            </div>
-            <div class="why-us" data-aos="fade-up">
-              <div class="box" style="height:101px; word-break:break-all;">
-               
-
-				 <h5 style="font-weight:bold;">${list.movie_actor}</h5>
-              </div>
-            </div>
-            <div class="why-us" data-aos="fade-up">
-              <div class="box" style="height:101px; ">
-                <h5 style="word-break:break-all;">${list.movie_genre}</h5>
-
+					<span style="word-break:break-all; color:black; font-size:20px; font-weight:bold;">${dt[0]}</span></br>
+                	<span style="font-weight:bold; color:black; font-size:18px; ">${list.movie_actor}</span></br>
+					 <span style="word-break:break-all;  color:black; font-size:20px; font-weight:bold;">${list.movie_genre}</span>
 
               </div>
             </div>
+   
+
 
           </div>
 
         </div>
 
       </div>
-      <div class="unslate_co--section section-counter" id="skills-section" style="margin:0 auto;">
+      
+      
+      <div class="unslate_co--section section-counter" id="skills-section" style="margin:0 auto; margin-top:100px; margin-bottom:100px;">
         <div class="container">
           
 
@@ -129,18 +119,7 @@
                 <span class="counter-label">View</span>
               </div>
             </div>
-           
-          </div>
-        </div>
-      </div>
-      <div class="unslate_co--section section-counter" id="skills-section">
-        <div class="container">
-          
-
-
-          <div class="row justify-content-center">
-          
-            <div class="col-6 col-sm-6 mb-5 mb-lg-0 col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+             <div class="col-6 col-sm-6 mb-5 mb-lg-0 col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
               <div class="counter-v1 text-center">
                 <span class="number-wrap">
                   <span class="number number-counter" style="color:#ff0000;" data-number=" ${list.movie_cnt}">0</span>
@@ -149,18 +128,13 @@
                 <span class="counter-label">reviews</span>
               </div>
             </div>
-           <!--  <div class="col-6 col-sm-6 mb-5 mb-lg-0 col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
-              <div class="counter-v1 text-center">
-                <span class="number-wrap">
-                  <span class="number number-counter" style="color:#ff0000;" data-number="100">0</span>
-                  <span class="append-text">%</span>
-                </span>
-                <span class="counter-label">Design</span>
-              </div>
-            </div> -->
+           
           </div>
         </div>
       </div>
+      
+      
+
     </section><!-- End About Section -->
 
     <!-- ======= Why Us Section ======= -->
