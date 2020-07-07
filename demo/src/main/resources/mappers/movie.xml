@@ -62,7 +62,9 @@ from (SELECT MOVIE_CODE, MOVIE_TITLE, MOVIE_ALTERNATIVETITLE, MOVIE_GENRE, MOVIE
    </select>
    
    <select id="movielist1" resultType="com.soulmovie.vo.MovieVO" parameterType="map">
-		SELECT 
+		SELECT   ABC.MOVIE_CODE, ABC.MOVIE_TITLE, ABC.MOVIE_ALTERNATIVETITLE, ABC.MOVIE_GENRE, ABC.MOVIE_ACTOR, ABC.MOVIE_CNT, ABC.MOVIE_DATE, ABC.MOVIE_IMG,
+            ABC.RANK
+  FROM      (SELECT 
             A.MOVIE_CODE, A.MOVIE_TITLE, A.MOVIE_ALTERNATIVETITLE, A.MOVIE_GENRE, A.MOVIE_ACTOR, A.MOVIE_CNT, A.MOVIE_DATE, A.MOVIE_IMG,
             B.RANK    
          FROM 
@@ -71,8 +73,9 @@ from (SELECT MOVIE_CODE, MOVIE_TITLE, MOVIE_ALTERNATIVETITLE, MOVIE_GENRE, MOVIE
             FROM MOVIE) B
          WHERE REPLACE(UPPER(TRIM(MOVIE_TITLE)),' ','') LIKE '%' || REPLACE(UPPER(TRIM(#{text})),' ','') || '%' 
                AND b.MOVIE_CODE = A.MOVIE_CODE    
-        AND ROWNUM BETWEEN #{start} AND #{end}
-        ORDER BY RANK
+        ORDER BY RANK) ABC
+WHERE ABC.RANK BETWEEN #{start} AND #{end}
+
    </select>
 
    <select id="moviecontent" resultType="com.soulmovie.vo.MovieVO" parameterType="int">
