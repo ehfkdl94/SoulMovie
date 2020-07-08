@@ -10,9 +10,13 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.0.1">
     <title>Soul Movie Admin Page</title>
-
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.3/c3.min.css"
+	rel="stylesheet" />
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.7/d3.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.3/c3.min.js"></script>
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/cover/">
-
+	<link href="${pageContext.request.contextPath}/resources/day/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap core CSS -->
 <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
 
@@ -53,6 +57,89 @@
   <main role="main" class="inner cover text-center">
     <h1 class="cover-heading">Soul Movie</h1>
     <p class="lead">Admin Page</p>
+    <button type="button" class="btn btn-danger contact" id='tmp' data-toggle="modal" data-target="#exampleModal">문의하기</button>
+    <!-- modal --> 
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel" style="font-family:'YDHB';">문의하기</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body" style="font-family:aCinemaL;">
+	     <h4>chart 표시</h4>
+		<div class="chart1"></div>
+	      </div>	      
+	    </div>
+	  </div>
+	</div>
+	<script type="text/javascript">
+		//$(function(){
+			//수정 버튼이 클릭되면
+			let chart
+			$('#tmp').click(function(){
+				//class가 modal인 것을 찾아서 화면에 표시
+				console.log('click')
+				$.get('/rest/itemorder.json', function(data) {
+					var cnt = data.x.length; //배열의 개수 구하기
+					var member = [];
+					var choice =[];
+					const x = [];
+					for (var i = 0; i < cnt; i++) {
+						x.push(data.x[i])
+						
+					}
+					for (var i = 0; i < cnt; i++) {
+						member.push([data.member[i] ])
+						
+					}
+					for (var i = 0; i < cnt; i++) {
+						choice.push([data.choice[i] ])
+						
+					}
+					console.log(x.toString().split(','));
+	
+					console.log(member);
+					console.log(choice);
+					chart = c3.generate({
+						bindto : '.chart1',
+						data : {
+							    x : 'year',
+								columns : [
+										['year',...x ],
+										['member', ...member],
+										['choice', ...choice]
+									]
+					
+	
+						},
+						axis: {
+			                x: {
+			                    type: 'category',
+			                    
+			                },
+						}
+					});
+
+					$('#exampleModal').modal('show');
+					setTimeout(()=>{
+						console.log('이벤트')
+						chart.resize();
+					},500)
+					
+				}, 'json');
+			})
+			/* $('#exampleModal').on('shown.bs.modal', function (e) {
+				console.log('이벤트')
+			    chart.resize();
+			}); */
+				
+				
+			//}
+		//)		
+	</script>
   </main>
 
   <footer class="mastfoot mt-auto text-center">
@@ -61,5 +148,14 @@
     </div>
   </footer>
 </div>
+<!-- Vendor JS Files -->
+  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/jquery/jquery.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/php-email-form/validate.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/venobox/venobox.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/day/assets/vendor/aos/aos.js"></script>
 </body>
 </html>

@@ -25,7 +25,7 @@
 
 <body>
 
-<button type="button" class="btn btn-danger contact" data-toggle="modal" data-target="#exampleModal">문의하기</button>
+<button type="button" class="btn btn-danger contact" id='tmp' data-toggle="modal" data-target="#exampleModal">문의하기</button>
 	<div class="container">
 		
 	</div>
@@ -47,57 +47,74 @@
 	  </div>
 	</div>
 	<script type="text/javascript">
-		$(function(){
+		//$(function(){
 			//수정 버튼이 클릭되면
-			$('.contact').click(function(){
+			let chart
+			$('#tmp').click(function(){
 				//class가 modal인 것을 찾아서 화면에 표시
-				$('#exampleModal').modal('show');
-			})		
+				console.log('click')
+				$.get('/rest/itemorder.json', function(data) {
+					var cnt = data.x.length; //배열의 개수 구하기
+					var member = [];
+					var choice =[];
+					const x = [];
+					for (var i = 0; i < cnt; i++) {
+						x.push(data.x[i])
+						
+					}
+					for (var i = 0; i < cnt; i++) {
+						member.push([data.member[i] ])
+						
+					}
+					for (var i = 0; i < cnt; i++) {
+						choice.push([data.choice[i] ])
+						
+					}
+					console.log(x.toString().split(','));
+	
+					console.log(member);
+					console.log(choice);
+					chart = c3.generate({
+						bindto : '.chart1',
+						data : {
+							    x : 'year',
+								columns : [
+										['year',...x ],
+										['member', ...member],
+										['choice', ...choice]
+									]
+					
+	
+						},
+						axis: {
+			                x: {
+			                    type: 'category',
+			                    
+			                },
+						}
+					});
+
+					$('#exampleModal').modal('show');
+					setTimeout(()=>{
+						console.log('이벤트')
+						chart.resize();
+					},500)
+					
+				}, 'json');
+			})
+			/* $('#exampleModal').on('shown.bs.modal', function (e) {
+				console.log('이벤트')
+			    chart.resize();
+			}); */
+				
+				
+			//}
+		//)		
 	</script>
 	
 	<script type="text/javascript">
 		$(function() {
-			$.get('/rest/itemorder.json', function(data) {
-				var cnt = data.x.length; //배열의 개수 구하기
-				var member = [];
-				var choice =[];
-				const x = [];
-				for (var i = 0; i < cnt; i++) {
-					x.push(data.x[i])
-					
-				}
-				for (var i = 0; i < cnt; i++) {
-					member.push([data.member[i] ])
-					
-				}
-				for (var i = 0; i < cnt; i++) {
-					choice.push([data.choice[i] ])
-					
-				}
-				console.log(x.toString().split(','));
-
-				console.log(member);
-				console.log(choice);
-				var chart = c3.generate({
-					bindto : '.chart1',
-					data : {
-						    x : 'year',
-							columns : [
-									['year',...x ],
-									['member', ...member],
-									['choice', ...choice]
-								]
-				
-
-					},
-					axis: {
-		                x: {
-		                    type: 'category',
-		                    
-		                },
-					}
-				});
-			}, 'json');
+			
 
 			//setTimeout  => 1번만
 			//setInterval = > 주기적으로
