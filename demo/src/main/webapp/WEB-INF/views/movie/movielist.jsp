@@ -163,19 +163,19 @@
 									<img class="img-fluid"
 										src="${pageContext.request.contextPath}/resources/img/qm3.jpg"
 										style=" height: 450px;">
-									<h5 style="color: black; font-family: aCinemaL;">회원가입 후 확인
-										할 수 있습니다.</h5>
-									<h4 class="blog-date" style="color: red; font-weight: bold;">?</h4>
+									<h4 style="color: black; font-family: aCinemaL;">회원가입 후 확인가능</h4>
+									<h5 class="blog-date" style="color: red; background-color:rgba( 0, 0, 0, 0.8 ); font-family: aCinemaL; font-weight: bold;">NO.${tmp.rank }</h5>
 
 								</c:if>
 								<c:if test="${i.index!=0}">
 									<a
 										href="${pageContext.request.contextPath}/movie/moviedetail?movie_code=${tmp.movie_code}">
-										<img style=" height: 450px;"
+										<img style="border: solid 1px white; height: 450px;"
 										src="${tmp.movie_img}" alt="">
 									</a>
-									<h5 style="color: black; font-family: aCinemaL;">${tmp.movie_title}</h5>
-									<h4 class="blog-date" style="color: red; font-family: aCinemaL; font-weight: bold;">${tmp.rank }위</h4>
+									<h4 style="color: black; font-family: aCinemaL;">${tmp.movie_title}</h4>
+									<h5 class="blog-date" style="color: red; background-color:rgba( 0, 0, 0, 0.8 ); font-family: aCinemaL; font-weight: bold;">NO.${tmp.rank }</h5>
+									
 								</c:if>
 							</security:authorize>
 							<security:authorize access="isAuthenticated()">
