@@ -17,8 +17,6 @@
 <meta name="keywords" content="music, html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Favicon -->
-<link href="img/favicon.ico" rel="shortcut icon" />
 
 <!-- Google font -->
 <link
