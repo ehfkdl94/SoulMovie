@@ -164,7 +164,7 @@
 										src="${pageContext.request.contextPath}/resources/img/qm3.jpg"
 										style=" height: 450px;">
 									
-									<h5 class="blog-date" style="color: red; background-color:rgba( 0, 0, 0, 0.8 ); font-family: aCinemaL; font-weight: bold;">NO.${tmp.rank }</h5>
+									<h5 class="blog-date" style="color: red; font-family: aCinemaL; font-weight: bold;">NO.${tmp.rank }</h5>
 									<h4 style="color: black; font-family: aCinemaL;">회원가입 후 확인가능</h4>
 									
 								</c:if>
@@ -175,7 +175,7 @@
 										src="${tmp.movie_img}" alt="">
 									</a>
 									
-									<h5 class="blog-date" style="color: red; background-color:rgba( 0, 0, 0, 0.8 ); font-family: aCinemaL; font-weight: bold;">NO.${tmp.rank }</h5>
+									<h5 class="blog-date" style="color: red;  font-family: aCinemaL; font-weight: bold;">NO.${tmp.rank }</h5>
 									<h4 style="color: black; font-family: aCinemaL;">${tmp.movie_title}</h4>
 									
 								</c:if>
@@ -186,7 +186,7 @@
 									<img style="border: solid 1px white; height: 450px;"
 									src="${tmp.movie_img}" alt="">
 								</a>
-								<h5 class="blog-date" style="color: red; background-color:rgba( 0, 0, 0, 0.8 ); font-family: aCinemaL; font-weight: bold;">NO.${tmp.rank }</h5>
+								<h5 class="blog-date" style="color: red;  font-family: aCinemaL; font-weight: bold;">NO.${tmp.rank }</h5>
 								<h4 style="color: black; font-family: aCinemaL;">${tmp.movie_title}</h4>
 								
 							</security:authorize>
