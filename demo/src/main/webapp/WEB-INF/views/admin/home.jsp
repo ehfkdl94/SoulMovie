@@ -52,7 +52,7 @@
 }
 
 
-출처: https://dgkim5360.tistory.com/entry/Bootstrap-modal-custom-size-and-location [개발새발로그]
+
     </style>
     <!-- Custom styles for this template -->
     <link href="${pageContext.request.contextPath}/resources/css/cover.css" rel="stylesheet">
@@ -75,7 +75,7 @@
   <main role="main" class="inner cover text-center">
     <h1 class="cover-heading">Soul Movie</h1>
     <p class="lead">Admin Page</p>
-    <button type="button" class="btn btn-danger contact" id='tmp' data-toggle="modal" data-target="#exampleModal">문의하기</button>
+    <button type="button" class="btn btn-danger contact" id='tmp' data-toggle="modal" data-target="#exampleModal">일자별 현황</button>
     <!-- modal --> 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	  <div class="modal-dialog">

@@ -14,11 +14,20 @@
         AND ROWNUM BETWEEN 1 AND 3
    </select>
    <select id="moviedetail" resultType="com.soulmovie.vo.MovieVO" parameterType="int">  <!-- 영화 상세정보 출력 -->
-      SELECT MOVIE_CODE, MOVIE_TITLE, MOVIE_ALTERNATIVETITLE, MOVIE_GENRE, MOVIE_ACTOR, MOVIE_CNT, MOVIE_DATE, MOVIE_IMG,B.rank   
-      FROM (SELECT MOVIE_CODE, MOVIE_TITLE, MOVIE_ALTERNATIVETITLE, MOVIE_GENRE, MOVIE_ACTOR, MOVIE_CNT, MOVIE_DATE, MOVIE_IMG,
-            ROW_NUMBER() OVER (ORDER BY MOVIE_CNT DESC) rank  
-              FROM MOVIE) B
-        WHERE MOVIE_CODE=#{no}
+      SELECT   ABC.MOVIE_CODE, ABC.MOVIE_TITLE, ABC.MOVIE_ALTERNATIVETITLE, ABC.MOVIE_GENRE, ABC.MOVIE_ACTOR, ABC.MOVIE_CNT, ABC.MOVIE_DATE, ABC.MOVIE_IMG,
+            ABC.RANK
+  FROM      (SELECT 
+            A.MOVIE_CODE, A.MOVIE_TITLE, A.MOVIE_ALTERNATIVETITLE, A.MOVIE_GENRE, A.MOVIE_ACTOR, A.MOVIE_CNT, A.MOVIE_DATE, A.MOVIE_IMG,
+            B.RANK    
+         FROM 
+            MOVIE A,
+            (SELECT MOVIE_CODE,ROW_NUMBER() OVER (ORDER BY MOVIE_CNT DESC ,MOVIE_TITLE ASC) RANK
+            FROM MOVIE) B
+         WHERE REPLACE(UPPER(TRIM(MOVIE_TITLE)),' ','') LIKE '%' || REPLACE(UPPER(TRIM('')),' ','') || '%' 
+               AND b.MOVIE_CODE = A.MOVIE_CODE    
+        ORDER BY RANK) ABC
+WHERE MOVIE_CODE= #{no}
+        
    </select>
    
    <select id="movielist" resultType="com.soulmovie.vo.MovieVO">
