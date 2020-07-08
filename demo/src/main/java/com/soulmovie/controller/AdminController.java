@@ -123,6 +123,12 @@ public class AdminController {
 		
 		return "/admin/test";
 	}
+	@RequestMapping(value = "/test2", method = RequestMethod.GET)
+	public String test2(Model model, HttpSession httpSession, HttpServletRequest request,
+			@RequestParam(value="no", defaultValue = "0", required = false) int no) {
+		
+		return "/admin/test2";
+	}
 //	@RequestMapping(value = "/moviecontent", method = RequestMethod.GET)
 //	public String moviedetail(HttpServletRequest request,
 //			@RequestParam(value="movie_code", defaultValue="1",required= false) int movie_code
