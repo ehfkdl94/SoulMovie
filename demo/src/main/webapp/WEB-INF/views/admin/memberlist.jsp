@@ -56,9 +56,7 @@
 
   <main role="main" class="inner cover text-center">
   	<div class="form-inline">
-			<div style="margin-right:30px">
-				<a href="${pageContext.request.contextPath}/admin/memberinsert" class="btn btn-success">글쓰기</a>
-			</div>
+			
 			
 			<form action="${pageContext.request.contextPath}/admin/member" method="get">
 				<input type="hidden" name="page" value="1" />
