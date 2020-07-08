@@ -35,6 +35,24 @@
           font-size: 3.5rem;
         }
       }
+      .modal {
+        text-align: center;
+}
+ 
+.modal-dialog.modal-fullsize {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.modal-content.modal-fullsize {
+  height: auto;
+  min-height: 100%;
+  border-radius: 0; 
+}
+
+
+출처: https://dgkim5360.tistory.com/entry/Bootstrap-modal-custom-size-and-location [개발새발로그]
     </style>
     <!-- Custom styles for this template -->
     <link href="${pageContext.request.contextPath}/resources/css/cover.css" rel="stylesheet">
@@ -61,20 +79,21 @@
     <!-- modal --> 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	  <div class="modal-dialog">
-	    <div class="modal-content">
+	    <div class="modal-content"  ">
 	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLabel" style="font-family:'YDHB';">문의하기</h5>
+	        <h5 class="modal-title" id="exampleModalLabel" style="font-family:'YDHB'; color:black;">차트</h5>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true">&times;</span>
 	        </button>
 	      </div>
-	      <div class="modal-body" style="font-family:aCinemaL;">
-	     <h4>chart 표시</h4>
+	      <div class="modal-body" style="font-family:aCinemaL; color:black;">
+	     <h4>가입일자별 멤버/리뷰 현황</h4>
 		<div class="chart1"></div>
 	      </div>	      
 	    </div>
 	  </div>
 	</div>
+	<!-- modal end -->
 	<script type="text/javascript">
 		//$(function(){
 			//수정 버튼이 클릭되면
