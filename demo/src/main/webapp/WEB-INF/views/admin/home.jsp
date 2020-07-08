@@ -82,7 +82,7 @@
 			$('#tmp').click(function(){
 				//class가 modal인 것을 찾아서 화면에 표시
 				console.log('click')
-				$.get('/rest/itemorder.json', function(data) {
+				$.get('${pageContext.request.contextPath}/rest/itemorder.json', function(data) {
 					var cnt = data.x.length; //배열의 개수 구하기
 					var member = [];
 					var choice =[];
