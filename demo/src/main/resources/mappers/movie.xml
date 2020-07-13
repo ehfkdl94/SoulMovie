@@ -86,6 +86,23 @@ from (SELECT MOVIE_CODE, MOVIE_TITLE, MOVIE_ALTERNATIVETITLE, MOVIE_GENRE, MOVIE
 WHERE ABC.RANK BETWEEN #{start} AND #{end}
 
    </select>
+   <select id="movielist2" resultType="com.soulmovie.vo.MovieVO" parameterType="map">
+		SELECT *
+FROM   (SELECT   ABC.MOVIE_CODE, ABC.MOVIE_TITLE, ABC.MOVIE_ALTERNATIVETITLE, ABC.MOVIE_GENRE, ABC.MOVIE_ACTOR, ABC.MOVIE_CNT, ABC.MOVIE_DATE, ABC.MOVIE_IMG,
+            ABC.RANK,ROWNUM rown
+         FROM      (SELECT 
+            A.MOVIE_CODE, A.MOVIE_TITLE, A.MOVIE_ALTERNATIVETITLE, A.MOVIE_GENRE, A.MOVIE_ACTOR, A.MOVIE_CNT, A.MOVIE_DATE, A.MOVIE_IMG,
+            B.RANK,ROWNUM rown    
+                 FROM 
+                        MOVIE A,
+                 (SELECT MOVIE_CODE,ROW_NUMBER() OVER (ORDER BY MOVIE_CNT DESC ,MOVIE_TITLE ASC) RANK
+                             FROM MOVIE) B
+                    WHERE REPLACE(UPPER(TRIM(MOVIE_TITLE)),' ','') LIKE '%' || REPLACE(UPPER(TRIM(#{text})),' ','') || '%' 
+                      AND b.MOVIE_CODE = A.MOVIE_CODE    
+                     ORDER BY RANK) ABC) ABCD
+WHERE ABCD.rown BETWEEN #{start} and #{end}
+
+   </select>
 
    <select id="moviecontent" resultType="com.soulmovie.vo.MovieVO" parameterType="int">
       SELECT * FROM MOVIE WHERE MOVIE_CODE=#{no}
@@ -94,7 +111,7 @@ WHERE ABC.RANK BETWEEN #{start} AND #{end}
       SELECT COUNT(*) FROM MOVIE WHERE MOVIE_TITLE LIKE '%' || #{text} || '%' 
    </select>
    
-   <delete id="deleteMovie" parameterType="com.soulmovie.vo.MovieVO">
+      <delete id="deleteMovie" parameterType="com.soulmovie.vo.MovieVO">
       DELETE FROM MOVIE WHERE MOVIE_CODE = #{movie_code} 
    </delete>
    

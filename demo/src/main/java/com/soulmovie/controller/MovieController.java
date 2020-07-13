@@ -67,6 +67,7 @@ public class MovieController {
 			,@RequestParam(value = "page", defaultValue = "0", required = false) int page,
 			@RequestParam(value = "text", defaultValue = "", required = false) String text,
 			@RequestParam(value = "category", defaultValue = "", required = false) String category,
+			@RequestParam(value = "search", defaultValue = "0", required = false) int search,
 			HttpSession httpSession,
 			Model model) {
 		System.out.println(category);
@@ -78,8 +79,14 @@ public class MovieController {
 		map.put("start", page*16-15); 	//시작위치
 		map.put("end", page*16);		//종료위치
 		map.put("text", text);
+		
+		System.out.println(search +"서치서치");
 		//List<MovieVO> list2 = mDAO.selectPageMovieText(map);
 		List<MovieVO> list2 = mDAO.selectMovie1(map);
+		if ( search == 1) {
+			System.out.println("안녕");
+			list2 = mDAO.selectMovie2(map);
+		}
 		
 //		if(category.equals("title")) {
 //		list2 = mDAO.selectPageMovieText(map);
@@ -91,6 +98,7 @@ public class MovieController {
 
 		model.addAttribute("list2", list2);
 		int cnt = mDAO.countBoard(text); //검색어를 넘겨줌.
+	
 		int allpage=(cnt-1)/16+1;
 		int movepage=page;
 	    int start= 1;
@@ -130,7 +138,7 @@ public class MovieController {
 
 		model.addAttribute("end",end );
 		model.addAttribute("allpage",allpage);
-		
+		model.addAttribute("search",search);
 		return "/movie/movielist";
 	}
 	

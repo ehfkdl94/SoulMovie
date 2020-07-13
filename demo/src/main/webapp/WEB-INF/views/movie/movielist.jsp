@@ -122,7 +122,7 @@
 						<input type="hidden" name="page" value="1" /> 
 							<input type="text" name="text" placeholder="MovieTitle">
 						
-							<button style="font-family:aCinemaL;background:#cc1616; " >Search</button>
+							<button style="font-family:aCinemaL;background:#cc1616;" name= "search" value="1" >Search</button>
 							
                  		
 						</form>
@@ -192,23 +192,37 @@
 					</div>
 				</c:forEach>
 			</div>
-
+ 
 			<div class="container">
 				<div class="row mb-5">
 					<nav aria-label="Page navigation example" class="mb-4">
 						<ul
 							class="custom-pagination pagination-primary pagination align-items-stretch">
 							<c:if test="${param.page != 1}">
-								<li class="page-item"><a class="page-link"
-									href="${pageContext.request.contextPath}/movie/movielist?page=1&text=${param.text}"
-									aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-								</a></li>
-								<li class="page-item"><a class="page-link"
-									href="${pageContext.request.contextPath}/movie/movielist?page=${param.page-1}&text=${param.text}"
-									aria-label="Previous"> <span aria-hidden="true">&lt;</span>
-								</a></li>
+								<c:if test="${search == 0}">
+									<li class="page-item"><a class="page-link"
+										href="${pageContext.request.contextPath}/movie/movielist?page=1&text=${param.text}"
+										aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+									</a></li>
+									<li class="page-item"><a class="page-link"
+										href="${pageContext.request.contextPath}/movie/movielist?page=${param.page-1}&text=${param.text}"
+										aria-label="Previous"> <span aria-hidden="true">&lt;</span>
+									</a></li>
+								</c:if>
+								<c:if test="${search == 1}">
+								    <li class="page-item"><a class="page-link"
+										href="${pageContext.request.contextPath}/movie/movielist?page=1&text=${param.text}&search=1"
+										aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+									</a></li>
+									<li class="page-item"><a class="page-link"
+										href="${pageContext.request.contextPath}/movie/movielist?page=${param.page-1}&text=${param.text}&search=1"
+										aria-label="Previous"> <span aria-hidden="true">&lt;</span>
+									</a></li>
+								</c:if>
+							    
 							</c:if>
 							<c:forEach var="i" begin="${start}" end="${end}" step="1">
+								<c:if test="${search == 0}">
 								<c:if test="${param.page == i}">
 									<li class="page-item active"><a class="page-link"
 										href="${pageContext.request.contextPath}/movie/movielist?page=${i}&text=${param.text}">${i}</a></li>
@@ -217,16 +231,38 @@
 								<c:if test="${param.page != i}">
 									<li class="page-item"><a class="page-link"
 										href="${pageContext.request.contextPath}/movie/movielist?page=${i}&text=${param.text}">${i}</a></li>
-
+									</c:if>
 								</c:if>
+								<c:if test="${search == 1}">
+									<c:if test="${param.page == i}">
+										<li class="page-item active"><a class="page-link"
+											href="${pageContext.request.contextPath}/movie/movielist?page=${i}&text=${param.text}&search=1">${i}</a></li>
+									</c:if>
+	
+									<c:if test="${param.page != i}">
+										<li class="page-item"><a class="page-link"
+											href="${pageContext.request.contextPath}/movie/movielist?page=${i}&text=${param.text}&search=1">${i}</a></li>
+										</c:if>
+								</c:if>	
+								
 							</c:forEach>
 							<c:if test="${allpage != param.page}">
+								<c:if test="${search == 0}">
 								<li class="page-item"><a class="page-link"
 									href="${pageContext.request.contextPath}/movie/movielist?page=${param.page+1}&text=${param.text}"
 									aria-label="Next"><span aria-hidden="true">&gt;</span></a></li>
 
 								<li class="page-item"><a class="page-link"
 									href="${pageContext.request.contextPath}/movie/movielist?page=${allpage}&text=${param.text}">&raquo;</a></li>
+								</c:if>
+								<c:if test="${search == 1}">
+								<li class="page-item"><a class="page-link"
+									href="${pageContext.request.contextPath}/movie/movielist?page=${param.page+1}&text=${param.text}&search=1"
+									aria-label="Next"><span aria-hidden="true">&gt;</span></a></li>
+
+								<li class="page-item"><a class="page-link"
+									href="${pageContext.request.contextPath}/movie/movielist?page=${allpage}&text=${param.text}&search=1">&raquo;</a></li>
+								</c:if>
 							</c:if>
 						</ul>
 					</nav>

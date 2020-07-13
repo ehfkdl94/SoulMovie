@@ -45,10 +45,13 @@ public class MovieDAO {
 	public List<MovieVO> selectMovie1(HashMap<String, Object> map) {
 		return sqlFactory.openSession().selectList("Movie.movielist1", map);
 	}
-	
+	public List<MovieVO> selectMovie2(HashMap<String, Object> map) {
+		return sqlFactory.openSession().selectList("Movie.movielist2", map);
+	}
 	public int countBoard(String text) {
 		return sqlFactory.openSession().selectOne("Movie.count",text);
 	}
+	
 	
 	public int deleteMovie(MovieVO obj) {
 		return sqlFactory.openSession().delete("Movie.deleteMovie", obj);
