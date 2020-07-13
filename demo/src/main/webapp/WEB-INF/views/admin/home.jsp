@@ -87,7 +87,7 @@
 	        </button>
 	      </div>
 	      <div class="modal-body" style="font-family:aCinemaL; color:black;">
-	     <h4>가입일자별 멤버/리뷰 현황</h4>
+	     <h4>일자별 멤버/리뷰 현황</h4>
 		<div class="chart1"></div>
 	      </div>	      
 	    </div>
